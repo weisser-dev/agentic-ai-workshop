@@ -852,6 +852,7 @@ body {
   flex-direction: column;
   gap: 6px;
   z-index: 100;
+  transition: all 0.4s ease;
 }
 
 @media (max-width: 768px) {
@@ -929,6 +930,69 @@ body {
 .nav-sub-dot.active {
   background: var(--color-accent);
   transform: scale(1.6);
+  box-shadow: 0 0 0 2px rgba(255, 237, 0, 0.3);
+}
+
+/* Nav adaptive colors */
+.nav-on-dark .nav-section-label {
+  color: rgba(255, 255, 255, 0.4);
+  transition: color 0.4s ease;
+}
+
+.nav-on-dark .nav-section-btn:hover .nav-section-label {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.nav-on-dark .nav-section-btn.active {
+  background: rgba(255, 237, 0, 0.15);
+  border-color: rgba(255, 237, 0, 0.3);
+}
+
+.nav-on-dark .nav-section-btn.active .nav-section-label {
+  color: var(--color-accent);
+}
+
+.nav-on-dark .nav-sub-dot {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.nav-on-dark .nav-sub-dot:hover {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.nav-on-dark .nav-sub-dot.active {
+  background: var(--color-accent);
+}
+
+.nav-on-light .nav-section-label {
+  color: var(--color-primary-light);
+  transition: color 0.4s ease;
+}
+
+.nav-on-light .nav-section-btn:hover .nav-section-label {
+  color: var(--color-primary);
+}
+
+.nav-on-light .nav-section-btn.active {
+  background: rgba(255, 237, 0, 0.15);
+  border-color: rgba(255, 237, 0, 0.3);
+}
+
+.nav-on-light .nav-section-btn.active .nav-section-label {
+  color: var(--color-accent-dark);
+  font-weight: 700;
+}
+
+.nav-on-light .nav-sub-dot {
+  background: var(--color-primary-light);
+}
+
+.nav-on-light .nav-sub-dot:hover {
+  background: var(--color-primary);
+}
+
+.nav-on-light .nav-sub-dot.active {
+  background: var(--color-accent);
   box-shadow: 0 0 0 2px rgba(255, 237, 0, 0.3);
 }
 

@@ -10,12 +10,27 @@ const slides = [
     content: `
       <div class="hero-badge">Workshop 2026</div>
       <h1 class="hero-title">Agentic AI<br><span class="highlight">Workshop</span></h1>
-      <p class="hero-subtitle">Von den Anf&auml;ngen der K&uuml;nstlichen Intelligenz bis zum KI-gest&uuml;tzten Entwickeln &ndash; eine Reise durch 70 Jahre Innovation.</p>
-      <div class="hero-meta">
-        <span><span class="dot"></span>Geschichte</span>
-        <span><span class="dot"></span>KI f&uuml;r jedermann</span>
-        <span><span class="dot"></span>AI Assisted Coding</span>
+      <p class="hero-subtitle">Von der Geschichte der KI &uuml;ber den aktuellen Stand bis zum praktischen Arbeiten mit KI-Agents &ndash; f&uuml;r Entwickler und Technik-Interessierte.</p>
+      <div style="display:flex;gap:24px;justify-content:center;margin-top:32px;flex-wrap:wrap">
+        <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:16px 24px;max-width:200px;text-align:center">
+          <span style="font-size:0.75rem;color:var(--color-accent);font-weight:700;text-transform:uppercase;letter-spacing:0.05em">Teil 1</span>
+          <p style="font-size:0.95rem;color:var(--color-text-on-dark);font-weight:600;margin-top:4px">Geschichte &amp; Status Quo</p>
+          <p style="font-size:0.75rem;color:var(--color-text-on-dark-subdued);margin-top:4px">70 Jahre KI, Big Player, Chancen &amp; Risiken</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:16px 24px;max-width:200px;text-align:center">
+          <span style="font-size:0.75rem;color:var(--color-accent);font-weight:700;text-transform:uppercase;letter-spacing:0.05em">Teil 2</span>
+          <p style="font-size:0.95rem;color:var(--color-text-on-dark);font-weight:600;margin-top:4px">KI &ndash; Internet 2.0</p>
+          <p style="font-size:0.75rem;color:var(--color-text-on-dark-subdued);margin-top:4px">Wie KI die Masse erobert &ndash; f&uuml;r jeden verst&auml;ndlich</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:16px 24px;max-width:200px;text-align:center">
+          <span style="font-size:0.75rem;color:var(--color-accent);font-weight:700;text-transform:uppercase;letter-spacing:0.05em">Teil 3</span>
+          <p style="font-size:0.95rem;color:var(--color-text-on-dark);font-weight:600;margin-top:4px">AI Assisted Coding</p>
+          <p style="font-size:0.75rem;color:var(--color-text-on-dark-subdued);margin-top:4px">Deep Dive &amp; Hands-On mit KI-Agents</p>
+        </div>
       </div>
+      <p style="margin-top:24px;font-size:0.8rem;color:var(--color-text-on-dark-subdued);opacity:0.6;text-align:center">
+        F&uuml;r alle mit technischem Verst&auml;ndnis &ndash; vom Einsteiger bis zum Senior Developer
+      </p>
       <p style="position:absolute;bottom:24px;left:50%;transform:translateX(-50%);font-size:0.7rem;color:var(--color-text-on-dark-subdued);opacity:0.4">
         &copy; 2026 <a href="https://github.com/weisser-dev/agentic-ai-workshop" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">weisser-dev</a>
       </p>
@@ -601,15 +616,15 @@ const slides = [
     `,
   },
 
-  // ===== 6: SECTION DIVIDER - KI f&uuml;r jedermann =====
+  // ===== 6: SECTION DIVIDER - KI das neue Internet =====
   {
     id: 'section-everyone',
     theme: 'slide--primary slide--divider',
-    label: 'KI f&uuml;r alle',
+    label: 'KI Internet 2.0',
     content: `
       <div class="divider-number">02</div>
-      <h2 class="slide-title">KI f&uuml;r jedermann</h2>
-      <p class="slide-subtitle">Was heute alles m&ouml;glich ist</p>
+      <h2 class="slide-title">KI &ndash; Internet 2.0</h2>
+      <p class="slide-subtitle">Wie KI die Masse erobert</p>
     `,
   },
 
@@ -3412,7 +3427,7 @@ unspezifische Exceptions. Fixen."</span></pre></div>
 const sections = [
   { name: 'Intro', start: 'hero' },
   { name: 'Geschichte', start: 'section-history' },
-  { name: 'KI f\u00fcr alle', start: 'section-everyone' },
+  { name: 'KI \u2013 Internet 2.0', start: 'section-everyone' },
   { name: 'Basics', start: 'section-basics' },
   { name: 'AI Coding', start: 'section-coding' },
   { name: 'Hands-On', start: 'handson-setup' },
@@ -3508,6 +3523,13 @@ function updateActiveSlide(index) {
     const slideIdx = parseInt(dot.dataset.slide, 10);
     dot.classList.toggle('active', slideIdx === index);
   });
+
+  // Update nav color based on slide background
+  const navEl = document.getElementById('nav-sections');
+  const slideTheme = slides[index]?.theme || '';
+  const isDark = slideTheme.includes('slide--dark') || slideTheme.includes('slide--primary');
+  navEl.classList.toggle('nav-on-dark', isDark);
+  navEl.classList.toggle('nav-on-light', !isDark);
 }
 
 function goToSlide(index) {
