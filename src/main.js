@@ -9,13 +9,16 @@ const slides = [
     label: 'Start',
     content: `
       <div class="hero-badge">Workshop 2026</div>
-      <h1 class="hero-title">AI Assisted<br><span class="highlight">Coding</span></h1>
+      <h1 class="hero-title">Agentic AI<br><span class="highlight">Workshop</span></h1>
       <p class="hero-subtitle">Von den Anf&auml;ngen der K&uuml;nstlichen Intelligenz bis zum KI-gest&uuml;tzten Entwickeln &ndash; eine Reise durch 70 Jahre Innovation.</p>
       <div class="hero-meta">
         <span><span class="dot"></span>Geschichte</span>
         <span><span class="dot"></span>KI f&uuml;r jedermann</span>
         <span><span class="dot"></span>AI Assisted Coding</span>
       </div>
+      <p style="position:absolute;bottom:24px;left:50%;transform:translateX(-50%);font-size:0.7rem;color:var(--color-text-on-dark-subdued);opacity:0.4">
+        &copy; 2026 <a href="https://github.com/weisser-dev/agentic-ai-workshop" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">weisser-dev</a>
+      </p>
     `,
   },
 
@@ -3445,7 +3448,7 @@ function renderSlides() {
   nav.id = 'nav-sections';
   nav.innerHTML = sectionRanges.map((sec, si) => {
     const dotCount = sec.endIdx - sec.startIdx + 1;
-    const dots = Array.from({ length: dotCount }, (_, di) => {
+    const dots = dotCount <= 1 ? '' : Array.from({ length: dotCount }, (_, di) => {
       const slideIdx = sec.startIdx + di;
       return `<button class="nav-sub-dot" data-slide="${slideIdx}" aria-label="${slides[slideIdx].label}"></button>`;
     }).join('');
@@ -3454,7 +3457,7 @@ function renderSlides() {
         <button class="nav-section-btn" data-slide="${sec.startIdx}" data-section="${si}">
           <span class="nav-section-label">${sec.name}</span>
         </button>
-        <div class="nav-sub-dots">${dots}</div>
+        ${dots ? `<div class="nav-sub-dots">${dots}</div>` : ''}
       </div>
     `;
   }).join('');
