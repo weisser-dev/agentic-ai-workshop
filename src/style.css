@@ -85,6 +85,16 @@ body {
 
 @media (max-width: 768px) {
   .slide {
+    min-height: auto;
+    min-height: 100dvh;
+    overflow: visible;
+    justify-content: flex-start;
+    padding-top: 48px;
+  }
+}
+
+@media (max-width: 768px) {
+  .slide {
     padding: 48px 24px;
   }
 }
@@ -1232,7 +1242,7 @@ body {
   }
 
   .cards {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
   }
 
   .step {
@@ -1244,7 +1254,302 @@ body {
     align-self: flex-start;
   }
 
-  .nav-dots {
+  .nav-sections {
     display: none;
+  }
+}
+
+/* ===== Mobile Optimizations ===== */
+@media (max-width: 768px) {
+  /* Base slide adjustments */
+  .slide {
+    padding: 40px 20px;
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+
+  .slide-content {
+    max-width: 100%;
+  }
+
+  .slide-title {
+    font-size: clamp(1.5rem, 6vw, 2.2rem);
+  }
+
+  .slide-subtitle {
+    font-size: clamp(0.9rem, 3vw, 1.1rem);
+  }
+
+  /* Hero mobile */
+  .slide--hero {
+    padding: 32px 20px;
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+
+  .hero-subtitle {
+    font-size: clamp(0.9rem, 3vw, 1.1rem);
+  }
+
+  /* Two-cols stacks vertically */
+  .two-cols {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+
+  /* Cards grid: max 2 cols on tablet, 1 on phone */
+  .cards {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+
+  .card {
+    padding: 16px !important;
+  }
+
+  .card-title {
+    font-size: 0.9rem;
+  }
+
+  .card-text {
+    font-size: 0.8rem;
+  }
+
+  /* Code blocks */
+  .code-block {
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+
+  .code-body {
+    padding: 14px !important;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .code-body pre {
+    font-size: 0.75rem;
+  }
+
+  .copy-btn {
+    font-size: 0.65rem;
+    padding: 3px 8px;
+  }
+
+  /* Tables */
+  .comparison {
+    font-size: 0.8rem;
+  }
+
+  .comparison th,
+  .comparison td {
+    padding: 8px 10px;
+  }
+
+  /* Timeline */
+  .timeline {
+    padding-left: 28px;
+  }
+
+  .timeline-title {
+    font-size: 1rem;
+  }
+
+  .timeline-text {
+    font-size: 0.85rem;
+  }
+
+  /* Feature lists */
+  .feature-list li {
+    font-size: 0.9rem;
+    gap: 10px;
+  }
+
+  .feature-list .check {
+    width: 24px;
+    height: 24px;
+    font-size: 0.75rem;
+  }
+
+  /* Tags */
+  .tags {
+    gap: 6px;
+  }
+
+  .tag {
+    font-size: 0.75rem;
+    padding: 5px 12px;
+  }
+
+  /* Diagram */
+  .diagram {
+    margin-top: 24px !important;
+  }
+
+  .diagram-box {
+    min-width: auto !important;
+    padding: 12px 16px;
+    font-size: 0.85rem;
+  }
+
+  .diagram-row {
+    gap: 10px !important;
+    flex-wrap: wrap;
+  }
+
+  /* Steps */
+  .steps {
+    margin-top: 24px;
+  }
+
+  .step-number {
+    width: 36px;
+    height: 36px;
+    font-size: 0.85rem;
+  }
+
+  /* Big number */
+  .big-number {
+    font-size: clamp(2.5rem, 12vw, 5rem);
+  }
+
+  /* Video embed */
+  .video-embed {
+    border-radius: 8px;
+  }
+
+  /* Iframe container */
+  .iframe-container {
+    height: 50vh;
+  }
+
+  /* Quote */
+  .quote {
+    font-size: clamp(1rem, 3vw, 1.3rem);
+    padding-left: 16px;
+  }
+
+  /* Section divider */
+  .slide--divider .slide-content {
+    padding: 0 10px;
+  }
+
+  .divider-number {
+    font-size: clamp(2rem, 10vw, 4rem);
+  }
+
+  /* Keyboard hint */
+  .keyboard-hint {
+    font-size: 0.7rem;
+    padding: 6px 14px;
+    bottom: 12px;
+  }
+
+  /* Progress bar */
+  .progress-bar {
+    height: 2px;
+  }
+
+  /* Hide right nav, show mobile progress indicator */
+  .nav-sections {
+    position: fixed;
+    right: auto;
+    left: 0;
+    top: auto;
+    bottom: 0;
+    transform: none;
+    flex-direction: row;
+    width: 100%;
+    gap: 0;
+    background: var(--color-bg-dark);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 8px 12px;
+    justify-content: space-around;
+    z-index: 200;
+  }
+
+  .nav-section-group {
+    flex: 1;
+    text-align: center;
+  }
+
+  .nav-section-btn {
+    padding: 4px 6px;
+    width: 100%;
+  }
+
+  .nav-section-label {
+    font-size: 0.55rem;
+    white-space: nowrap;
+  }
+
+  .nav-sub-dots {
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center;
+    padding: 2px 0 0 !important;
+    gap: 3px !important;
+  }
+
+  .nav-sub-dot {
+    width: 4px;
+    height: 4px;
+  }
+
+  /* Extra padding at bottom for mobile nav */
+  .slide:last-child {
+    padding-bottom: 80px;
+  }
+
+  /* Three-column grids become single column */
+  [style*="grid-template-columns:repeat(3"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  [style*="grid-template-columns: 1fr 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* OpenCode terminal mockup */
+  [style*="max-width:750px"] {
+    max-width: 100% !important;
+  }
+
+  [style*="max-width:700px"] {
+    max-width: 100% !important;
+  }
+
+  /* Inline flex gaps */
+  [style*="gap:64px"] {
+    gap: 32px !important;
+  }
+
+  [style*="gap:48px"] {
+    gap: 24px !important;
+  }
+}
+
+/* Small phones */
+@media (max-width: 380px) {
+  .slide {
+    padding: 32px 16px;
+  }
+
+  .slide-title {
+    font-size: 1.3rem;
+  }
+
+  .cards {
+    grid-template-columns: 1fr !important;
+  }
+
+  .nav-section-label {
+    font-size: 0.5rem;
+  }
+
+  .code-body pre {
+    font-size: 0.7rem;
   }
 }
