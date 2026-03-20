@@ -10,7 +10,8 @@ const slides = [
     content: `
       <div class="hero-badge">Workshop 2026</div>
       <h1 class="hero-title">Agentic AI<br><span class="highlight">Workshop</span></h1>
-      <p class="hero-subtitle">Von der Geschichte der KI &uuml;ber den aktuellen Stand bis zum praktischen Arbeiten mit KI-Agents &ndash; f&uuml;r Entwickler und Technik-Interessierte.</p>
+      <p class="hero-subtitle">Von der Geschichte der KI &uuml;ber den aktuellen Stand bis zum praktischen Arbeiten mit KI-Agents.</p>
+      <p style="font-style:italic;color:var(--color-text-on-dark-subdued);font-size:clamp(0.9rem,1.5vw,1.1rem);margin-top:8px">F&uuml;r Entwickler und Technik-Interessierte</p>
       <div style="display:flex;gap:24px;justify-content:center;margin-top:32px;flex-wrap:wrap">
         <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:16px 24px;max-width:200px;text-align:center">
           <span style="font-size:0.75rem;color:var(--color-accent);font-weight:700;text-transform:uppercase;letter-spacing:0.05em">Teil 1</span>
