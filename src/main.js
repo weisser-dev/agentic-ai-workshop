@@ -617,6 +617,46 @@ const slides = [
     `,
   },
 
+  // ===== Quiz: Geschichte =====
+  {
+    id: 'quiz-history',
+    theme: 'slide--dark',
+    label: 'Quiz',
+    quiz: true,
+    content: `
+      <div class="quiz-container">
+        <div class="quiz-counter">Wissens-Check: Geschichte der KI</div>
+        <div style="margin-bottom:32px">
+          <p class="quiz-question">1. Wann wurde ChatGPT ver&ouml;ffentlicht und wie schnell erreichte es 100 Mio. Nutzer?</p>
+          <div class="quiz-options">
+            <button class="quiz-option" data-correct="false">2021 &ndash; in 6 Monaten</button>
+            <button class="quiz-option" data-correct="true">30. November 2022 &ndash; in 2 Monaten</button>
+            <button class="quiz-option" data-correct="false">2023 &ndash; in 1 Jahr</button>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+        <div style="margin-bottom:32px">
+          <p class="quiz-question">2. Warum haben 2026 viele Nutzer ChatGPT deinstalliert?</p>
+          <div class="quiz-options">
+            <button class="quiz-option" data-correct="false">Weil es zu teuer wurde</button>
+            <button class="quiz-option" data-correct="true">Wegen OpenAIs Pentagon-Deal und der Ank&uuml;ndigung von Werbung</button>
+            <button class="quiz-option" data-correct="false">Weil Claude besser war</button>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+        <div>
+          <p class="quiz-question">3. Was zeigt das Beispiel "$82.314 in 48 Stunden"?</p>
+          <div class="quiz-options">
+            <button class="quiz-option" data-correct="false">Wie viel ein KI-Modell kostet</button>
+            <button class="quiz-option" data-correct="false">Den Umsatz eines KI-Startups</button>
+            <button class="quiz-option" data-correct="true">Wie schnell Kosten durch einen geleakten API-Key explodieren k&ouml;nnen</button>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+      </div>
+    `,
+  },
+
   // ===== 6: SECTION DIVIDER - KI das neue Internet =====
   {
     id: 'section-everyone',
@@ -1141,6 +1181,46 @@ Kundenanfragen.</span>
               Spending Limits setzen, Keys rotieren, Billing Alerts aktivieren &ndash; und niemals blindes Vertrauen in KI-Output.
             </p>
           </div>
+        </div>
+      </div>
+    `,
+  },
+
+  // ===== Quiz: KI Internet 2.0 =====
+  {
+    id: 'quiz-ki',
+    theme: '',
+    label: 'Quiz',
+    quiz: true,
+    content: `
+      <div class="quiz-container">
+        <div class="quiz-counter">Wissens-Check: KI &ndash; Internet 2.0</div>
+        <div style="margin-bottom:32px">
+          <p class="quiz-question">1. Was ist MCP (Model Context Protocol)?</p>
+          <div class="quiz-options">
+            <button class="quiz-option" data-correct="false">Ein neues Programmiersprache</button>
+            <button class="quiz-option" data-correct="true">Ein offener Standard der KI-Agents mit Tools wie Confluence, Jira oder Datenbanken verbindet</button>
+            <button class="quiz-option" data-correct="false">Ein Messenger f&uuml;r KI-Agents</button>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+        <div style="margin-bottom:32px">
+          <p class="quiz-question">2. Was ist bei kostenlosen KI-Modellen wie Qwen der Haken?</p>
+          <div class="quiz-options">
+            <button class="quiz-option" data-correct="false">Sie funktionieren nicht richtig</button>
+            <button class="quiz-option" data-correct="true">Die Anbieter trainieren mit euren Eingaben &ndash; kostenlos hei&szlig;t nicht umsonst</button>
+            <button class="quiz-option" data-correct="false">Man kann sie nur in China nutzen</button>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+        <div>
+          <p class="quiz-question">3. Warum hat Moltbook (Social Media f&uuml;r KI-Agents) ein Sicherheitsrisiko?</p>
+          <div class="quiz-options">
+            <button class="quiz-option" data-correct="false">Weil die Server langsam sind</button>
+            <button class="quiz-option" data-correct="false">Weil es zu teuer ist</button>
+            <button class="quiz-option" data-correct="true">Weil Agents Zugriff auf Passw&ouml;rter und Bankdaten ihrer Besitzer haben und diese preisgeben k&ouml;nnten</button>
+          </div>
+          <div class="quiz-feedback"></div>
         </div>
       </div>
     `,
@@ -2028,6 +2108,46 @@ Feedback nach Priorit&auml;t:
     `,
   },
 
+  // ===== Quiz: Basics =====
+  {
+    id: 'quiz-basics',
+    theme: 'slide--dark',
+    label: 'Quiz',
+    quiz: true,
+    content: `
+      <div class="quiz-container">
+        <div class="quiz-counter">Wissens-Check: Die Basics</div>
+        <div style="margin-bottom:32px">
+          <p class="quiz-question">1. Was ist ein Token?</p>
+          <div class="quiz-options">
+            <button class="quiz-option" data-correct="false">Ein ganzer Satz</button>
+            <button class="quiz-option" data-correct="true">Ein St&uuml;ck Text &ndash; meistens ein Wort oder Wortteil (&frac34; eines Wortes)</button>
+            <button class="quiz-option" data-correct="false">Ein Buchstabe</button>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+        <div style="margin-bottom:32px">
+          <p class="quiz-question">2. Was passiert wenn der Kontext voll ist?</p>
+          <div class="quiz-options">
+            <button class="quiz-option" data-correct="false">Die KI stoppt sofort</button>
+            <button class="quiz-option" data-correct="false">Der Kontext wird gr&ouml;&szlig;er</button>
+            <button class="quiz-option" data-correct="true">&Auml;ltere Nachrichten werden komprimiert oder entfernt &ndash; Details gehen verloren</button>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+        <div>
+          <p class="quiz-question">3. Warum ist KI eine "Blackbox"?</p>
+          <div class="quiz-options">
+            <button class="quiz-option" data-correct="true">Weil man nicht nachvollziehen kann warum ein bestimmtes Ergebnis kommt &ndash; kein Debugging m&ouml;glich</button>
+            <button class="quiz-option" data-correct="false">Weil das Geh&auml;use schwarz ist</button>
+            <button class="quiz-option" data-correct="false">Weil der Code geheim ist</button>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+      </div>
+    `,
+  },
+
   // ===== SECTION DIVIDER - AI Assisted Coding =====
   {
     id: 'section-coding',
@@ -2470,6 +2590,46 @@ User-Daten paginiert abrufen.</span>
         <p style="font-size:0.95rem;color:var(--color-text-subdued);line-height:1.5;text-align:center">
           <strong style="color:var(--color-primary)">Es gibt kein "besser".</strong> Beides hat seine St&auml;rken. Viele Teams mischen: Spec-Driven f&uuml;r neue Features, Agent-Driven f&uuml;r den Rest. Findet euren Stil &ndash; und nutzt das richtige Werkzeug f&uuml;r die richtige Aufgabe.
         </p>
+      </div>
+    `,
+  },
+
+  // ===== Quiz: AI Coding =====
+  {
+    id: 'quiz-coding',
+    theme: '',
+    label: 'Quiz',
+    quiz: true,
+    content: `
+      <div class="quiz-container">
+        <div class="quiz-counter">Wissens-Check: AI Assisted Coding</div>
+        <div style="margin-bottom:32px">
+          <p class="quiz-question">1. Was ist der Unterschied zwischen Spec-Driven und Agent-Driven Development?</p>
+          <div class="quiz-options">
+            <button class="quiz-option" data-correct="false">Spec-Driven nutzt kein LLM</button>
+            <button class="quiz-option" data-correct="true">Spec-Driven schreibt erst Requirements/Design, Agent-Driven l&auml;sst den Agent selbst planen</button>
+            <button class="quiz-option" data-correct="false">Agent-Driven ist immer besser</button>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+        <div style="margin-bottom:32px">
+          <p class="quiz-question">2. Was bedeutet "Vibe Coding"?</p>
+          <div class="quiz-options">
+            <button class="quiz-option" data-correct="true">Man beschreibt was man will, die KI baut es &ndash; man "f&uuml;hlt" ob es passt</button>
+            <button class="quiz-option" data-correct="false">Coding w&auml;hrend man Musik h&ouml;rt</button>
+            <button class="quiz-option" data-correct="false">Ein Framework von Google</button>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+        <div>
+          <p class="quiz-question">3. Warum ist "Erst das Handwerk, dann das Werkzeug" wichtig?</p>
+          <div class="quiz-options">
+            <button class="quiz-option" data-correct="false">Weil KI nicht funktioniert</button>
+            <button class="quiz-option" data-correct="false">Weil man ohne Handwerk keine KI nutzen darf</button>
+            <button class="quiz-option" data-correct="true">Weil KI nur beschleunigt &ndash; schlechte Architektur + KI = schneller schlechte Architektur</button>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
       </div>
     `,
   },
@@ -3317,6 +3477,46 @@ unspezifische Exceptions. Fixen."</span></pre></div>
     `,
   },
 
+  // ===== Quiz: Hands-On =====
+  {
+    id: 'quiz-handson',
+    theme: 'slide--dark',
+    label: 'Quiz',
+    quiz: true,
+    content: `
+      <div class="quiz-container">
+        <div class="quiz-counter">Wissens-Check: Hands-On</div>
+        <div style="margin-bottom:32px">
+          <p class="quiz-question">1. Was macht der Befehl "npx opencode@latest"?</p>
+          <div class="quiz-options">
+            <button class="quiz-option" data-correct="false">Installiert OpenCode permanent global</button>
+            <button class="quiz-option" data-correct="true">F&uuml;hrt die neueste Version von OpenCode aus ohne permanente Installation</button>
+            <button class="quiz-option" data-correct="false">Aktualisiert Node.js auf die neueste Version</button>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+        <div style="margin-bottom:32px">
+          <p class="quiz-question">2. Was bewirkt eine agents.md im Projekt?</p>
+          <div class="quiz-options">
+            <button class="quiz-option" data-correct="false">Sie ersetzt die package.json</button>
+            <button class="quiz-option" data-correct="false">Sie wird nur einmal beim Start gelesen</button>
+            <button class="quiz-option" data-correct="true">Sie gibt dem Agent Verhaltensregeln die bei jeder Konversation geladen werden</button>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+        <div>
+          <p class="quiz-question">3. Warum sollte man "f&uuml;hre npm run dev aus" nicht an die KI delegieren?</p>
+          <div class="quiz-options">
+            <button class="quiz-option" data-correct="false">Weil die KI den Befehl nicht kennt</button>
+            <button class="quiz-option" data-correct="true">Weil es Geld kostet &ndash; den Befehl selbst einzutippen ist kostenlos</button>
+            <button class="quiz-option" data-correct="false">Weil npm run dev gef&auml;hrlich ist</button>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+      </div>
+    `,
+  },
+
   // ===== SECTION DIVIDER - Abschluss =====
   {
     id: 'section-closing',
@@ -3488,7 +3688,7 @@ function renderSlides() {
 
   // Slides
   app.innerHTML = slides.map((slide, i) => `
-    <section class="slide ${slide.theme}" id="slide-${i}" data-slide-index="${i}">
+    <section class="slide ${slide.theme} ${slide.quiz ? 'quiz-slide' : ''}" id="slide-${i}" data-slide-index="${i}">
       <div class="slide-content">
         ${slide.content}
       </div>
@@ -3538,6 +3738,10 @@ function goToSlide(index) {
   if (isMobile()) {
     mobileGoTo(index);
   } else {
+    // Skip quiz slides on desktop
+    while (index < slides.length && slides[index]?.quiz) index++;
+    while (index > 0 && slides[index]?.quiz) index--;
+    if (index < 0 || index >= slides.length) return;
     const target = document.getElementById(`slide-${index}`);
     if (target) {
       target.scrollIntoView({ behavior: 'smooth' });
@@ -3737,6 +3941,36 @@ function setupHandsonQR() {
   urlEl.textContent = handsonUrl;
 }
 
+function setupQuiz() {
+  document.addEventListener('click', (e) => {
+    const option = e.target.closest('.quiz-option');
+    if (!option) return;
+    const container = option.closest('.quiz-options');
+    const correct = option.dataset.correct === 'true';
+    const feedbackEl = container.parentElement.querySelector('.quiz-feedback');
+
+    // Disable all options
+    container.querySelectorAll('.quiz-option').forEach(o => {
+      o.classList.add('disabled');
+      if (o.dataset.correct === 'true') o.classList.add('correct');
+    });
+
+    if (correct) {
+      option.classList.add('correct');
+      if (feedbackEl) {
+        feedbackEl.classList.add('show', 'correct');
+        feedbackEl.textContent = '\u2705 Richtig!';
+      }
+    } else {
+      option.classList.add('wrong');
+      if (feedbackEl) {
+        feedbackEl.classList.add('show', 'wrong');
+        feedbackEl.textContent = '\u274C Nicht ganz \u2013 schau dir die gr\u00fcne Antwort an.';
+      }
+    }
+  });
+}
+
 function setupCopyButtons() {
   document.addEventListener('click', (e) => {
     const btn = e.target.closest('.copy-btn');
@@ -3798,6 +4032,7 @@ setupKeyboardNavigation();
 setupNavClicks();
 setupViewToggles();
 setupCopyButtons();
+setupQuiz();
 setupHandsonQR();
 
 // Restore position from URL hash or start at 0

@@ -1686,6 +1686,127 @@ body {
   }
 }
 
+/* ===== Quiz System (Mobile only) ===== */
+.quiz-slide {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .quiz-slide {
+    display: block;
+  }
+}
+
+.quiz-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.quiz-question {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+
+.quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.quiz-option {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 14px 18px;
+  border-radius: 10px;
+  border: 2px solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.slide--dark .quiz-option {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: var(--color-text-on-dark);
+}
+
+.quiz-option:hover {
+  border-color: var(--color-primary);
+  background: rgba(47, 108, 122, 0.08);
+}
+
+.slide--dark .quiz-option:hover {
+  border-color: var(--color-accent);
+  background: rgba(255, 237, 0, 0.08);
+}
+
+.quiz-option.correct {
+  border-color: var(--color-positive);
+  background: rgba(37, 204, 120, 0.12);
+  color: var(--color-positive);
+  font-weight: 600;
+  pointer-events: none;
+}
+
+.quiz-option.wrong {
+  border-color: var(--color-critical);
+  background: rgba(191, 6, 67, 0.08);
+  color: var(--color-critical);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.quiz-option.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.quiz-feedback {
+  margin-top: 16px;
+  padding: 14px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  display: none;
+}
+
+.quiz-feedback.show {
+  display: block;
+}
+
+.quiz-feedback.correct {
+  background: rgba(37, 204, 120, 0.1);
+  border: 1px solid rgba(37, 204, 120, 0.25);
+  color: var(--color-positive);
+}
+
+.quiz-feedback.wrong {
+  background: rgba(191, 6, 67, 0.08);
+  border: 1px solid rgba(191, 6, 67, 0.2);
+  color: var(--color-critical);
+}
+
+.quiz-counter {
+  font-size: 0.8rem;
+  color: var(--color-text-subdued);
+  margin-bottom: 20px;
+}
+
+.slide--dark .quiz-counter {
+  color: var(--color-text-on-dark-subdued);
+}
+
+.slide--dark .quiz-question {
+  color: var(--color-text-on-dark);
+}
+
 /* Small phones */
 @media (max-width: 380px) {
   .slide {
