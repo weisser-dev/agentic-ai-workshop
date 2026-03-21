@@ -3535,9 +3535,13 @@ function updateActiveSlide(index) {
 
 function goToSlide(index) {
   if (index < 0 || index >= slides.length) return;
-  const target = document.getElementById(`slide-${index}`);
-  if (target) {
-    target.scrollIntoView({ behavior: 'smooth' });
+  if (isMobile()) {
+    mobileGoTo(index);
+  } else {
+    const target = document.getElementById(`slide-${index}`);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
   }
 }
 
@@ -3627,6 +3631,103 @@ function setupNavClicks() {
   });
 }
 
+// ===== Mobile App Mode =====
+const isMobile = () => window.innerWidth <= 768;
+
+function setupMobileMode() {
+  if (!isMobile()) return;
+
+  // Create mobile progress bar at top
+  const progress = document.createElement('div');
+  progress.className = 'mobile-progress';
+  progress.innerHTML = `
+    <div class="mobile-progress-section" id="mobile-section-name"></div>
+    <div class="mobile-progress-bar"><div class="mobile-progress-fill" id="mobile-progress-fill"></div></div>
+  `;
+  document.body.appendChild(progress);
+
+  // Create mobile nav at bottom
+  const nav = document.createElement('div');
+  nav.className = 'mobile-nav';
+  nav.innerHTML = `
+    <button class="mobile-nav-btn mobile-nav-btn--prev" id="mobile-prev">&larr; Zur&uuml;ck</button>
+    <div class="mobile-nav-info">
+      <div class="mobile-nav-section" id="mobile-nav-section"></div>
+      <div class="mobile-nav-counter" id="mobile-nav-counter"></div>
+    </div>
+    <button class="mobile-nav-btn mobile-nav-btn--next" id="mobile-next">Weiter &rarr;</button>
+  `;
+  document.body.appendChild(nav);
+
+  // Button handlers
+  document.getElementById('mobile-prev').addEventListener('click', () => {
+    if (currentSlide > 0) mobileGoTo(currentSlide - 1);
+  });
+  document.getElementById('mobile-next').addEventListener('click', () => {
+    if (currentSlide < slides.length - 1) mobileGoTo(currentSlide + 1);
+  });
+
+  // Swipe support
+  let touchStartX = 0;
+  let touchStartY = 0;
+  document.addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+  }, { passive: true });
+
+  document.addEventListener('touchend', (e) => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    const dy = e.changedTouches[0].clientY - touchStartY;
+    if (Math.abs(dx) > 80 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+      if (dx < 0 && currentSlide < slides.length - 1) mobileGoTo(currentSlide + 1);
+      if (dx > 0 && currentSlide > 0) mobileGoTo(currentSlide - 1);
+    }
+  }, { passive: true });
+
+  // Show first slide
+  mobileGoTo(getStartSlide());
+}
+
+function mobileGoTo(index) {
+  // Hide all, show target
+  document.querySelectorAll('.slide').forEach(s => s.classList.remove('mobile-active'));
+  const target = document.getElementById(`slide-${index}`);
+  if (target) {
+    target.classList.add('mobile-active');
+    target.classList.add('visible');
+    target.scrollTop = 0;
+  }
+  updateActiveSlide(index);
+  updateMobileNav(index);
+}
+
+function updateMobileNav(index) {
+  if (!isMobile()) return;
+  const sectionRanges = getSectionRanges();
+  const currentSection = sectionRanges.find(s => index >= s.startIdx && index <= s.endIdx);
+
+  // Update buttons
+  const prevBtn = document.getElementById('mobile-prev');
+  const nextBtn = document.getElementById('mobile-next');
+  if (prevBtn) prevBtn.disabled = index === 0;
+  if (nextBtn) nextBtn.textContent = index === slides.length - 1 ? 'Fertig' : 'Weiter \u2192';
+
+  // Update section info
+  const sectionEl = document.getElementById('mobile-nav-section');
+  const counterEl = document.getElementById('mobile-nav-counter');
+  if (sectionEl && currentSection) sectionEl.textContent = currentSection.name;
+  if (counterEl) counterEl.textContent = `${index + 1} / ${slides.length}`;
+
+  // Update top progress
+  const sectionNameEl = document.getElementById('mobile-section-name');
+  const fillEl = document.getElementById('mobile-progress-fill');
+  if (sectionNameEl && currentSection) sectionNameEl.textContent = currentSection.name;
+  if (fillEl && currentSection) {
+    const sectionProgress = ((index - currentSection.startIdx + 1) / (currentSection.endIdx - currentSection.startIdx + 1)) * 100;
+    fillEl.style.width = `${sectionProgress}%`;
+  }
+}
+
 function setupHandsonQR() {
   const qrImg = document.getElementById('handson-qr');
   const urlEl = document.getElementById('handson-url');
@@ -3709,13 +3810,29 @@ function getStartSlide() {
   return 0;
 }
 
-const startSlide = getStartSlide();
-document.getElementById(`slide-${startSlide}`)?.classList.add('visible');
-updateActiveSlide(startSlide);
+// Init based on mode
+if (isMobile()) {
+  setupMobileMode();
+} else {
+  const startSlide = getStartSlide();
+  document.getElementById(`slide-${startSlide}`)?.classList.add('visible');
+  updateActiveSlide(startSlide);
 
-if (startSlide > 0) {
-  // Scroll to saved position without animation on initial load
-  setTimeout(() => {
-    document.getElementById(`slide-${startSlide}`)?.scrollIntoView();
-  }, 100);
+  if (startSlide > 0) {
+    setTimeout(() => {
+      document.getElementById(`slide-${startSlide}`)?.scrollIntoView();
+    }, 100);
+  }
 }
+
+// Also override keyboard nav for mobile
+document.addEventListener('keydown', (e) => {
+  if (!isMobile()) return;
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+    e.preventDefault();
+    if (currentSlide < slides.length - 1) mobileGoTo(currentSlide + 1);
+  } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+    e.preventDefault();
+    if (currentSlide > 0) mobileGoTo(currentSlide - 1);
+  }
+});
