@@ -498,6 +498,46 @@ User-Daten paginiert abrufen.</span>
     `,
   },
 
+  // ===== Mindset =====
+  {
+    id: 'coding-mindset',
+    theme: '',
+    label: 'Mindset',
+    content: `
+      <span class="slide-label" style="color:var(--color-primary)">Das neue Mindset</span>
+      <h2 class="slide-title" style="color:var(--color-text)">Jensen Huang, Nvidia CEO</h2>
+      <p class="slide-subtitle" style="font-size:0.85rem">
+        <a href="https://www.businessinsider.com/jensen-huang-500k-engineers-250k-ai-tokens-nvidia-compute-2026-3" target="_blank" rel="noopener" style="color:var(--color-primary);text-decoration:underline">Business Insider, M&auml;rz 2026</a>
+        &middot;
+        <a href="https://www.youtube.com/shorts/3RnzkJjgvfw" target="_blank" rel="noopener" style="color:var(--color-primary);text-decoration:underline">YouTube Short &#9654;</a>
+      </p>
+      <div style="display:grid;grid-template-columns:1fr auto;gap:20px;margin-top:14px;align-items:start">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <blockquote style="background:var(--color-bg-subdued);border:1px solid var(--color-border);border-left:4px solid var(--color-primary);border-radius:12px;padding:22px 28px;font-size:1.05rem;line-height:1.8;color:var(--color-text);font-style:italic;margin:0">
+            <div><span style="font-size:2.5rem;color:var(--color-primary);line-height:0;position:relative;top:10px;margin-right:4px">&ldquo;</span>If that $500,000 engineer did not consume at least $250,000 worth of tokens, I am going to be deeply alarmed.<span style="font-size:2.5rem;color:var(--color-primary);line-height:0;position:relative;top:14px;margin-left:4px">&rdquo;</span></div>
+            <p style="margin-top:14px;font-size:0.83rem;font-style:normal;color:var(--color-text-subdued)">&mdash; Jensen Huang (Nvidia CEO) &middot; <a href="https://www.businessinsider.com/jensen-huang-500k-engineers-250k-ai-tokens-nvidia-compute-2026-3" target="_blank" rel="noopener" style="color:var(--color-primary);text-decoration:underline">Business Insider</a></p>
+          </blockquote>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div style="padding:14px 16px;border-radius:10px;background:var(--color-bg-subdued);border:1px solid var(--color-border)">
+              <p style="font-size:0.8rem;font-weight:700;color:var(--color-primary);margin-bottom:5px">&#129302; KI als Werkzeug &ndash; nicht als Komfort</p>
+              <p style="font-size:0.8rem;line-height:1.55;color:var(--color-text-subdued)">Huang vergleicht das Nichtnutzen von KI mit einem Chip-Designer, der lieber Papier und Bleistift nimmt. Token-Verbrauch ist f&uuml;r ihn ein direktes Ma&szlig; f&uuml;r den Einsatz.</p>
+            </div>
+            <div style="padding:14px 16px;border-radius:10px;background:var(--color-bg-subdued);border:1px solid var(--color-border)">
+              <p style="font-size:0.8rem;font-weight:700;color:var(--color-primary);margin-bottom:5px">&#128176; Tokens als Recruiting-Argument</p>
+              <p style="font-size:0.8rem;line-height:1.55;color:var(--color-text-subdued)">"Wie viele Tokens kommen mit meinem Job?" &ndash; bereits Standard in Silicon Valley. Ein 500k-Engineer soll ~250k in KI-Compute investieren, um 10x produktiver zu sein.</p>
+            </div>
+          </div>
+        </div>
+        <div style="width:200px;flex-shrink:0">
+          <div style="border-radius:12px;overflow:hidden;border:1px solid var(--color-border);background:#000;aspect-ratio:9/16">
+            <iframe src="https://www.youtube.com/embed/3RnzkJjgvfw" title="Jensen Huang: $500k Engineers should use $250k in tokens" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy" style="width:100%;height:100%;display:block"></iframe>
+          </div>
+          <p style="font-size:0.7rem;color:var(--color-text-subdued);text-align:center;margin-top:6px">All-In Podcast, M&auml;rz 2026</p>
+        </div>
+      </div>
+    `,
+  },
+
   // ===== Quiz: AI Coding =====
   {
     id: 'quiz-coding',

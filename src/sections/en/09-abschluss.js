@@ -222,6 +222,8 @@ export const abschlussSlides = [
             <a href="https://www.instagram.com/p/DVhN7gRk9xC/" target="_blank" rel="noopener" style="color:var(--color-text-on-dark-subdued);text-decoration:none">Instagram: $82k API Story</a>
             <a href="https://newsletter.genai.works/p/cursor-s-new-model-beats-claude-and-costs-86-less" target="_blank" rel="noopener" style="color:var(--color-text-on-dark-subdued);text-decoration:none">GenAI Newsletter: Cursor beats Claude</a>
             <a href="https://www.reddit.com/r/singularity/comments/1ryrs2w/cursors_composer_2_model_is_apparently_just_kimi/" target="_blank" rel="noopener" style="color:var(--color-text-on-dark-subdued);text-decoration:none">Reddit: Cursor = Kimi k2.5?</a>
+            <a href="https://www.businessinsider.com/jensen-huang-500k-engineers-250k-ai-tokens-nvidia-compute-2026-3" target="_blank" rel="noopener" style="color:var(--color-text-on-dark-subdued);text-decoration:none">Business Insider: Jensen Huang &amp; Tokens</a>
+            <a href="https://www.youtube.com/shorts/3RnzkJjgvfw" target="_blank" rel="noopener" style="color:var(--color-text-on-dark-subdued);text-decoration:none">YouTube: Jensen Huang (All-In Podcast)</a>
           </div>
           <h3 style="color:var(--color-accent);font-size:0.78rem;margin-bottom:6px;margin-top:10px;text-transform:uppercase;letter-spacing:0.05em">Services</h3>
           <div style="display:flex;flex-direction:column;gap:3px">
