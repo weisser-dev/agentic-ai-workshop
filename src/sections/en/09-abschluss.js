@@ -133,6 +133,10 @@ export const abschlussSlides = [
             <p style="font-size:0.82rem;font-weight:700;color:var(--color-accent);margin-bottom:5px">&#127381; Cloudflare Pages &ndash; free</p>
             <p style="font-size:0.8rem;line-height:1.6;color:var(--color-text-on-dark-subdued)">GitHub repo connected &rarr; every <code style="background:rgba(255,255,255,0.1);padding:1px 4px;border-radius:3px">git push</code> builds &amp; deploys automatically. Custom domain in Pages &rarr; SSL in minutes. Same setup runs <strong style="color:var(--color-text-on-dark)">scrumbuddy.org</strong>, <strong style="color:var(--color-text-on-dark)">cv.weisser.dev</strong> and others.</p>
           </div>
+          <div style="padding:14px 16px;border-radius:10px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12)">
+            <p style="font-size:0.82rem;font-weight:700;color:var(--color-accent);margin-bottom:5px">&#129302; Built with OpenCode</p>
+            <p style="font-size:0.8rem;line-height:1.6;color:var(--color-text-on-dark-subdued)">CSS &amp; styling, project structure, slide content &ndash; all developed and reviewed with <strong style="color:var(--color-text-on-dark)"><a href="https://opencode.ai" target="_blank" rel="noopener" style="color:var(--color-accent);text-decoration:underline">OpenCode</a></strong>. This presentation is its own best example.</p>
+          </div>
         </div>
         <div style="display:flex;flex-direction:column;gap:10px">
           <a href="https://github.com/weisser-dev/agentic-ai-workshop" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:10px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.15);color:var(--color-text-on-dark);text-decoration:none;transition:background 0.2s,border-color 0.2s" onmouseover="this.style.background='rgba(255,237,0,0.08)';this.style.borderColor='rgba(255,237,0,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.05)';this.style.borderColor='rgba(255,255,255,0.15)'">

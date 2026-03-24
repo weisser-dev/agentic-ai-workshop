@@ -133,6 +133,10 @@ export const abschlussSlides = [
             <p style="font-size:0.82rem;font-weight:700;color:var(--color-accent);margin-bottom:5px">&#127381; Cloudflare Pages &ndash; kostenlos</p>
             <p style="font-size:0.8rem;line-height:1.6;color:var(--color-text-on-dark-subdued)">GitHub-Repo verbunden &rarr; jeder <code style="background:rgba(255,255,255,0.1);padding:1px 4px;border-radius:3px">git push</code> baut &amp; deployed automatisch. Custom Domain in Pages &rarr; SSL in Minuten. So laufen auch <strong style="color:var(--color-text-on-dark)">scrumbuddy.org</strong>, <strong style="color:var(--color-text-on-dark)">cv.weisser.dev</strong> und andere.</p>
           </div>
+          <div style="padding:14px 16px;border-radius:10px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12)">
+            <p style="font-size:0.82rem;font-weight:700;color:var(--color-accent);margin-bottom:5px">&#129302; Gebaut mit OpenCode</p>
+            <p style="font-size:0.8rem;line-height:1.6;color:var(--color-text-on-dark-subdued)">CSS &amp; Styling, Projektstruktur, Slide-Inhalte &ndash; alles mit <strong style="color:var(--color-text-on-dark)"><a href="https://opencode.ai" target="_blank" rel="noopener" style="color:var(--color-accent);text-decoration:underline">OpenCode</a></strong> entwickelt und &uuml;berpr&uuml;ft. Diese Pr&auml;sentation ist ihr eigenes bestes Beispiel.</p>
+          </div>
         </div>
         <div style="display:flex;flex-direction:column;gap:10px">
           <a href="https://github.com/weisser-dev/agentic-ai-workshop" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:10px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.15);color:var(--color-text-on-dark);text-decoration:none;transition:background 0.2s,border-color 0.2s" onmouseover="this.style.background='rgba(255,237,0,0.08)';this.style.borderColor='rgba(255,237,0,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.05)';this.style.borderColor='rgba(255,255,255,0.15)'">
