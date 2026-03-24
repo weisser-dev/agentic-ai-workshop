@@ -322,60 +322,59 @@ Perform a code review:
     content: `
       <span class="slide-label">Deep Dive 6 &ndash; Bonus</span>
       <h2 class="slide-title" style="font-size:1.4rem">Wanna see some unreal? &#129327;</h2>
-      <p class="slide-subtitle" style="font-size:0.9rem">Forked an existing project &rarr; added Telegram support &rarr; <strong>control OpenCode from your phone</strong> &ndash; in ~1 hour.</p>
+      <p class="slide-subtitle" style="font-size:0.9rem">From idea to published npm package &rarr; <strong>control OpenCode from your phone</strong> &ndash; built with OpenCode.</p>
       <div class="two-cols" style="margin-top:14px">
         <div>
           <div style="padding:12px 14px;border-radius:10px;background:rgba(255,237,0,0.06);border:1px solid rgba(255,237,0,0.2);margin-bottom:12px">
-            <h3 style="color:var(--color-accent);font-size:0.9rem;margin-bottom:6px">&#128337; What happened in ~1 hour</h3>
+            <h3 style="color:var(--color-accent);font-size:0.9rem;margin-bottom:6px">&#128337; What was built</h3>
             <div style="display:flex;flex-direction:column;gap:5px">
-              <div style="font-size:0.8rem;color:var(--color-text-on-dark-subdued)">&#9989; Forked <strong style="color:var(--color-text-on-dark)">remote-opencode</strong> (Discord bot &rarr; Telegram)</div>
-              <div style="font-size:0.8rem;color:var(--color-text-on-dark-subdued)">&#9989; Vibe Coding Mode &ndash; just type, no /command needed</div>
-              <div style="font-size:0.8rem;color:var(--color-text-on-dark-subdued)">&#9989; /sps &amp; /lm &ndash; one-tap project &amp; model switching</div>
-              <div style="font-size:0.8rem;color:var(--color-text-on-dark-subdued)">&#9989; Token usage, cost &amp; branch after every response</div>
-              <div style="font-size:0.8rem;color:var(--color-text-on-dark-subdued)">&#9989; Voice messages via Telegram &#127908;</div>
+              <div style="font-size:0.8rem;color:var(--color-text-on-dark-subdued)">&#9989; <strong style="color:var(--color-text-on-dark)">opencode-remote-telegram</strong> &ndash; published npm package</div>
+              <div style="font-size:0.8rem;color:var(--color-text-on-dark-subdued)">&#9989; Vibe Coding Mode &ndash; just type, no commands needed</div>
+              <div style="font-size:0.8rem;color:var(--color-text-on-dark-subdued)">&#9989; Inline keyboards for project &amp; model selection</div>
+              <div style="font-size:0.8rem;color:var(--color-text-on-dark-subdued)">&#9989; /new_project &rarr; GitHub URL &rarr; git clone &rarr; done</div>
+              <div style="font-size:0.8rem;color:var(--color-text-on-dark-subdued)">&#9989; Token usage &amp; cost after every response</div>
               <div style="font-size:0.8rem;color:var(--color-text-on-dark-subdued)">&#9989; <strong style="color:var(--color-accent)">Control OpenCode from your smartphone</strong></div>
             </div>
           </div>
           <div class="code-block">
             <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div>Terminal &ndash; Setup (once)</div>
-            <button class="copy-btn" data-copy="git clone https://github.com/weisser-dev/remote-opencode-telegram.git&#10;cd remote-opencode-telegram&#10;npm install && npm run build && npm link&#10;remote-opencode configure&#10;remote-opencode telegram start">&#128203; Copy</button>
-            <div class="code-body" style="font-size:0.75rem"><pre style="margin:0"><span class="code-comment"># Clone, build, link globally</span>
-git clone https://github.com/weisser-dev/remote-opencode-telegram.git
-cd remote-opencode-telegram &amp;&amp; npm install &amp;&amp; npm run build &amp;&amp; npm link
+            <button class="copy-btn" data-copy="npm install -g opencode-remote-telegram&#10;opencode-remote-telegram start">&#128203; Copy</button>
+            <div class="code-body" style="font-size:0.75rem"><pre style="margin:0"><span class="code-comment"># Install globally</span>
+npm install -g opencode-remote-telegram
 
-<span class="code-comment"># Configure once (bot token, projects, model)</span>
-remote-opencode configure
-
-<span class="code-comment"># Start the bot</span>
-remote-opencode telegram start</pre></div>
+<span class="code-comment"># Start &rarr; setup wizard runs automatically on first launch</span>
+opencode-remote-telegram start</pre></div>
           </div>
+          <p style="margin-top:8px;font-size:0.72rem">
+            <a href="https://github.com/weisser-dev/opencode-remote-telegram" target="_blank" rel="noopener" style="color:var(--color-accent);text-decoration:underline">github.com/weisser-dev/opencode-remote-telegram</a>
+            &nbsp;&middot;&nbsp;
+            <a href="https://blog.weisser.dev/projects/ai/2026/03/24/opencode-remote-telegram.html" target="_blank" rel="noopener" style="color:var(--color-text-on-dark-subdued);text-decoration:underline">Blog post &rarr;</a>
+          </p>
         </div>
         <div>
           <div style="padding:12px 14px;border-radius:10px;background:rgba(47,108,122,0.15);border:1px solid rgba(47,108,122,0.3);margin-bottom:10px">
             <h3 style="color:var(--color-accent);font-size:0.9rem;margin-bottom:8px">&#128241; Telegram Commands (Vibe Coding Flow)</h3>
             <div style="display:flex;flex-direction:column;gap:4px">
-              <div style="font-size:0.75rem;color:var(--color-text-on-dark)"><code style="color:var(--color-accent)">/sps</code> &rarr; pick project (<code>/sp1</code>, <code>/sp2</code> &ndash; one tap)</div>
-              <div style="font-size:0.75rem;color:var(--color-text-on-dark)"><code style="color:var(--color-accent)">/lm</code> &rarr; pick model (<code>/sm1</code>, <code>/sm2</code> &ndash; one tap)</div>
+              <div style="font-size:0.75rem;color:var(--color-text-on-dark)"><code style="color:var(--color-accent)">/list_projects</code> &rarr; pick project (inline button)</div>
+              <div style="font-size:0.75rem;color:var(--color-text-on-dark)"><code style="color:var(--color-accent)">/list_models</code> &rarr; pick model (inline button)</div>
               <div style="font-size:0.75rem;color:var(--color-text-on-dark)"><code style="color:var(--color-accent)">/vibe_coding</code> &rarr; start session</div>
               <div style="font-size:0.75rem;color:var(--color-text-on-dark);margin-top:2px"><em style="color:var(--color-text-on-dark-subdued)">then just type:</em> &ldquo;fix the auth bug&rdquo;</div>
               <div style="font-size:0.75rem;color:var(--color-text-on-dark-subdued);margin-top:4px;border-top:1px solid rgba(255,255,255,0.08);padding-top:4px">
-                After each response: tokens, cost, branch, model
+                &#129300; Let me have a look&hellip; &rarr; response streams &rarr; stats
               </div>
+              <div style="font-size:0.75rem;color:var(--color-text-on-dark)"><code style="color:var(--color-accent)">/new_project</code> &rarr; GitHub URL &rarr; git clone</div>
+              <div style="font-size:0.75rem;color:var(--color-text-on-dark)"><code style="color:var(--color-accent)">/show_stats</code> &rarr; tokens, cost, duration</div>
               <div style="font-size:0.75rem;color:var(--color-text-on-dark)"><code style="color:var(--color-accent)">/stop_coding</code> &rarr; end session</div>
             </div>
           </div>
           <div style="padding:10px 14px;border-radius:10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08)">
             <p style="font-size:0.75rem;color:var(--color-text-on-dark-subdued);line-height:1.4;margin-bottom:4px">
-              <strong style="color:var(--color-text-on-dark)">That&rsquo;s the point:</strong> No framework built from scratch. Take an existing project, AI tells you what to change, done in 1 hour.
+              <strong style="color:var(--color-text-on-dark)">That&rsquo;s the point:</strong> No framework built from scratch. Take an existing concept, describe what you want &mdash; published npm package.
             </p>
             <p style="font-size:0.75rem;color:var(--color-text-on-dark-subdued);line-height:1.4">
-              This is exactly what we mean by <em style="color:var(--color-accent)">AI-Assisted Development</em>.
+              Inspired by <a href="https://github.com/RoundTable02/remote-opencode" target="_blank" rel="noopener" style="color:var(--color-accent)">remote-opencode</a> (Discord variant).
             </p>
           </div>
-          <p style="margin-top:8px;font-size:0.72rem">
-            <a href="https://github.com/weisser-dev/remote-opencode-telegram" target="_blank" rel="noopener" style="color:var(--color-accent);text-decoration:underline">github.com/weisser-dev/remote-opencode-telegram</a>
-            &nbsp;&middot;&nbsp;<span style="color:var(--color-text-on-dark-subdued)">v1.5.1</span>
-          </p>
         </div>
       </div>
     `,
