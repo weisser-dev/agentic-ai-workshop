@@ -1,0 +1,384 @@
+export const deepDiveSlides = [
+  // ===== SECTION DIVIDER - Deep Dive =====
+  {
+    id: 'section-deepdive',
+    theme: 'slide--primary slide--divider',
+    label: 'Deep Dive',
+    content: `
+      <div class="divider-number">&#128300;</div>
+      <h2 class="slide-title">Deep Dive</h2>
+      <p class="slide-subtitle">Aufgaben, Ressourcen und der Weg zum sich selbst verbessernden System</p>
+    `,
+  },
+
+  // ===== Deep Dive: MCP - Playwright =====
+  {
+    id: 'deepdive-mcp',
+    theme: 'slide--dark',
+    label: 'MCP verbinden',
+    content: `
+      <span class="slide-label">Deep Dive 1</span>
+      <h2 class="slide-title">Verbinde deinen ersten MCP</h2>
+      <p class="slide-subtitle">Wir haben &uuml;ber MCP als Werkzeugkoffer gesprochen &ndash; jetzt nutzen wir einen: <strong>Playwright MCP</strong></p>
+      <div class="two-cols" style="margin-top:20px">
+        <div>
+          <h3 style="color:var(--color-accent);font-size:1rem;margin-bottom:12px">Was ist Playwright MCP?</h3>
+          <p style="font-size:0.9rem;color:var(--color-text-on-dark-subdued);line-height:1.5;margin-bottom:16px">
+            Ein MCP Server von <strong>Microsoft</strong> der OpenCode echte Browser-F&auml;higkeiten gibt: Webseiten &ouml;ffnen, klicken, Formulare ausf&uuml;llen, Screenshots machen, testen &ndash; alles per Prompt.
+          </p>
+          <div class="code-block" style="margin-bottom:16px">
+            <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div>opencode.json &ndash; MCP hinzuf&uuml;gen</div>
+            <button class="copy-btn" data-copy='{ "mcp": { "playwright": { "type": "local", "command": ["npx", "@playwright/mcp@latest"], "enabled": true } } }'>&#128203; Copy</button>
+            <div class="code-body"><pre style="margin:0"><span class="code-comment">// In opencode.json unter "mcp" erg&auml;nzen:</span>
+<span class="code-key">"mcp"</span>: {
+  <span class="code-key">"playwright"</span>: {
+    <span class="code-key">"type"</span>: <span class="code-string">"local"</span>,
+    <span class="code-key">"command"</span>: [<span class="code-string">"npx"</span>, <span class="code-string">"@playwright/mcp@latest"</span>],
+    <span class="code-key">"enabled"</span>: <span class="code-value">true</span>
+  }
+}</pre></div>
+          </div>
+          <h3 style="color:var(--color-accent);font-size:1rem;margin-bottom:8px">Ausprobieren</h3>
+          <div class="code-block" style="margin-bottom:0">
+            <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div>Prompt</div>
+            <button class="copy-btn" data-copy="&Ouml;ffne https://example.com und mach einen Screenshot. Dann f&uuml;lle das Suchfeld aus und klicke auf Submit.">&#128203; Copy</button>
+            <div class="code-body" style="padding:12px 16px"><pre style="margin:0"><span class="code-string">"&Ouml;ffne https://example.com und mach
+einen Screenshot. Dann f&uuml;lle das
+Suchfeld aus und klicke auf Submit."</span></pre></div>
+          </div>
+        </div>
+        <div>
+          <h3 style="color:var(--color-accent);font-size:1rem;margin-bottom:12px">Was kann OpenCode damit?</h3>
+          <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px">
+            <div style="padding:10px 14px;border-radius:8px;background:rgba(47,108,122,0.12);border:1px solid rgba(47,108,122,0.25);font-size:0.85rem;color:var(--color-text-on-dark)">
+              &#127912; <strong>Screenshots</strong> &ndash; Webseiten visuell analysieren
+            </div>
+            <div style="padding:10px 14px;border-radius:8px;background:rgba(47,108,122,0.12);border:1px solid rgba(47,108,122,0.25);font-size:0.85rem;color:var(--color-text-on-dark)">
+              &#128270; <strong>Web Scraping</strong> &ndash; Daten von Seiten extrahieren
+            </div>
+            <div style="padding:10px 14px;border-radius:8px;background:rgba(47,108,122,0.12);border:1px solid rgba(47,108,122,0.25);font-size:0.85rem;color:var(--color-text-on-dark)">
+              &#9989; <strong>E2E Tests</strong> &ndash; Automatische UI-Tests schreiben
+            </div>
+            <div style="padding:10px 14px;border-radius:8px;background:rgba(47,108,122,0.12);border:1px solid rgba(47,108,122,0.25);font-size:0.85rem;color:var(--color-text-on-dark)">
+              &#128196; <strong>Formulare</strong> &ndash; Seiten automatisch ausf&uuml;llen
+            </div>
+            <div style="padding:10px 14px;border-radius:8px;background:rgba(47,108,122,0.12);border:1px solid rgba(47,108,122,0.25);font-size:0.85rem;color:var(--color-text-on-dark)">
+              &#128187; <strong>Debugging</strong> &ndash; Console-Logs und Netzwerk-Requests lesen
+            </div>
+          </div>
+          <div style="padding:12px;border-radius:10px;background:rgba(255,237,0,0.06);border:1px solid rgba(255,237,0,0.15);margin-bottom:10px">
+            <p style="font-size:0.8rem;color:var(--color-text-on-dark-subdued);line-height:1.4">
+              <strong style="color:var(--color-accent)">29.000+ Stars</strong> auf GitHub &ndash; der beliebteste MCP Server &uuml;berhaupt. Funktioniert ohne Vision-Modell &uuml;ber den Accessibility Tree.
+            </p>
+          </div>
+          <div style="padding:12px;border-radius:10px;background:rgba(47,108,122,0.15);border:1px solid rgba(47,108,122,0.3)">
+            <p style="font-size:0.8rem;color:var(--color-text-on-dark);line-height:1.4">
+              <strong style="color:var(--color-accent)">&#127919; Aufgabe:</strong> Konfiguriere Playwright MCP in deinem Projekt und lass OpenCode eine Webseite deiner Wahl &ouml;ffnen und beschreiben. Bonus: Lass einen E2E Test schreiben.
+            </p>
+          </div>
+          <p style="margin-top:8px;font-size:0.75rem">
+              <a href="https://github.com/microsoft/playwright-mcp" target="_blank" rel="noopener" style="color:var(--color-accent);text-decoration:underline">github.com/microsoft/playwright-mcp</a>
+              &nbsp;&middot;&nbsp;<a href="https://opencode.ai/docs/de/mcp-servers/" target="_blank" rel="noopener" style="color:var(--color-accent);text-decoration:underline">opencode.ai/docs/de/mcp-servers</a>
+            </p>
+        </div>
+      </div>
+    `,
+  },
+
+  // ===== Deep Dive: Sub-Agents =====
+  {
+    id: 'deepdive-subagents',
+    theme: 'slide--dark',
+    label: 'Sub-Agents bauen',
+    content: `
+      <span class="slide-label">Deep Dive 2</span>
+      <h2 class="slide-title">Baue deinen ersten Sub-Agent</h2>
+      <p class="slide-subtitle">Wir haben &uuml;ber Sub-Agents gesprochen &ndash; jetzt bauen wir welche. Und: <strong>Das System verbessert sich selbst.</strong></p>
+      <div class="two-cols" style="margin-top:16px">
+        <div>
+          <h3 style="color:var(--color-accent);font-size:1rem;margin-bottom:10px">Weg 1: OpenCode Agents</h3>
+          <p style="font-size:0.85rem;color:var(--color-text-on-dark-subdued);line-height:1.5;margin-bottom:10px">
+            Du definierst Agents als Markdown-Dateien mit System Prompt, Model und Regeln.
+          </p>
+          <div class="code-block" style="margin-bottom:10px">
+            <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div>.opencode/agents/reviewer.md</div>
+            <button class="copy-btn" data-copy="---\ndescription: Code Review Agent\nmodel: anthropic/claude-sonnet-4-6\n---\n\nDu bist ein Code Reviewer.\nPr&uuml;fe den Code auf:\n- Security Issues\n- Performance\n- Best Practices\n\nSei direkt und konstruktiv.">&#128203; Copy</button>
+            <div class="code-body"><pre style="margin:0"><span class="code-comment">---</span>
+<span class="code-key">description</span>: <span class="code-string">Code Review Agent</span>
+<span class="code-key">model</span>: <span class="code-string">anthropic/claude-sonnet-4-6</span>
+<span class="code-comment">---</span>
+
+Du bist ein Code Reviewer.
+Pr&uuml;fe den Code auf:
+- Security Issues
+- Performance
+- Best Practices</pre></div>
+          </div>
+          <h3 style="color:var(--color-accent);font-size:0.9rem;margin-bottom:6px">Weg 2: OpenAgentsControl</h3>
+          <p style="font-size:0.8rem;color:var(--color-text-on-dark-subdued);line-height:1.4;margin-bottom:6px">
+            Ganzes Agent-Framework: Coder, Tester, Reviewer, ContextScout &ndash; mit Approval Gates.
+          </p>
+          <p style="font-size:0.75rem">
+            <a href="https://opencode.ai/docs/agents/" target="_blank" rel="noopener" style="color:var(--color-accent);text-decoration:underline">opencode.ai/docs/agents</a>
+            &nbsp;&middot;&nbsp;<a href="https://github.com/darrenhinde/OpenAgentsControl" target="_blank" rel="noopener" style="color:var(--color-accent);text-decoration:underline">OpenAgentsControl</a>
+          </p>
+        </div>
+        <div>
+          <div style="padding:12px;border-radius:10px;background:rgba(255,237,0,0.06);border:1px solid rgba(255,237,0,0.15);margin-bottom:12px">
+            <h3 style="color:var(--color-accent);font-size:0.9rem;margin-bottom:6px">&#128260; Das System verbessert sich selbst</h3>
+            <p style="font-size:0.8rem;color:var(--color-text-on-dark-subdued);line-height:1.4">
+              Erinnert euch: Wir haben eine <strong>AGENTS.md</strong> geschrieben, dann das Spiel nochmal gebaut &ndash; und es war besser. Genau das gleiche Prinzip: Schreibe Agents, teste sie, verbessere ihre Prompts, schreibe Sub-Agents die sich gegenseitig kontrollieren. <strong>Ein sich selbst optimierendes System.</strong>
+            </p>
+          </div>
+          <div style="padding:12px;border-radius:10px;background:rgba(47,108,122,0.15);border:1px solid rgba(47,108,122,0.3);margin-bottom:12px">
+            <p style="font-size:0.8rem;color:var(--color-text-on-dark);line-height:1.4">
+              <strong style="color:var(--color-accent)">&#127919; Aufgabe:</strong> Erstelle einen <code style="background:rgba(255,255,255,0.1);padding:2px 6px;border-radius:4px">reviewer.md</code> Agent in deinem Projekt. Lass ihn deinen 2048-Code reviewen. Dann: Verbessere den Prompt basierend auf dem Ergebnis.
+            </p>
+          </div>
+          <div style="padding:10px;border-radius:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08)">
+            <p style="font-size:0.8rem;color:var(--color-text-on-dark-subdued);line-height:1.4">
+              <strong>&#128293; Extreme Sub-Agents?</strong> Schau dir an was m&ouml;glich ist &ndash; eine kuratierte Sammlung von komplexen Agent-Setups:
+            </p>
+            <p style="font-size:0.75rem;margin-top:4px">
+              <a href="https://github.com/VoltAgent/awesome-claude-code-subagents" target="_blank" rel="noopener" style="color:var(--color-accent);text-decoration:underline">github.com/VoltAgent/awesome-claude-code-subagents</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    `,
+  },
+
+  // ===== Deep Dive: OpenCode Web =====
+  {
+    id: 'deepdive-web',
+    theme: 'slide--dark',
+    label: 'OpenCode Web',
+    content: `
+      <span class="slide-label">Deep Dive 3</span>
+      <h2 class="slide-title" style="font-size:1.5rem">OpenCode Web &ndash; dein lokales ChatGPT</h2>
+      <p class="slide-subtitle" style="font-size:0.9rem">Statt ChatGPT &ndash; nutz OpenCode Web. L&auml;uft lokal, hat Zugriff auf dein Projekt.</p>
+      <div class="two-cols" style="margin-top:12px">
+        <div>
+          <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:12px">
+            <div style="padding:8px 12px;border-radius:8px;background:rgba(47,108,122,0.12);border:1px solid rgba(47,108,122,0.25);font-size:0.8rem;color:var(--color-text-on-dark)">
+              &#128172; <strong>Chat mit Kontext</strong> &ndash; Versteht deinen gesamten Code
+            </div>
+            <div style="padding:8px 12px;border-radius:8px;background:rgba(47,108,122,0.12);border:1px solid rgba(47,108,122,0.25);font-size:0.8rem;color:var(--color-text-on-dark)">
+              &#128269; <strong>Recherche</strong> &ndash; "Wie funktioniert unser Auth-System?"
+            </div>
+            <div style="padding:8px 12px;border-radius:8px;background:rgba(47,108,122,0.12);border:1px solid rgba(47,108,122,0.25);font-size:0.8rem;color:var(--color-text-on-dark)">
+              &#128218; <strong>Lernen</strong> &ndash; "Erkl&auml;r mir dieses Pattern"
+            </div>
+            <div style="padding:8px 12px;border-radius:8px;background:rgba(47,108,122,0.12);border:1px solid rgba(47,108,122,0.25);font-size:0.8rem;color:var(--color-text-on-dark)">
+              &#128274; <strong>Lokal</strong> &ndash; Daten bleiben auf deinem Rechner
+            </div>
+          </div>
+          <p style="font-size:0.75rem">
+            <a href="https://opencode.ai/docs/de/web/" target="_blank" rel="noopener" style="color:var(--color-accent);text-decoration:underline">opencode.ai/docs/de/web</a>
+          </p>
+        </div>
+        <div>
+          <div class="code-block" style="margin-bottom:10px">
+            <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div>Terminal</div>
+            <button class="copy-btn" data-copy="opencode web">&#128203; Copy</button>
+            <div class="code-body" style="padding:10px 14px"><pre style="margin:0"><span class="code-comment"># Web-UI starten</span>
+opencode web</pre></div>
+          </div>
+          <div style="padding:10px;border-radius:10px;background:rgba(255,237,0,0.06);border:1px solid rgba(255,237,0,0.15);margin-bottom:8px">
+            <p style="font-size:0.8rem;color:var(--color-text-on-dark-subdued);line-height:1.4">
+              <strong style="color:var(--color-accent)">Tipp:</strong> Perfekt f&uuml;r den Workshop &ndash; Fragen zum Stoff? Frag OpenCode Web.
+            </p>
+          </div>
+          <div style="padding:10px;border-radius:10px;background:rgba(47,108,122,0.15);border:1px solid rgba(47,108,122,0.3)">
+            <p style="font-size:0.8rem;color:var(--color-text-on-dark);line-height:1.4">
+              <strong style="color:var(--color-accent)">&#127919; Aufgabe:</strong> Starte <code style="background:rgba(255,255,255,0.1);padding:1px 5px;border-radius:3px">opencode web</code> und frag: "Erkl&auml;re mir die Spiellogik meines 2048."
+            </p>
+          </div>
+        </div>
+      </div>
+    `,
+  },
+
+  // ===== Deep Dive: Custom Commands =====
+  {
+    id: 'deepdive-commands',
+    theme: 'slide--dark',
+    label: 'Commands',
+    content: `
+      <span class="slide-label">Deep Dive 4</span>
+      <h2 class="slide-title" style="font-size:1.5rem">Custom Commands &ndash; Code Review auf Knopfdruck</h2>
+      <p class="slide-subtitle" style="font-size:0.9rem">Wiederkehrende Aufgaben einmal definieren &ndash; jederzeit ausf&uuml;hren</p>
+      <div class="two-cols" style="margin-top:12px">
+        <div>
+          <div class="code-block" style="margin-bottom:8px">
+            <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div>.opencode/commands/review.md</div>
+            <button class="copy-btn" data-copy="---\ndescription: Code Review durchf\u00fchren\n---\n\nF\u00fchre ein Code Review durch:\n\n1. Pr\u00fcfe alle ge\u00e4nderten Dateien (git diff)\n2. Achte auf Security Issues\n3. Pr\u00fcfe Performance und Best Practices\n4. Erstelle eine Zusammenfassung\n\nSei direkt, konstruktiv und konkret.">&#128203; Copy</button>
+            <div class="code-body" style="font-size:0.8rem"><pre style="margin:0"><span class="code-comment">---</span>
+<span class="code-key">description</span>: <span class="code-string">Code Review</span>
+<span class="code-comment">---</span>
+
+F&uuml;hre ein Code Review durch:
+1. Pr&uuml;fe ge&auml;nderte Dateien (git diff)
+2. Security Issues, Performance, Best Practices
+3. Erstelle Zusammenfassung</pre></div>
+          </div>
+          <div class="code-block">
+            <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div>Ausf&uuml;hren</div>
+            <button class="copy-btn" data-copy="/review">&#128203; Copy</button>
+            <div class="code-body" style="padding:8px 14px"><pre style="margin:0"><span class="code-value">/review</span></pre></div>
+          </div>
+        </div>
+        <div>
+          <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:10px">
+            <div style="padding:7px 12px;border-radius:8px;background:rgba(47,108,122,0.12);border:1px solid rgba(47,108,122,0.25);font-size:0.8rem;color:var(--color-text-on-dark)">
+              <strong>/test</strong> &ndash; Tests f&uuml;r ge&auml;nderte Dateien schreiben
+            </div>
+            <div style="padding:7px 12px;border-radius:8px;background:rgba(47,108,122,0.12);border:1px solid rgba(47,108,122,0.25);font-size:0.8rem;color:var(--color-text-on-dark)">
+              <strong>/refactor</strong> &ndash; Nach Standards refactoren
+            </div>
+            <div style="padding:7px 12px;border-radius:8px;background:rgba(47,108,122,0.12);border:1px solid rgba(47,108,122,0.25);font-size:0.8rem;color:var(--color-text-on-dark)">
+              <strong>/docs</strong> &ndash; API dokumentieren
+            </div>
+            <div style="padding:7px 12px;border-radius:8px;background:rgba(47,108,122,0.12);border:1px solid rgba(47,108,122,0.25);font-size:0.8rem;color:var(--color-text-on-dark)">
+              <strong>/security</strong> &ndash; Sicherheitspr&uuml;fung
+            </div>
+          </div>
+          <div style="padding:10px;border-radius:10px;background:rgba(255,237,0,0.06);border:1px solid rgba(255,237,0,0.15);margin-bottom:8px">
+            <p style="font-size:0.8rem;color:var(--color-text-on-dark-subdued);line-height:1.4">
+              <strong style="color:var(--color-accent)">Clou:</strong> Commands laufen auch in CI/CD &ndash; Code Review bei jedem PR.
+            </p>
+          </div>
+          <div style="padding:10px;border-radius:10px;background:rgba(47,108,122,0.15);border:1px solid rgba(47,108,122,0.3);margin-bottom:8px">
+            <p style="font-size:0.8rem;color:var(--color-text-on-dark);line-height:1.4">
+              <strong style="color:var(--color-accent)">&#127919; Aufgabe:</strong> Erstelle <code style="background:rgba(255,255,255,0.1);padding:1px 5px;border-radius:3px">.opencode/commands/review.md</code> und f&uuml;hre <code style="background:rgba(255,255,255,0.1);padding:1px 5px;border-radius:3px">/review</code> aus.
+            </p>
+          </div>
+          <p style="font-size:0.75rem">
+            <a href="https://opencode.ai/docs/de/commands/" target="_blank" rel="noopener" style="color:var(--color-accent);text-decoration:underline">opencode.ai/docs/de/commands</a>
+          </p>
+        </div>
+      </div>
+    `,
+  },
+
+  // ===== Deep Dive: Skills =====
+  {
+    id: 'deepdive-skills',
+    theme: 'slide--dark',
+    label: 'Skills',
+    content: `
+      <span class="slide-label">Deep Dive 5</span>
+      <h2 class="slide-title" style="font-size:1.5rem">Agent Skills + Alle Links</h2>
+      <p class="slide-subtitle" style="font-size:0.9rem">Skills = Spezialwissen bei Bedarf. Plus: AGENTS.md &rarr; Agents &rarr; Commands &rarr; Skills &rarr; MCP &ndash; <strong>es verbessert sich selbst.</strong></p>
+      <div class="two-cols" style="margin-top:12px">
+        <div>
+          <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:10px">
+            <div style="padding:7px 12px;border-radius:8px;background:rgba(47,108,122,0.12);border:1px solid rgba(47,108,122,0.25);font-size:0.8rem;color:var(--color-text-on-dark)">
+              &#128295; <strong>Testing</strong> &ndash; Wei&szlig; wie man Tests schreibt
+            </div>
+            <div style="padding:7px 12px;border-radius:8px;background:rgba(47,108,122,0.12);border:1px solid rgba(47,108,122,0.25);font-size:0.8rem;color:var(--color-text-on-dark)">
+              &#128640; <strong>Deploy</strong> &ndash; CI/CD Pipelines aufsetzen
+            </div>
+            <div style="padding:7px 12px;border-radius:8px;background:rgba(47,108,122,0.12);border:1px solid rgba(47,108,122,0.25);font-size:0.8rem;color:var(--color-text-on-dark)">
+              &#128196; <strong>Migration</strong> &ndash; Datenbank-Migrationen
+            </div>
+            <div style="padding:7px 12px;border-radius:8px;background:rgba(47,108,122,0.12);border:1px solid rgba(47,108,122,0.25);font-size:0.8rem;color:var(--color-text-on-dark)">
+              &#128209; <strong>Custom</strong> &ndash; Deine eigenen Workflows
+            </div>
+          </div>
+          <div style="padding:10px;border-radius:10px;background:rgba(255,237,0,0.06);border:1px solid rgba(255,237,0,0.15)">
+            <p style="font-size:0.8rem;color:var(--color-text-on-dark-subdued);line-height:1.4">
+              <strong style="color:var(--color-accent)">&#128260;</strong> AGENTS.md &rarr; besserer Code &rarr; Sub-Agents &rarr; Commands &rarr; Skills &rarr; MCP. <strong>Jede Ebene macht das System besser.</strong>
+            </p>
+          </div>
+        </div>
+        <div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <a href="https://opencode.ai/docs/de/web/" target="_blank" rel="noopener" style="padding:8px 14px;border-radius:8px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark);text-decoration:none;font-size:0.8rem;display:block">
+              &#128172; <strong>OpenCode Web</strong> <span style="color:var(--color-text-on-dark-subdued)">&ndash; Lokales ChatGPT</span>
+            </a>
+            <a href="https://opencode.ai/docs/de/commands/" target="_blank" rel="noopener" style="padding:8px 14px;border-radius:8px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark);text-decoration:none;font-size:0.8rem;display:block">
+              &#9889; <strong>Commands</strong> <span style="color:var(--color-text-on-dark-subdued)">&ndash; Tasks automatisieren</span>
+            </a>
+            <a href="https://opencode.ai/docs/de/mcp-servers/" target="_blank" rel="noopener" style="padding:8px 14px;border-radius:8px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark);text-decoration:none;font-size:0.8rem;display:block">
+              &#128268; <strong>MCP Server</strong> <span style="color:var(--color-text-on-dark-subdued)">&ndash; Werkzeuge verbinden</span>
+            </a>
+            <a href="https://opencode.ai/docs/de/skills/" target="_blank" rel="noopener" style="padding:8px 14px;border-radius:8px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark);text-decoration:none;font-size:0.8rem;display:block">
+              &#128218; <strong>Skills</strong> <span style="color:var(--color-text-on-dark-subdued)">&ndash; Spezialwissen laden</span>
+            </a>
+            <a href="https://opencode.ai/docs/agents/" target="_blank" rel="noopener" style="padding:8px 14px;border-radius:8px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark);text-decoration:none;font-size:0.8rem;display:block">
+              &#129302; <strong>Agents</strong> <span style="color:var(--color-text-on-dark-subdued)">&ndash; Eigene Agenten bauen</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    `,
+  },
+  // ===== Deep Dive: Remote OpenCode via Telegram =====
+  {
+    id: 'deepdive-remote',
+    theme: 'slide--dark',
+    label: 'Wanna see some unreal?',
+    content: `
+      <span class="slide-label">Deep Dive 6 &ndash; Bonus</span>
+      <h2 class="slide-title" style="font-size:1.4rem">Wanna see some unreal? &#129327;</h2>
+      <p class="slide-subtitle" style="font-size:0.9rem">Bestehendes Projekt geforked &rarr; Telegram-Support gebaut &rarr; <strong>OpenCode per Handy bedienen</strong> &ndash; in ~1 Stunde.</p>
+      <div class="two-cols" style="margin-top:14px">
+        <div>
+          <div style="padding:12px 14px;border-radius:10px;background:rgba(255,237,0,0.06);border:1px solid rgba(255,237,0,0.2);margin-bottom:12px">
+            <h3 style="color:var(--color-accent);font-size:0.9rem;margin-bottom:6px">&#128337; Was in ~1 Stunde entstand</h3>
+            <div style="display:flex;flex-direction:column;gap:5px">
+              <div style="font-size:0.8rem;color:var(--color-text-on-dark-subdued)">&#9989; <strong style="color:var(--color-text-on-dark)">remote-opencode</strong> geforked (Discord-Bot &rarr; Telegram)</div>
+              <div style="font-size:0.8rem;color:var(--color-text-on-dark-subdued)">&#9989; Vibe Coding Mode &ndash; einfach tippen, kein /command n&ouml;tig</div>
+              <div style="font-size:0.8rem;color:var(--color-text-on-dark-subdued)">&#9989; /sps &amp; /lm &ndash; klickbare Projekt- &amp; Modellauswahl</div>
+              <div style="font-size:0.8rem;color:var(--color-text-on-dark-subdued)">&#9989; Token-Usage, Kosten &amp; Branch nach jeder Antwort</div>
+              <div style="font-size:0.8rem;color:var(--color-text-on-dark-subdued)">&#9989; Voice-Messages via Telegram &#127908;</div>
+              <div style="font-size:0.8rem;color:var(--color-text-on-dark-subdued)">&#9989; <strong style="color:var(--color-accent)">OpenCode per Smartphone bedienen</strong></div>
+            </div>
+          </div>
+          <div class="code-block">
+            <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div>Terminal &ndash; Setup (einmalig)</div>
+            <button class="copy-btn" data-copy="git clone https://github.com/weisser-dev/remote-opencode-telegram.git&#10;cd remote-opencode-telegram&#10;npm install && npm run build && npm link&#10;remote-opencode configure&#10;remote-opencode telegram start">&#128203; Copy</button>
+            <div class="code-body" style="font-size:0.75rem"><pre style="margin:0"><span class="code-comment"># Klonen, bauen, global verlinken</span>
+git clone https://github.com/weisser-dev/remote-opencode-telegram.git
+cd remote-opencode-telegram &amp;&amp; npm install &amp;&amp; npm run build &amp;&amp; npm link
+
+<span class="code-comment"># Einmal konfigurieren (Bot-Token, Projekte, Modell)</span>
+remote-opencode configure
+
+<span class="code-comment"># Bot starten</span>
+remote-opencode telegram start</pre></div>
+          </div>
+        </div>
+        <div>
+          <div style="padding:12px 14px;border-radius:10px;background:rgba(47,108,122,0.15);border:1px solid rgba(47,108,122,0.3);margin-bottom:10px">
+            <h3 style="color:var(--color-accent);font-size:0.9rem;margin-bottom:8px">&#128241; Telegram-Commands (Vibe Coding Flow)</h3>
+            <div style="display:flex;flex-direction:column;gap:4px">
+              <div style="font-size:0.75rem;color:var(--color-text-on-dark)"><code style="color:var(--color-accent)">/sps</code> &rarr; Projekt ausw&auml;hlen (<code>/sp1</code>, <code>/sp2</code> &ndash; ein Tap)</div>
+              <div style="font-size:0.75rem;color:var(--color-text-on-dark)"><code style="color:var(--color-accent)">/lm</code> &rarr; Modell ausw&auml;hlen (<code>/sm1</code>, <code>/sm2</code> &ndash; ein Tap)</div>
+              <div style="font-size:0.75rem;color:var(--color-text-on-dark)"><code style="color:var(--color-accent)">/vibe_coding</code> &rarr; Session starten</div>
+              <div style="font-size:0.75rem;color:var(--color-text-on-dark);margin-top:2px"><em style="color:var(--color-text-on-dark-subdued)">danach einfach tippen:</em> &ldquo;fix the auth bug&rdquo;</div>
+              <div style="font-size:0.75rem;color:var(--color-text-on-dark-subdued);margin-top:4px;border-top:1px solid rgba(255,255,255,0.08);padding-top:4px">
+                Nach jeder Antwort: Tokens, Kosten, Branch, Modell
+              </div>
+              <div style="font-size:0.75rem;color:var(--color-text-on-dark)"><code style="color:var(--color-accent)">/stop_coding</code> &rarr; Session beenden</div>
+            </div>
+          </div>
+          <div style="padding:10px 14px;border-radius:10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08)">
+            <p style="font-size:0.75rem;color:var(--color-text-on-dark-subdued);line-height:1.4;margin-bottom:4px">
+              <strong style="color:var(--color-text-on-dark)">Das ist der Punkt:</strong> Kein Framework von Grund auf. Bestehendes Projekt nehmen, KI sagt was zu &auml;ndern ist, in 1 Stunde fertig.
+            </p>
+            <p style="font-size:0.75rem;color:var(--color-text-on-dark-subdued);line-height:1.4">
+              Genau das meinen wir mit <em style="color:var(--color-accent)">AI-Assisted Development</em>.
+            </p>
+          </div>
+          <p style="margin-top:8px;font-size:0.72rem">
+            <a href="https://github.com/weisser-dev/remote-opencode-telegram" target="_blank" rel="noopener" style="color:var(--color-accent);text-decoration:underline">github.com/weisser-dev/remote-opencode-telegram</a>
+            &nbsp;&middot;&nbsp;<span style="color:var(--color-text-on-dark-subdued)">v1.5.1</span>
+          </p>
+        </div>
+      </div>
+    `,
+  },
+];
+
