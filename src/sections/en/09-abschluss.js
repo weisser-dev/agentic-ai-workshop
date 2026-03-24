@@ -149,13 +149,14 @@ export const abschlussSlides = [
               <p style="font-size:0.75rem;color:var(--color-text-on-dark-subdued)">Strato nameservers &rarr; Cloudflare &rarr; Pages &rarr; custom domain &ndash; step by step</p>
             </div>
           </a>
-          <a href="https://github.com/dilatchi/cloudflare-static-site-demo" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:10px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.15);color:var(--color-text-on-dark);text-decoration:none;transition:background 0.2s,border-color 0.2s" onmouseover="this.style.background='rgba(255,237,0,0.08)';this.style.borderColor='rgba(255,237,0,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.05)';this.style.borderColor='rgba(255,255,255,0.15)'">
-            <svg viewBox="0 0 16 16" width="22" height="22" fill="currentColor" style="flex-shrink:0;opacity:0.8"><path d="M8 .2C3.6.2 0 3.8 0 8.2c0 3.5 2.3 6.5 5.5 7.6.4.1.5-.2.5-.4v-1.4c-2.2.5-2.7-1.1-2.7-1.1-.4-.9-.9-1.2-.9-1.2-.7-.5.1-.5.1-.5.8.1 1.2.8 1.2.8.7 1.2 1.9.9 2.3.7.1-.5.3-.9.5-1.1-1.8-.2-3.7-.9-3.7-4 0-.9.3-1.6.8-2.2-.1-.2-.4-1 .1-2.1 0 0 .7-.2 2.2.8.6-.2 1.3-.3 2-.3s1.4.1 2 .3c1.5-1 2.2-.8 2.2-.8.4 1.1.2 1.9.1 2.1.5.6.8 1.3.8 2.2 0 3.1-1.9 3.8-3.7 4 .3.3.6.8.6 1.5v2.2c0 .2.1.5.6.4C13.7 14.7 16 11.7 16 8.2 16 3.8 12.4.2 8 .2z"/></svg>
-            <div>
-              <p style="font-size:0.85rem;font-weight:700;margin-bottom:2px">dilatchi/cloudflare-static-site-demo</p>
-              <p style="font-size:0.75rem;color:var(--color-text-on-dark-subdued)">Tutorial repo with screenshots for every step</p>
+          <div style="padding:14px 16px;border-radius:10px;background:rgba(47,108,122,0.1);border:1px solid rgba(47,108,122,0.25)">
+            <p style="font-size:0.8rem;font-weight:700;color:var(--color-accent);margin-bottom:8px">&#128161; Hidden Features</p>
+            <div style="display:flex;flex-direction:column;gap:5px">
+              <div style="font-size:0.78rem;color:var(--color-text-on-dark-subdued);display:flex;align-items:baseline;gap:6px"><span style="color:var(--color-accent);flex-shrink:0">&#9654;</span> <span><strong style="color:var(--color-text-on-dark)">Presenter Mode</strong> &ndash; timer, confetti, break countdown, discussion slides (<code style="background:rgba(255,255,255,0.08);padding:1px 4px;border-radius:3px">?presenter</code>)</span></div>
+              <div style="font-size:0.78rem;color:var(--color-text-on-dark-subdued);display:flex;align-items:baseline;gap:6px"><span style="color:var(--color-accent);flex-shrink:0">&#9654;</span> <span><strong style="color:var(--color-text-on-dark)">Session Timer</strong> &ndash; runs automatically in the background, visible only in Presenter Mode</span></div>
+              <div style="font-size:0.78rem;color:var(--color-text-on-dark-subdued);display:flex;align-items:baseline;gap:6px"><span style="color:var(--color-accent);flex-shrink:0">&#9654;</span> <span><strong style="color:var(--color-text-on-dark)">Wireless Presenter optimized</strong> &ndash; PageUp/PageDown, Tab &rarr; Presenter Mode, 2&times; Tab &rarr; Fullscreen</span></div>
             </div>
-          </a>
+          </div>
         </div>
       </div>
     `,
