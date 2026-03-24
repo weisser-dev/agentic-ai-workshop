@@ -47,9 +47,10 @@ export const handsonSlides = [
               <button class="copy-btn" data-copy="winget install OpenJS.NodeJS">&#128203; Copy</button>
               <div class="code-body" style="padding:10px 14px;font-size:0.9rem"><pre style="margin:0"><span class="code-function">winget install</span> OpenJS.NodeJS</pre></div>
             </div>
-            <details style="margin-top:2px;border-radius:8px;overflow:hidden;border:1px solid rgba(255,107,107,0.3);background:rgba(255,107,107,0.06)">
+            <details style="margin-top:2px;border-radius:8px;overflow:hidden;border:1px solid rgba(255,107,107,0.3);background:rgba(255,107,107,0.06)" class="troubleshoot-details">
               <summary style="padding:8px 12px;font-size:0.8rem;color:#ff9a9a;cursor:pointer;user-select:none;list-style:none;display:flex;align-items:center;gap:6px">
                 <span style="font-size:0.9rem">&#9888;&#65039;</span> Troubleshooting: &ldquo;Script Execution is disabled&rdquo;
+                <span class="details-chevron" style="margin-left:auto;font-size:0.75rem;transition:transform 0.2s ease;display:inline-block">&#9654;</span>
               </summary>
               <div style="padding:10px 14px;font-size:0.8rem;color:var(--color-text-on-dark);border-top:1px solid rgba(255,107,107,0.2)">
                 <p style="margin-bottom:8px;line-height:1.5">Windows blockiert manchmal das Ausf&uuml;hren von Scripts. So beheben:</p>

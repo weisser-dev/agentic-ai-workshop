@@ -2576,3 +2576,7 @@ body.slide-werbung #matrix-canvas {
     width: 100%;
   }
 }
+
+.troubleshoot-details[open] .details-chevron {
+  transform: rotate(90deg);
+}
