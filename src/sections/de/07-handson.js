@@ -47,6 +47,25 @@ export const handsonSlides = [
               <button class="copy-btn" data-copy="winget install OpenJS.NodeJS">&#128203; Copy</button>
               <div class="code-body" style="padding:10px 14px;font-size:0.9rem"><pre style="margin:0"><span class="code-function">winget install</span> OpenJS.NodeJS</pre></div>
             </div>
+            <details style="margin-top:2px;border-radius:8px;overflow:hidden;border:1px solid rgba(255,107,107,0.3);background:rgba(255,107,107,0.06)">
+              <summary style="padding:8px 12px;font-size:0.8rem;color:#ff9a9a;cursor:pointer;user-select:none;list-style:none;display:flex;align-items:center;gap:6px">
+                <span style="font-size:0.9rem">&#9888;&#65039;</span> Troubleshooting: &ldquo;Script Execution is disabled&rdquo;
+              </summary>
+              <div style="padding:10px 14px;font-size:0.8rem;color:var(--color-text-on-dark);border-top:1px solid rgba(255,107,107,0.2)">
+                <p style="margin-bottom:8px;line-height:1.5">Windows blockiert manchmal das Ausf&uuml;hren von Scripts. So beheben:</p>
+                <ol style="margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;line-height:1.5">
+                  <li>Windows-Taste dr&uuml;cken &rarr; <strong>powershell</strong> eintippen</li>
+                  <li>Rechtsklick auf &ldquo;Windows PowerShell&rdquo; &rarr; <strong>Als Administrator ausf&uuml;hren</strong></li>
+                  <li>Folgenden Befehl eingeben und best&auml;tigen:</li>
+                </ol>
+                <div class="code-block" style="margin:8px 0 6px">
+                  <div class="code-header" style="font-size:0.75rem"><div class="code-dots"><span></span><span></span><span></span></div>PowerShell (Admin)</div>
+                  <button class="copy-btn" data-copy="Set-ExecutionPolicy RemoteSigned">&#128203; Copy</button>
+                  <div class="code-body" style="padding:8px 12px;font-size:0.82rem"><pre style="margin:0"><span class="code-function">Set-ExecutionPolicy</span> RemoteSigned</pre></div>
+                </div>
+                <p style="margin:6px 0 0;line-height:1.5;color:rgba(255,255,255,0.55);font-size:0.77rem">Danach PowerShell neu &ouml;ffnen und <code style="background:rgba(255,255,255,0.1);padding:1px 4px;border-radius:3px">winget install OpenJS.NodeJS</code> erneut ausf&uuml;hren.</p>
+              </div>
+            </details>
             <div class="code-block" style="margin:0">
               <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div>&#10003; Pr&uuml;fen</div>
               <button class="copy-btn" data-copy="node -v && npm -v">&#128203; Copy</button>
