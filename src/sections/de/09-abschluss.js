@@ -110,6 +110,57 @@ export const abschlussSlides = [
     `,
   },
 
+  // ===== Über dieses Projekt =====
+  {
+    id: 'about-project',
+    theme: 'slide--dark',
+    label: 'Über das Projekt',
+    content: `
+      <span class="slide-label">Open Source</span>
+      <h2 class="slide-title">&#128187; &Uuml;ber dieses Projekt</h2>
+      <p class="slide-subtitle">Wie diese Pr&auml;sentation gebaut &amp; kostenlos deployed ist</p>
+      <div class="two-cols" style="margin-top:18px;gap:20px">
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="padding:14px 16px;border-radius:10px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12)">
+            <p style="font-size:0.82rem;font-weight:700;color:var(--color-accent);margin-bottom:5px">&#9889; Tech Stack</p>
+            <p style="font-size:0.8rem;line-height:1.6;color:var(--color-text-on-dark-subdued)"><strong style="color:var(--color-text-on-dark)">Vite 5</strong> + Vanilla JS &ndash; kein Framework, keine UI-Library. Nur HTML, CSS und JS. Build-Output: statische Dateien (~500 KB).</p>
+          </div>
+          <div style="padding:14px 16px;border-radius:10px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12)">
+            <p style="font-size:0.82rem;font-weight:700;color:var(--color-accent);margin-bottom:5px">&#128272; Domain bei Strato &rarr; Cloudflare</p>
+            <p style="font-size:0.8rem;line-height:1.6;color:var(--color-text-on-dark-subdued)">Domain bei <strong style="color:var(--color-text-on-dark)">Strato</strong> registriert, Nameserver zeigen auf <strong style="color:var(--color-text-on-dark)">Cloudflare</strong> &ndash; damit l&auml;uft DNS, SSL und CDN komplett &uuml;ber Cloudflare.</p>
+          </div>
+          <div style="padding:14px 16px;border-radius:10px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12)">
+            <p style="font-size:0.82rem;font-weight:700;color:var(--color-accent);margin-bottom:5px">&#127381; Cloudflare Pages &ndash; kostenlos</p>
+            <p style="font-size:0.8rem;line-height:1.6;color:var(--color-text-on-dark-subdued)">GitHub-Repo verbunden &rarr; jeder <code style="background:rgba(255,255,255,0.1);padding:1px 4px;border-radius:3px">git push</code> baut &amp; deployed automatisch. Custom Domain in Pages &rarr; SSL in Minuten. So laufen auch <strong style="color:var(--color-text-on-dark)">scrumbuddy.org</strong>, <strong style="color:var(--color-text-on-dark)">cv.weisser.dev</strong> und andere.</p>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <a href="https://github.com/weisser-dev/agentic-ai-workshop" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:10px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.15);color:var(--color-text-on-dark);text-decoration:none;transition:background 0.2s,border-color 0.2s" onmouseover="this.style.background='rgba(255,237,0,0.08)';this.style.borderColor='rgba(255,237,0,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.05)';this.style.borderColor='rgba(255,255,255,0.15)'">
+            <svg viewBox="0 0 16 16" width="22" height="22" fill="currentColor" style="flex-shrink:0;opacity:0.8"><path d="M8 .2C3.6.2 0 3.8 0 8.2c0 3.5 2.3 6.5 5.5 7.6.4.1.5-.2.5-.4v-1.4c-2.2.5-2.7-1.1-2.7-1.1-.4-.9-.9-1.2-.9-1.2-.7-.5.1-.5.1-.5.8.1 1.2.8 1.2.8.7 1.2 1.9.9 2.3.7.1-.5.3-.9.5-1.1-1.8-.2-3.7-.9-3.7-4 0-.9.3-1.6.8-2.2-.1-.2-.4-1 .1-2.1 0 0 .7-.2 2.2.8.6-.2 1.3-.3 2-.3s1.4.1 2 .3c1.5-1 2.2-.8 2.2-.8.4 1.1.2 1.9.1 2.1.5.6.8 1.3.8 2.2 0 3.1-1.9 3.8-3.7 4 .3.3.6.8.6 1.5v2.2c0 .2.1.5.6.4C13.7 14.7 16 11.7 16 8.2 16 3.8 12.4.2 8 .2z"/></svg>
+            <div>
+              <p style="font-size:0.85rem;font-weight:700;margin-bottom:2px">GitHub &rarr; weisser-dev/agentic-ai-workshop</p>
+              <p style="font-size:0.75rem;color:var(--color-text-on-dark-subdued)">Quellcode, AGENTS.md, komplette Slide-Inhalte</p>
+            </div>
+          </a>
+          <a href="https://blog.weisser.dev/operations/devops/2026/03/24/frontend-hosting-cloudflare-pages.html" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:10px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.15);color:var(--color-text-on-dark);text-decoration:none;transition:background 0.2s,border-color 0.2s" onmouseover="this.style.background='rgba(255,237,0,0.08)';this.style.borderColor='rgba(255,237,0,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.05)';this.style.borderColor='rgba(255,255,255,0.15)'">
+            <span style="font-size:1.4rem;flex-shrink:0">&#128214;</span>
+            <div>
+              <p style="font-size:0.85rem;font-weight:700;margin-bottom:2px">Blog: My typical frontend hosting setup</p>
+              <p style="font-size:0.75rem;color:var(--color-text-on-dark-subdued)">Strato Nameserver &rarr; Cloudflare &rarr; Pages &rarr; Custom Domain &ndash; Schritt f&uuml;r Schritt</p>
+            </div>
+          </a>
+          <a href="https://github.com/dilatchi/cloudflare-static-site-demo" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:10px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.15);color:var(--color-text-on-dark);text-decoration:none;transition:background 0.2s,border-color 0.2s" onmouseover="this.style.background='rgba(255,237,0,0.08)';this.style.borderColor='rgba(255,237,0,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.05)';this.style.borderColor='rgba(255,255,255,0.15)'">
+            <svg viewBox="0 0 16 16" width="22" height="22" fill="currentColor" style="flex-shrink:0;opacity:0.8"><path d="M8 .2C3.6.2 0 3.8 0 8.2c0 3.5 2.3 6.5 5.5 7.6.4.1.5-.2.5-.4v-1.4c-2.2.5-2.7-1.1-2.7-1.1-.4-.9-.9-1.2-.9-1.2-.7-.5.1-.5.1-.5.8.1 1.2.8 1.2.8.7 1.2 1.9.9 2.3.7.1-.5.3-.9.5-1.1-1.8-.2-3.7-.9-3.7-4 0-.9.3-1.6.8-2.2-.1-.2-.4-1 .1-2.1 0 0 .7-.2 2.2.8.6-.2 1.3-.3 2-.3s1.4.1 2 .3c1.5-1 2.2-.8 2.2-.8.4 1.1.2 1.9.1 2.1.5.6.8 1.3.8 2.2 0 3.1-1.9 3.8-3.7 4 .3.3.6.8.6 1.5v2.2c0 .2.1.5.6.4C13.7 14.7 16 11.7 16 8.2 16 3.8 12.4.2 8 .2z"/></svg>
+            <div>
+              <p style="font-size:0.85rem;font-weight:700;margin-bottom:2px">dilatchi/cloudflare-static-site-demo</p>
+              <p style="font-size:0.75rem;color:var(--color-text-on-dark-subdued)">Tutorial-Repo mit Screenshots f&uuml;r jeden Schritt</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    `,
+  },
+
   // ===== Vielen Dank =====
   {
     id: 'closing',
@@ -227,6 +278,8 @@ export const abschlussSlides = [
             <a href="https://futurism.com/artificial-intelligence/sam-altman-thanks-programmers-over" target="_blank" rel="noopener" style="color:var(--color-text-on-dark-subdued);text-decoration:none">Futurism: Reaktionen auf Altman-Tweet</a>
             <a href="https://www.businessinsider.com/jensen-huang-500k-engineers-250k-ai-tokens-nvidia-compute-2026-3" target="_blank" rel="noopener" style="color:var(--color-text-on-dark-subdued);text-decoration:none">Business Insider: Jensen Huang &amp; Tokens</a>
             <a href="https://www.youtube.com/shorts/3RnzkJjgvfw" target="_blank" rel="noopener" style="color:var(--color-text-on-dark-subdued);text-decoration:none">YouTube: Jensen Huang (All-In Podcast)</a>
+            <a href="https://github.com/dilatchi/cloudflare-static-site-demo" target="_blank" rel="noopener" style="color:var(--color-text-on-dark-subdued);text-decoration:none">dilatchi/cloudflare-static-site-demo</a>
+            <a href="https://blog.weisser.dev/operations/devops/2026/03/24/frontend-hosting-cloudflare-pages.html" target="_blank" rel="noopener" style="color:var(--color-text-on-dark-subdued);text-decoration:none">Blog: My typical frontend hosting setup</a>
             <a href="https://www.heise.de/hintergrund/Hat-KI-bereits-eine-Art-Bewusstsein-entwickelt-Forscher-streiten-darueber-6522868.html" target="_blank" rel="noopener" style="color:var(--color-text-on-dark-subdued);text-decoration:none">Heise: KI &amp; Bewusstsein</a>
             <a href="https://www.wearetenet.com/blog/github-copilot-usage-data-statistics" target="_blank" rel="noopener" style="color:var(--color-text-on-dark-subdued);text-decoration:none">GitHub Copilot Statistics</a>
             <a href="https://blog.pragmaticengineer.com/stack-overflow-is-almost-dead/" target="_blank" rel="noopener" style="color:var(--color-text-on-dark-subdued);text-decoration:none">Pragmatic Engineer: Stack Overflow</a>

@@ -110,6 +110,57 @@ export const abschlussSlides = [
     `,
   },
 
+  // ===== About this Project =====
+  {
+    id: 'about-project',
+    theme: 'slide--dark',
+    label: 'About this Project',
+    content: `
+      <span class="slide-label">Open Source</span>
+      <h2 class="slide-title">&#128187; About this Project</h2>
+      <p class="slide-subtitle">How this presentation was built &amp; deployed for free</p>
+      <div class="two-cols" style="margin-top:18px;gap:20px">
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="padding:14px 16px;border-radius:10px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12)">
+            <p style="font-size:0.82rem;font-weight:700;color:var(--color-accent);margin-bottom:5px">&#9889; Tech Stack</p>
+            <p style="font-size:0.8rem;line-height:1.6;color:var(--color-text-on-dark-subdued)"><strong style="color:var(--color-text-on-dark)">Vite 5</strong> + Vanilla JS &ndash; no framework, no UI library. Just HTML, CSS and JS. Build output: static files (~500 KB).</p>
+          </div>
+          <div style="padding:14px 16px;border-radius:10px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12)">
+            <p style="font-size:0.82rem;font-weight:700;color:var(--color-accent);margin-bottom:5px">&#128272; Domain at Strato &rarr; Cloudflare</p>
+            <p style="font-size:0.8rem;line-height:1.6;color:var(--color-text-on-dark-subdued)">Domain registered at <strong style="color:var(--color-text-on-dark)">Strato</strong>, nameservers pointing to <strong style="color:var(--color-text-on-dark)">Cloudflare</strong> &ndash; so DNS, SSL and CDN all run through Cloudflare.</p>
+          </div>
+          <div style="padding:14px 16px;border-radius:10px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12)">
+            <p style="font-size:0.82rem;font-weight:700;color:var(--color-accent);margin-bottom:5px">&#127381; Cloudflare Pages &ndash; free</p>
+            <p style="font-size:0.8rem;line-height:1.6;color:var(--color-text-on-dark-subdued)">GitHub repo connected &rarr; every <code style="background:rgba(255,255,255,0.1);padding:1px 4px;border-radius:3px">git push</code> builds &amp; deploys automatically. Custom domain in Pages &rarr; SSL in minutes. Same setup runs <strong style="color:var(--color-text-on-dark)">scrumbuddy.org</strong>, <strong style="color:var(--color-text-on-dark)">cv.weisser.dev</strong> and others.</p>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <a href="https://github.com/weisser-dev/agentic-ai-workshop" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:10px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.15);color:var(--color-text-on-dark);text-decoration:none;transition:background 0.2s,border-color 0.2s" onmouseover="this.style.background='rgba(255,237,0,0.08)';this.style.borderColor='rgba(255,237,0,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.05)';this.style.borderColor='rgba(255,255,255,0.15)'">
+            <svg viewBox="0 0 16 16" width="22" height="22" fill="currentColor" style="flex-shrink:0;opacity:0.8"><path d="M8 .2C3.6.2 0 3.8 0 8.2c0 3.5 2.3 6.5 5.5 7.6.4.1.5-.2.5-.4v-1.4c-2.2.5-2.7-1.1-2.7-1.1-.4-.9-.9-1.2-.9-1.2-.7-.5.1-.5.1-.5.8.1 1.2.8 1.2.8.7 1.2 1.9.9 2.3.7.1-.5.3-.9.5-1.1-1.8-.2-3.7-.9-3.7-4 0-.9.3-1.6.8-2.2-.1-.2-.4-1 .1-2.1 0 0 .7-.2 2.2.8.6-.2 1.3-.3 2-.3s1.4.1 2 .3c1.5-1 2.2-.8 2.2-.8.4 1.1.2 1.9.1 2.1.5.6.8 1.3.8 2.2 0 3.1-1.9 3.8-3.7 4 .3.3.6.8.6 1.5v2.2c0 .2.1.5.6.4C13.7 14.7 16 11.7 16 8.2 16 3.8 12.4.2 8 .2z"/></svg>
+            <div>
+              <p style="font-size:0.85rem;font-weight:700;margin-bottom:2px">GitHub &rarr; weisser-dev/agentic-ai-workshop</p>
+              <p style="font-size:0.75rem;color:var(--color-text-on-dark-subdued)">Source code, AGENTS.md, complete slide content</p>
+            </div>
+          </a>
+          <a href="https://blog.weisser.dev/operations/devops/2026/03/24/frontend-hosting-cloudflare-pages.html" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:10px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.15);color:var(--color-text-on-dark);text-decoration:none;transition:background 0.2s,border-color 0.2s" onmouseover="this.style.background='rgba(255,237,0,0.08)';this.style.borderColor='rgba(255,237,0,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.05)';this.style.borderColor='rgba(255,255,255,0.15)'">
+            <span style="font-size:1.4rem;flex-shrink:0">&#128214;</span>
+            <div>
+              <p style="font-size:0.85rem;font-weight:700;margin-bottom:2px">Blog: My typical frontend hosting setup</p>
+              <p style="font-size:0.75rem;color:var(--color-text-on-dark-subdued)">Strato nameservers &rarr; Cloudflare &rarr; Pages &rarr; custom domain &ndash; step by step</p>
+            </div>
+          </a>
+          <a href="https://github.com/dilatchi/cloudflare-static-site-demo" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:10px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.15);color:var(--color-text-on-dark);text-decoration:none;transition:background 0.2s,border-color 0.2s" onmouseover="this.style.background='rgba(255,237,0,0.08)';this.style.borderColor='rgba(255,237,0,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.05)';this.style.borderColor='rgba(255,255,255,0.15)'">
+            <svg viewBox="0 0 16 16" width="22" height="22" fill="currentColor" style="flex-shrink:0;opacity:0.8"><path d="M8 .2C3.6.2 0 3.8 0 8.2c0 3.5 2.3 6.5 5.5 7.6.4.1.5-.2.5-.4v-1.4c-2.2.5-2.7-1.1-2.7-1.1-.4-.9-.9-1.2-.9-1.2-.7-.5.1-.5.1-.5.8.1 1.2.8 1.2.8.7 1.2 1.9.9 2.3.7.1-.5.3-.9.5-1.1-1.8-.2-3.7-.9-3.7-4 0-.9.3-1.6.8-2.2-.1-.2-.4-1 .1-2.1 0 0 .7-.2 2.2.8.6-.2 1.3-.3 2-.3s1.4.1 2 .3c1.5-1 2.2-.8 2.2-.8.4 1.1.2 1.9.1 2.1.5.6.8 1.3.8 2.2 0 3.1-1.9 3.8-3.7 4 .3.3.6.8.6 1.5v2.2c0 .2.1.5.6.4C13.7 14.7 16 11.7 16 8.2 16 3.8 12.4.2 8 .2z"/></svg>
+            <div>
+              <p style="font-size:0.85rem;font-weight:700;margin-bottom:2px">dilatchi/cloudflare-static-site-demo</p>
+              <p style="font-size:0.75rem;color:var(--color-text-on-dark-subdued)">Tutorial repo with screenshots for every step</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    `,
+  },
+
   // ===== Thank You =====
   {
     id: 'closing',
@@ -224,6 +275,8 @@ export const abschlussSlides = [
             <a href="https://www.reddit.com/r/singularity/comments/1ryrs2w/cursors_composer_2_model_is_apparently_just_kimi/" target="_blank" rel="noopener" style="color:var(--color-text-on-dark-subdued);text-decoration:none">Reddit: Cursor = Kimi k2.5?</a>
             <a href="https://www.businessinsider.com/jensen-huang-500k-engineers-250k-ai-tokens-nvidia-compute-2026-3" target="_blank" rel="noopener" style="color:var(--color-text-on-dark-subdued);text-decoration:none">Business Insider: Jensen Huang &amp; Tokens</a>
             <a href="https://www.youtube.com/shorts/3RnzkJjgvfw" target="_blank" rel="noopener" style="color:var(--color-text-on-dark-subdued);text-decoration:none">YouTube: Jensen Huang (All-In Podcast)</a>
+            <a href="https://github.com/dilatchi/cloudflare-static-site-demo" target="_blank" rel="noopener" style="color:var(--color-text-on-dark-subdued);text-decoration:none">dilatchi/cloudflare-static-site-demo</a>
+            <a href="https://blog.weisser.dev/operations/devops/2026/03/24/frontend-hosting-cloudflare-pages.html" target="_blank" rel="noopener" style="color:var(--color-text-on-dark-subdued);text-decoration:none">Blog: My typical frontend hosting setup</a>
           </div>
           <h3 style="color:var(--color-accent);font-size:0.78rem;margin-bottom:6px;margin-top:10px;text-transform:uppercase;letter-spacing:0.05em">Services</h3>
           <div style="display:flex;flex-direction:column;gap:3px">
