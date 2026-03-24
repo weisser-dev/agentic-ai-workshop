@@ -759,6 +759,7 @@ function setupKeyboardNavigation() {
       case 'ArrowDown':
       case 'ArrowRight':
       case 'PageDown':
+      case 'F5': // Logitech / Kensington "Start Slideshow" button → next slide, prevent browser reload
       case ' ':
         e.preventDefault();
         dismissConfettiOverlay();
@@ -774,6 +775,9 @@ function setupKeyboardNavigation() {
         if (presenterMode && retreatSpecStage()) break;
         if (presenterMode && unrevealLastItem()) break;
         goToSlide(currentSlide - 1, -1);
+        break;
+      case '.': // Logitech R400/R800 black screen button → just prevent default, no action
+        e.preventDefault();
         break;
       case 'Home':
         e.preventDefault();
