@@ -758,7 +758,7 @@ function setupKeyboardNavigation() {
     switch (e.key) {
       case 'ArrowDown':
       case 'ArrowRight':
-      case 'PageDown':
+      case 'PageUp': // Presenter: PageUp = next slide
       case 'F5': // Logitech / Kensington "Start Slideshow" button → next slide, prevent browser reload
       case ' ':
         e.preventDefault();
@@ -769,12 +769,20 @@ function setupKeyboardNavigation() {
         break;
       case 'ArrowUp':
       case 'ArrowLeft':
-      case 'PageUp':
+      case 'PageDown': // Presenter: PageDown = previous slide
         e.preventDefault();
         dismissConfettiOverlay();
         if (presenterMode && retreatSpecStage()) break;
         if (presenterMode && unrevealLastItem()) break;
         goToSlide(currentSlide - 1, -1);
+        break;
+      case 'Tab': // 1st Tab → presenter mode, 2nd Tab (already in presenter mode) → fullscreen
+        e.preventDefault();
+        if (!presenterMode) {
+          setPresenterMode(true);
+        } else {
+          toggleFullscreen();
+        }
         break;
       case '.': // Logitech R400/R800 black screen button → just prevent default, no action
         e.preventDefault();
