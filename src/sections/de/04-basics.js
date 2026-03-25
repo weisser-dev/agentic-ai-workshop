@@ -69,6 +69,90 @@ export const basicsSlides = [
     `,
   },
 
+  // ===== Wie lernt ein neuronales Netz? =====
+  {
+    id: 'nn-learning',
+    theme: 'slide--dark',
+    label: 'Wie KI lernt',
+    content: `
+      <span class="slide-label">Deep Dive</span>
+      <h2 class="slide-title">Wie lernt ein neuronales Netz?</h2>
+      <p class="slide-subtitle">Ein Beispiel: Lernen, ob eine E-Mail Spam ist &ndash; <strong>Schritt f&uuml;r Schritt</strong></p>
+      <div class="two-cols" style="margin-top:14px">
+        <div>
+          <h3 style="color:var(--color-accent);font-size:1rem;margin-bottom:8px">Das Prinzip: Versuch &amp; Korrektur</h3>
+          <div style="padding:12px;border-radius:10px;background:rgba(255,237,0,0.06);border:1px solid rgba(255,237,0,0.15);margin-bottom:10px">
+            <p style="font-size:0.9rem;line-height:1.5;color:var(--color-text-on-dark)">
+              &#127922; <strong>Wie ein Kind, das Fahrrad fahren lernt:</strong><br>
+              <span style="color:var(--color-text-on-dark-subdued)">Versuch &rarr; Hinfallen &rarr; Korrektur &rarr; Besser werden. Nicht durch Regeln lesen, sondern durch <strong>tausende Versuche</strong>.</span>
+            </p>
+          </div>
+          <h3 style="color:var(--color-accent);font-size:1rem;margin-bottom:8px">Beispiel: Spam-Erkennung</h3>
+          <div class="code-block" style="margin-top:0">
+            <div class="code-header">
+              <div class="code-dots"><span></span><span></span><span></span></div>
+              Training &ndash; Runde 1
+            </div>
+            <div class="code-body"><pre><span class="code-comment">// Trainings-Daten (mit L&ouml;sung!):</span>
+<span class="code-string">"Gratis iPhone gewinnen!!!"</span> <span class="code-keyword">&rarr; Spam</span>
+<span class="code-string">"Meeting morgen um 10"</span>      <span class="code-keyword">&rarr; Kein Spam</span>
+<span class="code-string">"Sie haben 1M EUR gewonnen"</span> <span class="code-keyword">&rarr; Spam</span>
+
+<span class="code-comment">// Netz r&auml;t (Anfangs zuf&auml;llig):</span>
+<span class="code-property">"Gratis iPhone"</span> <span class="code-number">&rarr; 50% Spam</span>  <span class="code-comment">&#10007; Falsch!</span>
+
+<span class="code-comment">// Fehler berechnen (Loss):</span>
+<span class="code-property">Soll: 100%</span> | <span class="code-property">Ist: 50%</span> | <span class="code-number">Fehler: 50%</span>
+
+<span class="code-comment">// Gewichte anpassen (Backpropagation):</span>
+<span class="code-comment">// "Gratis" &amp; "!!!" bekommen mehr Gewicht</span>
+<span class="code-comment">// f&uuml;r Spam-Erkennung.</span></pre></div>
+          </div>
+        </div>
+        <div>
+          <h3 style="color:var(--color-accent);font-size:1rem;margin-bottom:8px">Nach Millionen Runden</h3>
+          <div class="code-block" style="margin-top:0">
+            <div class="code-header">
+              <div class="code-dots"><span></span><span></span><span></span></div>
+              Training &ndash; Runde 5.000.000
+            </div>
+            <div class="code-body"><pre><span class="code-comment">// Jetzt erkennt das Netz Muster:</span>
+<span class="code-string">"Gratis iPhone"</span>   <span class="code-number">&rarr; 99.1% Spam</span> <span class="code-comment">&#10003;</span>
+<span class="code-string">"Meeting um 10"</span>   <span class="code-number">&rarr;  0.3% Spam</span> <span class="code-comment">&#10003;</span>
+<span class="code-string">"Kredit sofort!!"</span> <span class="code-number">&rarr; 97.8% Spam</span> <span class="code-comment">&#10003;</span>
+
+<span class="code-comment">// Gelernte Muster (vereinfacht):</span>
+<span class="code-property">"gratis"</span>    <span class="code-keyword">+0.8 Spam</span>
+<span class="code-property">"gewinnen"</span>  <span class="code-keyword">+0.7 Spam</span>
+<span class="code-property">"!!!"</span>       <span class="code-keyword">+0.4 Spam</span>
+<span class="code-property">"meeting"</span>   <span class="code-keyword">-0.6 Spam</span>
+<span class="code-property">"projekt"</span>   <span class="code-keyword">-0.5 Spam</span></pre></div>
+          </div>
+          <h3 style="color:var(--color-accent);font-size:1rem;margin:10px 0 8px">Bei einem LLM &ndash; dasselbe Prinzip</h3>
+          <div style="display:flex;flex-direction:column;gap:5px">
+            <div style="padding:7px 12px;border-radius:6px;background:rgba(255,255,255,0.05);font-size:0.82rem;color:var(--color-text-on-dark)">
+              Statt Spam/Kein-Spam: <strong>N&auml;chstes Wort vorhersagen</strong>
+            </div>
+            <div style="padding:7px 12px;border-radius:6px;background:rgba(255,255,255,0.05);font-size:0.82rem;color:var(--color-text-on-dark)">
+              Statt tausende E-Mails: <strong>Billionen S&auml;tze</strong> aus dem Internet
+            </div>
+            <div style="padding:7px 12px;border-radius:6px;background:rgba(255,255,255,0.05);font-size:0.82rem;color:var(--color-text-on-dark)">
+              Statt wenige Gewichte: <strong>Hunderte Milliarden Parameter</strong>
+            </div>
+            <div style="padding:7px 12px;border-radius:6px;background:rgba(255,255,255,0.05);font-size:0.82rem;color:var(--color-text-on-dark)">
+              Statt Minuten: <strong>Monate auf tausenden GPUs</strong>, Kosten: $100M+
+            </div>
+          </div>
+          <div style="margin-top:8px;padding:8px 12px;border-radius:8px;background:rgba(255,237,0,0.08);border:1px solid rgba(255,237,0,0.2)">
+            <p style="font-size:0.78rem;color:var(--color-text-on-dark-subdued);line-height:1.4">
+              <strong style="color:var(--color-accent)">Merke:</strong> Kein Mensch programmiert Regeln. Das Netz findet die Muster <strong>selbst</strong> &ndash; durch Millionen von Versuch-und-Korrektur-Zyklen.
+            </p>
+          </div>
+        </div>
+      </div>
+    `,
+  },
+
   // ===== Deep Dive 1: Tokenisierung & Embeddings =====
   {
     id: 'llm-deepdive-1',
@@ -185,6 +269,72 @@ export const basicsSlides = [
           <div style="margin-top:10px;padding:10px;border-radius:8px;background:rgba(255,237,0,0.08);border:1px solid rgba(255,237,0,0.2)">
             <p style="font-size:0.82rem;color:var(--color-text-on-dark-subdued);line-height:1.4">
               <strong style="color:var(--color-accent)">Wichtig:</strong> Das Modell hat <em>kein echtes semantisches Verst&auml;ndnis wie ein Mensch</em>. Es nutzt statistische Muster: nach <code style="background:rgba(255,255,255,0.1);padding:1px 4px;border-radius:3px;font-size:0.75rem">def sort_</code> kommt wahrscheinlich <code style="background:rgba(255,255,255,0.1);padding:1px 4px;border-radius:3px;font-size:0.75rem">users(</code> &ndash; weil es <strong>abstrakte Muster, Syntax und Struktur</strong> aus Millionen Beispielen gelernt hat.
+            </p>
+          </div>
+        </div>
+      </div>
+    `,
+  },
+
+  // ===== Common Sense & Grenzen =====
+  {
+    id: 'common-sense',
+    theme: '',
+    label: 'Common Sense',
+    content: `
+      <span class="slide-label" style="color:var(--color-warning)">Grenzen</span>
+      <h2 class="slide-title">Warum KI manchmal "dumm" antwortet</h2>
+      <p class="slide-subtitle">Statistik vs. Weltverst&auml;ndnis &ndash; und was das mit Dimensionen zu tun hat</p>
+      <div class="two-cols" style="margin-top:16px">
+        <div>
+          <h3 style="color:var(--color-primary);font-size:1rem;margin-bottom:8px">Das Waschanlage-Problem</h3>
+          <div class="code-block" style="margin-top:0">
+            <div class="code-header">
+              <div class="code-dots"><span></span><span></span><span></span></div>
+              Prompt an die KI
+            </div>
+            <div class="code-body"><pre><span class="code-comment">// User:</span>
+<span class="code-string">"Es ist sonnig. Ich wohne 100m von
+der Waschanlage entfernt.
+Soll ich laufen oder fahren?"</span>
+
+<span class="code-comment">// KI antwortet:</span>
+<span class="code-property">"Bei nur 100m Entfernung und sonnigem
+Wetter w&uuml;rde ich empfehlen zu laufen.
+Das ist gesund und spart Benzin."</span>
+
+<span class="code-comment">// Mensch denkt:</span>
+<span class="code-keyword">"Man muss fahren &ndash; das Auto muss
+ja zur Waschanlage!"</span> &#128561;</pre></div>
+          </div>
+          <div style="margin-top:10px;padding:10px;border-radius:8px;background:rgba(255,107,107,0.08);border:1px solid rgba(255,107,107,0.15)">
+            <p style="font-size:0.82rem;color:var(--color-text-subdued);line-height:1.5">
+              <strong style="color:var(--color-critical)">Was ist passiert?</strong> Die KI hat das <strong>statistische Muster</strong> "kurze Strecke + gutes Wetter = laufen" angewendet. Aber den <strong>Zweck</strong> (Auto waschen) nicht wirklich verstanden.
+            </p>
+          </div>
+        </div>
+        <div>
+          <h3 style="color:var(--color-primary);font-size:1rem;margin-bottom:8px">Warum passiert das?</h3>
+          <ul class="feature-list" style="margin-top:0;font-size:0.88rem">
+            <li><span class="check" style="background:rgba(255,108,18,0.08);color:#ff6c12">!</span><span><strong>Kein Weltmodell</strong> &ndash; Die KI "wei&szlig;" nicht was eine Waschanlage <em>tut</em>. Sie kennt nur statistische Zusammenh&auml;nge zwischen W&ouml;rtern.</span></li>
+            <li><span class="check" style="background:rgba(255,108,18,0.08);color:#ff6c12">!</span><span><strong>Implizites Wissen fehlt</strong> &ndash; Ein Mensch weiß: Waschanlage = Auto wird gewaschen = Auto muss dort sein. Die KI sieht nur: Entfernung + Wetter.</span></li>
+            <li><span class="check" style="background:rgba(255,108,18,0.08);color:#ff6c12">!</span><span><strong>Dimensionen helfen, aber nicht genug</strong> &ndash; Mehr Dimensionen (4096+) erfassen <em>mehr</em> Nuancen &ndash; z.B. dass "Waschanlage" n&auml;her an "Auto" liegt als an "Spaziergang". Aber <strong>r&auml;umliches Denken, Kausalit&auml;t und Alltagslogik</strong> sind nicht dasselbe wie Wort-N&auml;he.</span></li>
+          </ul>
+          <h3 style="color:var(--color-primary);font-size:1rem;margin:8px 0">Weitere Klassiker</h3>
+          <div style="display:flex;flex-direction:column;gap:5px">
+            <div style="padding:7px 12px;border-radius:6px;background:var(--color-bg-subdued);border:1px solid var(--color-border);font-size:0.82rem">
+              "Wie viele R in <strong>Strawberry</strong>?" &ndash; KI: "2" <span style="color:var(--color-critical)">&#10007;</span> <span style="color:var(--color-text-subdued)">(Es sind 3 &ndash; Tokens &#8800; Buchstaben)</span>
+            </div>
+            <div style="padding:7px 12px;border-radius:6px;background:var(--color-bg-subdued);border:1px solid var(--color-border);font-size:0.82rem">
+              "Was ist schwerer: 1 kg Stahl oder 1 kg Federn?" &ndash; KI fr&uuml;her: "Stahl" <span style="color:var(--color-text-subdued)">(Muster: Stahl = schwer)</span>
+            </div>
+            <div style="padding:7px 12px;border-radius:6px;background:var(--color-bg-subdued);border:1px solid var(--color-border);font-size:0.82rem">
+              "Ich lege ein Ei auf den Tisch und gehe. Wo ist das Ei?" &ndash; KI antwortet teils falsch
+            </div>
+          </div>
+          <div style="margin-top:8px;padding:10px 12px;border-radius:8px;background:rgba(47,108,122,0.08);border:1px solid rgba(47,108,122,0.2)">
+            <p style="font-size:0.82rem;color:var(--color-text-subdued);line-height:1.5">
+              <strong style="color:var(--color-primary)">Fazit:</strong> LLMs werden besser in Common Sense &ndash; aber sie <strong>simulieren</strong> Verst&auml;ndnis &uuml;ber Muster, statt die Welt wirklich zu verstehen. Deshalb: <strong>Immer kritisch pr&uuml;fen.</strong>
             </p>
           </div>
         </div>

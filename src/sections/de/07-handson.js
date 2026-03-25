@@ -100,6 +100,263 @@ export const handsonSlides = [
     `,
   },
 
+  // ===== Warum npm? Was ist Node? =====
+  {
+    id: 'why-npm',
+    theme: '',
+    label: 'Warum npm?',
+    content: `
+      <span class="slide-label">Einordnung</span>
+      <h2 class="slide-title">Warum npm? Was ist Node.js?</h2>
+      <p class="slide-subtitle">F&uuml;r Java- und Python-Entwickler: Node.js ist das Gleiche in Gr&uuml;n &ndash; nur f&uuml;r JavaScript</p>
+      <div class="two-cols" style="margin-top:14px">
+        <div>
+          <h3 style="color:var(--color-primary);font-size:1rem;margin-bottom:8px">Warum brauchen wir das?</h3>
+          <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:10px">
+            <div style="padding:10px 14px;border-radius:8px;background:rgba(47,108,122,0.08);border:2px solid var(--color-border-primary);font-size:0.88rem">
+              <strong style="color:var(--color-primary)">OpenCode</strong> ist in Node.js geschrieben &rarr; npm ist Voraussetzung
+            </div>
+            <div style="padding:10px 14px;border-radius:8px;background:rgba(47,108,122,0.08);border:1px solid var(--color-border);font-size:0.88rem">
+              <strong>Vite</strong> (unser Build-Tool) l&auml;uft auf Node.js &rarr; Dev-Server, Hot Reload
+            </div>
+            <div style="padding:10px 14px;border-radius:8px;background:rgba(47,108,122,0.08);border:1px solid var(--color-border);font-size:0.88rem">
+              <strong>Eine Basis f&uuml;r alles</strong> &ndash; npm installiert, der Rest ergibt sich
+            </div>
+          </div>
+          <h3 style="color:var(--color-primary);font-size:1rem;margin-bottom:6px">Package Manager im Vergleich</h3>
+          <table class="comparison" style="font-size:0.78rem">
+            <thead><tr><th>&Ouml;kosystem</th><th>Sprache</th><th>Pkg Manager</th><th>Config</th><th>Server</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Node.js</strong></td><td>JS/TS</td><td style="color:var(--color-primary);font-weight:700">npm / pnpm</td><td>package.json</td><td>Vite / Express</td></tr>
+              <tr><td><strong>Java</strong></td><td>Java</td><td>Maven / Gradle</td><td>pom.xml</td><td>Spring Boot</td></tr>
+              <tr><td><strong>Python</strong></td><td>Python</td><td>pip / uv</td><td>pyproject.toml</td><td>Flask / Django</td></tr>
+            </tbody>
+          </table>
+          <h3 style="color:var(--color-primary);font-size:1rem;margin:8px 0 6px">Was kann man mit Node.js alles bauen?</h3>
+          <div style="display:flex;flex-wrap:wrap;gap:5px">
+            <span style="padding:4px 10px;border-radius:20px;background:rgba(47,108,122,0.1);border:1px solid var(--color-border);font-size:0.75rem">Frontend (React, Vue, Svelte)</span>
+            <span style="padding:4px 10px;border-radius:20px;background:rgba(47,108,122,0.1);border:1px solid var(--color-border);font-size:0.75rem">Backend / REST APIs</span>
+            <span style="padding:4px 10px;border-radius:20px;background:rgba(47,108,122,0.1);border:1px solid var(--color-border);font-size:0.75rem">CLI-Tools</span>
+            <span style="padding:4px 10px;border-radius:20px;background:rgba(47,108,122,0.1);border:1px solid var(--color-border);font-size:0.75rem">Echtzeit-Apps (WebSockets)</span>
+            <span style="padding:4px 10px;border-radius:20px;background:rgba(47,108,122,0.1);border:1px solid var(--color-border);font-size:0.75rem">Desktop (Electron)</span>
+            <span style="padding:4px 10px;border-radius:20px;background:rgba(47,108,122,0.1);border:1px solid var(--color-border);font-size:0.75rem">Mobile (React Native)</span>
+            <span style="padding:4px 10px;border-radius:20px;background:rgba(47,108,122,0.1);border:1px solid var(--color-border);font-size:0.75rem">Serverless Functions</span>
+            <span style="padding:4px 10px;border-radius:20px;background:rgba(47,108,122,0.08);border:1px solid rgba(47,108,122,0.3);font-size:0.75rem;font-weight:600;color:var(--color-primary)">Spiele (wie in diesem Workshop!)</span>
+          </div>
+        </div>
+        <div>
+          <h3 style="color:var(--color-primary);font-size:1rem;margin-bottom:8px">Die wichtigsten npm-Befehle</h3>
+          <div class="code-block" style="margin:0;margin-bottom:10px">
+            <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div>npm Grundlagen</div>
+            <div class="code-body" style="padding:10px 14px;font-size:0.75rem"><pre style="margin:0"><span class="code-comment"># Projekt initialisieren (wie mvn init)</span>
+<span class="code-function">npm init</span> -y
+
+<span class="code-comment"># Dependencies installieren (wie mvn install)</span>
+<span class="code-function">npm install</span>
+
+<span class="code-comment"># Paket hinzuf&uuml;gen (wie pip install X)</span>
+<span class="code-function">npm install</span> vite
+
+<span class="code-comment"># Global installieren (wie pip install --global)</span>
+<span class="code-function">npm install</span> -g opencode-ai
+
+<span class="code-comment"># Script aus package.json ausf&uuml;hren</span>
+<span class="code-function">npm run</span> dev      <span class="code-comment"># startet Dev-Server</span>
+<span class="code-function">npm run</span> build    <span class="code-comment"># baut f&uuml;r Production</span>
+<span class="code-function">npm test</span>         <span class="code-comment"># f&uuml;hrt Tests aus</span></pre></div>
+          </div>
+          <h3 style="color:var(--color-primary);font-size:1rem;margin-bottom:6px">Node.js debuggen</h3>
+          <div class="code-block" style="margin:0;margin-bottom:6px">
+            <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div>Debugging</div>
+            <div class="code-body" style="padding:8px 14px;font-size:0.75rem"><pre style="margin:0"><span class="code-comment"># Fehler im Terminal sehen:</span>
+<span class="code-function">npm run</span> dev      <span class="code-comment"># Vite zeigt Fehler direkt</span>
+
+<span class="code-comment"># Node-Script direkt ausf&uuml;hren:</span>
+<span class="code-function">node</span> mein-script.js
+
+<span class="code-comment"># Mit Debug-Output:</span>
+<span class="code-function">DEBUG</span>=* <span class="code-function">npm run</span> dev</pre></div>
+          </div>
+          <div style="padding:8px 10px;border-radius:8px;background:rgba(47,108,122,0.12);border:1px solid rgba(47,108,122,0.25)">
+            <p style="font-size:0.75rem;color:var(--color-primary-dark);line-height:1.4">
+              <strong>Wie bei Java/Python:</strong> <code style="background:rgba(47,108,122,0.1);color:var(--color-primary-dark);padding:1px 3px;border-radius:2px;font-size:0.7rem">package.json</code> = eure <code style="background:rgba(47,108,122,0.1);color:var(--color-primary-dark);padding:1px 3px;border-radius:2px;font-size:0.7rem">pom.xml</code>. <code style="background:rgba(47,108,122,0.1);color:var(--color-primary-dark);padding:1px 3px;border-radius:2px;font-size:0.7rem">node_modules</code> = euer <code style="background:rgba(47,108,122,0.1);color:var(--color-primary-dark);padding:1px 3px;border-radius:2px;font-size:0.7rem">.m2</code> / <code style="background:rgba(47,108,122,0.1);color:var(--color-primary-dark);padding:1px 3px;border-radius:2px;font-size:0.7rem">venv</code>. <code style="background:rgba(47,108,122,0.1);color:var(--color-primary-dark);padding:1px 3px;border-radius:2px;font-size:0.7rem">npm run</code> = <code style="background:rgba(47,108,122,0.1);color:var(--color-primary-dark);padding:1px 3px;border-radius:2px;font-size:0.7rem">mvn exec</code> / <code style="background:rgba(47,108,122,0.1);color:var(--color-primary-dark);padding:1px 3px;border-radius:2px;font-size:0.7rem">python manage.py</code>.
+            </p>
+          </div>
+        </div>
+      </div>
+    `,
+  },
+
+  // ===== Was ist Vite? =====
+  {
+    id: 'what-is-vite',
+    theme: 'slide--dark',
+    label: 'Was ist Vite?',
+    content: `
+      <span class="slide-label" style="color:var(--color-accent)">Build-Tool</span>
+      <h2 class="slide-title">Was ist Vite &ndash; und warum nutzen wir es?</h2>
+      <p class="slide-subtitle">Unser Build-Tool f&uuml;r den Workshop: superschnell, null Config, perfekt f&uuml;r Spiele</p>
+      <div class="two-cols" style="margin-top:14px">
+        <div>
+          <h3 style="color:var(--color-accent);font-size:1rem;margin-bottom:8px">Warum Vite f&uuml;r unsere Spiele?</h3>
+          <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:10px">
+            <div style="padding:9px 12px;border-radius:8px;background:rgba(255,237,0,0.06);border:1px solid rgba(255,237,0,0.15);font-size:0.85rem;color:var(--color-text-on-dark)">
+              <strong style="color:var(--color-accent)">Sofort loslegen</strong> &ndash; Null Config n&ouml;tig. <code style="background:rgba(255,255,255,0.1);padding:1px 4px;border-radius:3px;font-size:0.75rem">npm create vite@latest</code> und fertig.
+            </div>
+            <div style="padding:9px 12px;border-radius:8px;background:rgba(255,237,0,0.06);border:1px solid rgba(255,237,0,0.15);font-size:0.85rem;color:var(--color-text-on-dark)">
+              <strong style="color:var(--color-accent)">Hot Reload</strong> &ndash; Code &auml;ndern, Browser aktualisiert sich sofort. Perfekt wenn der Agent Code schreibt und ihr zusehen wollt.
+            </div>
+            <div style="padding:9px 12px;border-radius:8px;background:rgba(255,237,0,0.06);border:1px solid rgba(255,237,0,0.15);font-size:0.85rem;color:var(--color-text-on-dark)">
+              <strong style="color:var(--color-accent)">ES Modules</strong> &ndash; Modernes JavaScript mit <code style="background:rgba(255,255,255,0.1);padding:1px 4px;border-radius:3px;font-size:0.75rem">import</code>/<code style="background:rgba(255,255,255,0.1);padding:1px 4px;border-radius:3px;font-size:0.75rem">export</code>. Deshalb geht HTML per Doppelklick <strong>nicht</strong>.
+            </div>
+            <div style="padding:9px 12px;border-radius:8px;background:rgba(255,237,0,0.06);border:1px solid rgba(255,237,0,0.15);font-size:0.85rem;color:var(--color-text-on-dark)">
+              <strong style="color:var(--color-accent)">Production Build</strong> &ndash; <code style="background:rgba(255,255,255,0.1);padding:1px 4px;border-radius:3px;font-size:0.75rem">npm run build</code> erzeugt optimierte Dateien f&uuml;r Hosting.
+            </div>
+          </div>
+          <h3 style="color:var(--color-accent);font-size:1rem;margin-bottom:6px">Vergleich: Was ist was?</h3>
+          <table class="comparison" style="font-size:0.75rem">
+            <thead><tr><th>Konzept</th><th>Java</th><th>Node.js</th></tr></thead>
+            <tbody>
+              <tr><td>Build-Tool</td><td>Maven / Gradle</td><td style="color:var(--color-accent);font-weight:600">Vite / Webpack</td></tr>
+              <tr><td>Dev-Server</td><td>Spring Boot (Tomcat)</td><td style="color:var(--color-accent);font-weight:600">Vite Dev Server</td></tr>
+              <tr><td>Hot Reload</td><td>Spring DevTools</td><td style="color:var(--color-accent);font-weight:600">Vite HMR (&lt;50ms)</td></tr>
+              <tr><td>Build Output</td><td>.jar / .war</td><td style="color:var(--color-accent);font-weight:600">dist/ (HTML/JS/CSS)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <h3 style="color:var(--color-accent);font-size:1rem;margin-bottom:8px">Wof&uuml;r kann man Vite noch nutzen?</h3>
+          <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:10px">
+            <div style="padding:7px 12px;border-radius:6px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);font-size:0.82rem;color:var(--color-text-on-dark)">
+              &#127912; <strong>Web-Apps</strong> &ndash; React, Vue, Svelte, Angular, Solid
+            </div>
+            <div style="padding:7px 12px;border-radius:6px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);font-size:0.82rem;color:var(--color-text-on-dark)">
+              &#128196; <strong>Statische Seiten</strong> &ndash; Landingpages, Docs, Portfolios
+            </div>
+            <div style="padding:7px 12px;border-radius:6px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);font-size:0.82rem;color:var(--color-text-on-dark)">
+              &#127918; <strong>Spiele</strong> &ndash; Canvas, WebGL, Pixi.js, Three.js (unser Workshop!)
+            </div>
+            <div style="padding:7px 12px;border-radius:6px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);font-size:0.82rem;color:var(--color-text-on-dark)">
+              &#128218; <strong>Libraries</strong> &ndash; Eigene npm-Pakete entwickeln &amp; publishen
+            </div>
+            <div style="padding:7px 12px;border-radius:6px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);font-size:0.82rem;color:var(--color-text-on-dark)">
+              &#128187; <strong>Pr&auml;sentationen</strong> &ndash; Genau wie diese hier!
+            </div>
+          </div>
+          <h3 style="color:var(--color-accent);font-size:1rem;margin-bottom:6px">Kostenlos hosten &ndash; ernsthaft!</h3>
+          <div style="padding:12px;border-radius:10px;background:rgba(37,204,120,0.08);border:1px solid rgba(37,204,120,0.2);margin-bottom:8px">
+            <p style="font-size:0.85rem;color:var(--color-text-on-dark);line-height:1.5">
+              Alles was <code style="background:rgba(255,255,255,0.1);padding:1px 4px;border-radius:3px;font-size:0.75rem">npm run build</code> erzeugt (HTML, JS, CSS) kann <strong>komplett kostenlos</strong> gehostet werden &ndash; kein Server n&ouml;tig:
+            </p>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:5px">
+            <a href="https://pages.cloudflare.com/" target="_blank" rel="noopener" style="padding:5px 10px;border-radius:6px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);font-size:0.78rem;color:var(--color-accent);text-decoration:none">Cloudflare Pages</a>
+            <a href="https://pages.github.com/" target="_blank" rel="noopener" style="padding:5px 10px;border-radius:6px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);font-size:0.78rem;color:var(--color-text-on-dark);text-decoration:none">GitHub Pages</a>
+            <a href="https://www.netlify.com/" target="_blank" rel="noopener" style="padding:5px 10px;border-radius:6px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);font-size:0.78rem;color:var(--color-text-on-dark);text-decoration:none">Netlify</a>
+            <a href="https://vercel.com/" target="_blank" rel="noopener" style="padding:5px 10px;border-radius:6px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);font-size:0.78rem;color:var(--color-text-on-dark);text-decoration:none">Vercel</a>
+          </div>
+          <div style="margin-top:8px;padding:8px 10px;border-radius:8px;background:rgba(255,237,0,0.08);border:1px solid rgba(255,237,0,0.2)">
+            <p style="font-size:0.75rem;color:var(--color-text-on-dark-subdued);line-height:1.4">
+              <strong style="color:var(--color-accent)">Solange kein Backend n&ouml;tig ist</strong> (keine Datenbank, keine API-Logik), ist Hosting kostenlos. Perfekt f&uuml;r Spiele, Portfolios, Docs und Pr&auml;sentationen. <a href="https://blog.weisser.dev/blog/2026/03/24/frontend-hosting-cloudflare-pages/" target="_blank" rel="noopener" style="color:var(--color-accent);text-decoration:underline">Anleitung: Frontend auf Cloudflare Pages hosten &rarr;</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    `,
+  },
+
+  // ===== Terminal, Dev-Server & Dev Tools =====
+  {
+    id: 'dev-workflow',
+    theme: 'slide--dark',
+    label: 'Dev Workflow',
+    content: `
+      <span class="slide-label" style="color:var(--color-warning)">Typische Stolpersteine</span>
+      <h2 class="slide-title">Terminal, Dev-Server &amp; Chrome Dev Tools</h2>
+      <p class="slide-subtitle">Die h&auml;ufigsten Probleme im Workshop &ndash; und wie ihr sie l&ouml;st</p>
+      <div class="two-cols" style="margin-top:14px">
+        <div>
+          <h3 style="color:var(--color-accent);font-size:1rem;margin-bottom:8px">"Starte den Server" &ndash; warum das schiefgeht</h3>
+          <div style="padding:10px 12px;border-radius:8px;background:rgba(255,107,107,0.08);border:1px solid rgba(255,107,107,0.2);margin-bottom:6px;font-size:0.82rem;color:var(--color-text-on-dark)">
+            <strong style="color:#ff6b6b">Problem:</strong> "Starte den Server" an die KI &rarr; Agent h&auml;ngt fest, weil der Server <strong>dauerhaft l&auml;uft</strong> und die KI auf das Ende wartet.
+          </div>
+          <div style="padding:10px 12px;border-radius:8px;background:rgba(37,204,120,0.08);border:1px solid rgba(37,204,120,0.2);margin-bottom:6px;font-size:0.82rem;color:var(--color-text-on-dark)">
+            <strong style="color:var(--color-positive)">L&ouml;sung:</strong> <strong>Neues Terminal &ouml;ffnen</strong>, ins Projekt-Root navigieren (selbe Ebene wie <code style="background:rgba(255,255,255,0.1);color:#eee;padding:1px 4px;border-radius:3px;font-size:0.75rem">package.json</code>), ggf. <code style="background:rgba(255,255,255,0.1);color:#eee;padding:1px 4px;border-radius:3px;font-size:0.75rem">npm i</code> f&uuml;r Dependencies, dann <code style="background:rgba(255,255,255,0.1);color:#eee;padding:1px 4px;border-radius:3px;font-size:0.75rem">npm run dev</code>.
+          </div>
+          <h3 style="color:var(--color-accent);font-size:0.95rem;margin:8px 0 6px">Bessere Prompts statt "starte den Server"</h3>
+          <div class="code-block" style="margin:0;margin-bottom:6px">
+            <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div>Dos &amp; Don'ts</div>
+            <div class="code-body" style="padding:8px 14px;font-size:0.75rem"><pre style="margin:0"><span class="code-comment">// &#10007; Schlecht &ndash; Agent h&auml;ngt:</span>
+<span class="code-string">"Starte den Server"</span>
+<span class="code-string">"F&uuml;hre npm run dev aus"</span>
+
+<span class="code-comment">// &#10003; Besser &ndash; an Agent delegieren:</span>
+<span class="code-string">"Erstelle das Projekt mit Vite-Config
+und package.json mit dev-Script."</span>
+
+<span class="code-comment">// &#10003; Server SELBST starten:</span>
+<span class="code-comment">// Neues Terminal &rarr; npm run dev</span></pre></div>
+          </div>
+          <div class="code-block" style="margin:0">
+            <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div>Paralleles Arbeiten</div>
+            <div class="code-body" style="padding:8px 14px;font-size:0.75rem"><pre style="margin:0"><span class="code-comment"># Terminal 1: OpenCode (Agent)</span>
+<span class="code-function">opencode</span>
+
+<span class="code-comment"># Terminal 2: NEUES Terminal &ouml;ffnen!</span>
+<span class="code-comment"># Win: Win+R &rarr; cmd | VS Code: Ctrl+Shift+\`</span>
+<span class="code-function">cd</span> ~/projects/workshop-demo
+<span class="code-function">npm i</span>           <span class="code-comment"># Dependencies installieren (falls noch nicht geschehen)</span>
+<span class="code-function">npm run</span> dev
+<span class="code-comment"># &rarr; http://localhost:5173</span></pre></div>
+          </div>
+          <div style="margin-top:6px;padding:7px 10px;border-radius:8px;background:rgba(255,107,107,0.08);border:1px solid rgba(255,107,107,0.2);font-size:0.75rem;color:rgba(255,255,255,0.75)">
+            <strong style="color:#ff6b6b">Nicht:</strong> HTML-Datei per Doppelklick &ouml;ffnen &ndash; ES Modules brauchen einen Server. Immer <code style="background:rgba(255,255,255,0.1);color:#eee;padding:1px 3px;border-radius:2px;font-size:0.7rem">http://localhost:...</code>
+          </div>
+        </div>
+        <div>
+          <h3 style="color:var(--color-accent);font-size:1rem;margin-bottom:8px">Chrome Dev Tools &ndash; euer bester Freund</h3>
+          <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:8px">
+            <div style="padding:7px 12px;border-radius:6px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);font-size:0.82rem;color:var(--color-text-on-dark)">
+              <strong>F12</strong> oder <strong>Ctrl+Shift+I</strong> &rarr; Dev Tools &ouml;ffnen
+            </div>
+            <div style="padding:7px 12px;border-radius:6px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);font-size:0.82rem;color:var(--color-text-on-dark)">
+              <strong>Console</strong>-Tab &rarr; hier stehen <strong>alle Fehler</strong> (rot)
+            </div>
+            <div style="padding:7px 12px;border-radius:6px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);font-size:0.82rem;color:var(--color-text-on-dark)">
+              <strong>Network</strong>-Tab &rarr; API-Aufrufe, fehlende Dateien (404)
+            </div>
+            <div style="padding:7px 12px;border-radius:6px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);font-size:0.82rem;color:var(--color-text-on-dark)">
+              <strong>Elements</strong>-Tab &rarr; HTML/CSS live inspizieren und &auml;ndern
+            </div>
+          </div>
+          <div style="padding:10px 12px;border-radius:8px;background:rgba(255,237,0,0.08);border:2px solid rgba(255,237,0,0.25);margin-bottom:8px;font-size:0.82rem;color:var(--color-text-on-dark)">
+            <strong style="color:var(--color-accent)">Pro-Tipp:</strong> Fehlermeldung aus der Console <strong>direkt kopieren und an den Agent schicken</strong> &ndash; der kennt die meisten Fehler und kann sie fixen!
+          </div>
+          <h3 style="color:var(--color-accent);font-size:0.95rem;margin-bottom:6px">Checkliste: Nichts passiert?</h3>
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <div style="padding:6px 12px;border-radius:6px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);font-size:0.78rem;color:var(--color-text-on-dark)">
+              &#9744; Richtiger Ordner? &rarr; <code style="background:rgba(255,255,255,0.1);color:#eee;padding:1px 3px;border-radius:2px;font-size:0.7rem">pwd</code> pr&uuml;fen
+            </div>
+            <div style="padding:6px 12px;border-radius:6px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);font-size:0.78rem;color:var(--color-text-on-dark)">
+              &#9744; <code style="background:rgba(255,255,255,0.1);color:#eee;padding:1px 3px;border-radius:2px;font-size:0.7rem">npm install</code> vergessen? &rarr; <code style="background:rgba(255,255,255,0.1);color:#eee;padding:1px 3px;border-radius:2px;font-size:0.7rem">node_modules</code> fehlt
+            </div>
+            <div style="padding:6px 12px;border-radius:6px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);font-size:0.78rem;color:var(--color-text-on-dark)">
+              &#9744; Kein Output? &rarr; Logs im <strong>Browser</strong> (F12 &rarr; Console) pr&uuml;fen
+            </div>
+            <div style="padding:6px 12px;border-radius:6px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);font-size:0.78rem;color:var(--color-text-on-dark)">
+              &#9744; Port belegt? &rarr; <code style="background:rgba(255,255,255,0.1);color:#eee;padding:1px 3px;border-radius:2px;font-size:0.7rem">npx kill-port 5173</code> oder anderer Port
+            </div>
+          </div>
+          <div style="margin-top:8px;padding:8px 10px;border-radius:8px;background:rgba(255,237,0,0.08);border:1px solid rgba(255,237,0,0.2)">
+            <p style="font-size:0.75rem;color:var(--color-text-on-dark-subdued);line-height:1.4">
+              <strong style="color:var(--color-accent)">Merke:</strong> <code style="background:rgba(255,255,255,0.1);color:#eee;padding:1px 3px;border-radius:2px;font-size:0.7rem">npm run dev</code> kostet 0 Cent. Das an die KI zu delegieren kostet Geld. <strong>Server selbst starten, Fehler aus Dev Tools kopieren.</strong>
+            </p>
+          </div>
+        </div>
+      </div>
+    `,
+  },
+
   // ===== Slide 2: OpenCode installieren =====
   {
     id: 'setup-opencode',
@@ -233,7 +490,7 @@ code .">&#128203; Copy</button>
     content: `
       <span class="slide-label">Schritt 5</span>
       <h2 class="slide-title">OpenCode Config Example</h2>
-      <p class="slide-subtitle">Diese Config brauchen wir im n&auml;chsten Schritt &ndash; einfach kopieren</p>
+      <p class="slide-subtitle">Diese Config ist f&uuml;r den <strong>Workshop / Enterprise</strong> (AWS Bedrock). Privat? &rarr; <a href="https://opencode.ai/docs/config/" target="_blank" rel="noopener" style="color:var(--color-accent);text-decoration:underline">Docs lesen</a>, Provider-Abo einrichten oder kostenlose OpenCode-Modelle nutzen.</p>
       <div class="two-cols" style="margin-top:12px">
         <div>
           <h3 style="color:var(--color-accent);font-size:1rem;margin-bottom:6px">Unsere Config: AWS Bedrock</h3>
@@ -637,53 +894,76 @@ code .">&#128203; Copy</button>
     content: `
       <span class="slide-label">Schritt 7</span>
       <h2 class="slide-title">OpenCode starten</h2>
-      <p class="slide-subtitle">Terminal in VS Code &ouml;ffnen (<kbd style="background:rgba(255,255,255,0.1);padding:1px 6px;border-radius:3px;font-size:0.85rem">Ctrl+\`</kbd>) und los</p>
-      <div class="two-cols" style="margin-top:16px">
-        <div>
-          <h3 style="color:var(--color-accent);font-size:1.1rem;margin-bottom:8px">Option A: Bearer Token (Workshop)</h3>
-          <p style="color:var(--color-text-on-dark-subdued);font-size:0.85rem;margin-bottom:8px">Token wird im Workshop bereitgestellt:</p>
-          <div class="code-block" style="margin:0;margin-bottom:10px">
-            <button class="copy-btn" data-copy='AWS_BEARER_TOKEN_BEDROCK="<TOKEN>" AWS_REGION="eu-central-1" opencode'>&#128203; Copy</button>
-            <div class="code-body" style="padding:14px 18px"><pre style="margin:0"><span class="code-function">AWS_BEARER_TOKEN_BEDROCK</span>=<span class="code-string">"&lt;TOKEN&gt;"</span> \\
+      <p class="slide-subtitle">Terminal in VS Code &ouml;ffnen (<kbd style="background:rgba(255,255,255,0.1);padding:1px 6px;border-radius:3px;font-size:0.85rem">Ctrl+\`</kbd>) und los &ndash; 3 Wege je nach Umfeld</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:14px">
+        <div style="padding:14px;border-radius:10px;background:rgba(255,237,0,0.06);border:1px solid rgba(255,237,0,0.15)">
+          <h3 style="color:var(--color-accent);font-size:0.9rem;margin-bottom:8px">Option A: Bearer Token</h3>
+          <p style="font-size:0.72rem;color:var(--color-text-on-dark-subdued);margin-bottom:8px">F&uuml;r diesen Workshop &ndash; Token wird bereitgestellt</p>
+          <div class="code-block" style="margin:0">
+            <button class="copy-btn" data-copy='AWS_BEARER_TOKEN_BEDROCK="<TOKEN>" AWS_REGION="eu-central-1" opencode'>&#128203;</button>
+            <div class="code-body" style="padding:8px 10px;font-size:0.65rem"><pre style="margin:0"><span class="code-function">AWS_BEARER_TOKEN_BEDROCK</span>=<span class="code-string">"&lt;TOKEN&gt;"</span> \\
 <span class="code-function">AWS_REGION</span>=<span class="code-string">"eu-central-1"</span> \\
 <span class="code-function">opencode</span></pre></div>
           </div>
-          <div style="padding:10px;border-radius:8px;background:rgba(255,237,0,0.08);border:1px solid rgba(255,237,0,0.2)">
-            <p style="font-size:0.75rem;color:var(--color-text-on-dark-subdued);line-height:1.4">
-              <strong style="color:var(--color-accent)">Hinweis:</strong> Bearer Token hat h&ouml;chste Priorit&auml;t &ndash; &uuml;berschreibt Profile und SSO.
+          <div style="margin-top:8px;padding:6px 8px;border-radius:6px;background:rgba(255,237,0,0.08);border:1px solid rgba(255,237,0,0.2)">
+            <p style="font-size:0.65rem;color:var(--color-text-on-dark-subdued);line-height:1.3">
+              Bearer Token hat h&ouml;chste Prio &ndash; &uuml;berschreibt Profile/SSO.
             </p>
           </div>
         </div>
-        <div>
-          <h3 style="color:var(--color-accent);font-size:1rem;margin-bottom:6px">Option B: AWS SSO (empfohlen)</h3>
-          <p style="color:var(--color-text-on-dark-subdued);font-size:0.8rem;margin-bottom:6px">Profile in opencode.json + SSO Login:</p>
+        <div style="padding:14px;border-radius:10px;background:rgba(37,204,120,0.06);border:1px solid rgba(37,204,120,0.2)">
+          <h3 style="color:var(--color-positive);font-size:0.9rem;margin-bottom:8px">Option B: AWS SSO</h3>
+          <p style="font-size:0.72rem;color:var(--color-text-on-dark-subdued);margin-bottom:8px">Enterprise &ndash; f&uuml;r den Arbeitsalltag empfohlen</p>
           <div class="code-block" style="margin:0;margin-bottom:6px">
-            <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div>opencode.json</div>
-            <button class="copy-btn" data-copy='"provider":{"amazon-bedrock":{"options":{"region":"eu-central-1","profile":"mein-sso-profil"}}}'>&#128203; Copy</button>
-            <div class="code-body" style="padding:8px 14px;font-size:0.7rem"><pre style="margin:0"><span class="code-property">"options"</span>: { <span class="code-property">"region"</span>: <span class="code-string">"eu-central-1"</span>, <span class="code-property">"profile"</span>: <span class="code-string">"mein-sso-profil"</span> }</pre></div>
+            <div class="code-header" style="font-size:0.6rem"><div class="code-dots"><span></span><span></span><span></span></div>opencode.json</div>
+            <button class="copy-btn" data-copy='"provider":{"amazon-bedrock":{"options":{"region":"eu-central-1","profile":"mein-sso-profil"}}}'>&#128203;</button>
+            <div class="code-body" style="padding:6px 8px;font-size:0.6rem"><pre style="margin:0"><span class="code-property">"options"</span>: {
+  <span class="code-property">"region"</span>: <span class="code-string">"eu-central-1"</span>,
+  <span class="code-property">"profile"</span>: <span class="code-string">"mein-sso-profil"</span>
+}</pre></div>
           </div>
-          <div class="code-block" style="margin:0;margin-bottom:6px">
-            <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div>Terminal</div>
-            <button class="copy-btn" data-copy="aws sso login --profile mein-sso-profil && opencode">&#128203; Copy</button>
-            <div class="code-body" style="padding:8px 14px;font-size:0.8rem"><pre style="margin:0"><span class="code-function">aws configure sso</span> --profile mein-sso-profil <span class="code-comment"># einmalig</span>
-<span class="code-function">aws sso login</span> --profile mein-sso-profil
+          <div class="code-block" style="margin:0">
+            <button class="copy-btn" data-copy="aws sso login --profile mein-sso-profil && opencode">&#128203;</button>
+            <div class="code-body" style="padding:6px 8px;font-size:0.6rem"><pre style="margin:0"><span class="code-function">aws sso login</span> --profile mein-sso-profil
 <span class="code-function">opencode</span></pre></div>
           </div>
-          <div style="padding:8px;border-radius:6px;background:rgba(37,204,120,0.1);border:1px solid rgba(37,204,120,0.25)">
-            <p style="font-size:0.7rem;color:var(--color-text-on-dark-subdued);line-height:1.3">
-              <strong style="color:var(--color-positive)">Empfohlen:</strong> Credentials rotieren automatisch. <a href="https://opencode.ai/docs/config/" target="_blank" rel="noopener" style="color:var(--color-accent);text-decoration:underline">Docs</a>
+          <div style="margin-top:6px;padding:6px 8px;border-radius:6px;background:rgba(37,204,120,0.08);border:1px solid rgba(37,204,120,0.2)">
+            <p style="font-size:0.65rem;color:var(--color-text-on-dark-subdued);line-height:1.3">
+              <strong style="color:var(--color-positive)">Empfohlen:</strong> Credentials rotieren automatisch.
+            </p>
+          </div>
+        </div>
+        <div style="padding:14px;border-radius:10px;background:rgba(47,108,122,0.08);border:2px solid var(--color-accent)">
+          <h3 style="color:var(--color-accent);font-size:0.9rem;margin-bottom:8px">Option C: Privat / Zuhause</h3>
+          <p style="font-size:0.72rem;color:var(--color-text-on-dark-subdued);margin-bottom:8px">F&uuml;r eigene Projekte &ndash; ohne Enterprise-Infra</p>
+          <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:8px">
+            <div style="padding:6px 8px;border-radius:6px;background:rgba(255,237,0,0.08);border:1px solid rgba(255,237,0,0.2);font-size:0.7rem;color:var(--color-text-on-dark)">
+              <strong style="color:var(--color-accent)">&#11088; Claude Code Abo</strong><br>
+              <span style="font-size:0.65rem;color:var(--color-text-on-dark-subdued)">$20/Monat. Bestes Preis-Leistungs-Verh&auml;ltnis. Modelle von Anthropic direkt &ndash; kein API-Key-Setup n&ouml;tig.</span>
+            </div>
+            <div style="padding:5px 8px;border-radius:6px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);font-size:0.65rem;color:var(--color-text-on-dark)">
+              <strong>OpenCode + Ollama</strong> &ndash; Komplett gratis &amp; lokal
+            </div>
+            <div style="padding:5px 8px;border-radius:6px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);font-size:0.65rem;color:var(--color-text-on-dark)">
+              <strong>OpenCode + Big Pickle / MiniMax</strong> &ndash; Gratis in OpenCode
+            </div>
+            <div style="padding:5px 8px;border-radius:6px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);font-size:0.65rem;color:var(--color-text-on-dark)">
+              <strong>GitHub Copilot</strong> &ndash; Login &uuml;ber GitHub
+            </div>
+            <div style="padding:5px 8px;border-radius:6px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);font-size:0.65rem;color:var(--color-text-on-dark)">
+              <strong>ChatGPT / Codex</strong> &ndash; OpenAI API-Key
+            </div>
+          </div>
+          <div style="padding:6px 8px;border-radius:6px;background:rgba(255,237,0,0.1);border:1px solid rgba(255,237,0,0.25)">
+            <p style="font-size:0.65rem;color:var(--color-text-on-dark-subdued);line-height:1.3">
+              <strong style="color:var(--color-accent)">Meine Empfehlung:</strong> <a href="https://claude.ai/pricing" target="_blank" rel="noopener" style="color:var(--color-accent);text-decoration:underline">Claude Code Abo</a> &ndash; bestes Preis-Leistungs-Verh&auml;ltnis. <a href="https://opencode.ai/docs/providers/" target="_blank" rel="noopener" style="color:var(--color-accent);text-decoration:underline">75+ Provider</a>
             </p>
           </div>
         </div>
       </div>
-      <div style="margin-top:12px;padding:12px;border-radius:8px;background:rgba(255,108,18,0.08);border:1px solid rgba(255,108,18,0.2)">
-        <p style="font-size:0.8rem;color:var(--color-text-on-dark-subdued);line-height:1.5">
+      <div style="margin-top:10px;padding:10px;border-radius:8px;background:rgba(255,108,18,0.08);border:1px solid rgba(255,108,18,0.2)">
+        <p style="font-size:0.78rem;color:var(--color-text-on-dark-subdued);line-height:1.5">
           <strong style="color:var(--color-warning)">Erster Start dauert 1-2 Minuten.</strong> Tut sich nichts oder wird es blockiert? &rarr; <strong>Desktop App nutzen &ndash; n&auml;chste Seite!</strong>
-        </p>
-      </div>
-      <div style="margin-top:8px;padding:10px;border-radius:8px;background:rgba(47,108,122,0.1);border:1px solid rgba(47,108,122,0.2)">
-        <p style="font-size:0.75rem;color:var(--color-text-on-dark-subdued);line-height:1.4">
-          &#127968; <strong style="color:var(--color-accent)">Zuhause / privat:</strong> Lokale Projekte laufen auch mit <strong>Ollama</strong> (gratis, lokal), kostenlosen Modellen wie Big Pickle &amp; MiniMax 2.5, oder bestehenden Subscriptions wie <strong>Claude.ai, ChatGPT, Codex</strong>. <a href="https://opencode.ai/docs/providers/" target="_blank" rel="noopener" style="color:var(--color-accent);text-decoration:underline">75+ Provider</a>
         </p>
       </div>
     `,

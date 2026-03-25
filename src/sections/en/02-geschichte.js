@@ -166,6 +166,140 @@ export const geschichteSlides = [
     `,
   },
 
+  // ===== What does GPT mean? =====
+  {
+    id: 'what-is-gpt',
+    theme: '',
+    label: 'What is GPT?',
+    content: `
+      <span class="slide-label">Fundamentals</span>
+      <h2 class="slide-title">What does "GPT" actually mean?</h2>
+      <p class="slide-subtitle">The name behind ChatGPT &ndash; and why it reveals more than you think</p>
+      <div class="two-cols" style="margin-top:20px">
+        <div>
+          <h3 style="color:var(--color-primary);font-size:1.1rem;margin-bottom:12px">G &ndash; P &ndash; T</h3>
+          <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:14px">
+            <div style="padding:14px 16px;border-radius:10px;background:rgba(47,108,122,0.08);border:2px solid var(--color-border-primary)">
+              <p style="font-size:1rem;line-height:1.5"><strong style="color:var(--color-primary);font-size:1.2rem">G</strong>enerative</p>
+              <p style="font-size:0.88rem;color:var(--color-text-subdued);margin-top:4px">The model <strong>generates</strong> new content &ndash; text, code, ideas. It doesn&rsquo;t copy from a database but creates something new, token by token.</p>
+            </div>
+            <div style="padding:14px 16px;border-radius:10px;background:rgba(47,108,122,0.08);border:2px solid var(--color-border-primary)">
+              <p style="font-size:1rem;line-height:1.5"><strong style="color:var(--color-primary);font-size:1.2rem">P</strong>re-trained</p>
+              <p style="font-size:0.88rem;color:var(--color-text-subdued);margin-top:4px">The model was <strong>trained in advance</strong> &ndash; on massive amounts of text (books, web, code). This training is complete before you use it. It does <strong>not</strong> learn from your questions.</p>
+            </div>
+            <div style="padding:14px 16px;border-radius:10px;background:rgba(47,108,122,0.08);border:2px solid var(--color-border-primary)">
+              <p style="font-size:1rem;line-height:1.5"><strong style="color:var(--color-primary);font-size:1.2rem">T</strong>ransformer</p>
+              <p style="font-size:0.88rem;color:var(--color-text-subdued);margin-top:4px">The architecture behind it &ndash; the 2017 paper "Attention Is All You Need". Transformers can <strong>recognize relationships across thousands of words</strong>.</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3 style="color:var(--color-primary);font-size:1.1rem;margin-bottom:12px">Why does this matter?</h3>
+          <div style="padding:14px;border-radius:10px;background:var(--color-bg-subdued);border:1px solid var(--color-border);margin-bottom:12px">
+            <p style="font-size:0.92rem;line-height:1.6;color:var(--color-text-subdued)">
+              The name tells you <strong>everything about the limitations</strong>:<br><br>
+              <strong>"Pre-trained"</strong> = The knowledge is frozen. Like a book: once it&rsquo;s printed, the content doesn&rsquo;t change anymore.<br><br>
+              <strong>"Generative"</strong> = It produces text that <em>sounds plausible</em> &ndash; but isn&rsquo;t necessarily <em>factually correct</em>.
+            </p>
+          </div>
+          <h3 style="color:var(--color-primary);font-size:1rem;margin-bottom:8px">Different names, same principle</h3>
+          <div style="display:flex;flex-direction:column;gap:5px">
+            <div style="padding:7px 12px;border-radius:6px;background:var(--color-bg-subdued);border:1px solid var(--color-border);font-size:0.85rem;display:flex;justify-content:space-between">
+              <span><strong>GPT-4, GPT-5</strong></span><span style="color:var(--color-text-subdued)">OpenAI</span>
+            </div>
+            <div style="padding:7px 12px;border-radius:6px;background:var(--color-bg-subdued);border:1px solid var(--color-border);font-size:0.85rem;display:flex;justify-content:space-between">
+              <span><strong>Claude</strong></span><span style="color:var(--color-text-subdued)">Anthropic (also Transformer)</span>
+            </div>
+            <div style="padding:7px 12px;border-radius:6px;background:var(--color-bg-subdued);border:1px solid var(--color-border);font-size:0.85rem;display:flex;justify-content:space-between">
+              <span><strong>Gemini</strong></span><span style="color:var(--color-text-subdued)">Google (also Transformer)</span>
+            </div>
+            <div style="padding:7px 12px;border-radius:6px;background:var(--color-bg-subdued);border:1px solid var(--color-border);font-size:0.85rem;display:flex;justify-content:space-between">
+              <span><strong>LLaMA, Qwen, Mistral</strong></span><span style="color:var(--color-text-subdued)">Open Source (also Transformer)</span>
+            </div>
+          </div>
+          <div style="margin-top:10px;padding:8px 12px;border-radius:8px;background:rgba(255,237,0,0.06);border:1px solid rgba(255,237,0,0.15)">
+            <p style="font-size:0.8rem;color:var(--color-text-subdued);line-height:1.4">
+              <strong style="color:var(--color-primary)">All LLMs</strong> are based on the Transformer architecture. "GPT" is just OpenAI&rsquo;s brand name &ndash; the principle is the same everywhere.
+            </p>
+          </div>
+        </div>
+      </div>
+    `,
+  },
+
+  // ===== Training vs. Inference =====
+  {
+    id: 'training-vs-inference',
+    theme: 'slide--dark',
+    label: 'Training vs. Usage',
+    content: `
+      <span class="slide-label">Fundamentals</span>
+      <h2 class="slide-title">Why doesn&rsquo;t the AI learn from my questions?</h2>
+      <p class="slide-subtitle">The most important distinction: <strong>Training</strong> (Learning) vs. <strong>Inference</strong> (Applying)</p>
+      <div class="two-cols" style="margin-top:16px">
+        <div>
+          <h3 style="color:var(--color-accent);font-size:1.1rem;margin-bottom:10px">Training &ndash; how AI learns</h3>
+          <div style="padding:14px;border-radius:10px;background:rgba(255,237,0,0.06);border:1px solid rgba(255,237,0,0.15);margin-bottom:10px">
+            <p style="font-size:0.92rem;line-height:1.6;color:var(--color-text-on-dark)">
+              &#127891; <strong>Like school &amp; university</strong><br>
+              <span style="color:var(--color-text-on-dark-subdued)">Months to years. Thousands of GPUs. Trillions of text tokens. The model reads essentially half the internet and learns patterns, language, logic. At the end: a <strong>finished model</strong> &ndash; like a graduate after university.</span>
+            </p>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:10px">
+            <div style="padding:8px 12px;border-radius:6px;background:rgba(255,255,255,0.05);font-size:0.85rem;color:var(--color-text-on-dark)">
+              <strong>Cost:</strong> $100M+ per training run <span style="color:var(--color-text-on-dark-subdued)">(GPT-5, Claude 4)</span>
+            </div>
+            <div style="padding:8px 12px;border-radius:6px;background:rgba(255,255,255,0.05);font-size:0.85rem;color:var(--color-text-on-dark)">
+              <strong>Duration:</strong> Weeks to months on thousands of GPUs
+            </div>
+            <div style="padding:8px 12px;border-radius:6px;background:rgba(255,255,255,0.05);font-size:0.85rem;color:var(--color-text-on-dark)">
+              <strong>Data:</strong> Trillions of tokens (books, web, code, papers)
+            </div>
+            <div style="padding:8px 12px;border-radius:6px;background:rgba(255,255,255,0.05);font-size:0.85rem;color:var(--color-text-on-dark)">
+              <strong>Result:</strong> Fixed weights &ndash; the "knowledge" is frozen
+            </div>
+          </div>
+          <h3 style="color:var(--color-accent);font-size:1rem;margin-bottom:8px">Why new versions?</h3>
+          <div style="padding:10px 12px;border-radius:8px;background:rgba(255,237,0,0.08);border:1px solid rgba(255,237,0,0.2)">
+            <p style="font-size:0.85rem;color:var(--color-text-on-dark-subdued);line-height:1.5">
+              Because <strong>each new training run creates a completely new model</strong> &ndash; with new data, better algorithms, and more compute. GPT-4 &rarr; GPT-5 = new degree, not a software update.
+            </p>
+          </div>
+        </div>
+        <div>
+          <h3 style="color:var(--color-accent);font-size:1.1rem;margin-bottom:10px">Inference &ndash; how you use AI</h3>
+          <div style="padding:14px;border-radius:10px;background:rgba(255,237,0,0.06);border:1px solid rgba(255,237,0,0.15);margin-bottom:10px">
+            <p style="font-size:0.92rem;line-height:1.6;color:var(--color-text-on-dark)">
+              &#128172; <strong>Like a job interview</strong><br>
+              <span style="color:var(--color-text-on-dark-subdued)">When you ask ChatGPT or Claude a question, <strong>the model only applies what it already learned</strong>. It doesn&rsquo;t change in the process. 1,000 users simultaneously &ndash; all using the same immutable model.</span>
+            </p>
+          </div>
+          <div class="code-block" style="margin-top:0">
+            <div class="code-header">
+              <div class="code-dots"><span></span><span></span><span></span></div>
+              What happens with every question
+            </div>
+            <div class="code-body"><pre><span class="code-comment">// Your question:</span>
+<span class="code-string">"Explain Kubernetes to me"</span>
+
+<span class="code-comment">// What does NOT happen:</span>
+<span class="code-property">model.learn(question)</span>  <span class="code-comment">// &#10007; No!</span>
+
+<span class="code-comment">// What ACTUALLY happens:</span>
+<span class="code-property">answer</span> = <span class="code-function">model.apply</span>(question)
+<span class="code-comment">// Model stays exactly the same.</span>
+<span class="code-comment">// Next user gets the same model.</span></pre></div>
+          </div>
+          <div style="margin-top:10px;padding:10px 12px;border-radius:8px;background:rgba(255,107,107,0.08);border:1px solid rgba(255,107,107,0.2)">
+            <p style="font-size:0.82rem;color:var(--color-text-on-dark-subdued);line-height:1.5">
+              <strong style="color:#ff6b6b">Important:</strong> When the AI seems to "get better" during a chat, that&rsquo;s due to the <strong>growing context</strong> &ndash; not because it&rsquo;s learning. New chat = everything resets to zero.
+            </p>
+          </div>
+        </div>
+      </div>
+    `,
+  },
+
   // ===== What happened in 4 years =====
   {
     id: 'four-years',
