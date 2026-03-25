@@ -338,9 +338,9 @@ Perform a code review:
           </div>
           <div class="code-block">
             <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div>Terminal &ndash; Setup (once)</div>
-            <button class="copy-btn" data-copy="npm install -g opencode-remote-telegram&#10;opencode-remote-telegram start">&#128203; Copy</button>
+            <button class="copy-btn" data-copy="npm install -g @weisser-dev/opencode-remote-telegram&#10;opencode-remote-telegram start">&#128203; Copy</button>
             <div class="code-body" style="font-size:0.75rem"><pre style="margin:0"><span class="code-comment"># Install globally</span>
-npm install -g opencode-remote-telegram
+npm install -g @weisser-dev/opencode-remote-telegram
 
 <span class="code-comment"># Start &rarr; setup wizard runs automatically on first launch</span>
 opencode-remote-telegram start</pre></div>
