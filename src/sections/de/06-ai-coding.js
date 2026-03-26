@@ -462,13 +462,14 @@ User-Daten paginiert abrufen.</span>
       <p class="slide-subtitle">Jede Agentic-L&ouml;sung besteht aus denselben 5 Schichten &ndash; nur die Bausteine variieren</p>
       <div style="display:flex;flex-direction:column;gap:6px;margin-top:12px" id="arch-layers">
         <div style="display:flex;align-items:stretch;gap:8px">
-          <div style="min-width:90px;padding:8px;border-radius:8px;background:rgba(255,237,0,0.1);border:1px solid rgba(255,237,0,0.25);font-size:0.7rem;color:var(--color-accent);font-weight:700;display:flex;align-items:center;justify-content:center;text-align:center">1. FRONTEND</div>
+          <div style="min-width:90px;padding:8px;border-radius:8px;background:rgba(255,237,0,0.1);border:1px solid rgba(255,237,0,0.25);font-size:0.7rem;color:var(--color-accent);font-weight:700;display:flex;align-items:center;justify-content:center;text-align:center">1. INTERFACE</div>
           <div style="flex:1;padding:8px 12px;border-radius:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);display:flex;flex-wrap:wrap;gap:4px;align-items:center">
             <span style="padding:3px 8px;border-radius:4px;background:rgba(255,237,0,0.12);border:1px solid rgba(255,237,0,0.3);font-size:0.7rem;color:var(--color-accent);font-weight:600">IDE Plugin</span>
             <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">Chat UI</span>
             <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">CLI / TUI</span>
-            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">Custom Frontend</span>
-            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">API Endpoint</span>
+            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">Chatbot Widget</span>
+            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">Voice / Call Center</span>
+            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">API / Webhook</span>
           </div>
         </div>
         <div style="text-align:center;font-size:0.7rem;color:rgba(255,255,255,0.3)">&#8595;</div>
@@ -523,7 +524,7 @@ User-Daten paginiert abrufen.</span>
       </div>
       <div style="margin-top:8px;padding:8px 12px;border-radius:8px;background:rgba(255,237,0,0.06);border:1px solid rgba(255,237,0,0.15)">
         <p style="font-size:0.72rem;color:rgba(255,255,255,0.7);line-height:1.4">
-          <strong style="color:var(--color-accent)">Gelb markiert</strong> = unsere Workshop-Konfiguration. Jede Schicht ist austauschbar &ndash; auf der n&auml;chsten Seite k&ouml;nnt ihr eure eigene Architektur zusammenbauen.
+          <strong style="color:var(--color-accent)">Gelb markiert</strong> = unsere Workshop-Konfiguration. Jede Schicht ist austauschbar &ndash; auf der n&auml;chsten Seite k&ouml;nnt ihr eure eigene Architektur zusammenbauen. <a href="https://www.dataiku.com/stories/detail/ai-agents/" target="_blank" rel="noopener" style="color:var(--color-accent);text-decoration:underline;font-size:0.65rem">Quelle: Dataiku &ndash; Understanding AI Agents</a>
         </p>
       </div>
     `,
@@ -540,13 +541,14 @@ User-Daten paginiert abrufen.</span>
       <p class="slide-subtitle" style="font-size:0.82rem">W&auml;hle pro Schicht eine Komponente &ndash; die Zusammenfassung aktualisiert sich live</p>
       <div id="arch-builder-form" style="display:flex;flex-direction:column;gap:8px;margin-top:8px">
         <div class="arch-layer" data-layer="frontend" style="display:flex;align-items:center;gap:8px">
-          <div style="min-width:72px;font-size:0.65rem;color:var(--color-accent);font-weight:700;text-align:right">FRONTEND</div>
+          <div style="min-width:72px;font-size:0.65rem;color:var(--color-accent);font-weight:700;text-align:right">INTERFACE</div>
           <div style="flex:1;display:flex;flex-wrap:wrap;gap:4px" id="arch-opts-frontend">
             <button class="arch-opt arch-opt--active" data-value="ide" data-info="L&auml;uft lokal in VS Code / JetBrains. Agent hat Zugriff auf Dateisystem." style="padding:4px 10px;border-radius:6px;border:1px solid rgba(255,237,0,0.3);background:rgba(255,237,0,0.12);color:var(--color-accent);font-size:0.68rem;cursor:pointer;font-weight:600">IDE Plugin</button>
             <button class="arch-opt" data-value="chat" data-info="Web-basiert (OpenWebUI, ChatGPT etc.). L&auml;uft im Browser, kein lokaler Zugriff." style="padding:4px 10px;border-radius:6px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.7);font-size:0.68rem;cursor:pointer">Chat UI</button>
             <button class="arch-opt" data-value="cli" data-info="Terminal-basiert. Perfekt f&uuml;r Scripting und Automatisierung." style="padding:4px 10px;border-radius:6px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.7);font-size:0.68rem;cursor:pointer">CLI / TUI</button>
-            <button class="arch-opt" data-value="custom-fe" data-info="Eigenes Frontend (React, etc.). Volle Kontrolle, aber Entwicklungsaufwand." style="padding:4px 10px;border-radius:6px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.7);font-size:0.68rem;cursor:pointer">Custom</button>
-            <button class="arch-opt" data-value="api" data-info="Headless / API-only. F&uuml;r CI/CD Pipelines, Webhooks, Automatisierung." style="padding:4px 10px;border-radius:6px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.7);font-size:0.68rem;cursor:pointer">API / Headless</button>
+            <button class="arch-opt" data-value="chatbot" data-info="Chatbot-Widget auf Webseite oder in App. Kunden-facing, oft mit Kontext." style="padding:4px 10px;border-radius:6px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.7);font-size:0.68rem;cursor:pointer">Chatbot Widget</button>
+            <button class="arch-opt" data-value="voice" data-info="Voice / Telefon. Call-Center-Agents, Sprachassistenten, IVR-Systeme." style="padding:4px 10px;border-radius:6px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.7);font-size:0.68rem;cursor:pointer">Voice / Telefon</button>
+            <button class="arch-opt" data-value="api" data-info="Headless / API-only. F&uuml;r CI/CD Pipelines, Webhooks, Automatisierung." style="padding:4px 10px;border-radius:6px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.7);font-size:0.68rem;cursor:pointer">API / Webhook</button>
           </div>
         </div>
         <div class="arch-layer" data-layer="framework" style="display:flex;align-items:center;gap:8px">

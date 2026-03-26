@@ -1044,6 +1044,88 @@ function setupHandsonQR() {
   urlEl.textContent = handsonUrl;
 }
 
+// ===== Architecture Builder =====
+function setupArchBuilder() {
+  const form = document.getElementById('arch-builder-form');
+  if (!form) return;
+
+  const summaryEl = document.getElementById('arch-summary');
+  const detailEl = document.getElementById('arch-detail');
+  if (!summaryEl || !detailEl) return;
+
+  function getSelected(layerId) {
+    const container = document.getElementById(`arch-opts-${layerId}`);
+    if (!container) return [];
+    return Array.from(container.querySelectorAll('.arch-opt--active')).map(btn => ({
+      value: btn.dataset.value,
+      label: btn.textContent.trim(),
+      info: btn.dataset.info || '',
+    }));
+  }
+
+  function updateSummary() {
+    const frontend = getSelected('frontend');
+    const framework = getSelected('framework');
+    const llm = getSelected('llm');
+    const tools = getSelected('tools');
+
+    const fe = frontend[0]?.label || '?';
+    const fw = framework[0]?.label || '?';
+    const model = llm[0]?.label || '?';
+    const toolNames = tools.map(t => t.label).join(', ') || 'keine';
+
+    summaryEl.innerHTML = `<strong style="color:var(--color-accent)">${fe}</strong> &rarr; <strong>${fw}</strong> &rarr; <strong>${model}</strong> + <strong style="color:var(--color-positive)">${toolNames}</strong>`;
+
+    // Show the info text from the last changed single-select, or first tool
+    const infos = [...frontend, ...framework, ...llm].filter(x => x.info);
+    const lastInfo = infos[infos.length - 1]?.info || '';
+    const toolInfo = tools.length > 0
+      ? (currentLang === 'de' ? `Tools: ${tools.map(t => t.label).join(', ')}` : `Tools: ${tools.map(t => t.label).join(', ')}`)
+      : '';
+    detailEl.textContent = lastInfo + (toolInfo ? ` | ${toolInfo}` : '');
+  }
+
+  form.addEventListener('click', (e) => {
+    const btn = e.target.closest('.arch-opt');
+    if (!btn) return;
+
+    const container = btn.parentElement;
+    const isMulti = btn.classList.contains('arch-opt--multi');
+
+    if (isMulti) {
+      // Toggle this button
+      btn.classList.toggle('arch-opt--active');
+      if (btn.classList.contains('arch-opt--active')) {
+        btn.style.border = '1px solid rgba(255,237,0,0.3)';
+        btn.style.background = 'rgba(255,237,0,0.12)';
+        btn.style.color = 'var(--color-accent)';
+        btn.style.fontWeight = '600';
+      } else {
+        btn.style.border = '1px solid rgba(255,255,255,0.12)';
+        btn.style.background = 'rgba(255,255,255,0.04)';
+        btn.style.color = 'rgba(255,255,255,0.7)';
+        btn.style.fontWeight = 'normal';
+      }
+    } else {
+      // Single select: deactivate siblings, activate this
+      container.querySelectorAll('.arch-opt').forEach(b => {
+        b.classList.remove('arch-opt--active');
+        b.style.border = '1px solid rgba(255,255,255,0.12)';
+        b.style.background = 'rgba(255,255,255,0.04)';
+        b.style.color = 'rgba(255,255,255,0.7)';
+        b.style.fontWeight = 'normal';
+      });
+      btn.classList.add('arch-opt--active');
+      btn.style.border = '1px solid rgba(255,237,0,0.3)';
+      btn.style.background = 'rgba(255,237,0,0.12)';
+      btn.style.color = 'var(--color-accent)';
+      btn.style.fontWeight = '600';
+    }
+
+    updateSummary();
+  });
+}
+
 function setupQuiz() {
   document.addEventListener('click', (e) => {
     const option = e.target.closest('.quiz-option');
@@ -1156,6 +1238,7 @@ setupViewToggles();
 setupCopyButtons();
 setupQuiz();
 setupHandsonQR();
+setupArchBuilder();
 
 // Mobile start button (works in both mobile and self-paced desktop)
 const mobileStartBtn = document.getElementById('mobile-start-btn');
