@@ -2173,12 +2173,12 @@ body.slide-werbung #matrix-canvas {
 /* Arch Builder: viewport-only responsive (not affected by self-paced-mode) */
 .arch-viewport-desktop {
   display: block;
-  max-width: calc(100vw - 200px) !important;
+  max-width: calc(100vw - 240px) !important;
 }
 
 /* Arch Builder slide needs wider content on desktop */
 .slide:has(.arch-viewport-desktop) .slide-content {
-  max-width: calc(100vw - 200px) !important;
+  max-width: calc(100vw - 240px) !important;
 }
 
 #arch-diagram {
