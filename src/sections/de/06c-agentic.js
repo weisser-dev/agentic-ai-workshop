@@ -5,7 +5,7 @@ export const agenticSlides = [
     theme: 'slide--primary slide--divider',
     label: 'Agentic AI',
     content: `
-      <div class="divider-number">&#129302;</div>
+      <div class="divider-number">&#127919;</div>
       <h2 class="slide-title">Agentic AI</h2>
       <p class="slide-subtitle">Autonome KI-Systeme &ndash; Architektur, Layer-Modelle &amp; Enterprise-Tauglichkeit</p>
     `,
@@ -207,15 +207,19 @@ export const agenticSlides = [
 // ===== Interaktiver Agent Architecture Builder =====
   {
     id: 'arch-builder',
-    theme: 'slide--dark',
+    theme: '',
     label: 'Arch Builder',
     content: `
-      <span class="slide-label" style="color:var(--color-accent)">Interaktiv</span>
-      <h2 class="slide-title" style="font-size:1.5rem;margin-bottom:6px">Wie k&ouml;nnte deine Agenten-Architektur aussehen?</h2>
-      <p class="slide-subtitle" style="font-size:0.9rem;margin-bottom:20px">W&auml;hle einen Use Case und sieh dir eine vereinfachte Referenzarchitektur an &ndash; mit Deployment-Zonen, Tools und Backends.</p>
-      <div class="desktop-content">
-        <div style="display:flex;align-items:center;gap:12px;justify-content:center">
-          <select id="arch-usecase" style="padding:10px 16px;border-radius:10px;border:2px solid rgba(255,237,0,0.3);background:rgba(255,237,0,0.06);color:var(--color-accent);font-size:0.9rem;cursor:pointer;font-weight:600;min-width:240px;appearance:auto">
+      <div class="arch-viewport-desktop">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <div>
+            <span class="slide-label" style="color:var(--color-primary)">Interaktiv</span>
+            <h2 class="slide-title" style="font-size:1.4rem;margin:4px 0 0">Agenten-Architektur Designer</h2>
+          </div>
+          <button id="arch-export-btn" style="padding:6px 14px;border-radius:8px;border:1px solid var(--color-border);background:var(--color-bg-subdued);color:var(--color-text-subdued);font-size:0.75rem;cursor:pointer;display:none;transition:opacity 0.3s" title="Diagramm als Bild exportieren">&#128247; Exportieren</button>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;justify-content:center;margin-bottom:16px">
+          <select id="arch-usecase" style="padding:10px 16px;border-radius:10px;border:2px solid var(--color-border-primary);background:var(--color-bg-subdued);color:var(--color-text-primary);font-size:0.9rem;cursor:pointer;font-weight:600;min-width:260px;appearance:auto">
             <option value="coding">&#128187; Coding Assistant</option>
             <option value="review">&#128269; Code Review (CI/CD)</option>
             <option value="docs">&#128196; Doku-Agent</option>
@@ -225,19 +229,21 @@ export const agenticSlides = [
             <option value="knowledge">&#128218; Wissens-Agent (Wiki)</option>
             <option value="data">&#128202; Data Pipeline Agent</option>
           </select>
-          <button id="arch-generate-btn" style="padding:10px 24px;border-radius:10px;border:none;background:var(--color-accent,#ffed00);color:#1a1a2e;font-size:0.9rem;font-weight:700;cursor:pointer;white-space:nowrap;transition:transform 0.15s ease">
+          <button id="arch-generate-btn" style="padding:10px 24px;border-radius:10px;border:none;background:var(--color-primary);color:#fff;font-size:0.9rem;font-weight:700;cursor:pointer;white-space:nowrap;transition:transform 0.15s ease">
             Architektur erzeugen &rarr;
           </button>
         </div>
-        <div id="arch-diagram" style="margin-top:20px;opacity:0;transition:opacity 0.5s ease,transform 0.5s ease;transform:translateY(10px)"></div>
-        <div id="arch-builder-detail" style="margin-top:10px;padding:10px 16px;border-radius:10px;background:rgba(47,108,122,0.1);border:1px solid rgba(47,108,122,0.25);font-size:0.78rem;color:rgba(255,255,255,0.7);line-height:1.5;min-height:20px;opacity:0;transition:opacity 0.5s ease"></div>
+        <div id="arch-diagram" style="padding:24px;border-radius:14px;background:#fff;border:1px solid #e2e8f0;box-shadow:0 2px 12px rgba(0,0,0,0.06);min-height:120px;opacity:0;transition:opacity 0.5s ease,transform 0.5s ease;transform:translateY(8px)"></div>
+        <div id="arch-builder-detail" style="margin-top:10px;padding:10px 16px;border-radius:10px;background:var(--color-bg-subdued);border:1px solid var(--color-border);font-size:0.8rem;color:var(--color-text-subdued);line-height:1.5;min-height:20px;opacity:0;transition:opacity 0.5s ease"></div>
       </div>
-      <div class="mobile-content" style="display:none">
-        <div style="padding:24px;border-radius:12px;background:rgba(255,237,0,0.06);border:2px dashed rgba(255,237,0,0.25);text-align:center;margin-top:20px">
+      <div class="arch-viewport-mobile">
+        <span class="slide-label" style="color:var(--color-primary)">Interaktiv</span>
+        <h2 class="slide-title" style="font-size:1.3rem;margin-bottom:16px">Agenten-Architektur Designer</h2>
+        <div style="padding:24px;border-radius:12px;background:var(--color-bg-subdued);border:2px dashed var(--color-border);text-align:center">
           <div style="font-size:2.5rem;margin-bottom:12px">&#128421;</div>
-          <p style="font-size:1rem;color:rgba(255,255,255,0.85);font-weight:600;margin-bottom:8px">Interaktives Feature &ndash; nur auf Desktop</p>
-          <p style="font-size:0.85rem;color:rgba(255,255,255,0.5);line-height:1.5">Der Architektur-Designer ist ein interaktives Tool mit Diagramm-Darstellung. &Ouml;ffne die Pr&auml;sentation auf einem Laptop oder Desktop-PC, um 8 verschiedene Use-Case-Architekturen zu erkunden.</p>
-          <p style="font-size:0.75rem;color:rgba(255,255,255,0.35);margin-top:12px">Use Cases: Coding Assistant, Code Review, Doku-Agent, Kunden-Chatbot, Call Center Voice Agent, Ticket-Automatisierung, Wissens-Agent, Data Pipeline</p>
+          <p style="font-size:1rem;color:var(--color-text-primary);font-weight:600;margin-bottom:8px">Interaktives Feature &ndash; nur auf Desktop</p>
+          <p style="font-size:0.85rem;color:var(--color-text-subdued);line-height:1.5">&Ouml;ffne die Pr&auml;sentation auf einem Laptop oder Desktop-PC, um 8 verschiedene Use-Case-Architekturen interaktiv zu erkunden.</p>
+          <p style="font-size:0.75rem;color:var(--color-text-subdued);opacity:0.6;margin-top:12px">Use Cases: Coding Assistant, Code Review, Doku-Agent, Kunden-Chatbot, Voice Agent, Ticket-Automatisierung, Wissens-Agent, Data Pipeline</p>
         </div>
       </div>
     `,
@@ -250,43 +256,58 @@ export const agenticSlides = [
     label: 'Disruption',
     content: `
       <span class="slide-label" style="color:var(--color-accent)">These</span>
-      <h2 class="slide-title">Agenten k&ouml;nnten die Branche auf den Kopf stellen</h2>
-      <p class="slide-subtitle">Kein neues Backend n&ouml;tig? Nur Agent + Spec + agents.md?</p>
-      <div class="two-cols" style="margin-top:14px">
-        <div>
-          <h3 style="color:var(--color-accent);font-size:1rem;margin-bottom:8px">Was sich &auml;ndert</h3>
-          <div style="display:flex;flex-direction:column;gap:6px">
-            <div style="padding:10px;border-radius:8px;background:rgba(255,237,0,0.06);border:1px solid rgba(255,237,0,0.15);font-size:0.82rem;color:rgba(255,255,255,0.85);line-height:1.5">
-              <strong style="color:var(--color-accent)">Heute:</strong> Team baut Backend &rarr; API &rarr; Frontend &rarr; Tests &rarr; Deployment. Monate an Arbeit.
-            </div>
-            <div style="padding:10px;border-radius:8px;background:rgba(37,204,120,0.08);border:2px solid rgba(37,204,120,0.25);font-size:0.82rem;color:rgba(255,255,255,0.85);line-height:1.5">
-              <strong style="color:var(--color-positive)">Mit Agents:</strong> Spec schreiben &rarr; agents.md definieren &rarr; Agent baut alles. <strong>Stunden statt Monate.</strong>
-            </div>
+      <h2 class="slide-title" style="font-size:1.3rem">3 Wege zum gleichen Ziel &ndash; wann welchen w&auml;hlen?</h2>
+      <p class="slide-subtitle" style="font-size:0.82rem">Der Aufwand verschwindet nicht &ndash; er verschiebt sich. Die Frage ist: <strong>wohin?</strong></p>
+      <div style="display:flex;flex-direction:column;gap:6px;margin-top:10px">
+        <div style="padding:10px 12px;border-radius:10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1)">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
+            <span style="padding:2px 8px;border-radius:4px;background:rgba(255,107,107,0.12);border:1px solid rgba(255,107,107,0.3);font-size:0.65rem;color:#ff6b6b;font-weight:700">SELBST BAUEN</span>
+            <span style="font-size:0.82rem;color:rgba(255,255,255,0.9);font-weight:600">Team implementiert klassisch</span>
           </div>
-          <h3 style="color:var(--color-accent);font-size:0.95rem;margin:12px 0 8px">Bestehende APIs bleiben</h3>
-          <div style="padding:10px;border-radius:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);font-size:0.8rem;color:rgba(255,255,255,0.7);line-height:1.5">
-            Confluence, Jira, GitHub, Datenbanken &ndash; alles hat bereits APIs. Agents nutzen diese &uuml;ber <strong>MCP-Tools</strong>. Kein neues Backend n&ouml;tig, nur eine Spec die beschreibt <em>was</em> passieren soll.
+          <p style="font-size:0.75rem;color:rgba(255,255,255,0.55);line-height:1.4;margin-bottom:4px">Backend &rarr; API &rarr; Frontend &rarr; Tests &rarr; Deployment. Volle Kontrolle, aber <strong>Monate Aufwand</strong>.</p>
+          <div style="display:flex;gap:6px;flex-wrap:wrap">
+            <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);font-size:0.62rem;color:rgba(255,255,255,0.5)">&#10003; Hoch-regulierte Systeme (Medizin, Finanzen)</span>
+            <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);font-size:0.62rem;color:rgba(255,255,255,0.5)">&#10003; Echtzeit-Anforderungen &lt;50ms</span>
+            <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);font-size:0.62rem;color:rgba(255,255,255,0.5)">&#10003; Deterministische Logik zwingend</span>
           </div>
         </div>
-        <div>
-          <h3 style="color:var(--color-accent);font-size:1rem;margin-bottom:8px">Konkrete Beispiele</h3>
-          <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:10px">
-            <div style="padding:7px 10px;border-radius:6px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);font-size:0.78rem;color:rgba(255,255,255,0.8)">
-              <strong>Code Review:</strong> Fr&uuml;her: Custom Backend + GitLab Webhooks. Jetzt: Agent + Git MCP + Spec.
-            </div>
-            <div style="padding:7px 10px;border-radius:6px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);font-size:0.78rem;color:rgba(255,255,255,0.8)">
-              <strong>Doku-Generierung:</strong> Fr&uuml;her: Custom Pipeline. Jetzt: Agent + Confluence MCP + agents.md.
-            </div>
-            <div style="padding:7px 10px;border-radius:6px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);font-size:0.78rem;color:rgba(255,255,255,0.8)">
-              <strong>Kunden-Chatbot:</strong> Fr&uuml;her: RAG-Pipeline + Custom Backend. Jetzt: Agent + Vektor-DB MCP + Produkt-API MCP.
-            </div>
-            <div style="padding:7px 10px;border-radius:6px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);font-size:0.78rem;color:rgba(255,255,255,0.8)">
-              <strong>Ticket-Triage:</strong> Fr&uuml;her: Regel-Engine. Jetzt: Agent + Jira MCP + Klassifizierungs-Spec.
-            </div>
+        <div style="padding:10px 12px;border-radius:10px;background:rgba(255,237,0,0.05);border:2px solid rgba(255,237,0,0.2)">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
+            <span style="padding:2px 8px;border-radius:4px;background:rgba(255,237,0,0.15);border:1px solid rgba(255,237,0,0.35);font-size:0.65rem;color:var(--color-accent);font-weight:700">AGENT BAUT</span>
+            <span style="font-size:0.82rem;color:rgba(255,255,255,0.9);font-weight:600">Agent als Entwickler &ndash; baut f&uuml;r dich</span>
           </div>
-          <div style="padding:10px;border-radius:8px;background:rgba(255,107,107,0.08);border:1px solid rgba(255,107,107,0.2);font-size:0.78rem;color:rgba(255,255,255,0.7);line-height:1.4">
-            <strong style="color:#ff6b6b">Aber:</strong> Agents ersetzen nicht die Infrastruktur. Sie ersetzen den <strong>Glue Code</strong> &ndash; die Logik die verschiedene Services verbindet. Die APIs, Datenbanken und Services m&uuml;ssen weiterhin existieren und gewartet werden.
+          <p style="font-size:0.75rem;color:rgba(255,255,255,0.55);line-height:1.4;margin-bottom:4px">Spec + agents.md &rarr; Agent baut Code, Tests, Infra. Mensch reviewt &amp; deployed. <strong>Stunden statt Monate.</strong></p>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px">
+            <span style="padding:2px 6px;border-radius:3px;background:rgba(255,237,0,0.08);font-size:0.62rem;color:rgba(255,255,255,0.6)">&#10003; Klares Konzept / Spec vorhanden</span>
+            <span style="padding:2px 6px;border-radius:3px;background:rgba(255,237,0,0.08);font-size:0.62rem;color:rgba(255,255,255,0.6)">&#10003; Human-in-the-Loop bei Review</span>
+            <span style="padding:2px 6px;border-radius:3px;background:rgba(255,237,0,0.08);font-size:0.62rem;color:rgba(255,255,255,0.6)">&#10003; Standard-Patterns (CRUD, API, UI)</span>
           </div>
+          <div style="font-size:0.68rem;color:rgba(255,255,255,0.4);line-height:1.3"><strong>Praktisch:</strong> Feature f&uuml;r Webseite, REST API, CLI Tool, Datenbank-Migration, Refactoring, Test-Suite &ndash; alles wo eine klare Spec den Rahmen vorgibt und ein Mensch den Output pr&uuml;ft.</div>
+        </div>
+        <div style="padding:10px 12px;border-radius:10px;background:rgba(37,204,120,0.06);border:2px solid rgba(37,204,120,0.2)">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
+            <span style="padding:2px 8px;border-radius:4px;background:rgba(37,204,120,0.15);border:1px solid rgba(37,204,120,0.35);font-size:0.65rem;color:var(--color-positive);font-weight:700">AGENT IST</span>
+            <span style="font-size:0.82rem;color:rgba(255,255,255,0.9);font-weight:600">Agent <em>ist</em> das Backend &ndash; kein Code</span>
+          </div>
+          <p style="font-size:0.75rem;color:rgba(255,255,255,0.55);line-height:1.4;margin-bottom:4px">Agent + MCP-Tools + Spec = fertiges Produkt. <strong>Null Code.</strong> Aufwand: fachliche Tests &amp; Monitoring.</p>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px">
+            <span style="padding:2px 6px;border-radius:3px;background:rgba(37,204,120,0.08);font-size:0.62rem;color:rgba(255,255,255,0.6)">&#10003; Verprobung / PoC / MVP</span>
+            <span style="padding:2px 6px;border-radius:3px;background:rgba(37,204,120,0.08);font-size:0.62rem;color:rgba(255,255,255,0.6)">&#10003; MCPs f&uuml;r alle ben&ouml;tigten Services</span>
+            <span style="padding:2px 6px;border-radius:3px;background:rgba(37,204,120,0.08);font-size:0.62rem;color:rgba(255,255,255,0.6)">&#10003; Fehlertoleranz akzeptabel</span>
+          </div>
+          <div style="font-size:0.68rem;color:rgba(255,255,255,0.4);line-height:1.3"><strong>Praktisch:</strong> Interner Wissens-Chatbot (Confluence+Jira MCP), Code Review Agent (Git MCP), Doku-Generator, Ticket-Triage, Prototyp f&uuml;r Kunden-Demo. Immer wenn MCP-Tools die n&ouml;tigen APIs abdecken.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:6px;margin-top:6px">
+        <div style="flex:1;padding:7px 10px;border-radius:8px;background:rgba(255,168,0,0.08);border:1px solid rgba(255,168,0,0.2)">
+          <p style="font-size:0.68rem;color:rgba(255,255,255,0.55);line-height:1.3">
+            <strong style="color:var(--color-warning)">Aufwands-Verschiebung:</strong> Implementierung &rarr; <strong>Spec, fachliche Tests, Monitoring, Review</strong>. Wer keine Tests schreibt, kann Agents nicht einsetzen.
+          </p>
+        </div>
+        <div style="flex:1;padding:7px 10px;border-radius:8px;background:rgba(47,108,122,0.08);border:1px solid rgba(47,108,122,0.2)">
+          <p style="font-size:0.68rem;color:rgba(255,255,255,0.55);line-height:1.3">
+            <strong style="color:var(--color-accent)">Faustregel:</strong> Je klarer die Spec + je besser die MCP-Abdeckung + je h&ouml;her die Fehlertoleranz &rarr; desto weiter rechts (Agent IST). Kritische Systeme &rarr; links (selbst bauen).
+          </p>
         </div>
       </div>
     `,
@@ -303,40 +324,46 @@ export const agenticSlides = [
       <p class="slide-subtitle">Kann ich bei 100.000 Anfragen mit derselben Spec 100.000-mal dasselbe Ergebnis erwarten?</p>
       <div class="two-cols" style="margin-top:14px">
         <div>
-          <h3 style="color:var(--color-critical);font-size:1rem;margin-bottom:8px">Die ehrliche Antwort: Nein &ndash; nicht automatisch</h3>
-          <div style="display:flex;flex-direction:column;gap:6px">
-            <div style="padding:10px;border-radius:8px;background:rgba(255,107,107,0.06);border:1px solid rgba(255,107,107,0.2);font-size:0.8rem;line-height:1.5">
-              <strong style="color:var(--color-critical)">LLMs sind nicht-deterministisch.</strong> Selbst mit <code style="background:rgba(0,0,0,0.1);padding:1px 3px;border-radius:2px;font-size:0.72rem">temperature: 0</code> k&ouml;nnen Antworten minimal variieren. Floating-Point-Arithmetik, Batching und Provider-Updates beeinflussen das Ergebnis.
+          <h3 style="color:var(--color-critical);font-size:0.95rem;margin-bottom:8px">Die ehrliche Antwort: Nein &ndash; nicht automatisch</h3>
+          <div style="display:flex;flex-direction:column;gap:5px">
+            <div style="padding:8px 10px;border-radius:8px;background:rgba(255,107,107,0.06);border:1px solid rgba(255,107,107,0.2);font-size:0.78rem;line-height:1.4">
+              <strong style="color:var(--color-critical)">LLMs sind nicht-deterministisch.</strong> Selbst mit <code style="background:rgba(0,0,0,0.1);padding:1px 3px;border-radius:2px;font-size:0.7rem">temperature: 0</code> variieren Antworten. Floating-Point, Batching und Provider-Updates beeinflussen Ergebnisse.
             </div>
-            <div style="padding:10px;border-radius:8px;background:rgba(255,107,107,0.06);border:1px solid rgba(255,107,107,0.2);font-size:0.8rem;line-height:1.5">
-              <strong style="color:var(--color-critical)">Tool-Aufrufe sind Seiteneffekte.</strong> Ein Agent der Jira-Tickets erstellt, DB-Eintr&auml;ge schreibt oder Code committet &ndash; das kann man nicht einfach r&uuml;ckg&auml;ngig machen, wenn das Ergebnis falsch ist.
+            <div style="padding:8px 10px;border-radius:8px;background:rgba(255,107,107,0.06);border:1px solid rgba(255,107,107,0.2);font-size:0.78rem;line-height:1.4">
+              <strong style="color:var(--color-critical)">Tool-Aufrufe sind Seiteneffekte.</strong> Jira-Tickets, DB-Eintr&auml;ge, Commits &ndash; nicht einfach r&uuml;ckg&auml;ngig zu machen wenn falsch.
             </div>
-            <div style="padding:10px;border-radius:8px;background:rgba(255,107,107,0.06);border:1px solid rgba(255,107,107,0.2);font-size:0.8rem;line-height:1.5">
-              <strong style="color:var(--color-critical)">Kontext &auml;ndert sich.</strong> Dasselbe Prompt kann zu unterschiedlichen Ergebnissen f&uuml;hren, wenn sich die Wissensbasis, der Code oder die Daten &auml;ndern.
+            <div style="padding:8px 10px;border-radius:8px;background:rgba(255,107,107,0.06);border:1px solid rgba(255,107,107,0.2);font-size:0.78rem;line-height:1.4">
+              <strong style="color:var(--color-critical)">Kontext &auml;ndert sich.</strong> Neue Daten, ge&auml;nderter Code, aktualisierte Wissensbasis &rarr; anderes Ergebnis.
+            </div>
+            <div style="padding:8px 10px;border-radius:8px;background:rgba(255,168,0,0.08);border:1px solid rgba(255,168,0,0.25);font-size:0.78rem;line-height:1.4">
+              <strong style="color:var(--color-warning)">Model-Updates!</strong> Claude 4.5 &rarr; 4.6, GPT-4 &rarr; GPT-5: Provider aktualisieren Modelle ohne Vorwarnung. Verhalten kann sich &auml;ndern, auch bei gleicher API. <strong>Pinning auf Modell-Version ist Pflicht.</strong>
             </div>
           </div>
         </div>
         <div>
-          <h3 style="color:var(--color-positive);font-size:1rem;margin-bottom:8px">Wie man Resilienz trotzdem erreicht</h3>
-          <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:10px">
-            <div style="padding:8px 10px;border-radius:6px;background:var(--color-bg-subdued);border:1px solid var(--color-border);font-size:0.78rem;line-height:1.4">
-              <strong style="color:var(--color-primary)">&#9989; Spec als Vertrag:</strong> Klare, messbare Specs definieren <em>was</em> rauskommen soll. Agent-Output wird gegen Spec validiert.
+          <h3 style="color:var(--color-positive);font-size:0.95rem;margin-bottom:8px">Wie man Resilienz erreicht</h3>
+          <div style="display:flex;flex-direction:column;gap:4px;margin-bottom:8px">
+            <div style="padding:7px 10px;border-radius:6px;background:var(--color-bg-subdued);border:1px solid var(--color-border);font-size:0.76rem;line-height:1.4">
+              <strong style="color:var(--color-primary)">&#9989; Spec als Vertrag:</strong> Klare, messbare Specs definieren <em>was</em> rauskommen soll. Agent-Output gegen Spec validieren.
             </div>
-            <div style="padding:8px 10px;border-radius:6px;background:var(--color-bg-subdued);border:1px solid var(--color-border);font-size:0.78rem;line-height:1.4">
-              <strong style="color:var(--color-primary)">&#9989; Tests als Guardrails:</strong> Automatisierte Tests pr&uuml;fen ob das Ergebnis den Anforderungen entspricht &ndash; nicht ob es identisch ist.
+            <div style="padding:7px 10px;border-radius:6px;background:var(--color-bg-subdued);border:1px solid var(--color-border);font-size:0.76rem;line-height:1.4">
+              <strong style="color:var(--color-primary)">&#9989; Fachliche Tests:</strong> Nicht &ldquo;ist der Output identisch?&rdquo; sondern &ldquo;erf&uuml;llt der Output die fachlichen Kriterien?&rdquo; Wie QA bei Software &ndash; Akzeptanztests, nicht Byte-Vergleiche.
             </div>
-            <div style="padding:8px 10px;border-radius:6px;background:var(--color-bg-subdued);border:1px solid var(--color-border);font-size:0.78rem;line-height:1.4">
-              <strong style="color:var(--color-primary)">&#9989; Human-in-the-Loop:</strong> F&uuml;r kritische Aktionen: Agent schl&auml;gt vor, Mensch genehmigt. (z.B. PR-Review statt Auto-Merge)
+            <div style="padding:7px 10px;border-radius:6px;background:var(--color-bg-subdued);border:1px solid var(--color-border);font-size:0.76rem;line-height:1.4">
+              <strong style="color:var(--color-primary)">&#9989; Model Pinning + Regression:</strong> Modell-Version fixieren (z.B. <code style="background:rgba(0,0,0,0.08);padding:1px 3px;border-radius:2px;font-size:0.68rem">claude-sonnet-4-20250514</code>). Bei Wechsel: Regressionstests gegen Testsuite laufen lassen.
             </div>
-            <div style="padding:8px 10px;border-radius:6px;background:var(--color-bg-subdued);border:1px solid var(--color-border);font-size:0.78rem;line-height:1.4">
-              <strong style="color:var(--color-primary)">&#9989; Idempotenz-Design:</strong> Agents so bauen, dass mehrfaches Ausf&uuml;hren sicher ist. Checks vor Aktionen.
+            <div style="padding:7px 10px;border-radius:6px;background:var(--color-bg-subdued);border:1px solid var(--color-border);font-size:0.76rem;line-height:1.4">
+              <strong style="color:var(--color-primary)">&#9989; Monitoring &amp; Observability:</strong> Jeden Agent-Schritt loggen. Input, Output, Tool-Calls, Latenz, Kosten. Dashboards f&uuml;r Anomalie-Erkennung. <span style="color:var(--color-text-subdued)">(z.B. LangSmith, Datadog, custom)</span>
             </div>
-            <div style="padding:8px 10px;border-radius:6px;background:var(--color-bg-subdued);border:1px solid var(--color-border);font-size:0.78rem;line-height:1.4">
-              <strong style="color:var(--color-primary)">&#9989; Logging &amp; Audit:</strong> Jeder Agent-Schritt wird geloggt. Nachvollziehbarkeit ist Pflicht.
+            <div style="padding:7px 10px;border-radius:6px;background:var(--color-bg-subdued);border:1px solid var(--color-border);font-size:0.76rem;line-height:1.4">
+              <strong style="color:var(--color-primary)">&#9989; Human-in-the-Loop:</strong> Agent schl&auml;gt vor, Mensch genehmigt. PR-Review statt Auto-Merge.
+            </div>
+            <div style="padding:7px 10px;border-radius:6px;background:var(--color-bg-subdued);border:1px solid var(--color-border);font-size:0.76rem;line-height:1.4">
+              <strong style="color:var(--color-primary)">&#9989; Idempotenz:</strong> Agents so bauen, dass wiederholtes Ausf&uuml;hren sicher ist. Checks vor jeder Aktion.
             </div>
           </div>
-          <div style="padding:8px 10px;border-radius:8px;background:rgba(47,108,122,0.08);border:1px solid rgba(47,108,122,0.2);font-size:0.72rem;color:var(--color-text-subdued);line-height:1.4">
-            <strong style="color:var(--color-primary)">Fazit:</strong> Agents liefern nicht 100.000x das <em>identische</em> Ergebnis &ndash; aber mit der richtigen Architektur 100.000x ein <strong>korrektes</strong> Ergebnis. &Auml;hnlich wie Menschen: Zwei Entwickler schreiben nicht den gleichen Code, aber beide bestehen die Tests.
+          <div style="padding:8px 10px;border-radius:8px;background:rgba(47,108,122,0.08);border:1px solid rgba(47,108,122,0.2);font-size:0.7rem;color:var(--color-text-subdued);line-height:1.4">
+            <strong style="color:var(--color-primary)">Fazit:</strong> Nicht 100.000x <em>identisch</em>, aber 100.000x <strong>korrekt</strong>. Wie Menschen: Zwei Entwickler schreiben nicht den gleichen Code &ndash; aber beide bestehen die Tests.
           </div>
         </div>
       </div>

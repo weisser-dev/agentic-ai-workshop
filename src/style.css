@@ -2170,6 +2170,25 @@ body.slide-werbung #matrix-canvas {
   display: contents;
 }
 
+/* Arch Builder: viewport-only responsive (not affected by self-paced-mode) */
+.arch-viewport-desktop {
+  display: block;
+}
+
+.arch-viewport-mobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .arch-viewport-desktop {
+    display: none !important;
+  }
+
+  .arch-viewport-mobile {
+    display: block !important;
+  }
+}
+
 @media (max-width: 768px) {
   .desktop-only-slide {
     display: none !important;

@@ -1173,129 +1173,114 @@ function setupArchBuilder() {
     },
   };
 
-  const zoneLabels = {
-    'local': { label: isDE ? '💻 Lokal (Entwickler-PC)' : '💻 Local (Developer PC)', color: 'rgba(37,204,120,0.12)', border: 'rgba(37,204,120,0.3)' },
-    'server': { label: isDE ? '🏢 On-Prem Server' : '🏢 On-Prem Server', color: 'rgba(47,108,122,0.12)', border: 'rgba(47,108,122,0.3)' },
-    'cloud': { label: '☁️ Cloud', color: 'rgba(100,149,237,0.12)', border: 'rgba(100,149,237,0.3)' },
-    'cloud-aws': { label: '☁️ AWS', color: 'rgba(255,153,0,0.1)', border: 'rgba(255,153,0,0.3)' },
-    'cloud-azure': { label: '☁️ Azure', color: 'rgba(0,120,215,0.1)', border: 'rgba(0,120,215,0.3)' },
-    'saas': { label: '🌐 SaaS', color: 'rgba(255,107,107,0.08)', border: 'rgba(255,107,107,0.25)' },
+  const zoneColors = {
+    'local': { bg: '#f0fdf4', border: '#86efac', label: '#16a34a', dot: '#22c55e' },
+    'server': { bg: '#f0f9ff', border: '#93c5fd', label: '#2563eb', dot: '#3b82f6' },
+    'cloud': { bg: '#faf5ff', border: '#c4b5fd', label: '#7c3aed', dot: '#8b5cf6' },
+    'cloud-aws': { bg: '#fff7ed', border: '#fdba74', label: '#c2410c', dot: '#f97316' },
+    'cloud-azure': { bg: '#eff6ff', border: '#93c5fd', label: '#1d4ed8', dot: '#3b82f6' },
+    'saas': { bg: '#fef2f2', border: '#fca5a5', label: '#dc2626', dot: '#ef4444' },
   };
 
-  function boxHTML(icon, name, role, accent) {
-    const bg = accent ? 'rgba(255,237,0,0.1)' : 'rgba(255,255,255,0.04)';
-    const brd = accent ? 'rgba(255,237,0,0.3)' : 'rgba(255,255,255,0.1)';
-    const clr = accent ? 'var(--color-accent)' : 'rgba(255,255,255,0.85)';
-    return `<div style="padding:5px 8px;border-radius:6px;background:${bg};border:1px solid ${brd};text-align:center;min-width:0">
-      <div style="font-size:0.9rem">${icon}</div>
-      <div style="font-size:0.62rem;font-weight:600;color:${clr};line-height:1.2;margin-top:1px">${name}</div>
-      <div style="font-size:0.55rem;color:rgba(255,255,255,0.4);margin-top:1px">${role}</div>
+  function boxHTML(icon, name, role, zone) {
+    const z = zoneColors[zone] || zoneColors['cloud'];
+    return `<div style="padding:12px 16px;border-radius:10px;background:${z.bg};border:2px solid ${z.border};text-align:center;min-width:100px;box-shadow:0 1px 4px rgba(0,0,0,0.06);position:relative">
+      <div style="position:absolute;top:4px;left:8px;font-size:0.5rem;color:${z.label};display:flex;align-items:center;gap:2px"><span style="width:5px;height:5px;border-radius:50%;background:${z.dot};display:inline-block"></span> ${zoneLabels[zone]?.label?.replace(/^.+\s/, '') || zone}</div>
+      <div style="font-size:1.4rem;margin-top:4px">${icon}</div>
+      <div style="font-size:0.78rem;font-weight:700;color:#1e293b;line-height:1.2;margin-top:4px">${name}</div>
+      <div style="font-size:0.62rem;color:#64748b;margin-top:2px">${role}</div>
     </div>`;
   }
 
   function arrow(label) {
-    return `<div style="display:flex;flex-direction:column;align-items:center;gap:0;min-width:20px">
-      <div style="font-size:0.6rem;color:rgba(255,255,255,0.3)">→</div>
-      ${label ? `<div style="font-size:0.45rem;color:rgba(255,255,255,0.25)">${label}</div>` : ''}
+    return `<div style="display:flex;flex-direction:column;align-items:center;gap:0;min-width:28px;padding:0 2px">
+      <div style="font-size:0.9rem;color:#cbd5e1">&rarr;</div>
+      ${label ? `<div style="font-size:0.55rem;color:#94a3b8">${label}</div>` : ''}
     </div>`;
   }
 
   function arrowDown(label) {
-    return `<div style="text-align:center;padding:1px 0">
-      <div style="font-size:0.55rem;color:rgba(255,255,255,0.3)">↓${label ? ' ' + label : ''}</div>
-    </div>`;
-  }
-
-  function zoneWrap(zone, content) {
-    const z = zoneLabels[zone] || zoneLabels['cloud'];
-    return `<div style="padding:4px 6px;border-radius:6px;background:${z.color};border:1px dashed ${z.border};position:relative">
-      <div style="font-size:0.45rem;color:rgba(255,255,255,0.35);margin-bottom:2px">${z.label}</div>
-      ${content}
+    return `<div style="text-align:center;padding:4px 0">
+      <div style="font-size:0.65rem;color:#94a3b8">&darr; ${label || ''}</div>
     </div>`;
   }
 
   function render(preset) {
     const p = preset;
 
-    // Group items by zone
-    const zones = {};
-    function addToZone(zone, html) {
-      if (!zones[zone]) zones[zone] = [];
-      zones[zone].push(html);
-    }
-
-    // Build the flow rows
-    // Row 1: Interface → Framework → LLM (with zones)
-    const row1 = `<div style="display:flex;align-items:center;gap:4px;flex-wrap:wrap;justify-content:center">
-      ${zoneWrap(p.iface.zone, boxHTML(p.iface.icon, p.iface.name, 'Interface', true))}
+    // Row 1: Interface → Framework → LLM
+    const row1 = `<div style="display:flex;align-items:center;gap:6px;justify-content:center;flex-wrap:wrap">
+      ${boxHTML(p.iface.icon, p.iface.name, 'Interface', p.iface.zone)}
       ${arrow('')}
-      ${zoneWrap(p.framework.zone, boxHTML(p.framework.icon, p.framework.name, 'Framework', false))}
+      ${boxHTML(p.framework.icon, p.framework.name, 'Framework', p.framework.zone)}
       ${arrow('API')}
-      ${zoneWrap(p.llm.zone, boxHTML(p.llm.icon, p.llm.name, 'LLM', false))}
+      ${boxHTML(p.llm.icon, p.llm.name, 'LLM', p.llm.zone)}
     </div>`;
 
-    // Row 2: Context (attached to Framework)
-    const row2 = `<div style="display:flex;justify-content:center;gap:4px;align-items:center;margin:3px 0">
-      <div style="width:80px"></div>
-      <div style="display:flex;align-items:center;gap:4px">
-        <div style="font-size:0.5rem;color:rgba(255,255,255,0.3)">↕</div>
-        ${zoneWrap(p.context.zone, boxHTML(p.context.icon, p.context.name, isDE ? 'Kontext / Memory' : 'Context / Memory', false))}
+    // Row 2: Context/Memory
+    const row2 = `<div style="display:flex;justify-content:center;margin:4px 0">
+      <div style="display:flex;align-items:center;gap:6px">
+        <span style="font-size:0.6rem;color:#94a3b8">&harr;</span>
+        ${boxHTML(p.context.icon, p.context.name, isDE ? 'Kontext / Memory' : 'Context / Memory', p.context.zone)}
       </div>
     </div>`;
 
-    // Row 3: Tools (MCP)
+    // Row 3: MCP Tools
     const toolsHTML = p.tools.map(t =>
-      `<div style="padding:3px 7px;border-radius:4px;background:rgba(255,237,0,0.08);border:1px solid rgba(255,237,0,0.2);font-size:0.58rem;color:var(--color-accent)">${t.name}</div>`
+      `<span style="padding:4px 10px;border-radius:6px;background:#eef2ff;border:1px solid #a5b4fc;font-size:0.7rem;color:#4338ca;font-weight:600">${t.name}</span>`
     ).join('');
     const row3 = p.tools.length ? `<div style="margin:2px 0">
-      ${arrowDown(isDE ? 'Tool Calls' : 'Tool Calls')}
-      <div style="display:flex;flex-wrap:wrap;gap:3px;justify-content:center">${toolsHTML}</div>
+      ${arrowDown('Tool Calls')}
+      <div style="display:flex;flex-wrap:wrap;gap:5px;justify-content:center">${toolsHTML}</div>
     </div>` : '';
 
-    // Row 4: Backends
-    const backendsHTML = p.backends.map(b =>
-      zoneWrap(b.zone, `<div style="text-align:center">
-        <div style="font-size:0.7rem">${b.icon}</div>
-        <div style="font-size:0.55rem;color:rgba(255,255,255,0.8);font-weight:600">${b.name}</div>
-      </div>`)
-    ).join('');
+    // Row 4: Backends/Services
+    const backendsHTML = p.backends.map(b => {
+      const z = zoneColors[b.zone] || zoneColors['saas'];
+      return `<div style="padding:8px 12px;border-radius:8px;background:${z.bg};border:1px solid ${z.border};text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04);position:relative">
+        <div style="position:absolute;top:3px;left:6px;font-size:0.42rem;color:${z.label};display:flex;align-items:center;gap:2px"><span style="width:4px;height:4px;border-radius:50%;background:${z.dot};display:inline-block"></span> ${zoneLabels[b.zone]?.label?.replace(/^.+\s/, '') || b.zone}</div>
+        <div style="font-size:0.95rem;margin-top:2px">${b.icon}</div>
+        <div style="font-size:0.65rem;color:#1e293b;font-weight:600;margin-top:2px">${b.name}</div>
+      </div>`;
+    }).join('');
     const row4 = p.backends.length ? `<div style="margin:2px 0">
       ${arrowDown('API')}
-      <div style="display:flex;flex-wrap:wrap;gap:4px;justify-content:center">${backendsHTML}</div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;justify-content:center">${backendsHTML}</div>
     </div>` : '';
 
     // Row 5: Output
     const outputHTML = p.output.map(o =>
-      `<span style="padding:2px 7px;border-radius:4px;background:rgba(37,204,120,0.1);border:1px solid rgba(37,204,120,0.25);font-size:0.58rem;color:var(--color-positive)">${o}</span>`
-    ).join(' ');
+      `<span style="padding:4px 10px;border-radius:6px;background:#f0fdf4;border:1px solid #86efac;font-size:0.7rem;color:#15803d;font-weight:600">${o}</span>`
+    ).join('');
     const outputLabel = p.outputTarget === 'user'
-      ? (isDE ? '↩ Antwort an User' : '↩ Response to User')
-      : (isDE ? '→ In System schreiben' : '→ Write to System');
+      ? (isDE ? '&larr; Antwort an User' : '&larr; Response to User')
+      : (isDE ? '&rarr; In System schreiben' : '&rarr; Write to System');
     const row5 = `<div style="margin-top:2px;text-align:center">
       ${arrowDown(isDE ? 'Ergebnis' : 'Output')}
-      <div style="display:flex;flex-wrap:wrap;gap:3px;justify-content:center;align-items:center">
+      <div style="display:flex;flex-wrap:wrap;gap:5px;justify-content:center;align-items:center">
         ${outputHTML}
-        <span style="font-size:0.5rem;color:rgba(255,255,255,0.35);margin-left:4px">${outputLabel}</span>
+        <span style="font-size:0.6rem;color:#94a3b8;margin-left:6px;font-style:italic">${outputLabel}</span>
       </div>
     </div>`;
 
     diagram.innerHTML = row1 + row2 + row3 + row4 + row5;
-    if (detailBox) detailBox.innerHTML = `<strong style="color:var(--color-accent)">${p.label}:</strong> ${p.desc}`;
+    if (detailBox) detailBox.innerHTML = `<strong style="color:var(--color-primary)">${p.label}:</strong> ${p.desc}`;
   }
 
   function showDiagram(preset) {
-    // Fade out first if already visible
     diagram.style.opacity = '0';
-    diagram.style.transform = 'translateY(10px)';
+    diagram.style.transform = 'translateY(8px)';
     if (detailBox) { detailBox.style.opacity = '0'; }
 
     setTimeout(() => {
       render(preset);
-      // Fade in
       requestAnimationFrame(() => {
         diagram.style.opacity = '1';
         diagram.style.transform = 'translateY(0)';
         if (detailBox) { detailBox.style.opacity = '1'; }
+        // Show export button
+        const exportBtn = document.getElementById('arch-export-btn');
+        if (exportBtn) exportBtn.style.display = 'inline-block';
       });
     }, diagram.innerHTML ? 300 : 50);
   }

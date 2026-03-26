@@ -5,7 +5,7 @@ export const agenticSlides = [
     theme: 'slide--primary slide--divider',
     label: 'Agentic AI',
     content: `
-      <div class="divider-number">&#129302;</div>
+      <div class="divider-number">&#127919;</div>
       <h2 class="slide-title">Agentic AI</h2>
       <p class="slide-subtitle">Autonomous AI Systems &ndash; Architecture, Layer Models &amp; Enterprise Readiness</p>
     `,
@@ -15,10 +15,10 @@ export const agenticSlides = [
   {
     id: 'what-is-agentic',
     theme: 'slide--dark',
-    label: 'Was ist Agentic AI?',
+    label: 'What is Agentic AI?',
     content: `
       <span class="slide-label">Definition</span>
-      <h2 class="slide-title">Was ist Agentic AI?</h2>
+      <h2 class="slide-title">What is Agentic AI?</h2>
       <p class="slide-subtitle">AI systems that <strong>independently plan, use tools and pursue goals</strong> &ndash; without being prompted for every step</p>
       <div class="two-cols" style="margin-top:16px">
         <div>
@@ -26,7 +26,7 @@ export const agenticSlides = [
           <div style="display:flex;flex-direction:column;gap:8px">
             <div style="padding:12px;border-radius:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1)">
               <p style="font-size:0.85rem;color:rgba(255,255,255,0.5);margin-bottom:4px"><strong>Classic LLM</strong> (ChatGPT, Claude Chat)</p>
-              <p style="font-size:0.82rem;color:rgba(255,255,255,0.8);line-height:1.5">Question &rarr; Answer. One step. No access to tools. Forgets everything after the chat.</p>
+              <p style="font-size:0.82rem;color:rgba(255,255,255,0.8);line-height:1.5">Question &rarr; Answer. One step. No tool access. Forgets everything after the chat.</p>
             </div>
             <div style="padding:12px;border-radius:8px;background:rgba(255,237,0,0.06);border:2px solid rgba(255,237,0,0.25)">
               <p style="font-size:0.85rem;color:var(--color-accent);margin-bottom:4px"><strong>Agentic AI</strong></p>
@@ -75,7 +75,7 @@ export const agenticSlides = [
     content: `
       <span class="slide-label">Architektur</span>
       <h2 class="slide-title">Agentic Architectures &ndash; Different Layer Models</h2>
-      <p class="slide-subtitle">There is no single standard model &ndash; but they all describe the same building blocks</p>
+      <p class="slide-subtitle">There is no single standard &ndash; but they all describe the same building blocks</p>
       <div class="two-cols" style="margin-top:14px">
         <div>
           <h3 style="color:var(--color-primary);font-size:0.95rem;margin-bottom:8px">3 Common Reference Models</h3>
@@ -118,7 +118,7 @@ export const agenticSlides = [
             </div>
           </div>
           <div style="padding:8px 10px;border-radius:6px;background:var(--color-bg-subdued);border:1px solid var(--color-border);font-size:0.72rem;color:var(--color-text-subdued);line-height:1.4">
-            <strong style="color:var(--color-primary)">Fazit:</strong> All models describe the same building blocks. Our model combines context/data and makes backends + output explicitly visible. For enterprise, <strong>security, compliance and data persistence</strong> must also be considered.
+            <strong style="color:var(--color-primary)">Fazit:</strong> All models describe the same building blocks. Our model combines context/data and makes backends + output explicitly visible. F&uuml;r Enterprise m&uuml;ssen zus&auml;tzlich <strong>security, compliance and data persistence</strong> be considered.
           </div>
         </div>
       </div>
@@ -198,7 +198,7 @@ export const agenticSlides = [
       </div>
       <div style="margin-top:8px;padding:8px 12px;border-radius:8px;background:rgba(255,237,0,0.06);border:1px solid rgba(255,237,0,0.15)">
         <p style="font-size:0.72rem;color:rgba(255,255,255,0.7);line-height:1.4">
-          <strong style="color:var(--color-accent)">Gelb markiert</strong> = unsere Workshop-Konfiguration. Jede Schicht ist austauschbar &ndash; auf der n&auml;chsten Seite k&ouml;nnt ihr eure eigene Architektur zusammenbauen. <a href="https://www.dataiku.com/stories/detail/ai-agents/" target="_blank" rel="noopener" style="color:var(--color-accent);text-decoration:underline;font-size:0.65rem">Quelle: Dataiku &ndash; Understanding AI Agents</a>
+          <strong style="color:var(--color-accent)">Yellow highlighted</strong> = our workshop config. Each layer is swappable &ndash; on the next page you can build your own architecture. <a href="https://www.dataiku.com/stories/detail/ai-agents/" target="_blank" rel="noopener" style="color:var(--color-accent);text-decoration:underline;font-size:0.65rem">Source: Dataiku &ndash; Understanding AI Agents</a>
         </p>
       </div>
     `,
@@ -207,37 +207,43 @@ export const agenticSlides = [
 // ===== Interaktiver Agent Architecture Builder =====
   {
     id: 'arch-builder',
-    theme: 'slide--dark',
+    theme: '',
     label: 'Arch Builder',
     content: `
-      <span class="slide-label" style="color:var(--color-accent)">Interaktiv</span>
-      <h2 class="slide-title" style="font-size:1.5rem;margin-bottom:6px">Wie k&ouml;nnte deine Agenten-Architektur aussehen?</h2>
-      <p class="slide-subtitle" style="font-size:0.9rem;margin-bottom:20px">W&auml;hle einen Use Case und sieh dir eine vereinfachte Referenzarchitektur an &ndash; mit Deployment-Zonen, Tools und Backends.</p>
-      <div class="desktop-content">
-        <div style="display:flex;align-items:center;gap:12px;justify-content:center">
-          <select id="arch-usecase" style="padding:10px 16px;border-radius:10px;border:2px solid rgba(255,237,0,0.3);background:rgba(255,237,0,0.06);color:var(--color-accent);font-size:0.9rem;cursor:pointer;font-weight:600;min-width:240px;appearance:auto">
+      <div class="arch-viewport-desktop">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <div>
+            <span class="slide-label" style="color:var(--color-primary)">Interactive</span>
+            <h2 class="slide-title" style="font-size:1.4rem;margin:4px 0 0">Agent Architecture Designer</h2>
+          </div>
+          <button id="arch-export-btn" style="padding:6px 14px;border-radius:8px;border:1px solid var(--color-border);background:var(--color-bg-subdued);color:var(--color-text-subdued);font-size:0.75rem;cursor:pointer;display:none;transition:opacity 0.3s" title="Export diagram as image">&#128247; Export</button>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;justify-content:center;margin-bottom:16px">
+          <select id="arch-usecase" style="padding:10px 16px;border-radius:10px;border:2px solid var(--color-border-primary);background:var(--color-bg-subdued);color:var(--color-text-primary);font-size:0.9rem;cursor:pointer;font-weight:600;min-width:260px;appearance:auto">
             <option value="coding">&#128187; Coding Assistant</option>
             <option value="review">&#128269; Code Review (CI/CD)</option>
-            <option value="docs">&#128196; Doku-Agent</option>
-            <option value="chatbot">&#128172; Kunden-Chatbot (Web)</option>
+            <option value="docs">&#128196; Docs Agent</option>
+            <option value="chatbot">&#128172; Customer Chatbot (Web)</option>
             <option value="voice">&#128222; Call Center Voice Agent</option>
-            <option value="tickets">&#127915; Ticket-Automatisierung</option>
-            <option value="knowledge">&#128218; Wissens-Agent (Wiki)</option>
+            <option value="tickets">&#127915; Ticket Automation</option>
+            <option value="knowledge">&#128218; Knowledge Agent (Wiki)</option>
             <option value="data">&#128202; Data Pipeline Agent</option>
           </select>
-          <button id="arch-generate-btn" style="padding:10px 24px;border-radius:10px;border:none;background:var(--color-accent,#ffed00);color:#1a1a2e;font-size:0.9rem;font-weight:700;cursor:pointer;white-space:nowrap;transition:transform 0.15s ease">
-            Architektur erzeugen &rarr;
+          <button id="arch-generate-btn" style="padding:10px 24px;border-radius:10px;border:none;background:var(--color-primary);color:#fff;font-size:0.9rem;font-weight:700;cursor:pointer;white-space:nowrap;transition:transform 0.15s ease">
+            Generate Architecture &rarr;
           </button>
         </div>
-        <div id="arch-diagram" style="margin-top:20px;opacity:0;transition:opacity 0.5s ease,transform 0.5s ease;transform:translateY(10px)"></div>
-        <div id="arch-builder-detail" style="margin-top:10px;padding:10px 16px;border-radius:10px;background:rgba(47,108,122,0.1);border:1px solid rgba(47,108,122,0.25);font-size:0.78rem;color:rgba(255,255,255,0.7);line-height:1.5;min-height:20px;opacity:0;transition:opacity 0.5s ease"></div>
+        <div id="arch-diagram" style="padding:24px;border-radius:14px;background:#fff;border:1px solid #e2e8f0;box-shadow:0 2px 12px rgba(0,0,0,0.06);min-height:120px;opacity:0;transition:opacity 0.5s ease,transform 0.5s ease;transform:translateY(8px)"></div>
+        <div id="arch-builder-detail" style="margin-top:10px;padding:10px 16px;border-radius:10px;background:var(--color-bg-subdued);border:1px solid var(--color-border);font-size:0.8rem;color:var(--color-text-subdued);line-height:1.5;min-height:20px;opacity:0;transition:opacity 0.5s ease"></div>
       </div>
-      <div class="mobile-content" style="display:none">
-        <div style="padding:24px;border-radius:12px;background:rgba(255,237,0,0.06);border:2px dashed rgba(255,237,0,0.25);text-align:center;margin-top:20px">
+      <div class="arch-viewport-mobile">
+        <span class="slide-label" style="color:var(--color-primary)">Interactive</span>
+        <h2 class="slide-title" style="font-size:1.3rem;margin-bottom:16px">Agent Architecture Designer</h2>
+        <div style="padding:24px;border-radius:12px;background:var(--color-bg-subdued);border:2px dashed var(--color-border);text-align:center">
           <div style="font-size:2.5rem;margin-bottom:12px">&#128421;</div>
-          <p style="font-size:1rem;color:rgba(255,255,255,0.85);font-weight:600;margin-bottom:8px">Interaktives Feature &ndash; nur auf Desktop</p>
-          <p style="font-size:0.85rem;color:rgba(255,255,255,0.5);line-height:1.5">Der Architektur-Designer ist ein interaktives Tool mit Diagramm-Darstellung. &Ouml;ffne die Pr&auml;sentation auf einem Laptop oder Desktop-PC, um 8 verschiedene Use-Case-Architekturen zu erkunden.</p>
-          <p style="font-size:0.75rem;color:rgba(255,255,255,0.35);margin-top:12px">Use Cases: Coding Assistant, Code Review, Doku-Agent, Kunden-Chatbot, Call Center Voice Agent, Ticket-Automatisierung, Wissens-Agent, Data Pipeline</p>
+          <p style="font-size:1rem;color:var(--color-text-primary);font-weight:600;margin-bottom:8px">Interactive Feature &ndash; Desktop Only</p>
+          <p style="font-size:0.85rem;color:var(--color-text-subdued);line-height:1.5">Open the presentation on a laptop or desktop to explore 8 different use-case architectures interactively.</p>
+          <p style="font-size:0.75rem;color:var(--color-text-subdued);opacity:0.6;margin-top:12px">Use Cases: Coding Assistant, Code Review, Docs Agent, Kunden-Chatbot, Voice Agent, Ticket Automation, Wissens-Agent, Data Pipeline</p>
         </div>
       </div>
     `,
@@ -250,43 +256,58 @@ export const agenticSlides = [
     label: 'Disruption',
     content: `
       <span class="slide-label" style="color:var(--color-accent)">Thesis</span>
-      <h2 class="slide-title">Agents Could Disrupt the Industry</h2>
-      <p class="slide-subtitle">No new backend needed? Just agent + spec + agents.md?</p>
-      <div class="two-cols" style="margin-top:14px">
-        <div>
-          <h3 style="color:var(--color-accent);font-size:1rem;margin-bottom:8px">What Changes</h3>
-          <div style="display:flex;flex-direction:column;gap:6px">
-            <div style="padding:10px;border-radius:8px;background:rgba(255,237,0,0.06);border:1px solid rgba(255,237,0,0.15);font-size:0.82rem;color:rgba(255,255,255,0.85);line-height:1.5">
-              <strong style="color:var(--color-accent)">Today:</strong> Team builds backend &rarr; API &rarr; frontend &rarr; tests &rarr; deployment. Months of work.
-            </div>
-            <div style="padding:10px;border-radius:8px;background:rgba(37,204,120,0.08);border:2px solid rgba(37,204,120,0.25);font-size:0.82rem;color:rgba(255,255,255,0.85);line-height:1.5">
-              <strong style="color:var(--color-positive)">With Agents:</strong> Write spec &rarr; define agents.md &rarr; agent builds everything. <strong>Hours instead of months.</strong>
-            </div>
+      <h2 class="slide-title" style="font-size:1.3rem">3 Paths to the Same Goal &ndash; When to Choose Which?</h2>
+      <p class="slide-subtitle" style="font-size:0.82rem">The effort doesn't disappear &ndash; it shifts. The question is: <strong>where to?</strong></p>
+      <div style="display:flex;flex-direction:column;gap:6px;margin-top:10px">
+        <div style="padding:10px 12px;border-radius:10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1)">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
+            <span style="padding:2px 8px;border-radius:4px;background:rgba(255,107,107,0.12);border:1px solid rgba(255,107,107,0.3);font-size:0.65rem;color:#ff6b6b;font-weight:700">BUILD YOURSELF</span>
+            <span style="font-size:0.82rem;color:rgba(255,255,255,0.9);font-weight:600">Team builds classically</span>
           </div>
-          <h3 style="color:var(--color-accent);font-size:0.95rem;margin:12px 0 8px">Existing APIs Stay</h3>
-          <div style="padding:10px;border-radius:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);font-size:0.8rem;color:rgba(255,255,255,0.7);line-height:1.5">
-            Confluence, Jira, GitHub, databases &ndash; everything already has APIs. Agents use them via <strong>MCP tools</strong>. No new backend needed, just a spec describing <em>what</em> should happen.
+          <p style="font-size:0.75rem;color:rgba(255,255,255,0.55);line-height:1.4;margin-bottom:4px">Backend &rarr; API &rarr; frontend &rarr; tests &rarr; deployment. Full control, but <strong>months of effort</strong>.</p>
+          <div style="display:flex;gap:6px;flex-wrap:wrap">
+            <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);font-size:0.62rem;color:rgba(255,255,255,0.5)">&#10003; Highly regulated systems (medical, finance)</span>
+            <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);font-size:0.62rem;color:rgba(255,255,255,0.5)">&#10003; Real-time requirements &lt;50ms</span>
+            <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);font-size:0.62rem;color:rgba(255,255,255,0.5)">&#10003; Deterministic logic mandatory</span>
           </div>
         </div>
-        <div>
-          <h3 style="color:var(--color-accent);font-size:1rem;margin-bottom:8px">Concrete Examples</h3>
-          <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:10px">
-            <div style="padding:7px 10px;border-radius:6px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);font-size:0.78rem;color:rgba(255,255,255,0.8)">
-              <strong>Code Review:</strong> Before: Custom backend + GitLab webhooks. Now: Agent + Git MCP + spec.
-            </div>
-            <div style="padding:7px 10px;border-radius:6px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);font-size:0.78rem;color:rgba(255,255,255,0.8)">
-              <strong>Doku-Generierung:</strong> Before: Custom pipeline. Now: Agent + Confluence MCP + agents.md.
-            </div>
-            <div style="padding:7px 10px;border-radius:6px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);font-size:0.78rem;color:rgba(255,255,255,0.8)">
-              <strong>Kunden-Chatbot:</strong> Before: RAG pipeline + custom backend. Now: Agent + vector DB MCP + product API MCP.
-            </div>
-            <div style="padding:7px 10px;border-radius:6px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);font-size:0.78rem;color:rgba(255,255,255,0.8)">
-              <strong>Ticket-Triage:</strong> Before: Rule engine. Now: Agent + Jira MCP + classification spec.
-            </div>
+        <div style="padding:10px 12px;border-radius:10px;background:rgba(255,237,0,0.05);border:2px solid rgba(255,237,0,0.2)">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
+            <span style="padding:2px 8px;border-radius:4px;background:rgba(255,237,0,0.15);border:1px solid rgba(255,237,0,0.35);font-size:0.65rem;color:var(--color-accent);font-weight:700">AGENT BUILDS</span>
+            <span style="font-size:0.82rem;color:rgba(255,255,255,0.9);font-weight:600">Agent as developer &ndash; builds for you</span>
           </div>
-          <div style="padding:10px;border-radius:8px;background:rgba(255,107,107,0.08);border:1px solid rgba(255,107,107,0.2);font-size:0.78rem;color:rgba(255,255,255,0.7);line-height:1.4">
-            <strong style="color:#ff6b6b">Aber:</strong> Agents don't replace infrastructure. They replace the <strong>glue code</strong> &ndash; the logic connecting different services. The APIs, databases and services must still exist and be maintained.
+          <p style="font-size:0.75rem;color:rgba(255,255,255,0.55);line-height:1.4;margin-bottom:4px">Spec + agents.md &rarr; Agent builds code, tests, infra. Human reviews &amp; deploys. <strong>Hours instead of months.</strong></p>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px">
+            <span style="padding:2px 6px;border-radius:3px;background:rgba(255,237,0,0.08);font-size:0.62rem;color:rgba(255,255,255,0.6)">&#10003; Clear concept / spec available</span>
+            <span style="padding:2px 6px;border-radius:3px;background:rgba(255,237,0,0.08);font-size:0.62rem;color:rgba(255,255,255,0.6)">&#10003; Human-in-the-loop for review</span>
+            <span style="padding:2px 6px;border-radius:3px;background:rgba(255,237,0,0.08);font-size:0.62rem;color:rgba(255,255,255,0.6)">&#10003; Standard patterns (CRUD, API, UI)</span>
           </div>
+          <div style="font-size:0.68rem;color:rgba(255,255,255,0.4);line-height:1.3"><strong>Practical:</strong> Website feature, REST API, CLI tool, DB migration, refactoring, test suite &ndash; anything where a clear spec defines the scope and a human reviews the output.</div>
+        </div>
+        <div style="padding:10px 12px;border-radius:10px;background:rgba(37,204,120,0.06);border:2px solid rgba(37,204,120,0.2)">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
+            <span style="padding:2px 8px;border-radius:4px;background:rgba(37,204,120,0.15);border:1px solid rgba(37,204,120,0.35);font-size:0.65rem;color:var(--color-positive);font-weight:700">AGENT IS</span>
+            <span style="font-size:0.82rem;color:rgba(255,255,255,0.9);font-weight:600">Agent <em>is</em> the backend &ndash; no code</span>
+          </div>
+          <p style="font-size:0.75rem;color:rgba(255,255,255,0.55);line-height:1.4;margin-bottom:4px">Agent + MCP tools + spec = finished product. <strong>Zero code.</strong> Effort: functional tests &amp; monitoring.</p>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px">
+            <span style="padding:2px 6px;border-radius:3px;background:rgba(37,204,120,0.08);font-size:0.62rem;color:rgba(255,255,255,0.6)">&#10003; Proof of concept / PoC / MVP</span>
+            <span style="padding:2px 6px;border-radius:3px;background:rgba(37,204,120,0.08);font-size:0.62rem;color:rgba(255,255,255,0.6)">&#10003; MCPs for all required services</span>
+            <span style="padding:2px 6px;border-radius:3px;background:rgba(37,204,120,0.08);font-size:0.62rem;color:rgba(255,255,255,0.6)">&#10003; Error tolerance acceptable</span>
+          </div>
+          <div style="font-size:0.68rem;color:rgba(255,255,255,0.4);line-height:1.3"><strong>Practical:</strong> Internal knowledge chatbot (Confluence+Jira MCP), code review agent (Git MCP), docs generator, ticket triage, customer demo prototype. Whenever MCP tools cover the required APIs.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:6px;margin-top:6px">
+        <div style="flex:1;padding:7px 10px;border-radius:8px;background:rgba(255,168,0,0.08);border:1px solid rgba(255,168,0,0.2)">
+          <p style="font-size:0.68rem;color:rgba(255,255,255,0.55);line-height:1.3">
+            <strong style="color:var(--color-warning)">Effort shift:</strong> Implementation &rarr; <strong>spec, functional tests, monitoring, review</strong>. No tests = no agents.
+          </p>
+        </div>
+        <div style="flex:1;padding:7px 10px;border-radius:8px;background:rgba(47,108,122,0.08);border:1px solid rgba(47,108,122,0.2)">
+          <p style="font-size:0.68rem;color:rgba(255,255,255,0.55);line-height:1.3">
+            <strong style="color:var(--color-accent)">Rule of thumb:</strong> The clearer the spec + the better the MCP coverage + the higher the error tolerance &rarr; the further right (Agent IS). Critical systems &rarr; left (build yourself).
+          </p>
         </div>
       </div>
     `,
@@ -303,40 +324,46 @@ export const agenticSlides = [
       <p class="slide-subtitle">Can I expect the same result 100,000 times from 100,000 requests with the same spec?</p>
       <div class="two-cols" style="margin-top:14px">
         <div>
-          <h3 style="color:var(--color-critical);font-size:1rem;margin-bottom:8px">The Honest Answer: No &ndash; Not Automatically</h3>
-          <div style="display:flex;flex-direction:column;gap:6px">
-            <div style="padding:10px;border-radius:8px;background:rgba(255,107,107,0.06);border:1px solid rgba(255,107,107,0.2);font-size:0.8rem;line-height:1.5">
-              <strong style="color:var(--color-critical)">LLMs are non-deterministic.</strong> Even with <code style="background:rgba(0,0,0,0.1);padding:1px 3px;border-radius:2px;font-size:0.72rem">temperature: 0</code> answers can vary slightly. Floating-point arithmetic, batching and provider updates affect the output.
+          <h3 style="color:var(--color-critical);font-size:0.95rem;margin-bottom:8px">The honest answer: No &ndash; not automatically</h3>
+          <div style="display:flex;flex-direction:column;gap:5px">
+            <div style="padding:8px 10px;border-radius:8px;background:rgba(255,107,107,0.06);border:1px solid rgba(255,107,107,0.2);font-size:0.78rem;line-height:1.4">
+              <strong style="color:var(--color-critical)">LLMs are non-deterministic.</strong> Selbst mit <code style="background:rgba(0,0,0,0.1);padding:1px 3px;border-radius:2px;font-size:0.7rem">temperature: 0</code> answers vary. Floating-point, batching and provider updates affect results.
             </div>
-            <div style="padding:10px;border-radius:8px;background:rgba(255,107,107,0.06);border:1px solid rgba(255,107,107,0.2);font-size:0.8rem;line-height:1.5">
-              <strong style="color:var(--color-critical)">Tool calls are side effects.</strong> An agent creating Jira tickets, writing DB entries or committing code &ndash; you can't easily undo that if the result is wrong.
+            <div style="padding:8px 10px;border-radius:8px;background:rgba(255,107,107,0.06);border:1px solid rgba(255,107,107,0.2);font-size:0.78rem;line-height:1.4">
+              <strong style="color:var(--color-critical)">Tool calls are side effects.</strong> Jira tickets, DB entries, commits &ndash; not easily undone if wrong.
             </div>
-            <div style="padding:10px;border-radius:8px;background:rgba(255,107,107,0.06);border:1px solid rgba(255,107,107,0.2);font-size:0.8rem;line-height:1.5">
-              <strong style="color:var(--color-critical)">Context changes.</strong> The same prompt can lead to different results if the knowledge base, code or data changes.
+            <div style="padding:8px 10px;border-radius:8px;background:rgba(255,107,107,0.06);border:1px solid rgba(255,107,107,0.2);font-size:0.78rem;line-height:1.4">
+              <strong style="color:var(--color-critical)">Context changes.</strong> New data, changed code, updated knowledge base &rarr; different result.
+            </div>
+            <div style="padding:8px 10px;border-radius:8px;background:rgba(255,168,0,0.08);border:1px solid rgba(255,168,0,0.25);font-size:0.78rem;line-height:1.4">
+              <strong style="color:var(--color-warning)">Model updates!</strong> Claude 4.5 &rarr; 4.6, GPT-4 &rarr; GPT-5: Providers update models without warning. Behavior can change even with the same API. <strong>Pinning to model version is mandatory.</strong>
             </div>
           </div>
         </div>
         <div>
-          <h3 style="color:var(--color-positive);font-size:1rem;margin-bottom:8px">How to Achieve Resilience Anyway</h3>
-          <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:10px">
-            <div style="padding:8px 10px;border-radius:6px;background:var(--color-bg-subdued);border:1px solid var(--color-border);font-size:0.78rem;line-height:1.4">
-              <strong style="color:var(--color-primary)">&#9989; Spec as contract:</strong> Clear, measurable specs define <em>what</em> should come out. Agent output is validated against the spec.
+          <h3 style="color:var(--color-positive);font-size:0.95rem;margin-bottom:8px">How to achieve resilience</h3>
+          <div style="display:flex;flex-direction:column;gap:4px;margin-bottom:8px">
+            <div style="padding:7px 10px;border-radius:6px;background:var(--color-bg-subdued);border:1px solid var(--color-border);font-size:0.76rem;line-height:1.4">
+              <strong style="color:var(--color-primary)">&#9989; Spec as contract:</strong> Clear, measurable specs define <em>what</em> should come out. Validate agent output against spec.
             </div>
-            <div style="padding:8px 10px;border-radius:6px;background:var(--color-bg-subdued);border:1px solid var(--color-border);font-size:0.78rem;line-height:1.4">
-              <strong style="color:var(--color-primary)">&#9989; Tests as guardrails:</strong> Automated tests check if the result meets requirements &ndash; not if it's identical.
+            <div style="padding:7px 10px;border-radius:6px;background:var(--color-bg-subdued);border:1px solid var(--color-border);font-size:0.76rem;line-height:1.4">
+              <strong style="color:var(--color-primary)">&#9989; Functional tests:</strong> Not "is the output identical?" but "does the output meet functional criteria?" Like QA in software &ndash; acceptance tests, not byte comparisons.
             </div>
-            <div style="padding:8px 10px;border-radius:6px;background:var(--color-bg-subdued);border:1px solid var(--color-border);font-size:0.78rem;line-height:1.4">
-              <strong style="color:var(--color-primary)">&#9989; Human-in-the-Loop:</strong> For critical actions: agent proposes, human approves. (e.g. PR review instead of auto-merge)
+            <div style="padding:7px 10px;border-radius:6px;background:var(--color-bg-subdued);border:1px solid var(--color-border);font-size:0.76rem;line-height:1.4">
+              <strong style="color:var(--color-primary)">&#9989; Model pinning + regression:</strong> Pin model version (z.B. <code style="background:rgba(0,0,0,0.08);padding:1px 3px;border-radius:2px;font-size:0.68rem">claude-sonnet-4-20250514</code>). On change: run regression tests against test suite.
             </div>
-            <div style="padding:8px 10px;border-radius:6px;background:var(--color-bg-subdued);border:1px solid var(--color-border);font-size:0.78rem;line-height:1.4">
-              <strong style="color:var(--color-primary)">&#9989; Idempotency design:</strong> Build agents so multiple executions are safe. Checks before actions.
+            <div style="padding:7px 10px;border-radius:6px;background:var(--color-bg-subdued);border:1px solid var(--color-border);font-size:0.76rem;line-height:1.4">
+              <strong style="color:var(--color-primary)">&#9989; Monitoring &amp; observability:</strong> Log every agent step. Input, output, tool calls, latency, cost. Dashboards for anomaly detection. <span style="color:var(--color-text-subdued)">(z.B. LangSmith, Datadog, custom)</span>
             </div>
-            <div style="padding:8px 10px;border-radius:6px;background:var(--color-bg-subdued);border:1px solid var(--color-border);font-size:0.78rem;line-height:1.4">
-              <strong style="color:var(--color-primary)">&#9989; Logging &amp; audit:</strong> Every agent step is logged. Traceability is mandatory.
+            <div style="padding:7px 10px;border-radius:6px;background:var(--color-bg-subdued);border:1px solid var(--color-border);font-size:0.76rem;line-height:1.4">
+              <strong style="color:var(--color-primary)">&#9989; Human-in-the-Loop:</strong> Agent proposes, human approves. PR review instead of auto-merge.
+            </div>
+            <div style="padding:7px 10px;border-radius:6px;background:var(--color-bg-subdued);border:1px solid var(--color-border);font-size:0.76rem;line-height:1.4">
+              <strong style="color:var(--color-primary)">&#9989; Idempotency:</strong> Build agents so repeated execution is safe. Checks before every action.
             </div>
           </div>
-          <div style="padding:8px 10px;border-radius:8px;background:rgba(47,108,122,0.08);border:1px solid rgba(47,108,122,0.2);font-size:0.72rem;color:var(--color-text-subdued);line-height:1.4">
-            <strong style="color:var(--color-primary)">Fazit:</strong> Agents won't deliver the <em>identical</em> result 100,000 times &ndash; but with the right architecture, a <strong>correct</strong> result 100,000 times. Similar to humans: two developers don't write the same code, but both pass the tests.
+          <div style="padding:8px 10px;border-radius:8px;background:rgba(47,108,122,0.08);border:1px solid rgba(47,108,122,0.2);font-size:0.7rem;color:var(--color-text-subdued);line-height:1.4">
+            <strong style="color:var(--color-primary)">Fazit:</strong> Not 100,000x <em>identical</em>, but 100,000x <strong>correct</strong>. Like humans: two developers don't write the same code &ndash; but both pass the tests.
           </div>
         </div>
       </div>
