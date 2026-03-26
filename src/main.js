@@ -596,7 +596,11 @@ function goToSlide(index, direction) {
     const target = document.getElementById(`slide-${index}`);
     if (target) {
       const distance = Math.abs(index - currentSlide);
-      target.scrollIntoView({ behavior: distance > 3 ? 'instant' : 'smooth' });
+      if (distance > 3) {
+        target.scrollIntoView({ behavior: 'instant' });
+      } else {
+        smoothScrollTo(target);
+      }
     }
   }
 }
@@ -844,6 +848,35 @@ function setupNavClicks() {
 
 // ===== Mobile App Mode =====
 const isMobile = () => window.innerWidth <= 768;
+
+// Custom smooth scroll (replaces CSS scroll-snap on desktop)
+let isScrolling = false;
+function smoothScrollTo(element, duration = 900) {
+  if (isScrolling) return;
+  isScrolling = true;
+  const start = window.scrollY;
+  const target = element.offsetTop;
+  const distance = target - start;
+  if (Math.abs(distance) < 5) { isScrolling = false; return; }
+  let startTime = null;
+
+  function ease(t) {
+    // easeInOutQuart — slow start, slow end
+    return t < 0.5 ? 8 * t * t * t * t : 1 - Math.pow(-2 * t + 2, 4) / 2;
+  }
+
+  function step(ts) {
+    if (!startTime) startTime = ts;
+    const progress = Math.min((ts - startTime) / duration, 1);
+    window.scrollTo(0, start + distance * ease(progress));
+    if (progress < 1) {
+      requestAnimationFrame(step);
+    } else {
+      isScrolling = false;
+    }
+  }
+  requestAnimationFrame(step);
+}
 
 function setupMobileMode(startIdx) {
   if (!isMobile()) return;
@@ -1671,6 +1704,22 @@ setPresenterMode(presenterMode); // Apply initial mode
 updateMetaTags(currentLang);
 setupIntersectionObserver();
 setupKeyboardNavigation();
+
+// Desktop: intercept wheel scroll to navigate slides smoothly
+if (!isMobile()) {
+  let wheelCooldown = false;
+  document.addEventListener('wheel', (e) => {
+    if (wheelCooldown || isScrolling) return;
+    const dir = e.deltaY > 0 ? 1 : -1;
+    const nextIdx = currentSlide + dir;
+    if (nextIdx < 0 || nextIdx >= slides.length) return;
+    e.preventDefault();
+    wheelCooldown = true;
+    goToSlide(nextIdx, dir);
+    setTimeout(() => { wheelCooldown = false; }, 1000);
+  }, { passive: false });
+}
+
 setupNavClicks();
 setupViewToggles();
 setupCopyButtons();

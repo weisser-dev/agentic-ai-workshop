@@ -2,6 +2,19 @@
 
 All notable changes to the Agentic AI Workshop are documented here.
 
+## [v1.9.2] – 2026-03-26
+
+### Changed
+- **Custom smooth scroll**: Replaced CSS `scroll-snap` with JS-based scroll animation on desktop. 900ms duration with easeInOutQuart easing for a calm, pleasant slide transition.
+- **Wheel handler**: Mouse wheel navigates exactly one slide per scroll with 1s cooldown, preventing accidental skipping.
+- **Architecture Builder**: Dropdown auto-generates diagram on change. Centered CTA text when empty, left-aligned after selection. Button removed.
+- **Architecture Builder deep-link**: `?uc=anomaly#arch-builder` now immediately shows compact layout (left-aligned select, no CTA text).
+- **Watermark**: Live SVG watermark `agentic-ai.weisser.dev → [Use Case] Agentic AI Architecture` inside largest subgraph. PNG export includes watermark from SVG (no extra overlay).
+
+### Fixed
+- **Deep-link scroll flicker**: Opening hash URLs no longer visibly scrolls through all slides. App hidden until browser has jumped.
+- **Auto-load compact layout**: URL parameter `?uc=` now correctly switches to compact layout before diagram renders.
+
 ## [v1.9.1] – 2026-03-26
 
 ### Fixed
