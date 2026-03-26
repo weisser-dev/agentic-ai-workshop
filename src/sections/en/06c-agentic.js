@@ -239,8 +239,8 @@ export const agenticSlides = [
               <option value="healthcheck">Daily System Health Check</option>
             </optgroup>
           </select>
-          <button id="arch-generate-btn" style="padding:0 24px;border-radius:10px;border:none;background:var(--color-primary);color:#fff;font-size:0.9rem;font-weight:700;cursor:pointer;white-space:nowrap;transition:transform 0.15s ease;height:44px">
-            Generate Architecture &rarr;
+          <button id="arch-generate-btn" style="padding:12px 28px;border-radius:12px;border:2px dashed var(--color-border-primary);background:var(--color-bg-subdued);color:var(--color-primary);font-size:0.95rem;font-weight:600;cursor:pointer;white-space:nowrap;transition:all 0.2s;height:48px;animation:pulse-border 2s infinite">
+            &#9664; Select a use case to see the architecture
           </button>
         </div>
         <div id="arch-diagram" style="padding:16px;border-radius:14px;background:#fff;border:1px solid #e2e8f0;box-shadow:0 2px 12px rgba(0,0,0,0.06);min-height:80px;opacity:0;transition:opacity 0.5s ease,transform 0.5s ease;transform:translateY(8px);overflow-x:auto;max-width:calc(100vw - 80px)"></div>

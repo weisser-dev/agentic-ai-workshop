@@ -1534,16 +1534,15 @@ function setupArchBuilder() {
   const generateBtn = document.getElementById('arch-generate-btn');
   if (generateBtn) {
     generateBtn.addEventListener('click', () => {
-      const preset = presets[select.value];
-      if (!preset) { select.focus(); return; }
-      generateBtn.style.transform = 'scale(0.95)';
-      setTimeout(() => { generateBtn.style.transform = ''; }, 150);
-      showDiagram(preset);
+      select.focus();
     });
   }
+
   select.addEventListener('change', () => {
     const preset = presets[select.value];
-    if (preset && diagram.innerHTML) showDiagram(preset);
+    if (!preset) return;
+    if (generateBtn) generateBtn.style.display = 'none';
+    showDiagram(preset);
   });
 
   // Auto-load from URL parameter ?uc=coding
