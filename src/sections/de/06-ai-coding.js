@@ -451,6 +451,156 @@ User-Daten paginiert abrufen.</span>
     `,
   },
 
+  // ===== Agentic Architecture Deep Dive =====
+  {
+    id: 'agentic-architecture-deep',
+    theme: 'slide--dark',
+    label: 'Architektur',
+    content: `
+      <span class="slide-label" style="color:var(--color-accent)">Deep Dive</span>
+      <h2 class="slide-title">Agentic Architecture &ndash; die Schichten</h2>
+      <p class="slide-subtitle">Jede Agentic-L&ouml;sung besteht aus denselben 5 Schichten &ndash; nur die Bausteine variieren</p>
+      <div style="display:flex;flex-direction:column;gap:6px;margin-top:12px" id="arch-layers">
+        <div style="display:flex;align-items:stretch;gap:8px">
+          <div style="min-width:90px;padding:8px;border-radius:8px;background:rgba(255,237,0,0.1);border:1px solid rgba(255,237,0,0.25);font-size:0.7rem;color:var(--color-accent);font-weight:700;display:flex;align-items:center;justify-content:center;text-align:center">1. FRONTEND</div>
+          <div style="flex:1;padding:8px 12px;border-radius:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);display:flex;flex-wrap:wrap;gap:4px;align-items:center">
+            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,237,0,0.12);border:1px solid rgba(255,237,0,0.3);font-size:0.7rem;color:var(--color-accent);font-weight:600">IDE Plugin</span>
+            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">Chat UI</span>
+            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">CLI / TUI</span>
+            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">Custom Frontend</span>
+            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">API Endpoint</span>
+          </div>
+        </div>
+        <div style="text-align:center;font-size:0.7rem;color:rgba(255,255,255,0.3)">&#8595;</div>
+        <div style="display:flex;align-items:stretch;gap:8px">
+          <div style="min-width:90px;padding:8px;border-radius:8px;background:rgba(47,108,122,0.15);border:1px solid rgba(47,108,122,0.3);font-size:0.7rem;color:var(--color-accent);font-weight:700;display:flex;align-items:center;justify-content:center;text-align:center">2. AGENT<br>FRAMEWORK</div>
+          <div style="flex:1;padding:8px 12px;border-radius:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);display:flex;flex-wrap:wrap;gap:4px;align-items:center">
+            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,237,0,0.12);border:1px solid rgba(255,237,0,0.3);font-size:0.7rem;color:var(--color-accent);font-weight:600">OpenCode</span>
+            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">Claude Code</span>
+            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">OpenClaw</span>
+            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">LangChain</span>
+            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">CrewAI</span>
+            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">Custom</span>
+          </div>
+        </div>
+        <div style="text-align:center;font-size:0.7rem;color:rgba(255,255,255,0.3)">&#8595; &#8593; Loop</div>
+        <div style="display:flex;align-items:stretch;gap:8px">
+          <div style="min-width:90px;padding:8px;border-radius:8px;background:rgba(47,108,122,0.15);border:1px solid rgba(47,108,122,0.3);font-size:0.7rem;color:var(--color-accent);font-weight:700;display:flex;align-items:center;justify-content:center;text-align:center">3. LLM<br>PROVIDER</div>
+          <div style="flex:1;padding:8px 12px;border-radius:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);display:flex;flex-wrap:wrap;gap:4px;align-items:center">
+            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,237,0,0.12);border:1px solid rgba(255,237,0,0.3);font-size:0.7rem;color:var(--color-accent);font-weight:600">Claude (Bedrock)</span>
+            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">GPT (OpenAI)</span>
+            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">Gemini</span>
+            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">Ollama (lokal)</span>
+            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">Mistral</span>
+          </div>
+        </div>
+        <div style="text-align:center;font-size:0.7rem;color:rgba(255,255,255,0.3)">&#8595; &#8593; Tool Calls</div>
+        <div style="display:flex;align-items:stretch;gap:8px">
+          <div style="min-width:90px;padding:8px;border-radius:8px;background:rgba(47,108,122,0.15);border:1px solid rgba(47,108,122,0.3);font-size:0.7rem;color:var(--color-accent);font-weight:700;display:flex;align-items:center;justify-content:center;text-align:center">4. MCP /<br>TOOLS</div>
+          <div style="flex:1;padding:8px 12px;border-radius:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);display:flex;flex-wrap:wrap;gap:4px;align-items:center">
+            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,237,0,0.12);border:1px solid rgba(255,237,0,0.3);font-size:0.7rem;color:var(--color-accent);font-weight:600">Shell</span>
+            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">Filesystem</span>
+            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">Database</span>
+            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">Jira</span>
+            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">Confluence</span>
+            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">SharePoint</span>
+            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">Git</span>
+            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">Custom Script</span>
+            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">Custom Backend</span>
+          </div>
+        </div>
+        <div style="text-align:center;font-size:0.7rem;color:rgba(255,255,255,0.3)">&#8595;</div>
+        <div style="display:flex;align-items:stretch;gap:8px">
+          <div style="min-width:90px;padding:8px;border-radius:8px;background:rgba(37,204,120,0.12);border:1px solid rgba(37,204,120,0.3);font-size:0.7rem;color:var(--color-positive);font-weight:700;display:flex;align-items:center;justify-content:center;text-align:center">5. OUTPUT</div>
+          <div style="flex:1;padding:8px 12px;border-radius:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);display:flex;flex-wrap:wrap;gap:4px;align-items:center">
+            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">Code / PR</span>
+            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">Doku</span>
+            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">Tickets</span>
+            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">Reports</span>
+            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">Deployments</span>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:8px;padding:8px 12px;border-radius:8px;background:rgba(255,237,0,0.06);border:1px solid rgba(255,237,0,0.15)">
+        <p style="font-size:0.72rem;color:rgba(255,255,255,0.7);line-height:1.4">
+          <strong style="color:var(--color-accent)">Gelb markiert</strong> = unsere Workshop-Konfiguration. Jede Schicht ist austauschbar &ndash; auf der n&auml;chsten Seite k&ouml;nnt ihr eure eigene Architektur zusammenbauen.
+        </p>
+      </div>
+    `,
+  },
+
+  // ===== Interaktiver Agent Architecture Builder =====
+  {
+    id: 'arch-builder',
+    theme: 'slide--dark',
+    label: 'Arch Builder',
+    content: `
+      <span class="slide-label" style="color:var(--color-accent)">Interaktiv</span>
+      <h2 class="slide-title" style="font-size:1.4rem">Baue deine Agenten-Architektur</h2>
+      <p class="slide-subtitle" style="font-size:0.82rem">W&auml;hle pro Schicht eine Komponente &ndash; die Zusammenfassung aktualisiert sich live</p>
+      <div id="arch-builder-form" style="display:flex;flex-direction:column;gap:8px;margin-top:8px">
+        <div class="arch-layer" data-layer="frontend" style="display:flex;align-items:center;gap:8px">
+          <div style="min-width:72px;font-size:0.65rem;color:var(--color-accent);font-weight:700;text-align:right">FRONTEND</div>
+          <div style="flex:1;display:flex;flex-wrap:wrap;gap:4px" id="arch-opts-frontend">
+            <button class="arch-opt arch-opt--active" data-value="ide" data-info="L&auml;uft lokal in VS Code / JetBrains. Agent hat Zugriff auf Dateisystem." style="padding:4px 10px;border-radius:6px;border:1px solid rgba(255,237,0,0.3);background:rgba(255,237,0,0.12);color:var(--color-accent);font-size:0.68rem;cursor:pointer;font-weight:600">IDE Plugin</button>
+            <button class="arch-opt" data-value="chat" data-info="Web-basiert (OpenWebUI, ChatGPT etc.). L&auml;uft im Browser, kein lokaler Zugriff." style="padding:4px 10px;border-radius:6px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.7);font-size:0.68rem;cursor:pointer">Chat UI</button>
+            <button class="arch-opt" data-value="cli" data-info="Terminal-basiert. Perfekt f&uuml;r Scripting und Automatisierung." style="padding:4px 10px;border-radius:6px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.7);font-size:0.68rem;cursor:pointer">CLI / TUI</button>
+            <button class="arch-opt" data-value="custom-fe" data-info="Eigenes Frontend (React, etc.). Volle Kontrolle, aber Entwicklungsaufwand." style="padding:4px 10px;border-radius:6px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.7);font-size:0.68rem;cursor:pointer">Custom</button>
+            <button class="arch-opt" data-value="api" data-info="Headless / API-only. F&uuml;r CI/CD Pipelines, Webhooks, Automatisierung." style="padding:4px 10px;border-radius:6px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.7);font-size:0.68rem;cursor:pointer">API / Headless</button>
+          </div>
+        </div>
+        <div class="arch-layer" data-layer="framework" style="display:flex;align-items:center;gap:8px">
+          <div style="min-width:72px;font-size:0.65rem;color:var(--color-accent);font-weight:700;text-align:right">FRAMEWORK</div>
+          <div style="flex:1;display:flex;flex-wrap:wrap;gap:4px" id="arch-opts-framework">
+            <button class="arch-opt arch-opt--active" data-value="opencode" data-info="Open Source, 75+ Provider, MCP-Support, Terminal-basiert." style="padding:4px 10px;border-radius:6px;border:1px solid rgba(255,237,0,0.3);background:rgba(255,237,0,0.12);color:var(--color-accent);font-size:0.68rem;cursor:pointer;font-weight:600">OpenCode</button>
+            <button class="arch-opt" data-value="claude-code" data-info="Von Anthropic. Sehr stark bei Code, Terminal-basiert." style="padding:4px 10px;border-radius:6px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.7);font-size:0.68rem;cursor:pointer">Claude Code</button>
+            <button class="arch-opt" data-value="openclaw" data-info="Neues Open-Source Framework. Multi-Agent, Python-basiert." style="padding:4px 10px;border-radius:6px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.7);font-size:0.68rem;cursor:pointer">OpenClaw</button>
+            <button class="arch-opt" data-value="langchain" data-info="Python/JS. Sehr flexibel, gro&szlig;es &Ouml;kosystem, Chain-basiert." style="padding:4px 10px;border-radius:6px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.7);font-size:0.68rem;cursor:pointer">LangChain</button>
+            <button class="arch-opt" data-value="crewai" data-info="Multi-Agent Framework. Agents mit Rollen, die zusammenarbeiten." style="padding:4px 10px;border-radius:6px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.7);font-size:0.68rem;cursor:pointer">CrewAI</button>
+            <button class="arch-opt" data-value="custom-fw" data-info="Eigenes Framework. Volle Kontrolle, aber Aufwand." style="padding:4px 10px;border-radius:6px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.7);font-size:0.68rem;cursor:pointer">Custom</button>
+          </div>
+        </div>
+        <div class="arch-layer" data-layer="llm" style="display:flex;align-items:center;gap:8px">
+          <div style="min-width:72px;font-size:0.65rem;color:var(--color-accent);font-weight:700;text-align:right">LLM</div>
+          <div style="flex:1;display:flex;flex-wrap:wrap;gap:4px" id="arch-opts-llm">
+            <button class="arch-opt arch-opt--active" data-value="claude" data-info="Anthropic Claude via AWS Bedrock. Bestes Reasoning, EU-Region." style="padding:4px 10px;border-radius:6px;border:1px solid rgba(255,237,0,0.3);background:rgba(255,237,0,0.12);color:var(--color-accent);font-size:0.68rem;cursor:pointer;font-weight:600">Claude</button>
+            <button class="arch-opt" data-value="gpt" data-info="OpenAI GPT-4/5. Schnell, gro&szlig;es &Ouml;kosystem." style="padding:4px 10px;border-radius:6px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.7);font-size:0.68rem;cursor:pointer">GPT</button>
+            <button class="arch-opt" data-value="gemini" data-info="Google Gemini. Gro&szlig;es Kontextfenster (1M+ Token)." style="padding:4px 10px;border-radius:6px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.7);font-size:0.68rem;cursor:pointer">Gemini</button>
+            <button class="arch-opt" data-value="ollama" data-info="Lokal, kostenlos, kein Internet n&ouml;tig. Gut f&uuml;r Datenschutz." style="padding:4px 10px;border-radius:6px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.7);font-size:0.68rem;cursor:pointer">Ollama (lokal)</button>
+            <button class="arch-opt" data-value="mistral" data-info="Mistral. EU-basiert, performant, Open Weight Modelle." style="padding:4px 10px;border-radius:6px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.7);font-size:0.68rem;cursor:pointer">Mistral</button>
+          </div>
+        </div>
+        <div class="arch-layer" data-layer="tools" style="display:flex;align-items:center;gap:8px">
+          <div style="min-width:72px;font-size:0.65rem;color:var(--color-accent);font-weight:700;text-align:right">MCP / TOOLS</div>
+          <div style="flex:1;display:flex;flex-wrap:wrap;gap:4px" id="arch-opts-tools">
+            <button class="arch-opt arch-opt--active arch-opt--multi" data-value="shell" data-info="Bash/PowerShell Kommandos ausf&uuml;hren." style="padding:4px 10px;border-radius:6px;border:1px solid rgba(255,237,0,0.3);background:rgba(255,237,0,0.12);color:var(--color-accent);font-size:0.68rem;cursor:pointer;font-weight:600">Shell</button>
+            <button class="arch-opt arch-opt--active arch-opt--multi" data-value="filesystem" data-info="Dateien lesen, schreiben, suchen." style="padding:4px 10px;border-radius:6px;border:1px solid rgba(255,237,0,0.3);background:rgba(255,237,0,0.12);color:var(--color-accent);font-size:0.68rem;cursor:pointer;font-weight:600">Filesystem</button>
+            <button class="arch-opt arch-opt--multi" data-value="git" data-info="Git-Operationen: commit, push, branch, diff." style="padding:4px 10px;border-radius:6px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.7);font-size:0.68rem;cursor:pointer">Git</button>
+            <button class="arch-opt arch-opt--multi" data-value="database" data-info="SQL/NoSQL Queries direkt ausf&uuml;hren." style="padding:4px 10px;border-radius:6px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.7);font-size:0.68rem;cursor:pointer">Database</button>
+            <button class="arch-opt arch-opt--multi" data-value="jira" data-info="Tickets lesen, erstellen, aktualisieren." style="padding:4px 10px;border-radius:6px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.7);font-size:0.68rem;cursor:pointer">Jira</button>
+            <button class="arch-opt arch-opt--multi" data-value="confluence" data-info="Seiten lesen/schreiben, Suche." style="padding:4px 10px;border-radius:6px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.7);font-size:0.68rem;cursor:pointer">Confluence</button>
+            <button class="arch-opt arch-opt--multi" data-value="sharepoint" data-info="Microsoft SharePoint / OneDrive Zugriff." style="padding:4px 10px;border-radius:6px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.7);font-size:0.68rem;cursor:pointer">SharePoint</button>
+            <button class="arch-opt arch-opt--multi" data-value="custom-api" data-info="Eigenes Backend / Microservice anbinden." style="padding:4px 10px;border-radius:6px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.7);font-size:0.68rem;cursor:pointer">Custom API</button>
+          </div>
+        </div>
+      </div>
+      <div id="arch-builder-result" style="margin-top:8px;padding:10px 14px;border-radius:10px;background:rgba(47,108,122,0.1);border:2px solid rgba(47,108,122,0.3);min-height:48px">
+        <div style="font-size:0.68rem;color:rgba(255,255,255,0.5);margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px">Deine Architektur</div>
+        <div id="arch-summary" style="font-size:0.78rem;color:rgba(255,255,255,0.9);line-height:1.5">
+          <strong style="color:var(--color-accent)">IDE Plugin</strong> &rarr; <strong>OpenCode</strong> &rarr; <strong>Claude</strong> + <strong style="color:var(--color-positive)">Shell, Filesystem</strong>
+        </div>
+        <div id="arch-detail" style="font-size:0.68rem;color:rgba(255,255,255,0.5);margin-top:4px;line-height:1.4">
+          L&auml;uft lokal in VS Code / JetBrains. Agent hat Zugriff auf Dateisystem.
+        </div>
+      </div>
+      <div style="margin-top:6px;padding:6px 10px;border-radius:8px;background:rgba(255,237,0,0.06);border:1px solid rgba(255,237,0,0.15)">
+        <p style="font-size:0.65rem;color:rgba(255,255,255,0.5);line-height:1.3">
+          <strong style="color:var(--color-accent)">Tipp:</strong> Bei Tools k&ouml;nnt ihr mehrere ausw&auml;hlen (Mehrfachauswahl). Bei den anderen Schichten immer genau eine.
+        </p>
+      </div>
+    `,
+  },
+
   // ===== Fazit: Agent vs. Spec =====
   {
     id: 'agent-vs-spec',

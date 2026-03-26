@@ -1605,6 +1605,7 @@ body.slide-werbung #matrix-canvas {
   .slide-subtitle {
     font-size: clamp(0.85rem, 2.5vw, 1rem);
     word-break: break-word;
+    margin-bottom: 20px;
   }
 
   /* Prevent ANY content from overflowing horizontally on mobile */
@@ -1639,8 +1640,6 @@ body.slide-werbung #matrix-canvas {
   .slide [style*="display:flex"],
   .slide [style*="display: flex"] {
     flex-wrap: wrap !important;
-  }
-    margin-bottom: 20px;
   }
 
   .slide-label {
