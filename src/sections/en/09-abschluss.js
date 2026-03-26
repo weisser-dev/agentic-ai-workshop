@@ -282,6 +282,23 @@ export const abschlussSlides = [
             <a href="https://www.youtube.com/shorts/3RnzkJjgvfw" target="_blank" rel="noopener" style="color:var(--color-text-on-dark-subdued);text-decoration:none">YouTube: Jensen Huang (All-In Podcast)</a>
             <a href="https://github.com/dilatchi/cloudflare-static-site-demo" target="_blank" rel="noopener" style="color:var(--color-text-on-dark-subdued);text-decoration:none">dilatchi/cloudflare-static-site-demo</a>
             <a href="https://blog.weisser.dev/operations/devops/2026/03/24/frontend-hosting-cloudflare-pages.html" target="_blank" rel="noopener" style="color:var(--color-text-on-dark-subdued);text-decoration:none">Blog: My typical frontend hosting setup</a>
+            <a href="https://www.heise.de/hintergrund/Hat-KI-bereits-eine-Art-Bewusstsein-entwickelt-Forscher-streiten-darueber-6522868.html" target="_blank" rel="noopener" style="color:var(--color-text-on-dark-subdued);text-decoration:none">Heise: AI &amp; Consciousness</a>
+            <a href="https://www.wearetenet.com/blog/github-copilot-usage-data-statistics" target="_blank" rel="noopener" style="color:var(--color-text-on-dark-subdued);text-decoration:none">GitHub Copilot Statistics</a>
+            <a href="https://blog.pragmaticengineer.com/stack-overflow-is-almost-dead/" target="_blank" rel="noopener" style="color:var(--color-text-on-dark-subdued);text-decoration:none">Pragmatic Engineer: Stack Overflow</a>
+            <a href="https://www.anthropic.com/news/detecting-and-preventing-distillation-attacks" target="_blank" rel="noopener" style="color:var(--color-text-on-dark-subdued);text-decoration:none">Anthropic: Distillation Attacks</a>
+            <a href="https://www.dataiku.com/stories/detail/ai-agents/" target="_blank" rel="noopener" style="color:var(--color-text-on-dark-subdued);text-decoration:none">Dataiku: Understanding AI Agents</a>
+            <a href="https://x.com/sama/status/2033935276079510011" target="_blank" rel="noopener" style="color:var(--color-text-on-dark-subdued);text-decoration:none">Sam Altman Tweet (@sama)</a>
+            <a href="https://futurism.com/artificial-intelligence/sam-altman-thanks-programmers-over" target="_blank" rel="noopener" style="color:var(--color-text-on-dark-subdued);text-decoration:none">Futurism: Reactions to Altman Tweet</a>
+            <a href="https://code.claude.com/docs/en/sub-agents" target="_blank" rel="noopener" style="color:var(--color-text-on-dark-subdued);text-decoration:none">Claude Code: Sub-Agents</a>
+            <a href="https://code.claude.com/docs/de/agent-teams" target="_blank" rel="noopener" style="color:var(--color-text-on-dark-subdued);text-decoration:none">Claude Code: Agent Teams</a>
+            <a href="https://blog.weisser.dev/blog/2026/03/24/frontend-hosting-cloudflare-pages/" target="_blank" rel="noopener" style="color:var(--color-text-on-dark-subdued);text-decoration:none">Blog: Frontend on Cloudflare Pages</a>
+            <a href="https://blog.weisser.dev/projects/ai/2026/03/24/opencode-remote-telegram.html" target="_blank" rel="noopener" style="color:var(--color-text-on-dark-subdued);text-decoration:none">Blog: OpenCode Remote Telegram</a>
+          </div>
+          <h3 style="color:var(--color-accent);font-size:0.78rem;margin-bottom:6px;margin-top:10px;text-transform:uppercase;letter-spacing:0.05em">More GitHub Repos</h3>
+          <div style="display:flex;flex-direction:column;gap:3px">
+            <a href="https://github.com/RooCodeInc/Roo-Code" target="_blank" rel="noopener" style="color:var(--color-text-on-dark-subdued);text-decoration:none">RooCodeInc/Roo-Code</a>
+            <a href="https://github.com/weisser-dev/opencode-remote-telegram" target="_blank" rel="noopener" style="color:var(--color-text-on-dark-subdued);text-decoration:none">weisser-dev/opencode-remote-telegram</a>
+            <a href="https://github.com/RoundTable02/remote-opencode" target="_blank" rel="noopener" style="color:var(--color-text-on-dark-subdued);text-decoration:none">RoundTable02/remote-opencode</a>
           </div>
           <h3 style="color:var(--color-accent);font-size:0.78rem;margin-bottom:6px;margin-top:10px;text-transform:uppercase;letter-spacing:0.05em">Services</h3>
           <div style="display:flex;flex-direction:column;gap:3px">

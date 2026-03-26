@@ -1046,83 +1046,272 @@ function setupHandsonQR() {
 
 // ===== Architecture Builder =====
 function setupArchBuilder() {
-  const form = document.getElementById('arch-builder-form');
-  if (!form) return;
+  const diagram = document.getElementById('arch-diagram');
+  const select = document.getElementById('arch-usecase');
+  const detailBox = document.getElementById('arch-builder-detail');
+  if (!diagram || !select) return;
 
-  const summaryEl = document.getElementById('arch-summary');
-  const detailEl = document.getElementById('arch-detail');
-  if (!summaryEl || !detailEl) return;
+  const isDE = currentLang === 'de';
 
-  function getSelected(layerId) {
-    const container = document.getElementById(`arch-opts-${layerId}`);
-    if (!container) return [];
-    return Array.from(container.querySelectorAll('.arch-opt--active')).map(btn => ({
-      value: btn.dataset.value,
-      label: btn.textContent.trim(),
-      info: btn.dataset.info || '',
-    }));
+  // Use-case presets with full architecture config
+  const presets = {
+    coding: {
+      label: isDE ? 'Coding Assistant' : 'Coding Assistant',
+      desc: isDE ? 'Entwickler arbeitet lokal mit KI-Agent an Code. Agent liest/schreibt Dateien, führt Tests aus.' : 'Developer works locally with AI agent on code. Agent reads/writes files, runs tests.',
+      iface: { name: 'IDE Plugin', zone: 'local', icon: '🖥️' },
+      framework: { name: 'OpenCode', zone: 'local', icon: '⚙️' },
+      llm: { name: 'Claude (Bedrock)', zone: 'cloud-aws', icon: '🧠' },
+      context: { name: isDE ? 'agents.md + Codebase' : 'agents.md + Codebase', zone: 'local', icon: '📋' },
+      tools: [
+        { name: 'Shell', zone: 'local' }, { name: 'Filesystem', zone: 'local' }, { name: 'Git', zone: 'local' }
+      ],
+      backends: [],
+      output: [isDE ? 'Code / PR' : 'Code / PR', isDE ? 'Tests' : 'Tests'],
+      outputTarget: 'user',
+    },
+    review: {
+      label: isDE ? 'Code Review (CI/CD)' : 'Code Review (CI/CD)',
+      desc: isDE ? 'Agent wird in Pipeline getriggert, reviewt MR automatisch, kommentiert in GitLab/GitHub.' : 'Agent is triggered in pipeline, reviews MR automatically, comments in GitLab/GitHub.',
+      iface: { name: 'API / Webhook', zone: 'server', icon: '🔗' },
+      framework: { name: 'LangChain', zone: 'server', icon: '⚙️' },
+      llm: { name: 'Claude (Bedrock)', zone: 'cloud-aws', icon: '🧠' },
+      context: { name: 'Diff + MR Context', zone: 'server', icon: '📋' },
+      tools: [
+        { name: 'Git MCP', zone: 'server' }, { name: 'GitLab API', zone: 'saas' }
+      ],
+      backends: [{ name: 'GitLab / GitHub', zone: 'saas', icon: '🔧' }],
+      output: ['MR Comments', 'Approval / Reject'],
+      outputTarget: 'system',
+    },
+    docs: {
+      label: isDE ? 'Doku-Agent' : 'Docs Agent',
+      desc: isDE ? 'Agent generiert Dokumentation aus Code-Änderungen und schreibt sie in Confluence.' : 'Agent generates documentation from code changes and writes it to Confluence.',
+      iface: { name: 'CLI / TUI', zone: 'local', icon: '💻' },
+      framework: { name: 'OpenCode', zone: 'local', icon: '⚙️' },
+      llm: { name: 'Claude (Bedrock)', zone: 'cloud-aws', icon: '🧠' },
+      context: { name: 'Codebase + History', zone: 'local', icon: '📋' },
+      tools: [
+        { name: 'Filesystem', zone: 'local' }, { name: 'Git', zone: 'local' }, { name: 'Confluence MCP', zone: 'local' }
+      ],
+      backends: [{ name: 'Confluence API', zone: 'saas', icon: '🔧' }],
+      output: [isDE ? 'Confluence-Seiten' : 'Confluence Pages', 'Markdown'],
+      outputTarget: 'system',
+    },
+    chatbot: {
+      label: isDE ? 'Kunden-Chatbot (Web)' : 'Customer Chatbot (Web)',
+      desc: isDE ? 'Chatbot auf der Webseite beantwortet Kundenfragen basierend auf Wissensbasis.' : 'Chatbot on website answers customer questions based on knowledge base.',
+      iface: { name: 'Chatbot Widget', zone: 'cloud', icon: '💬' },
+      framework: { name: 'LangChain', zone: 'cloud', icon: '⚙️' },
+      llm: { name: 'GPT-4 (OpenAI)', zone: 'cloud', icon: '🧠' },
+      context: { name: isDE ? 'Vektor-DB (RAG)' : 'Vector DB (RAG)', zone: 'cloud', icon: '📋' },
+      tools: [{ name: 'Search MCP', zone: 'cloud' }],
+      backends: [
+        { name: isDE ? 'Vektor-DB (Pinecone)' : 'Vector DB (Pinecone)', zone: 'cloud', icon: '🗄️' },
+        { name: isDE ? 'Produkt-API' : 'Product API', zone: 'server', icon: '🔧' }
+      ],
+      output: [isDE ? 'Chat-Antwort' : 'Chat Response'],
+      outputTarget: 'user',
+    },
+    voice: {
+      label: isDE ? 'Call Center Voice Agent' : 'Call Center Voice Agent',
+      desc: isDE ? 'Telefonanruf → Speech-to-Text → Agent verarbeitet → Text-to-Speech → Antwort an Anrufer. Braucht STT/TTS Services.' : 'Phone call → Speech-to-Text → Agent processes → Text-to-Speech → Answer to caller. Requires STT/TTS services.',
+      iface: { name: isDE ? 'Voice / Telefon' : 'Voice / Phone', zone: 'cloud', icon: '📞' },
+      framework: { name: 'LangChain', zone: 'cloud', icon: '⚙️' },
+      llm: { name: 'Claude (Bedrock)', zone: 'cloud-aws', icon: '🧠' },
+      context: { name: isDE ? 'Kundenprofil + Session' : 'Customer Profile + Session', zone: 'cloud', icon: '📋' },
+      tools: [{ name: 'CRM MCP', zone: 'cloud' }],
+      backends: [
+        { name: 'Azure Whisper (STT)', zone: 'cloud-azure', icon: '🎙️' },
+        { name: 'Azure TTS', zone: 'cloud-azure', icon: '🔊' },
+        { name: 'CRM API', zone: 'saas', icon: '🔧' }
+      ],
+      output: [isDE ? 'Sprach-Antwort' : 'Voice Response', isDE ? 'Ticket erstellt' : 'Ticket Created'],
+      outputTarget: 'user',
+    },
+    tickets: {
+      label: isDE ? 'Ticket-Automatisierung' : 'Ticket Automation',
+      desc: isDE ? 'Agent liest Jira-Tickets, klassifiziert sie, erstellt Subtasks und weist sie zu.' : 'Agent reads Jira tickets, classifies them, creates subtasks and assigns them.',
+      iface: { name: 'API / Webhook', zone: 'server', icon: '🔗' },
+      framework: { name: 'CrewAI', zone: 'server', icon: '⚙️' },
+      llm: { name: 'GPT-4 (OpenAI)', zone: 'cloud', icon: '🧠' },
+      context: { name: isDE ? 'Ticket-Historie' : 'Ticket History', zone: 'server', icon: '📋' },
+      tools: [{ name: 'Jira MCP', zone: 'server' }],
+      backends: [{ name: 'Jira API', zone: 'saas', icon: '🔧' }],
+      output: [isDE ? 'Klassifizierte Tickets' : 'Classified Tickets', 'Subtasks', isDE ? 'Zuweisungen' : 'Assignments'],
+      outputTarget: 'system',
+    },
+    knowledge: {
+      label: isDE ? 'Wissens-Agent (Wiki)' : 'Knowledge Agent (Wiki)',
+      desc: isDE ? 'Mitarbeiter stellen Fragen, Agent durchsucht Confluence/SharePoint und antwortet mit Quellenangabe.' : 'Employees ask questions, agent searches Confluence/SharePoint and answers with source references.',
+      iface: { name: 'Chat UI', zone: 'server', icon: '💬' },
+      framework: { name: 'LangChain', zone: 'server', icon: '⚙️' },
+      llm: { name: 'Claude (Bedrock)', zone: 'cloud-aws', icon: '🧠' },
+      context: { name: isDE ? 'Vektor-DB (RAG)' : 'Vector DB (RAG)', zone: 'server', icon: '📋' },
+      tools: [{ name: 'Confluence MCP', zone: 'server' }, { name: 'SharePoint MCP', zone: 'server' }],
+      backends: [
+        { name: 'Confluence API', zone: 'saas', icon: '🔧' },
+        { name: 'SharePoint API', zone: 'saas', icon: '🔧' },
+        { name: isDE ? 'Vektor-DB' : 'Vector DB', zone: 'server', icon: '🗄️' }
+      ],
+      output: [isDE ? 'Antwort + Quellen' : 'Answer + Sources'],
+      outputTarget: 'user',
+    },
+    data: {
+      label: isDE ? 'Data Pipeline Agent' : 'Data Pipeline Agent',
+      desc: isDE ? 'Agent analysiert Datenbank, schreibt Queries, erstellt Reports. Läuft als Cronjob.' : 'Agent analyzes database, writes queries, creates reports. Runs as a cron job.',
+      iface: { name: 'API / Cron', zone: 'server', icon: '🔗' },
+      framework: { name: 'LangChain', zone: 'server', icon: '⚙️' },
+      llm: { name: 'GPT-4 (OpenAI)', zone: 'cloud', icon: '🧠' },
+      context: { name: isDE ? 'DB-Schema + History' : 'DB Schema + History', zone: 'server', icon: '📋' },
+      tools: [{ name: 'Database MCP', zone: 'server' }, { name: 'Shell', zone: 'server' }],
+      backends: [{ name: 'PostgreSQL', zone: 'server', icon: '🗄️' }, { name: isDE ? 'S3 / Speicher' : 'S3 / Storage', zone: 'cloud-aws', icon: '🗄️' }],
+      output: ['Reports', 'CSV / JSON', 'Dashboards'],
+      outputTarget: 'system',
+    },
+  };
+
+  const zoneLabels = {
+    'local': { label: isDE ? '💻 Lokal (Entwickler-PC)' : '💻 Local (Developer PC)', color: 'rgba(37,204,120,0.12)', border: 'rgba(37,204,120,0.3)' },
+    'server': { label: isDE ? '🏢 On-Prem Server' : '🏢 On-Prem Server', color: 'rgba(47,108,122,0.12)', border: 'rgba(47,108,122,0.3)' },
+    'cloud': { label: '☁️ Cloud', color: 'rgba(100,149,237,0.12)', border: 'rgba(100,149,237,0.3)' },
+    'cloud-aws': { label: '☁️ AWS', color: 'rgba(255,153,0,0.1)', border: 'rgba(255,153,0,0.3)' },
+    'cloud-azure': { label: '☁️ Azure', color: 'rgba(0,120,215,0.1)', border: 'rgba(0,120,215,0.3)' },
+    'saas': { label: '🌐 SaaS', color: 'rgba(255,107,107,0.08)', border: 'rgba(255,107,107,0.25)' },
+  };
+
+  function boxHTML(icon, name, role, accent) {
+    const bg = accent ? 'rgba(255,237,0,0.1)' : 'rgba(255,255,255,0.04)';
+    const brd = accent ? 'rgba(255,237,0,0.3)' : 'rgba(255,255,255,0.1)';
+    const clr = accent ? 'var(--color-accent)' : 'rgba(255,255,255,0.85)';
+    return `<div style="padding:5px 8px;border-radius:6px;background:${bg};border:1px solid ${brd};text-align:center;min-width:0">
+      <div style="font-size:0.9rem">${icon}</div>
+      <div style="font-size:0.62rem;font-weight:600;color:${clr};line-height:1.2;margin-top:1px">${name}</div>
+      <div style="font-size:0.55rem;color:rgba(255,255,255,0.4);margin-top:1px">${role}</div>
+    </div>`;
   }
 
-  function updateSummary() {
-    const frontend = getSelected('frontend');
-    const framework = getSelected('framework');
-    const llm = getSelected('llm');
-    const tools = getSelected('tools');
-
-    const fe = frontend[0]?.label || '?';
-    const fw = framework[0]?.label || '?';
-    const model = llm[0]?.label || '?';
-    const toolNames = tools.map(t => t.label).join(', ') || 'keine';
-
-    summaryEl.innerHTML = `<strong style="color:var(--color-accent)">${fe}</strong> &rarr; <strong>${fw}</strong> &rarr; <strong>${model}</strong> + <strong style="color:var(--color-positive)">${toolNames}</strong>`;
-
-    // Show the info text from the last changed single-select, or first tool
-    const infos = [...frontend, ...framework, ...llm].filter(x => x.info);
-    const lastInfo = infos[infos.length - 1]?.info || '';
-    const toolInfo = tools.length > 0
-      ? (currentLang === 'de' ? `Tools: ${tools.map(t => t.label).join(', ')}` : `Tools: ${tools.map(t => t.label).join(', ')}`)
-      : '';
-    detailEl.textContent = lastInfo + (toolInfo ? ` | ${toolInfo}` : '');
+  function arrow(label) {
+    return `<div style="display:flex;flex-direction:column;align-items:center;gap:0;min-width:20px">
+      <div style="font-size:0.6rem;color:rgba(255,255,255,0.3)">→</div>
+      ${label ? `<div style="font-size:0.45rem;color:rgba(255,255,255,0.25)">${label}</div>` : ''}
+    </div>`;
   }
 
-  form.addEventListener('click', (e) => {
-    const btn = e.target.closest('.arch-opt');
-    if (!btn) return;
+  function arrowDown(label) {
+    return `<div style="text-align:center;padding:1px 0">
+      <div style="font-size:0.55rem;color:rgba(255,255,255,0.3)">↓${label ? ' ' + label : ''}</div>
+    </div>`;
+  }
 
-    const container = btn.parentElement;
-    const isMulti = btn.classList.contains('arch-opt--multi');
+  function zoneWrap(zone, content) {
+    const z = zoneLabels[zone] || zoneLabels['cloud'];
+    return `<div style="padding:4px 6px;border-radius:6px;background:${z.color};border:1px dashed ${z.border};position:relative">
+      <div style="font-size:0.45rem;color:rgba(255,255,255,0.35);margin-bottom:2px">${z.label}</div>
+      ${content}
+    </div>`;
+  }
 
-    if (isMulti) {
-      // Toggle this button
-      btn.classList.toggle('arch-opt--active');
-      if (btn.classList.contains('arch-opt--active')) {
-        btn.style.border = '1px solid rgba(255,237,0,0.3)';
-        btn.style.background = 'rgba(255,237,0,0.12)';
-        btn.style.color = 'var(--color-accent)';
-        btn.style.fontWeight = '600';
-      } else {
-        btn.style.border = '1px solid rgba(255,255,255,0.12)';
-        btn.style.background = 'rgba(255,255,255,0.04)';
-        btn.style.color = 'rgba(255,255,255,0.7)';
-        btn.style.fontWeight = 'normal';
-      }
-    } else {
-      // Single select: deactivate siblings, activate this
-      container.querySelectorAll('.arch-opt').forEach(b => {
-        b.classList.remove('arch-opt--active');
-        b.style.border = '1px solid rgba(255,255,255,0.12)';
-        b.style.background = 'rgba(255,255,255,0.04)';
-        b.style.color = 'rgba(255,255,255,0.7)';
-        b.style.fontWeight = 'normal';
-      });
-      btn.classList.add('arch-opt--active');
-      btn.style.border = '1px solid rgba(255,237,0,0.3)';
-      btn.style.background = 'rgba(255,237,0,0.12)';
-      btn.style.color = 'var(--color-accent)';
-      btn.style.fontWeight = '600';
+  function render(preset) {
+    const p = preset;
+
+    // Group items by zone
+    const zones = {};
+    function addToZone(zone, html) {
+      if (!zones[zone]) zones[zone] = [];
+      zones[zone].push(html);
     }
 
-    updateSummary();
+    // Build the flow rows
+    // Row 1: Interface → Framework → LLM (with zones)
+    const row1 = `<div style="display:flex;align-items:center;gap:4px;flex-wrap:wrap;justify-content:center">
+      ${zoneWrap(p.iface.zone, boxHTML(p.iface.icon, p.iface.name, 'Interface', true))}
+      ${arrow('')}
+      ${zoneWrap(p.framework.zone, boxHTML(p.framework.icon, p.framework.name, 'Framework', false))}
+      ${arrow('API')}
+      ${zoneWrap(p.llm.zone, boxHTML(p.llm.icon, p.llm.name, 'LLM', false))}
+    </div>`;
+
+    // Row 2: Context (attached to Framework)
+    const row2 = `<div style="display:flex;justify-content:center;gap:4px;align-items:center;margin:3px 0">
+      <div style="width:80px"></div>
+      <div style="display:flex;align-items:center;gap:4px">
+        <div style="font-size:0.5rem;color:rgba(255,255,255,0.3)">↕</div>
+        ${zoneWrap(p.context.zone, boxHTML(p.context.icon, p.context.name, isDE ? 'Kontext / Memory' : 'Context / Memory', false))}
+      </div>
+    </div>`;
+
+    // Row 3: Tools (MCP)
+    const toolsHTML = p.tools.map(t =>
+      `<div style="padding:3px 7px;border-radius:4px;background:rgba(255,237,0,0.08);border:1px solid rgba(255,237,0,0.2);font-size:0.58rem;color:var(--color-accent)">${t.name}</div>`
+    ).join('');
+    const row3 = p.tools.length ? `<div style="margin:2px 0">
+      ${arrowDown(isDE ? 'Tool Calls' : 'Tool Calls')}
+      <div style="display:flex;flex-wrap:wrap;gap:3px;justify-content:center">${toolsHTML}</div>
+    </div>` : '';
+
+    // Row 4: Backends
+    const backendsHTML = p.backends.map(b =>
+      zoneWrap(b.zone, `<div style="text-align:center">
+        <div style="font-size:0.7rem">${b.icon}</div>
+        <div style="font-size:0.55rem;color:rgba(255,255,255,0.8);font-weight:600">${b.name}</div>
+      </div>`)
+    ).join('');
+    const row4 = p.backends.length ? `<div style="margin:2px 0">
+      ${arrowDown('API')}
+      <div style="display:flex;flex-wrap:wrap;gap:4px;justify-content:center">${backendsHTML}</div>
+    </div>` : '';
+
+    // Row 5: Output
+    const outputHTML = p.output.map(o =>
+      `<span style="padding:2px 7px;border-radius:4px;background:rgba(37,204,120,0.1);border:1px solid rgba(37,204,120,0.25);font-size:0.58rem;color:var(--color-positive)">${o}</span>`
+    ).join(' ');
+    const outputLabel = p.outputTarget === 'user'
+      ? (isDE ? '↩ Antwort an User' : '↩ Response to User')
+      : (isDE ? '→ In System schreiben' : '→ Write to System');
+    const row5 = `<div style="margin-top:2px;text-align:center">
+      ${arrowDown(isDE ? 'Ergebnis' : 'Output')}
+      <div style="display:flex;flex-wrap:wrap;gap:3px;justify-content:center;align-items:center">
+        ${outputHTML}
+        <span style="font-size:0.5rem;color:rgba(255,255,255,0.35);margin-left:4px">${outputLabel}</span>
+      </div>
+    </div>`;
+
+    diagram.innerHTML = row1 + row2 + row3 + row4 + row5;
+    if (detailBox) detailBox.innerHTML = `<strong style="color:var(--color-accent)">${p.label}:</strong> ${p.desc}`;
+  }
+
+  function showDiagram(preset) {
+    // Fade out first if already visible
+    diagram.style.opacity = '0';
+    diagram.style.transform = 'translateY(10px)';
+    if (detailBox) { detailBox.style.opacity = '0'; }
+
+    setTimeout(() => {
+      render(preset);
+      // Fade in
+      requestAnimationFrame(() => {
+        diagram.style.opacity = '1';
+        diagram.style.transform = 'translateY(0)';
+        if (detailBox) { detailBox.style.opacity = '1'; }
+      });
+    }, diagram.innerHTML ? 300 : 50);
+  }
+
+  // Button click generates the diagram
+  const generateBtn = document.getElementById('arch-generate-btn');
+  if (generateBtn) {
+    generateBtn.addEventListener('click', () => {
+      generateBtn.style.transform = 'scale(0.95)';
+      setTimeout(() => { generateBtn.style.transform = ''; }, 150);
+      showDiagram(presets[select.value] || presets.coding);
+    });
+  }
+
+  // Also regenerate on dropdown change if diagram is already visible
+  select.addEventListener('change', () => {
+    if (diagram.innerHTML) {
+      showDiagram(presets[select.value] || presets.coding);
+    }
   });
 }
 
