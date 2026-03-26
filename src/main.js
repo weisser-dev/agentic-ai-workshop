@@ -8,6 +8,7 @@ import { basicsSlides as basicsDE } from './sections/de/04-basics.js'
 import { handoutSlides as handoutDE } from './sections/de/05-handout.js'
 import { aiCodingSlides as aiCodingDE } from './sections/de/06-ai-coding.js'
 import { diskussionSlides as diskussionDE } from './sections/de/06b-diskussion.js'
+import { agenticSlides as agenticDE } from './sections/de/06c-agentic.js'
 import { handsonSlides as handsonDE } from './sections/de/07-handson.js'
 import { deepDiveSlides as deepDiveDE } from './sections/de/08-deepdive.js'
 import { abschlussSlides as abschlussDE } from './sections/de/09-abschluss.js'
@@ -19,18 +20,19 @@ import { basicsSlides as basicsEN } from './sections/en/04-basics.js'
 import { handoutSlides as handoutEN } from './sections/en/05-handout.js'
 import { aiCodingSlides as aiCodingEN } from './sections/en/06-ai-coding.js'
 import { diskussionSlides as diskussionEN } from './sections/en/06b-diskussion.js'
+import { agenticSlides as agenticEN } from './sections/en/06c-agentic.js'
 import { handsonSlides as handsonEN } from './sections/en/07-handson.js'
 import { deepDiveSlides as deepDiveEN } from './sections/en/08-deepdive.js'
 import { abschlussSlides as abschlussEN } from './sections/en/09-abschluss.js'
 
 const allSlides = {
-  de: [introDE, geschichteDE, kiInternetDE, basicsDE, handoutDE, aiCodingDE, diskussionDE, handsonDE, deepDiveDE, abschlussDE],
-  en: [introEN, geschichteEN, kiInternetEN, basicsEN, handoutEN, aiCodingEN, diskussionEN, handsonEN, deepDiveEN, abschlussEN],
+  de: [introDE, geschichteDE, kiInternetDE, basicsDE, handoutDE, aiCodingDE, diskussionDE, agenticDE, handsonDE, deepDiveDE, abschlussDE],
+  en: [introEN, geschichteEN, kiInternetEN, basicsEN, handoutEN, aiCodingEN, diskussionEN, agenticEN, handsonEN, deepDiveEN, abschlussEN],
 };
 
 const sectionNames = {
-  de: ['Intro', 'Geschichte', 'KI \u2013 Internet 2.0', 'Basics', 'Handout', 'AI Coding', 'Diskussion', 'Hands-On', 'Deep Dive', 'Abschluss'],
-  en: ['Intro', 'History', 'AI \u2013 The New Internet', 'Basics', 'Handout', 'AI Coding', 'Discussion', 'Hands-On', 'Deep Dive', 'Closing'],
+  de: ['Intro', 'Geschichte', 'KI \u2013 Internet 2.0', 'Basics', 'Handout', 'AI Coding', 'Diskussion', 'Agentic AI', 'Hands-On', 'Deep Dive', 'Abschluss'],
+  en: ['Intro', 'History', 'AI \u2013 The New Internet', 'Basics', 'Handout', 'AI Coding', 'Discussion', 'Agentic AI', 'Hands-On', 'Deep Dive', 'Closing'],
 };
 
 const uiStrings = {
@@ -144,9 +146,10 @@ const sectionDefs = [
   { start: 'handout', nameIdx: 4, noDots: true },
   { start: 'section-coding', nameIdx: 5 },
   { start: 'discussion', nameIdx: 6, noDots: true },
-  { start: 'handson-setup', nameIdx: 7 },
-  { start: 'section-deepdive', nameIdx: 8 },
-  { start: 'section-closing', nameIdx: 9 },
+  { start: 'section-agentic', nameIdx: 7 },
+  { start: 'handson-setup', nameIdx: 8 },
+  { start: 'section-deepdive', nameIdx: 9 },
+  { start: 'section-closing', nameIdx: 10 },
 ];
 
 function getSections() {
