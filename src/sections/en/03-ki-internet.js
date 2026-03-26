@@ -279,7 +279,8 @@ export const kiInternetSlides = [
           </div>
           <div style="margin-top:10px;padding:10px;border-radius:8px;background:rgba(255,237,0,0.08);border:1px solid rgba(255,237,0,0.2)">
             <p style="font-size:0.8rem;color:var(--color-text-on-dark-subdued);line-height:1.4">
-              <strong style="color:var(--color-accent)">But where does it get the tools?</strong> &rarr; That's what MCP is for &ndash; next slide.
+              <strong style="color:var(--color-accent)">But where does it get the tools?</strong> &rarr; That&rsquo;s what MCP is for &ndash; next slide.<br>
+              <span style="font-size:0.72rem;color:var(--color-text-on-dark-subdued)">&#128073; Later in <strong>Basics</strong>: What exactly is an agent? In the <strong>Agentic AI</strong> deep dive: Architecture, layer models, interactive builder &amp; how to build your own MCP.</span>
             </p>
           </div>
         </div>

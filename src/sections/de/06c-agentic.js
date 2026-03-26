@@ -397,4 +397,84 @@ export const agenticSlides = [
       </div>
     `,
   },
+
+  // ===== Eigenen MCP bauen =====
+  {
+    id: 'build-mcp',
+    theme: 'slide--dark',
+    label: 'MCP bauen',
+    content: `
+      <span class="slide-label" style="color:var(--color-accent)">Hands-On</span>
+      <h2 class="slide-title" style="font-size:1.3rem">Eigenen MCP Server &amp; Client bauen</h2>
+      <p class="slide-subtitle" style="font-size:0.82rem">So bindet ihr eure eigenen Tools an &ndash; in unter 50 Zeilen Code</p>
+      <div class="two-cols" style="margin-top:10px">
+        <div>
+          <h3 style="color:var(--color-accent);font-size:0.95rem;margin-bottom:6px">MCP Server (Node.js)</h3>
+          <div class="code-block" style="margin:0;margin-bottom:8px">
+            <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div>server.ts &ndash; eigenes Tool bereitstellen</div>
+            <div class="code-body" style="padding:8px 12px;font-size:0.62rem"><pre style="margin:0"><span class="code-keyword">import</span> { McpServer } <span class="code-keyword">from</span> <span class="code-string">"@modelcontextprotocol/sdk/server/mcp.js"</span>;
+<span class="code-keyword">import</span> { StdioServerTransport } <span class="code-keyword">from</span> <span class="code-string">"...sdk/server/stdio.js"</span>;
+<span class="code-keyword">import</span> { z } <span class="code-keyword">from</span> <span class="code-string">"zod"</span>;
+
+<span class="code-keyword">const</span> server = <span class="code-keyword">new</span> <span class="code-function">McpServer</span>({
+  <span class="code-property">name</span>: <span class="code-string">"mein-tool"</span>,
+  <span class="code-property">version</span>: <span class="code-string">"1.0.0"</span>
+});
+
+<span class="code-comment">// Tool registrieren &ndash; das sieht der Agent</span>
+server.<span class="code-function">registerTool</span>(<span class="code-string">"get_user"</span>, {
+  <span class="code-property">description</span>: <span class="code-string">"Holt User-Daten aus unserer DB"</span>,
+  <span class="code-property">inputSchema</span>: {
+    <span class="code-property">userId</span>: z.<span class="code-function">string</span>().<span class="code-function">describe</span>(<span class="code-string">"User-ID"</span>)
+  }
+}, <span class="code-keyword">async</span> ({ userId }) =&gt; {
+  <span class="code-comment">// Hier: DB-Query, API-Call, was auch immer</span>
+  <span class="code-keyword">const</span> user = <span class="code-keyword">await</span> <span class="code-function">db.findUser</span>(userId);
+  <span class="code-keyword">return</span> { content: [{ type: <span class="code-string">"text"</span>, text: JSON.<span class="code-function">stringify</span>(user) }] };
+});
+
+<span class="code-comment">// Server starten (STDIO-Transport)</span>
+<span class="code-keyword">const</span> transport = <span class="code-keyword">new</span> <span class="code-function">StdioServerTransport</span>();
+<span class="code-keyword">await</span> server.<span class="code-function">connect</span>(transport);</pre></div>
+          </div>
+          <div style="padding:6px 10px;border-radius:6px;background:rgba(255,237,0,0.06);border:1px solid rgba(255,237,0,0.15);font-size:0.68rem;color:rgba(255,255,255,0.6);line-height:1.3">
+            <strong style="color:var(--color-accent)">Das passiert:</strong> Der Agent erkennt automatisch das Tool <code style="background:rgba(255,255,255,0.1);padding:1px 3px;border-radius:2px">get_user</code> und kann es aufrufen &ndash; als w&auml;re es Shell oder Filesystem.
+          </div>
+        </div>
+        <div>
+          <h3 style="color:var(--color-accent);font-size:0.95rem;margin-bottom:6px">In OpenCode einbinden</h3>
+          <div class="code-block" style="margin:0;margin-bottom:8px">
+            <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div>opencode.json &ndash; MCP Server registrieren</div>
+            <div class="code-body" style="padding:8px 12px;font-size:0.65rem"><pre style="margin:0">{
+  <span class="code-property">"mcp"</span>: {
+    <span class="code-property">"mein-tool"</span>: {
+      <span class="code-property">"command"</span>: <span class="code-string">"node"</span>,
+      <span class="code-property">"args"</span>: [<span class="code-string">"./build/server.js"</span>]
+    }
+  }
+}</pre></div>
+          </div>
+          <h3 style="color:var(--color-accent);font-size:0.95rem;margin:8px 0 6px">Setup in 3 Schritten</h3>
+          <div class="code-block" style="margin:0;margin-bottom:8px">
+            <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div>Terminal</div>
+            <div class="code-body" style="padding:8px 12px;font-size:0.65rem"><pre style="margin:0"><span class="code-function">npm install</span> @modelcontextprotocol/sdk zod
+<span class="code-function">npm install</span> -D typescript @types/node
+<span class="code-function">npx tsc</span> && <span class="code-function">node</span> build/server.js</pre></div>
+          </div>
+          <h3 style="color:var(--color-accent);font-size:0.9rem;margin:8px 0 6px">Was kann man damit bauen?</h3>
+          <div style="display:flex;flex-wrap:wrap;gap:4px">
+            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.62rem;color:var(--color-text-on-dark)">Interne API anbinden</span>
+            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.62rem;color:var(--color-text-on-dark)">Datenbank-Zugriff</span>
+            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.62rem;color:var(--color-text-on-dark)">Jira / Confluence</span>
+            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.62rem;color:var(--color-text-on-dark)">E-Mail versenden</span>
+            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.62rem;color:var(--color-text-on-dark)">Kubernetes API</span>
+            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.62rem;color:var(--color-text-on-dark)">Custom Monitoring</span>
+          </div>
+          <div style="margin-top:6px;padding:6px 10px;border-radius:6px;background:rgba(47,108,122,0.1);border:1px solid rgba(47,108,122,0.2);font-size:0.62rem;color:rgba(255,255,255,0.5);line-height:1.3">
+            <strong style="color:var(--color-accent)">Docs:</strong> <a href="https://modelcontextprotocol.io/docs/develop/build-server" target="_blank" rel="noopener" style="color:var(--color-accent);text-decoration:underline">MCP Server bauen</a> &bull; <a href="https://modelcontextprotocol.io/docs/develop/build-client" target="_blank" rel="noopener" style="color:var(--color-accent);text-decoration:underline">MCP Client bauen</a> &bull; Auch in Python, Java, Kotlin m&ouml;glich.
+          </div>
+        </div>
+      </div>
+    `,
+  },
 ];

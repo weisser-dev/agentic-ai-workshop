@@ -773,37 +773,6 @@ Feedback by priority:
     `,
   },
 
-  // ===== Architecture: Agent System =====
-  {
-    id: 'agent-architecture',
-    theme: '',
-    label: 'Architecture',
-    content: `
-      <span class="slide-label">Architecture</span>
-      <h2 class="slide-title">How does it all fit together?</h2>
-      <p class="slide-subtitle">User &rarr; Frontend &rarr; Agents Framework &rarr; LLM + MCP &rarr; Result</p>
-      <div style="display:flex;align-items:center;gap:6px;margin-top:16px;padding:8px 0">
-        <div class="diagram-box diagram-box--accent arch-node" style="flex:1;padding:8px;animation-delay:0s;font-size:0.8rem;text-align:center">&#128100; User<small style="font-size:0.65rem">Question</small></div>
-        <div class="diagram-arrow" style="flex-shrink:0">&#8594;</div>
-        <div class="diagram-box diagram-box--primary arch-node" style="flex:1.3;padding:8px;animation-delay:0.2s;font-size:0.78rem;text-align:center">Chat Interface<small style="font-size:0.62rem">Frontend / CLI / TUI</small></div>
-        <div class="diagram-arrow" style="flex-shrink:0">&#8594;</div>
-        <div class="diagram-box arch-node" style="flex:1.4;padding:8px;animation-delay:0.4s;border-style:dashed;font-size:0.78rem;text-align:center">&#9881; Agents Framework<small style="font-size:0.62rem">agents.md + Tools</small></div>
-        <div class="diagram-arrow" style="flex-shrink:0">&#8594;</div>
-        <div style="display:flex;flex-direction:column;gap:5px;flex:1.2">
-          <div class="diagram-box arch-node" style="padding:7px;animation-delay:0.6s;font-size:0.78rem;text-align:center">&#129504; LLM<small style="font-size:0.62rem">"Thinking"</small></div>
-          <div class="diagram-box arch-node" style="padding:7px;animation-delay:0.7s;font-size:0.78rem;text-align:center">&#128268; MCP<small style="font-size:0.62rem">"Acting"</small></div>
-        </div>
-        <div class="diagram-arrow" style="flex-shrink:0">&#8594;</div>
-        <div class="diagram-box diagram-box--accent arch-node" style="flex:1.2;padding:8px;animation-delay:0.9s;font-size:0.78rem;text-align:center">&#128196; Result<small style="font-size:0.62rem">Page, Code, Ticket</small></div>
-      </div>
-      <div style="margin-top:12px;padding:12px;border-radius:8px;background:rgba(47,108,122,0.08);border:1px solid rgba(47,108,122,0.2)">
-        <p style="font-size:0.85rem;color:var(--color-text-subdued);line-height:1.4">
-          <strong style="color:var(--color-primary)">The trick:</strong> The agent framework (OpenCode, Continue, Claude etc.) uses the LLM for thinking <strong>and</strong> the MCP server for acting. The user doesn&rsquo;t notice any of it &ndash; they ask a question and get a result.
-        </p>
-      </div>
-    `,
-  },
-
   // ===== Practice: Our Agents in GitLab =====
   {
     id: 'gitlab-agents',

@@ -279,7 +279,8 @@ export const kiInternetSlides = [
           </div>
           <div style="margin-top:10px;padding:10px;border-radius:8px;background:rgba(255,237,0,0.08);border:1px solid rgba(255,237,0,0.2)">
             <p style="font-size:0.8rem;color:var(--color-text-on-dark-subdued);line-height:1.4">
-              <strong style="color:var(--color-accent)">Aber woher bekommt er die Tools?</strong> &rarr; Daf&uuml;r gibt es MCP &ndash; n&auml;chste Seite.
+              <strong style="color:var(--color-accent)">Aber woher bekommt er die Tools?</strong> &rarr; Daf&uuml;r gibt es MCP &ndash; n&auml;chste Seite.<br>
+              <span style="font-size:0.72rem;color:var(--color-text-on-dark-subdued)">&#128073; Sp&auml;ter in den <strong>Basics</strong>: Was genau ist ein Agent? Im <strong>Agentic AI</strong> Deep Dive: Architektur, Layer-Modelle, interaktiver Architecture Builder &amp; wie du deinen eigenen MCP baust.</span>
             </p>
           </div>
         </div>
