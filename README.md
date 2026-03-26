@@ -30,6 +30,8 @@ Die gesamte Präsentation wurde mit **[OpenCode](https://opencode.ai)** erstellt
 
 ### Geschichte & Status Quo
 - 70 Jahre KI-Geschichte: von 1956 bis 2026
+- Was bedeutet GPT? (Generative Pre-trained Transformer)
+- Warum lernt die KI nicht aus meinen Fragen? (Training vs. Inference)
 - Die Big 6 (OpenAI, Anthropic, Google, Meta, xAI, Alibaba/Qwen)
 - Benchmarks, Preise, GPU vs Token APIs
 - AGI und der Intelligence Index
@@ -43,6 +45,8 @@ Die gesamte Präsentation wurde mit **[OpenCode](https://opencode.ai)** erstellt
 
 ### Die Basics
 - Wie LLMs denken: Tokenisierung, Embeddings, Attention
+- Wie lernt ein neuronales Netz? (Spam-Erkennungs-Beispiel)
+- Warum KI manchmal „dumm" antwortet (Waschanlage-Problem, Common Sense)
 - Was sind Tokens und warum sind sie wichtig
 - Kontext-Fenster und Komprimierung
 - AGENTS.md – das Regelwerk für deinen Agent
@@ -55,11 +59,24 @@ Die gesamte Präsentation wurde mit **[OpenCode](https://opencode.ai)** erstellt
 - Vibe Coding vs. Spec-Driven Development
 - Agent-Driven vs. Spec-Driven im Vergleich
 
+### Agentic AI (NEU)
+- Was ist Agentic AI? (Definition, Single vs. Multi-Agent, Backend vs. Frontend Agents)
+- Layer-Modelle im Vergleich (Boomi, Vendia LAMP, Mezmo/AURA, Workshop-Modell)
+- Agentic Architecture Deep Dive (2-Spalten: Mit User Input vs. 100% Automatisierung)
+- **Interaktiver Architecture Builder** mit 11 Use-Case-Presets als Mermaid.js-Diagramme
+  - Lokal: Coding Assistant, Doku-Agent
+  - Remote: Code Review, Kunden-Chatbot, Voice Agent, Ticket-Automatisierung, Wissens-Agent, Data Pipeline
+  - Headless: CVE Auto-Patching, Anomalie-Erkennung, Tägliche System-Prüfung
+- 3 Wege: Selbst bauen / Agent baut / Agent IST das Backend
+- Sind Agenten resilient? (Determinismus, Model-Updates, fachliche Tests, Monitoring)
+
 ### Hands-On
-- Schritt-für-Schritt Setup: Node.js, OpenCode, VS Code, Bedrock
+- Warum npm? Was ist Node.js? (Vergleich mit Java/Python)
+- Was ist Vite? (Build-Tool, Hot Reload, kostenloses Hosting)
+- Terminal, Dev-Server & Chrome Dev Tools (Typische Stolpersteine)
+- Schritt-für-Schritt Setup: Node.js, OpenCode, VS Code, Bedrock (3 Optionen: Workshop, Enterprise, Privat)
 - Spiele bauen: 2048, Doodle Jump, Space Invaders
 - AGENTS.md schreiben und verbessern lassen
-- Das System verbessert sich selbst
 
 ### Deep Dive
 - MCP verbinden (Playwright MCP Tutorial)
@@ -96,9 +113,27 @@ Die gesamte Präsentation wurde mit **[OpenCode](https://opencode.ai)** erstellt
 
 ### Mobile
 - App-Mode mit Progress Bar, Burger-Menü, Prev/Next Buttons
-- Touch-Swipe Navigation
+- Touch-Swipe Navigation (ignoriert Swipes in scrollbaren Elementen)
+- Horizontale Tabellen-Scrollung (kein Word-Break bei Tabellenzellen)
 - Eigene Onboarding-Slides (Für wen? Was lernst du? Was brauchst du?)
 - Quiz-Slides zwischen Kapiteln
+- Alle Layouts stacken zu einer Spalte
+
+### Progression
+- Aktueller Slide wird bei jedem Wechsel in `localStorage` gespeichert
+- Beim Öffnen ohne URL-Hash: „Willkommen zurück"-Modal mit Fortschrittsbalken
+- Optionen: **Weitermachen** oder **Neu beginnen**
+- State verfällt nach 7 Tagen
+
+### Architecture Builder
+- **11 Use-Case-Presets** als interaktive Mermaid.js-Flowcharts
+- Deployment-Zonen (Lokal, On-Prem, AWS, Azure, SaaS) als farbige Subgraphs
+- User-Akteure in allen Diagrammen (Entwickler, Kunde, Mitarbeiter, Admin, Cron)
+- Bidirektionale Pfeile mit beschreibenden Labels
+- PNG-Export mit Watermark (`agentic-ai.weisser.dev`)
+- Link-Sharing mit URL-Parameter (`?uc=voice#arch-builder`)
+- Deep-Linking: URL-Parameter lädt Use Case automatisch
+- Nur auf Desktop sichtbar, Mobile zeigt Hinweis
 
 ### Tastenkürzel
 
@@ -115,23 +150,26 @@ Die gesamte Präsentation wurde mit **[OpenCode](https://opencode.ai)** erstellt
 
 - **[Vite](https://vitejs.dev/)** 5 – Build Tool
 - **Vanilla JS** – Kein Framework
+- **[Mermaid.js](https://mermaid.js.org/)** – Architektur-Diagramme (SVG)
 - **CSS** – Custom Design System (Teal/Yellow/Navy)
 - **HTML** – Template Literals in JS-Modulen
+- **[Playwright](https://playwright.dev/)** – Mobile Audit (Dev-Dependency)
 
 ## Projektstruktur
 
 ```
 src/
-  main.js                       # Navigation, Timer, i18n, Mobile, Quiz
-  style.css                     # Design System, Layouts, Responsive
+  main.js                       # Navigation, Timer, i18n, Mobile, Quiz, Arch Builder, Progression
+  style.css                     # Design System, Layouts, Responsive, Mobile
   sections/
     de/                         # Deutsche Slides
-      01-intro.js ... 09-abschluss.js
+      01-intro.js ... 06c-agentic.js ... 09-abschluss.js
     en/                         # English Slides
-      01-intro.js ... 09-abschluss.js
+      01-intro.js ... 06c-agentic.js ... 09-abschluss.js
 index.html                      # HTML-Shell mit Favicon
 public/
   favicon/                      # Custom Favicons
+CHANGELOG.md                    # Alle Releases dokumentiert
 ```
 
 ## Lokal starten
@@ -213,6 +251,11 @@ Aktuell deployed auf: **[agentic-ai.weisser.dev](https://agentic-ai.weisser.dev)
 | [Anthropic Blog](https://www.anthropic.com/news/detecting-and-preventing-distillation-attacks) | Distillation Attacks Report | Public |
 | [CosmicJS](https://www.cosmicjs.com/blog/claude-sonnet-45-vs-opus-45-a-real-world-comparison) | Claude Sonnet vs. Opus Vergleich | Public |
 | [AWS Bedrock Docs](https://docs.aws.amazon.com/decision-guides/latest/bedrock-or-sagemaker/bedrock-or-sagemaker.html) | Bedrock vs. SageMaker Guide | Public |
+| [Dataiku](https://www.dataiku.com/stories/detail/ai-agents/) | Understanding AI Agents & Agentic Workflows | Public |
+| [Vectorize](https://vectorize.io/blog/designing-agentic-ai-systems-part-1-agent-architectures) | Designing Agentic AI Systems | Public |
+| [Blog: Cloudflare Pages](https://blog.weisser.dev/blog/2026/03/24/frontend-hosting-cloudflare-pages/) | Frontend Hosting Anleitung | Public |
+| [Blog: OpenCode Telegram](https://blog.weisser.dev/projects/ai/2026/03/24/opencode-remote-telegram.html) | OpenCode Remote Telegram | Public |
+| [Mermaid.js](https://mermaid.js.org/) | Diagramm-Rendering Engine | MIT |
 
 ## Meta
 
@@ -278,6 +321,8 @@ The entire presentation was built with **[OpenCode](https://opencode.ai)** – i
 
 ### History & Status Quo
 - 70 years of AI history: from 1956 to 2026
+- What does GPT mean? (Generative Pre-trained Transformer)
+- Why doesn't AI learn from my questions? (Training vs. Inference)
 - The Big 6 (OpenAI, Anthropic, Google, Meta, xAI, Alibaba/Qwen)
 - Benchmarks, pricing, GPU vs token APIs
 - AGI and the Intelligence Index
@@ -291,6 +336,8 @@ The entire presentation was built with **[OpenCode](https://opencode.ai)** – i
 
 ### The Basics
 - How LLMs think: tokenization, embeddings, attention
+- How does a neural network learn? (Spam detection example)
+- Why AI sometimes gives "dumb" answers (Car wash problem, Common Sense)
 - What are tokens and why they matter
 - Context window and compression
 - AGENTS.md – the rulebook for your agent
@@ -303,11 +350,24 @@ The entire presentation was built with **[OpenCode](https://opencode.ai)** – i
 - Vibe Coding vs. Spec-Driven Development
 - Agent-driven vs. spec-driven comparison
 
+### Agentic AI (NEW)
+- What is Agentic AI? (Definition, Single vs. Multi-Agent, Backend vs. Frontend Agents)
+- Layer models compared (Boomi, Vendia LAMP, Mezmo/AURA, Workshop model)
+- Agentic Architecture Deep Dive (2-column: With User Input vs. 100% Automation)
+- **Interactive Architecture Builder** with 11 use-case presets as Mermaid.js diagrams
+  - Local: Coding Assistant, Docs Agent
+  - Remote: Code Review, Customer Chatbot, Voice Agent, Ticket Automation, Knowledge Agent, Data Pipeline
+  - Headless: CVE Auto-Patching, Anomaly Detection, Daily System Health Check
+- 3 Paths: Build Yourself / Agent Builds / Agent IS the Backend
+- Are Agents Resilient? (Determinism, model updates, functional tests, monitoring)
+
 ### Hands-On
-- Step-by-step setup: Node.js, OpenCode, VS Code, Bedrock
+- Why npm? What is Node.js? (Comparison with Java/Python)
+- What is Vite? (Build tool, hot reload, free hosting)
+- Terminal, Dev Server & Chrome Dev Tools (Common pitfalls)
+- Step-by-step setup: Node.js, OpenCode, VS Code, Bedrock (3 options: Workshop, Enterprise, Private)
 - Build games: 2048, Doodle Jump, Space Invaders
 - Write and improve AGENTS.md
-- The system improves itself
 
 ### Deep Dive
 - Connect MCP (Playwright MCP tutorial)
@@ -344,9 +404,27 @@ The entire presentation was built with **[OpenCode](https://opencode.ai)** – i
 
 ### Mobile
 - App mode with progress bar, burger menu, prev/next buttons
-- Touch swipe navigation
+- Touch swipe navigation (ignores swipes inside scrollable elements)
+- Horizontal table scrolling (no word-break in table cells)
 - Custom onboarding slides (Who? What? Requirements?)
 - Quiz slides between chapters
+- All layouts stack to single column
+
+### Progression
+- Current slide saved to `localStorage` on every change
+- On reload without URL hash: "Welcome back" modal with progress bar
+- Options: **Continue** or **Start over**
+- State expires after 7 days
+
+### Architecture Builder
+- **11 use-case presets** as interactive Mermaid.js flowcharts
+- Deployment zones (Local, On-Prem, AWS, Azure, SaaS) as colored subgraphs
+- User actors in all diagrams (Developer, Customer, Employee, Admin, Cron)
+- Bidirectional arrows with descriptive labels
+- PNG export with watermark (`agentic-ai.weisser.dev`)
+- Link sharing with URL parameter (`?uc=voice#arch-builder`)
+- Deep-linking: URL parameter auto-loads use case
+- Desktop only, mobile shows hint
 
 ### Keyboard Shortcuts
 
@@ -363,8 +441,10 @@ The entire presentation was built with **[OpenCode](https://opencode.ai)** – i
 
 - **[Vite](https://vitejs.dev/)** 5 – Build tool
 - **Vanilla JS** – No framework
+- **[Mermaid.js](https://mermaid.js.org/)** – Architecture diagrams (SVG)
 - **CSS** – Custom design system (Teal/Yellow/Navy)
 - **HTML** – Template literals in JS modules
+- **[Playwright](https://playwright.dev/)** – Mobile audit (dev dependency)
 
 ## Run locally
 
@@ -445,6 +525,11 @@ Currently deployed at: **[agentic-ai.weisser.dev](https://agentic-ai.weisser.dev
 | [Anthropic Blog](https://www.anthropic.com/news/detecting-and-preventing-distillation-attacks) | Distillation attacks report | Public |
 | [CosmicJS](https://www.cosmicjs.com/blog/claude-sonnet-45-vs-opus-45-a-real-world-comparison) | Claude Sonnet vs. Opus comparison | Public |
 | [AWS Bedrock Docs](https://docs.aws.amazon.com/decision-guides/latest/bedrock-or-sagemaker/bedrock-or-sagemaker.html) | Bedrock vs. SageMaker guide | Public |
+| [Dataiku](https://www.dataiku.com/stories/detail/ai-agents/) | Understanding AI Agents & Agentic Workflows | Public |
+| [Vectorize](https://vectorize.io/blog/designing-agentic-ai-systems-part-1-agent-architectures) | Designing Agentic AI Systems | Public |
+| [Blog: Cloudflare Pages](https://blog.weisser.dev/blog/2026/03/24/frontend-hosting-cloudflare-pages/) | Frontend hosting guide | Public |
+| [Blog: OpenCode Telegram](https://blog.weisser.dev/projects/ai/2026/03/24/opencode-remote-telegram.html) | OpenCode Remote Telegram | Public |
+| [Mermaid.js](https://mermaid.js.org/) | Diagram rendering engine | MIT |
 
 ## Meta
 
