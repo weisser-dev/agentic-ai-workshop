@@ -1455,7 +1455,31 @@ function setupArchBuilder() {
           </div>
         </div>`;
       const svgEl = diagram.querySelector('svg');
-      if (svgEl) { svgEl.style.maxWidth = '100%'; svgEl.style.height = 'auto'; svgEl.removeAttribute('height'); }
+      if (svgEl) {
+        svgEl.style.maxWidth = '100%'; svgEl.style.height = 'auto'; svgEl.removeAttribute('height');
+        // Inject watermark into largest subgraph box
+        const rects = svgEl.querySelectorAll('.cluster rect, .cluster-bg');
+        let largest = null;
+        let maxArea = 0;
+        rects.forEach(r => {
+          const w = parseFloat(r.getAttribute('width') || 0);
+          const h = parseFloat(r.getAttribute('height') || 0);
+          if (w * h > maxArea) { maxArea = w * h; largest = r; }
+        });
+        if (largest) {
+          const x = parseFloat(largest.getAttribute('x') || 0) + 4;
+          const y = parseFloat(largest.getAttribute('y') || 0) + parseFloat(largest.getAttribute('height') || 0) - 4;
+          const wm = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+          wm.setAttribute('x', x.toString());
+          wm.setAttribute('y', y.toString());
+          wm.setAttribute('fill', '#94a3b8');
+          wm.setAttribute('font-size', '8');
+          wm.setAttribute('font-family', 'system-ui, sans-serif');
+          wm.setAttribute('opacity', '0.5');
+          wm.textContent = 'arch-builder \u2192 agentic-ai.weisser.dev';
+          svgEl.appendChild(wm);
+        }
+      }
 
       // Clipboard
       document.getElementById('arch-btn-clip')?.addEventListener('click', function() {
