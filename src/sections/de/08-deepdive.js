@@ -28,7 +28,7 @@ export const deepDiveSlides = [
           </div>
           <h3 style="color:var(--color-primary);font-size:0.95rem;margin-bottom:6px">&#128272; Tokens &ndash; immer projektspezifisch</h3>
           <ul class="feature-list" style="margin-top:0;font-size:0.8rem">
-            <li><span class="check">!</span><span><strong>Keine globalen Tokens</strong> &ndash; Nicht <code style="background:var(--color-code-bg);padding:1px 3px;border-radius:2px;font-size:0.72rem">~/.aws/credentials</code> mounten</span></li>
+            <li><span class="check">!</span><span><strong>Keine globalen Tokens</strong> &ndash; Nicht <code style="background:rgba(47,108,122,0.1);padding:1px 3px;border-radius:2px;font-size:0.72rem">~/.aws/credentials</code> mounten</span></li>
             <li><span class="check">!</span><span><strong>Projektspezifische Tokens</strong> per Env-Variable &uuml;bergeben</span></li>
             <li><span class="check">!</span><span><strong>Read-Only wo m&ouml;glich</strong> &ndash; Agent braucht selten Schreibrechte auf Infra</span></li>
             <li><span class="check">!</span><span><strong>Token-Rotation</strong> &ndash; Bearer Tokens mit kurzer Laufzeit nutzen</span></li>
@@ -55,9 +55,9 @@ export const deepDiveSlides = [
           </div>
           <div style="padding:8px 10px;border-radius:8px;background:rgba(47,108,122,0.08);border:1px solid rgba(47,108,122,0.2);font-size:0.75rem;color:var(--color-text-subdued);line-height:1.4">
             <strong style="color:var(--color-primary)">Zusammengefasst:</strong><br>
-            &#10003; Nur Projekt-Repo mounten, nicht <code style="background:var(--color-code-bg);padding:1px 3px;border-radius:2px;font-size:0.68rem">~</code> oder <code style="background:var(--color-code-bg);padding:1px 3px;border-radius:2px;font-size:0.68rem">/</code><br>
-            &#10003; Tokens per <code style="background:var(--color-code-bg);padding:1px 3px;border-radius:2px;font-size:0.68rem">-e</code> Env-Var, nicht per Volume<br>
-            &#10003; <code style="background:var(--color-code-bg);padding:1px 3px;border-radius:2px;font-size:0.68rem">--rm</code> damit nichts &uuml;brigbleibt<br>
+            &#10003; Nur Projekt-Repo mounten, nicht <code style="background:rgba(47,108,122,0.1);padding:1px 3px;border-radius:2px;font-size:0.68rem">~</code> oder <code style="background:rgba(47,108,122,0.1);padding:1px 3px;border-radius:2px;font-size:0.68rem">/</code><br>
+            &#10003; Tokens per <code style="background:rgba(47,108,122,0.1);padding:1px 3px;border-radius:2px;font-size:0.68rem">-e</code> Env-Var, nicht per Volume<br>
+            &#10003; <code style="background:rgba(47,108,122,0.1);padding:1px 3px;border-radius:2px;font-size:0.68rem">--rm</code> damit nichts &uuml;brigbleibt<br>
             &#10003; Ergebnis per Git committen, nicht per Volume rauskopieren
           </div>
         </div>
