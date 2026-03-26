@@ -2,6 +2,16 @@
 
 All notable changes to the Agentic AI Workshop are documented here.
 
+## [v1.9.5] – 2026-03-26
+
+### Fixed
+- **Wheel scroll on overflowing slides**: Slides with long content can now be scrolled internally. Only navigates to next/prev slide at top/bottom edge.
+- **Kiro Spec Stage**: All 3 columns visible immediately in self-paced mode. Presenter mode retains step-by-step reveal.
+- **Resume modal overlay**: Darker background (92% opacity + 8px blur) on mobile.
+
+### Added
+- **Security notice slide** in Hands-On (#handson-security) with Deep Dive Docker sandbox reference.
+
 ## [v1.9.4] – 2026-03-26
 
 ### Added
