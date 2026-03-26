@@ -2,6 +2,26 @@
 
 All notable changes to the Agentic AI Workshop are documented here.
 
+## [v1.9.4] – 2026-03-26
+
+### Added
+- **Security notice slide** in Hands-On (#handson-security): 3 questions for every tool, 4 worst-case examples (GitHub, Confluence, Shell, DB), Praktikant-Faustregel, Deep Dive Docker sandbox reference
+- **Sandbox recommendation slide** in Deep Dive (#deepdive-recommendation): Docker example, token security, project-only mounting
+- **"Build Your Own MCP" slide** (#build-mcp): Node.js MCP Server/Client, OpenCode integration, mcp.so link
+- **mcp.so** linked everywhere as clickable URL
+
+### Removed
+- `agent-architecture` from Basics (covered in Agentic AI)
+
+### Changed
+- `llm-to-agent`: forward references to Basics + Agentic AI
+- Custom smooth scroll (900ms easeInOutQuart, wheel handler 1s cooldown)
+
+### Fixed
+- Light-theme code elements: explicit rgba background instead of var(--color-code-bg)
+- Deep-link scroll flicker
+- `?uc=` auto-load compact layout
+
 ## [v1.9.2] – 2026-03-26
 
 ### Added
