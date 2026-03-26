@@ -278,7 +278,8 @@ function updateActiveSlide(index) {
     requestAnimationFrame(() => {
       const stage = getSpecStage();
       if (stage) {
-        updateSpecStage(stage, parseInt(stage.dataset.step || '0'));
+        const initialStep = presenterMode ? parseInt(stage.dataset.step || '0') : 2;
+        updateSpecStage(stage, initialStep);
         return; // skip generic reveal for this slide
       }
       // Pre-init step reveal for presenter mode
@@ -672,7 +673,7 @@ function resetRevealState() {
   });
   // Also reset spec stage
   const stage = document.getElementById('spec-stage');
-  if (stage) updateSpecStage(stage, 0);
+  if (stage) updateSpecStage(stage, presenterMode ? 0 : 2);
 }
 
 // ===== Spec Stage Animation =====
@@ -1710,6 +1711,22 @@ if (!isMobile()) {
   let wheelCooldown = false;
   document.addEventListener('wheel', (e) => {
     if (wheelCooldown || isScrolling) return;
+
+    // Check if current slide has scrollable content
+    const slideEl = document.getElementById(`slide-${currentSlide}`);
+    if (slideEl) {
+      const content = slideEl.querySelector('.slide-content') || slideEl;
+      const hasScroll = content.scrollHeight > content.clientHeight + 5;
+      if (hasScroll) {
+        const dir = e.deltaY > 0 ? 1 : -1;
+        const atBottom = content.scrollTop + content.clientHeight >= content.scrollHeight - 5;
+        const atTop = content.scrollTop <= 5;
+        // Allow internal scroll if not at the edge in scroll direction
+        if (dir > 0 && !atBottom) return;
+        if (dir < 0 && !atTop) return;
+      }
+    }
+
     const dir = e.deltaY > 0 ? 1 : -1;
     const nextIdx = currentSlide + dir;
     if (nextIdx < 0 || nextIdx >= slides.length) return;
