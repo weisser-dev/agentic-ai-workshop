@@ -274,14 +274,15 @@ function updateActiveSlide(index) {
   currentSlide = index;
 
   // Initialize spec stage when entering spec-example slide
-  if (presenterMode && !isMobile()) {
+  if (!isMobile()) {
     requestAnimationFrame(() => {
       const stage = getSpecStage();
       if (stage) {
         const initialStep = presenterMode ? parseInt(stage.dataset.step || '0') : 2;
         updateSpecStage(stage, initialStep);
-        return; // skip generic reveal for this slide
+        if (presenterMode) return; // skip generic reveal for this slide
       }
+      if (!presenterMode) return; // no reveal system in self-paced
       // Pre-init step reveal for presenter mode
       const items = getRevealableItems();
       if (items.length > 1) {
@@ -1715,12 +1716,11 @@ if (!isMobile()) {
     // Check if current slide has scrollable content
     const slideEl = document.getElementById(`slide-${currentSlide}`);
     if (slideEl) {
-      const content = slideEl.querySelector('.slide-content') || slideEl;
-      const hasScroll = content.scrollHeight > content.clientHeight + 5;
+      const hasScroll = slideEl.scrollHeight > slideEl.clientHeight + 5;
       if (hasScroll) {
         const dir = e.deltaY > 0 ? 1 : -1;
-        const atBottom = content.scrollTop + content.clientHeight >= content.scrollHeight - 5;
-        const atTop = content.scrollTop <= 5;
+        const atBottom = slideEl.scrollTop + slideEl.clientHeight >= slideEl.scrollHeight - 5;
+        const atTop = slideEl.scrollTop <= 5;
         // Allow internal scroll if not at the edge in scroll direction
         if (dir > 0 && !atBottom) return;
         if (dir < 0 && !atTop) return;

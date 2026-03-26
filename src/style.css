@@ -70,7 +70,9 @@ body {
 }
 
 .slide {
+  height: 100vh;
   min-height: 100vh;
+  max-height: 100vh;
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;
@@ -78,7 +80,8 @@ body {
   align-items: center;
   padding: 80px 64px;
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 @media (max-width: 768px) {
