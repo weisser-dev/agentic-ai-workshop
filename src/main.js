@@ -1820,13 +1820,25 @@ async function initPresentation() {
   if (isMobile()) {
     setupMobileMode(startSlide);
   } else {
-    document.getElementById(`slide-${startSlide}`)?.classList.add('visible');
-    updateActiveSlide(startSlide);
-
     if (startSlide > 0) {
-      setTimeout(() => {
-        document.getElementById(`slide-${startSlide}`)?.scrollIntoView();
-      }, 100);
+      // Hide all slides instantly, jump to target without animation, then reveal
+      const app = document.getElementById('app');
+      app.style.visibility = 'hidden';
+      const target = document.getElementById(`slide-${startSlide}`);
+      if (target) {
+        target.classList.add('visible');
+        target.scrollIntoView({ behavior: 'instant' });
+      }
+      updateActiveSlide(startSlide);
+      // Reveal after browser has jumped
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          app.style.visibility = '';
+        });
+      });
+    } else {
+      document.getElementById('slide-0')?.classList.add('visible');
+      updateActiveSlide(0);
     }
   }
 }
