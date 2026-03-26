@@ -1531,17 +1531,14 @@ function setupArchBuilder() {
     });
   }
 
-  const generateBtn = document.getElementById('arch-generate-btn');
-  if (generateBtn) {
-    generateBtn.addEventListener('click', () => {
-      select.focus();
-    });
-  }
-
   select.addEventListener('change', () => {
     const preset = presets[select.value];
     if (!preset) return;
-    if (generateBtn) generateBtn.style.display = 'none';
+    // Switch to left-aligned compact layout
+    const controls = document.getElementById('arch-controls');
+    const ctaText = document.getElementById('arch-cta-text');
+    if (controls) { controls.style.flexDirection = 'row'; controls.style.alignItems = 'center'; controls.style.justifyContent = 'flex-start'; }
+    if (ctaText) ctaText.style.display = 'none';
     showDiagram(preset);
   });
 

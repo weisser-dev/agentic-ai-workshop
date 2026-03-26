@@ -218,7 +218,8 @@ export const agenticSlides = [
           </div>
           <button id="arch-export-btn" style="display:none"></button>
         </div>
-        <div style="display:flex;align-items:center;gap:12px;justify-content:center;margin-bottom:16px">
+        <div id="arch-controls" style="display:flex;flex-direction:column;align-items:center;gap:8px;margin-bottom:16px">
+          <p id="arch-cta-text" style="font-size:1rem;color:var(--color-text-subdued);font-weight:500;margin:0">Select a use case to see the architecture:</p>
           <select id="arch-usecase" style="padding:0 16px;border-radius:10px;border:2px solid var(--color-border-primary);background:var(--color-bg-subdued);color:var(--color-text-primary);font-size:0.9rem;cursor:pointer;font-weight:600;min-width:280px;appearance:auto;height:44px">
             <option value="" disabled selected>&lt;Select use case&gt;</option>
             <optgroup label="&#128187; Local (Developer PC)">
@@ -239,9 +240,6 @@ export const agenticSlides = [
               <option value="healthcheck">Daily System Health Check</option>
             </optgroup>
           </select>
-          <button id="arch-generate-btn" style="padding:12px 28px;border-radius:12px;border:2px dashed var(--color-border-primary);background:var(--color-bg-subdued);color:var(--color-primary);font-size:0.95rem;font-weight:600;cursor:pointer;white-space:nowrap;transition:all 0.2s;height:48px;animation:pulse-border 2s infinite">
-            &#9664; Select a use case to see the architecture
-          </button>
         </div>
         <div id="arch-diagram" style="padding:16px;border-radius:14px;background:#fff;border:1px solid #e2e8f0;box-shadow:0 2px 12px rgba(0,0,0,0.06);min-height:80px;opacity:0;transition:opacity 0.5s ease,transform 0.5s ease;transform:translateY(8px);overflow-x:auto;max-width:calc(100vw - 80px)"></div>
         <div id="arch-builder-detail" style="margin-top:10px;padding:10px 16px;border-radius:10px;background:var(--color-bg-subdued);border:1px solid var(--color-border);font-size:0.8rem;color:var(--color-text-subdued);line-height:1.5;min-height:20px;opacity:0;transition:opacity 0.5s ease"></div>
