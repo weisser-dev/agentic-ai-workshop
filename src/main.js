@@ -1785,7 +1785,7 @@ function showResumeModal(savedData) {
     
     const overlay = document.createElement('div');
     overlay.id = 'resume-modal-overlay';
-    overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:10000;display:flex;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px);animation:fadeIn 0.3s ease';
+    overlay.style.cssText = 'position:fixed;inset:0;background:rgba(10,10,30,0.92);z-index:10000;display:flex;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(8px);animation:fadeIn 0.3s ease';
     
     overlay.innerHTML = `
       <div style="background:var(--color-bg-dark,#1a1a2e);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:32px 28px;max-width:400px;width:100%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.5)">
