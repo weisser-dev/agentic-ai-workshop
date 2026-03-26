@@ -1604,6 +1604,42 @@ body.slide-werbung #matrix-canvas {
 
   .slide-subtitle {
     font-size: clamp(0.85rem, 2.5vw, 1rem);
+    word-break: break-word;
+  }
+
+  /* Prevent ANY content from overflowing horizontally on mobile */
+  .slide * {
+    max-width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  /* Allow code blocks to scroll horizontally */
+  .slide .code-body,
+  .slide .code-body pre,
+  .slide pre,
+  .slide table {
+    max-width: none !important;
+  }
+
+  /* Force text wrapping in inline-styled boxes */
+  .slide [style*="padding"] {
+    word-break: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  /* Tags and pills should wrap */
+  .slide [style*="border-radius:20px"],
+  .slide [style*="border-radius: 20px"] {
+    white-space: normal !important;
+    word-break: break-word;
+  }
+
+  /* Flex containers should wrap on mobile */
+  .slide [style*="display:flex"],
+  .slide [style*="display: flex"] {
+    flex-wrap: wrap !important;
+  }
     margin-bottom: 20px;
   }
 
@@ -1742,7 +1778,8 @@ body.slide-werbung #matrix-canvas {
   .comparison th,
   .comparison td {
     padding: 6px 8px;
-    white-space: nowrap;
+    white-space: normal;
+    word-break: break-word;
   }
 
   /* Timeline */

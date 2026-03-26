@@ -303,6 +303,9 @@ function updateActiveSlide(index) {
     history.replaceState(null, '', `#${slideId}`);
   }
 
+  // Save progression to localStorage
+  saveProgression(index);
+
   // Update progress bar
   const progress = ((index + 1) / slides.length) * 100;
   document.getElementById('progress-bar').style.width = `${progress}%`;
@@ -838,7 +841,7 @@ function setupNavClicks() {
 // ===== Mobile App Mode =====
 const isMobile = () => window.innerWidth <= 768;
 
-function setupMobileMode() {
+function setupMobileMode(startIdx) {
   if (!isMobile()) return;
 
   const sectionRanges = getSectionRanges();
@@ -969,7 +972,7 @@ function setupMobileMode() {
   }, { passive: true });
 
   // Show first slide
-  mobileGoTo(getStartSlide());
+  mobileGoTo(startIdx != null ? startIdx : getStartSlide());
 }
 
 function mobileGoTo(index) {
@@ -1167,6 +1170,110 @@ if (mobileStartBtn) {
 }
 
 // Restore position from URL hash or start at 0
+// ===== Progression: Save & Resume =====
+const PROGRESSION_KEY = 'workshop-progression';
+
+function saveProgression(index) {
+  try {
+    const sectionRanges = getSectionRanges();
+    const section = sectionRanges.find(s => index >= s.startIdx && index <= s.endIdx);
+    localStorage.setItem(PROGRESSION_KEY, JSON.stringify({
+      index,
+      slideId: slides[index]?.id || '',
+      sectionName: section?.name || '',
+      timestamp: Date.now(),
+      totalSlides: slides.length,
+      lang: currentLang,
+    }));
+  } catch(e) { /* localStorage may be unavailable */ }
+}
+
+function getSavedProgression() {
+  try {
+    const raw = localStorage.getItem(PROGRESSION_KEY);
+    if (!raw) return null;
+    const data = JSON.parse(raw);
+    // Only show resume if saved within last 7 days and at least slide 2
+    const age = Date.now() - (data.timestamp || 0);
+    if (age > 7 * 24 * 60 * 60 * 1000) return null;
+    if (data.index < 2) return null;
+    // Validate index is still in range
+    if (data.index >= slides.length) return null;
+    return data;
+  } catch(e) { return null; }
+}
+
+function showResumeModal(savedData) {
+  return new Promise((resolve) => {
+    const lang = currentLang;
+    const isDE = lang === 'de';
+    
+    const sectionName = savedData.sectionName || (isDE ? 'Unbekannt' : 'Unknown');
+    const slideNum = savedData.index + 1;
+    const totalSlides = savedData.totalSlides || slides.length;
+    const progress = Math.round((slideNum / totalSlides) * 100);
+    
+    const overlay = document.createElement('div');
+    overlay.id = 'resume-modal-overlay';
+    overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:10000;display:flex;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px);animation:fadeIn 0.3s ease';
+    
+    overlay.innerHTML = `
+      <div style="background:var(--color-bg-dark,#1a1a2e);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:32px 28px;max-width:400px;width:100%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.5)">
+        <div style="font-size:2.5rem;margin-bottom:12px">&#128075;</div>
+        <h2 style="color:#fff;font-size:1.3rem;margin-bottom:8px;font-weight:700">${isDE ? 'Willkommen zur\u00fcck!' : 'Welcome back!'}</h2>
+        <p style="color:rgba(255,255,255,0.7);font-size:0.9rem;line-height:1.5;margin-bottom:16px">
+          ${isDE 
+            ? `Du warst zuletzt bei <strong style="color:var(--color-accent,#ffed00)">${sectionName}</strong> (Folie ${slideNum}/${totalSlides}).`
+            : `You were last at <strong style="color:var(--color-accent,#ffed00)">${sectionName}</strong> (slide ${slideNum}/${totalSlides}).`}
+        </p>
+        <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:8px 12px;margin-bottom:20px">
+          <div style="display:flex;justify-content:space-between;font-size:0.75rem;color:rgba(255,255,255,0.5);margin-bottom:4px">
+            <span>${isDE ? 'Fortschritt' : 'Progress'}</span>
+            <span>${progress}%</span>
+          </div>
+          <div style="height:6px;background:rgba(255,255,255,0.1);border-radius:3px;overflow:hidden">
+            <div style="height:100%;width:${progress}%;background:var(--color-accent,#ffed00);border-radius:3px;transition:width 0.5s ease"></div>
+          </div>
+        </div>
+        <div style="display:flex;gap:10px">
+          <button id="resume-btn-continue" style="flex:1;padding:12px 16px;border-radius:10px;border:none;background:var(--color-accent,#ffed00);color:#1a1a2e;font-weight:700;font-size:0.9rem;cursor:pointer">
+            ${isDE ? 'Weitermachen' : 'Continue'}
+          </button>
+          <button id="resume-btn-restart" style="flex:1;padding:12px 16px;border-radius:10px;border:1px solid rgba(255,255,255,0.15);background:transparent;color:rgba(255,255,255,0.7);font-size:0.9rem;cursor:pointer">
+            ${isDE ? 'Neu beginnen' : 'Start over'}
+          </button>
+        </div>
+      </div>
+    `;
+    
+    document.body.appendChild(overlay);
+    
+    // Animate in
+    requestAnimationFrame(() => {
+      overlay.querySelector('div').style.transform = 'scale(1)';
+    });
+    
+    document.getElementById('resume-btn-continue').addEventListener('click', () => {
+      overlay.remove();
+      resolve(savedData.index);
+    });
+    
+    document.getElementById('resume-btn-restart').addEventListener('click', () => {
+      try { localStorage.removeItem(PROGRESSION_KEY); } catch(e) {}
+      overlay.remove();
+      resolve(0);
+    });
+    
+    // Also close on overlay click (outside modal)
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) {
+        overlay.remove();
+        resolve(savedData.index);
+      }
+    });
+  });
+}
+
 function getStartSlide() {
   const hash = window.location.hash.replace('#', '');
   if (hash) {
@@ -1177,19 +1284,37 @@ function getStartSlide() {
 }
 
 // Init based on mode
-if (isMobile()) {
-  setupMobileMode();
-} else {
-  const startSlide = getStartSlide();
-  document.getElementById(`slide-${startSlide}`)?.classList.add('visible');
-  updateActiveSlide(startSlide);
+async function initPresentation() {
+  const hash = window.location.hash.replace('#', '');
+  let startSlide = 0;
+  
+  if (hash) {
+    // URL has a specific hash -- go there directly
+    const idx = slides.findIndex(s => s.id === hash);
+    if (idx >= 0) startSlide = idx;
+  } else {
+    // No hash -- check for saved progression
+    const saved = getSavedProgression();
+    if (saved) {
+      startSlide = await showResumeModal(saved);
+    }
+  }
 
-  if (startSlide > 0) {
-    setTimeout(() => {
-      document.getElementById(`slide-${startSlide}`)?.scrollIntoView();
-    }, 100);
+  if (isMobile()) {
+    setupMobileMode(startSlide);
+  } else {
+    document.getElementById(`slide-${startSlide}`)?.classList.add('visible');
+    updateActiveSlide(startSlide);
+
+    if (startSlide > 0) {
+      setTimeout(() => {
+        document.getElementById(`slide-${startSlide}`)?.scrollIntoView();
+      }, 100);
+    }
   }
 }
+
+initPresentation();
 
 // Also override keyboard nav for mobile
 document.addEventListener('keydown', (e) => {
