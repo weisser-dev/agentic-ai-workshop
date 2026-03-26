@@ -19,6 +19,60 @@ export const handsonSlides = [
     `,
   },
 
+  // ===== Sicherheitshinweis =====
+  {
+    id: 'handson-security',
+    theme: 'slide--dark',
+    label: 'Sicherheit',
+    content: `
+      <span class="slide-label" style="color:var(--color-warning)">Bevor es losgeht</span>
+      <h2 class="slide-title" style="font-size:1.4rem">&#9888; Bitte beachten &ndash; Sicherheit bei AI Agents</h2>
+      <p class="slide-subtitle" style="font-size:0.88rem">Die Beispiele hier sind f&uuml;r den Workshop &ndash; im Arbeitsalltag gelten strengere Regeln</p>
+      <div class="two-cols" style="margin-top:14px">
+        <div>
+          <h3 style="color:var(--color-accent);font-size:0.95rem;margin-bottom:8px">Frag dich bei jedem Tool</h3>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <div style="padding:10px;border-radius:8px;background:rgba(255,107,107,0.08);border:1px solid rgba(255,107,107,0.2);font-size:0.82rem;color:rgba(255,255,255,0.85);line-height:1.5">
+              <strong style="color:#ff6b6b">&#128269; Welchen MCP installiere ich?</strong><br>
+              <span style="color:rgba(255,255,255,0.6)">Was kann der alles? Liest er nur &ndash; oder kann er auch schreiben, l&ouml;schen, ver&auml;ndern?</span>
+            </div>
+            <div style="padding:10px;border-radius:8px;background:rgba(255,107,107,0.08);border:1px solid rgba(255,107,107,0.2);font-size:0.82rem;color:rgba(255,255,255,0.85);line-height:1.5">
+              <strong style="color:#ff6b6b">&#128272; Was kann mit meinen Berechtigungen passieren?</strong><br>
+              <span style="color:rgba(255,255,255,0.6)">Der Agent hat <strong>dieselben Rechte wie dein Token</strong>. Admin-Token = Agent ist Admin.</span>
+            </div>
+            <div style="padding:10px;border-radius:8px;background:rgba(255,107,107,0.08);border:1px solid rgba(255,107,107,0.2);font-size:0.82rem;color:rgba(255,255,255,0.85);line-height:1.5">
+              <strong style="color:#ff6b6b">&#128165; Was ist der Worst Case?</strong><br>
+              <span style="color:rgba(255,255,255,0.6)">Wenn das f&uuml;r dich akzeptabel ist &rarr; go for it. Wenn nicht &rarr; Token einschr&auml;nken oder Sandbox nutzen.</span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3 style="color:var(--color-accent);font-size:0.95rem;margin-bottom:8px">Konkrete Beispiele</h3>
+          <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:10px">
+            <div style="padding:8px 10px;border-radius:6px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);font-size:0.78rem;color:rgba(255,255,255,0.8);line-height:1.4">
+              <strong>GitHub MCP + Token:</strong> Worst Case = alle Repos gel&ouml;scht. <span style="color:rgba(255,255,255,0.5)">&rarr; Read-Only Token oder nur 1 Repo freigeben.</span>
+            </div>
+            <div style="padding:8px 10px;border-radius:6px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);font-size:0.78rem;color:rgba(255,255,255,0.8);line-height:1.4">
+              <strong>Confluence MCP:</strong> Worst Case = Content gel&ouml;scht/&uuml;berschrieben. <span style="color:rgba(255,255,255,0.5)">&rarr; Read-Only API Key oder Sandbox-Space.</span>
+            </div>
+            <div style="padding:8px 10px;border-radius:6px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);font-size:0.78rem;color:rgba(255,255,255,0.8);line-height:1.4">
+              <strong>Shell / Filesystem:</strong> Worst Case = Dateien gel&ouml;scht. <span style="color:rgba(255,255,255,0.5)">&rarr; Docker-Sandbox, nur Projekt-Ordner mounten.</span>
+            </div>
+            <div style="padding:8px 10px;border-radius:6px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);font-size:0.78rem;color:rgba(255,255,255,0.8);line-height:1.4">
+              <strong>Datenbank MCP:</strong> Worst Case = DROP TABLE. <span style="color:rgba(255,255,255,0.5)">&rarr; Read-Only DB User, keine Prod-DB.</span>
+            </div>
+          </div>
+          <div style="padding:10px;border-radius:8px;background:rgba(37,204,120,0.08);border:2px solid rgba(37,204,120,0.25);font-size:0.82rem;color:rgba(255,255,255,0.85);line-height:1.5">
+            <strong style="color:var(--color-positive)">Faustregel:</strong> Stell dir vor der Agent ist ein neuer Praktikant &ndash; mit <strong>deinen Zugangsdaten</strong>. W&uuml;rdest du ihm Admin-Zugang zu Produktion geben?
+          </div>
+          <div style="margin-top:6px;padding:8px 10px;border-radius:6px;background:rgba(255,237,0,0.06);border:1px solid rgba(255,237,0,0.15);font-size:0.72rem;color:rgba(255,255,255,0.6);line-height:1.3">
+            &#128073; Im <strong style="color:var(--color-accent)">Deep Dive</strong> sp&auml;ter zeigen wir, wie man OpenCode sicher via Docker in einer Sandbox startet &ndash; nur mit Projekt-Kontext und ohne Zugriff auf euer System.
+          </div>
+        </div>
+      </div>
+    `,
+  },
+
   // ===== Slide 1: Node.js / npm =====
   {
     id: 'setup-node',
