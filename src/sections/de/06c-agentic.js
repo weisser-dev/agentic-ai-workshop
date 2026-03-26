@@ -132,93 +132,88 @@ export const agenticSlides = [
     label: 'Architektur',
     content: `
       <span class="slide-label" style="color:var(--color-accent)">Deep Dive</span>
-      <h2 class="slide-title" style="font-size:1.3rem">Agentic Architecture &ndash; die Schichten</h2>
-      <p class="slide-subtitle" style="font-size:0.8rem;margin-bottom:10px">Dieselben Layer &ndash; aber je nach Use Case mit oder ohne menschlichen Input</p>
-      <div class="two-cols" style="gap:12px">
-        <div style="padding:10px;border-radius:10px;background:rgba(47,108,122,0.08);border:2px solid rgba(47,108,122,0.25)">
-          <h3 style="color:var(--color-accent);font-size:0.85rem;margin-bottom:8px;text-align:center">&#128100; Mit User Input</h3>
-          <div style="display:flex;flex-direction:column;gap:4px">
-            <div style="display:flex;align-items:center;gap:6px">
-              <div style="min-width:60px;padding:4px;border-radius:6px;background:rgba(255,237,0,0.1);border:1px solid rgba(255,237,0,0.25);font-size:0.58rem;color:var(--color-accent);font-weight:700;text-align:center">INTERFACE</div>
-              <div style="flex:1;display:flex;flex-wrap:wrap;gap:3px">
-                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">IDE Plugin</span>
-                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">Chat UI</span>
-                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">CLI</span>
-                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">Chatbot</span>
-                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">Voice</span>
-              </div>
+      <h2 class="slide-title" style="font-size:1.25rem">Agentic Architecture &ndash; alle Schichten</h2>
+      <p class="slide-subtitle" style="font-size:0.78rem;margin-bottom:8px">Dieselben Layer &ndash; aber je nach Use Case mit User oder vollautomatisch</p>
+      <div class="two-cols" style="gap:10px">
+        <div style="padding:8px;border-radius:10px;background:rgba(47,108,122,0.08);border:2px solid rgba(47,108,122,0.25)">
+          <h3 style="color:var(--color-accent);font-size:0.8rem;margin-bottom:6px;text-align:center">&#128100; Mit User Input</h3>
+          <div style="display:flex;flex-direction:column;gap:3px;font-size:0.58rem">
+            <div style="display:flex;gap:4px;align-items:center">
+              <span style="min-width:52px;padding:3px 4px;border-radius:4px;background:rgba(255,237,0,0.1);border:1px solid rgba(255,237,0,0.25);color:var(--color-accent);font-weight:700;text-align:center">Interface</span>
+              <span style="display:flex;flex-wrap:wrap;gap:2px"><span style="padding:1px 5px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark)">IDE</span><span style="padding:1px 5px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark)">Chat</span><span style="padding:1px 5px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark)">CLI</span><span style="padding:1px 5px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark)">Chatbot</span><span style="padding:1px 5px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark)">Voice</span></span>
             </div>
-            <div style="text-align:center;font-size:0.55rem;color:rgba(255,255,255,0.25)">&darr; &uarr;</div>
-            <div style="display:flex;align-items:center;gap:6px">
-              <div style="min-width:60px;padding:4px;border-radius:6px;background:rgba(47,108,122,0.12);border:1px solid rgba(47,108,122,0.25);font-size:0.58rem;color:var(--color-accent);font-weight:700;text-align:center">TOOLS</div>
-              <div style="flex:1;display:flex;flex-wrap:wrap;gap:3px">
-                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">Shell</span>
-                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">Filesystem</span>
-                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">Git</span>
-                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">Confluence</span>
-                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">Jira</span>
-                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">DB</span>
-              </div>
+            <div style="text-align:center;color:rgba(255,255,255,0.2)">&darr;</div>
+            <div style="display:flex;gap:4px;align-items:center">
+              <span style="min-width:52px;padding:3px 4px;border-radius:4px;background:rgba(47,108,122,0.12);border:1px solid rgba(47,108,122,0.25);color:var(--color-accent);font-weight:700;text-align:center">Framework</span>
+              <span style="display:flex;flex-wrap:wrap;gap:2px"><span style="padding:1px 5px;border-radius:3px;background:rgba(255,237,0,0.08);border:1px solid rgba(255,237,0,0.2);color:var(--color-accent)">OpenCode</span><span style="padding:1px 5px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark)">LangChain</span><span style="padding:1px 5px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark)">CrewAI</span></span>
             </div>
-            <div style="text-align:center;font-size:0.55rem;color:rgba(255,255,255,0.25)">&darr;</div>
-            <div style="display:flex;align-items:center;gap:6px">
-              <div style="min-width:60px;padding:4px;border-radius:6px;background:rgba(37,204,120,0.1);border:1px solid rgba(37,204,120,0.25);font-size:0.58rem;color:var(--color-positive);font-weight:700;text-align:center">OUTPUT</div>
-              <div style="flex:1;display:flex;flex-wrap:wrap;gap:3px">
-                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">Code / PR</span>
-                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">Chat-Antwort</span>
-                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">Doku</span>
-                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">Tickets</span>
-              </div>
+            <div style="text-align:center;color:rgba(255,255,255,0.2)">&darr;&uarr; Loop</div>
+            <div style="display:flex;gap:4px;align-items:center">
+              <span style="min-width:52px;padding:3px 4px;border-radius:4px;background:rgba(47,108,122,0.12);border:1px solid rgba(47,108,122,0.25);color:var(--color-accent);font-weight:700;text-align:center">LLM</span>
+              <span style="display:flex;flex-wrap:wrap;gap:2px"><span style="padding:1px 5px;border-radius:3px;background:rgba(255,237,0,0.08);border:1px solid rgba(255,237,0,0.2);color:var(--color-accent)">Claude</span><span style="padding:1px 5px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark)">GPT</span><span style="padding:1px 5px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark)">Gemini</span><span style="padding:1px 5px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark)">Ollama</span></span>
             </div>
-          </div>
-          <div style="margin-top:6px;font-size:0.6rem;color:rgba(255,255,255,0.4);line-height:1.3;text-align:center">Coding, Chatbot, Voice Agent, Doku-Agent, Wissens-Agent</div>
-        </div>
-        <div style="padding:10px;border-radius:10px;background:rgba(255,168,0,0.06);border:2px solid rgba(255,168,0,0.25)">
-          <h3 style="color:var(--color-warning);font-size:0.85rem;margin-bottom:8px;text-align:center">&#9881; 100% Workflow-Automatisierung</h3>
-          <div style="display:flex;flex-direction:column;gap:4px">
-            <div style="display:flex;align-items:center;gap:6px">
-              <div style="min-width:60px;padding:4px;border-radius:6px;background:rgba(255,168,0,0.1);border:1px solid rgba(255,168,0,0.25);font-size:0.58rem;color:var(--color-warning);font-weight:700;text-align:center">TRIGGER</div>
-              <div style="flex:1;display:flex;flex-wrap:wrap;gap:3px">
-                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">Cron / Scheduler</span>
-                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">Webhook</span>
-                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">Event-Stream</span>
-                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">Log-Stream</span>
-              </div>
+            <div style="text-align:center;color:rgba(255,255,255,0.2)">&darr;&uarr;</div>
+            <div style="display:flex;gap:4px;align-items:center">
+              <span style="min-width:52px;padding:3px 4px;border-radius:4px;background:rgba(47,108,122,0.12);border:1px solid rgba(47,108,122,0.25);color:var(--color-accent);font-weight:700;text-align:center">Kontext</span>
+              <span style="display:flex;flex-wrap:wrap;gap:2px"><span style="padding:1px 5px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark)">agents.md</span><span style="padding:1px 5px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark)">Vektor-DB</span><span style="padding:1px 5px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark)">Session</span></span>
             </div>
-            <div style="text-align:center;font-size:0.55rem;color:rgba(255,255,255,0.25)">&darr; &uarr;</div>
-            <div style="display:flex;align-items:center;gap:6px">
-              <div style="min-width:60px;padding:4px;border-radius:6px;background:rgba(47,108,122,0.12);border:1px solid rgba(47,108,122,0.25);font-size:0.58rem;color:var(--color-accent);font-weight:700;text-align:center">TOOLS</div>
-              <div style="flex:1;display:flex;flex-wrap:wrap;gap:3px">
-                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">Git MCP</span>
-                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">CVE DB</span>
-                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">Monitoring</span>
-                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">Shell</span>
-                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">DB</span>
-                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">K8s API</span>
-              </div>
+            <div style="text-align:center;color:rgba(255,255,255,0.2)">&darr;&uarr; Tool Calls</div>
+            <div style="display:flex;gap:4px;align-items:center">
+              <span style="min-width:52px;padding:3px 4px;border-radius:4px;background:rgba(47,108,122,0.12);border:1px solid rgba(47,108,122,0.25);color:var(--color-accent);font-weight:700;text-align:center">MCP</span>
+              <span style="display:flex;flex-wrap:wrap;gap:2px"><span style="padding:1px 5px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark)">Shell</span><span style="padding:1px 5px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark)">Filesystem</span><span style="padding:1px 5px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark)">Git</span><span style="padding:1px 5px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark)">Confluence</span><span style="padding:1px 5px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark)">Jira</span><span style="padding:1px 5px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark)">Search</span></span>
             </div>
-            <div style="text-align:center;font-size:0.55rem;color:rgba(255,255,255,0.25)">&darr;</div>
-            <div style="display:flex;align-items:center;gap:6px">
-              <div style="min-width:60px;padding:4px;border-radius:6px;background:rgba(37,204,120,0.1);border:1px solid rgba(37,204,120,0.25);font-size:0.58rem;color:var(--color-positive);font-weight:700;text-align:center">OUTPUT</div>
-              <div style="flex:1;display:flex;flex-wrap:wrap;gap:3px">
-                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">PRs mit Patches</span>
-                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">Alerts / Slack</span>
-                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">Reports</span>
-                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">Auto-Scaling</span>
-                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">Mails</span>
-              </div>
+            <div style="text-align:center;color:rgba(255,255,255,0.2)">&darr; API</div>
+            <div style="display:flex;gap:4px;align-items:center">
+              <span style="min-width:52px;padding:3px 4px;border-radius:4px;background:rgba(47,108,122,0.12);border:1px solid rgba(47,108,122,0.25);color:var(--color-accent);font-weight:700;text-align:center">Backend</span>
+              <span style="display:flex;flex-wrap:wrap;gap:2px"><span style="padding:1px 5px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark)">Confluence API</span><span style="padding:1px 5px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark)">Jira API</span><span style="padding:1px 5px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark)">CRM</span><span style="padding:1px 5px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark)">Pinecone</span></span>
+            </div>
+            <div style="text-align:center;color:rgba(255,255,255,0.2)">&darr; / &larr;</div>
+            <div style="display:flex;gap:4px;align-items:center">
+              <span style="min-width:52px;padding:3px 4px;border-radius:4px;background:rgba(37,204,120,0.1);border:1px solid rgba(37,204,120,0.25);color:var(--color-positive);font-weight:700;text-align:center">Output</span>
+              <span style="display:flex;flex-wrap:wrap;gap:2px"><span style="padding:1px 5px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark)">Code / PR</span><span style="padding:1px 5px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark)">Chat-Antwort</span><span style="padding:1px 5px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark)">Doku</span><span style="padding:1px 5px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark)">Tickets</span></span>
             </div>
           </div>
-          <div style="margin-top:6px;font-size:0.6rem;color:rgba(255,255,255,0.4);line-height:1.3;text-align:center">CVE-Patching, Anomalie-Erkennung, System-Pr&uuml;fung, Data Pipeline</div>
+          <div style="margin-top:4px;font-size:0.55rem;color:rgba(255,255,255,0.35);text-align:center">Coding, Chatbot, Voice, Doku, Wissens-Agent</div>
         </div>
-      </div>
-      <div style="margin-top:6px;padding:6px;border-radius:8px;background:rgba(47,108,122,0.06);border:1px solid rgba(47,108,122,0.15);text-align:center">
-        <div style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap;font-size:0.62rem;color:rgba(255,255,255,0.5)">
-          <span><strong style="color:var(--color-accent)">Gemeinsam:</strong> Agent Framework (OpenCode, LangChain, CrewAI...)</span>
-          <span>+</span>
-          <span>LLM Provider (Claude, GPT, Ollama...)</span>
-          <span>+</span>
-          <span>Context / Memory</span>
+        <div style="padding:8px;border-radius:10px;background:rgba(255,168,0,0.06);border:2px solid rgba(255,168,0,0.25)">
+          <h3 style="color:var(--color-warning);font-size:0.8rem;margin-bottom:6px;text-align:center">&#9881; 100% Workflow-Automatisierung</h3>
+          <div style="display:flex;flex-direction:column;gap:3px;font-size:0.58rem">
+            <div style="display:flex;gap:4px;align-items:center">
+              <span style="min-width:52px;padding:3px 4px;border-radius:4px;background:rgba(255,168,0,0.1);border:1px solid rgba(255,168,0,0.25);color:var(--color-warning);font-weight:700;text-align:center">Trigger</span>
+              <span style="display:flex;flex-wrap:wrap;gap:2px"><span style="padding:1px 5px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark)">Cron</span><span style="padding:1px 5px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark)">Webhook</span><span style="padding:1px 5px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark)">Event-Stream</span><span style="padding:1px 5px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark)">Log-Stream</span></span>
+            </div>
+            <div style="text-align:center;color:rgba(255,255,255,0.2)">&darr;</div>
+            <div style="display:flex;gap:4px;align-items:center">
+              <span style="min-width:52px;padding:3px 4px;border-radius:4px;background:rgba(47,108,122,0.12);border:1px solid rgba(47,108,122,0.25);color:var(--color-accent);font-weight:700;text-align:center">Framework</span>
+              <span style="display:flex;flex-wrap:wrap;gap:2px"><span style="padding:1px 5px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark)">LangChain</span><span style="padding:1px 5px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark)">CrewAI</span><span style="padding:1px 5px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark)">Custom</span></span>
+            </div>
+            <div style="text-align:center;color:rgba(255,255,255,0.2)">&darr;&uarr; Loop</div>
+            <div style="display:flex;gap:4px;align-items:center">
+              <span style="min-width:52px;padding:3px 4px;border-radius:4px;background:rgba(47,108,122,0.12);border:1px solid rgba(47,108,122,0.25);color:var(--color-accent);font-weight:700;text-align:center">LLM</span>
+              <span style="display:flex;flex-wrap:wrap;gap:2px"><span style="padding:1px 5px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark)">Claude</span><span style="padding:1px 5px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark)">GPT</span><span style="padding:1px 5px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark)">Ollama</span></span>
+            </div>
+            <div style="text-align:center;color:rgba(255,255,255,0.2)">&darr;&uarr;</div>
+            <div style="display:flex;gap:4px;align-items:center">
+              <span style="min-width:52px;padding:3px 4px;border-radius:4px;background:rgba(47,108,122,0.12);border:1px solid rgba(47,108,122,0.25);color:var(--color-accent);font-weight:700;text-align:center">Kontext</span>
+              <span style="display:flex;flex-wrap:wrap;gap:2px"><span style="padding:1px 5px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark)">Baselines</span><span style="padding:1px 5px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark)">Dep-Listen</span><span style="padding:1px 5px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark)">Infra-Config</span></span>
+            </div>
+            <div style="text-align:center;color:rgba(255,255,255,0.2)">&darr;&uarr; Tool Calls</div>
+            <div style="display:flex;gap:4px;align-items:center">
+              <span style="min-width:52px;padding:3px 4px;border-radius:4px;background:rgba(47,108,122,0.12);border:1px solid rgba(47,108,122,0.25);color:var(--color-accent);font-weight:700;text-align:center">MCP</span>
+              <span style="display:flex;flex-wrap:wrap;gap:2px"><span style="padding:1px 5px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark)">Git MCP</span><span style="padding:1px 5px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark)">Shell</span><span style="padding:1px 5px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark)">Monitoring</span><span style="padding:1px 5px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark)">DB MCP</span><span style="padding:1px 5px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark)">K8s API</span></span>
+            </div>
+            <div style="text-align:center;color:rgba(255,255,255,0.2)">&darr; API</div>
+            <div style="display:flex;gap:4px;align-items:center">
+              <span style="min-width:52px;padding:3px 4px;border-radius:4px;background:rgba(47,108,122,0.12);border:1px solid rgba(47,108,122,0.25);color:var(--color-accent);font-weight:700;text-align:center">Backend</span>
+              <span style="display:flex;flex-wrap:wrap;gap:2px"><span style="padding:1px 5px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark)">CVE DB</span><span style="padding:1px 5px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark)">GitHub API</span><span style="padding:1px 5px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark)">Datadog</span><span style="padding:1px 5px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark)">PostgreSQL</span></span>
+            </div>
+            <div style="text-align:center;color:rgba(255,255,255,0.2)">&darr;</div>
+            <div style="display:flex;gap:4px;align-items:center">
+              <span style="min-width:52px;padding:3px 4px;border-radius:4px;background:rgba(37,204,120,0.1);border:1px solid rgba(37,204,120,0.25);color:var(--color-positive);font-weight:700;text-align:center">Output</span>
+              <span style="display:flex;flex-wrap:wrap;gap:2px"><span style="padding:1px 5px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark)">PRs + Patches</span><span style="padding:1px 5px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark)">Alerts / Slack</span><span style="padding:1px 5px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark)">Reports</span><span style="padding:1px 5px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark)">Scaling</span><span style="padding:1px 5px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark)">Mails</span></span>
+            </div>
+          </div>
+          <div style="margin-top:4px;font-size:0.55rem;color:rgba(255,255,255,0.35);text-align:center">CVE-Patching, Anomalie-Erkennung, System-Pr&uuml;fung, Data Pipeline</div>
         </div>
       </div>
       <div style="margin-top:4px;padding:5px 10px;border-radius:6px;background:rgba(255,237,0,0.04);border:1px solid rgba(255,237,0,0.1)">
@@ -244,19 +239,25 @@ export const agenticSlides = [
           <button id="arch-export-btn" style="display:none"></button>
         </div>
         <div style="display:flex;align-items:center;gap:12px;justify-content:center;margin-bottom:16px">
-          <select id="arch-usecase" style="padding:0 16px;border-radius:10px;border:2px solid var(--color-border-primary);background:var(--color-bg-subdued);color:var(--color-text-primary);font-size:0.9rem;cursor:pointer;font-weight:600;min-width:260px;appearance:auto;height:44px">
-            <option value="coding">&#128187; Coding Assistant</option>
-            <option value="review">&#128269; Code Review (CI/CD)</option>
-            <option value="docs">&#128196; Doku-Agent</option>
-            <option value="chatbot">&#128172; Kunden-Chatbot (Web)</option>
-            <option value="voice">&#128222; Call Center Voice Agent</option>
-            <option value="tickets">&#127915; Ticket-Automatisierung</option>
-            <option value="knowledge">&#128218; Wissens-Agent (Wiki)</option>
-            <option value="data">&#128202; Data Pipeline Agent</option>
-            <option disabled>──── ${String.fromCharCode(128268)} Headless / ohne User ────</option>
-            <option value="cve">&#128737; CVE Auto-Patching</option>
-            <option value="anomaly">&#128200; Anomalie-Erkennung</option>
-            <option value="healthcheck">&#128269; T&auml;gliche System-Pr&uuml;fung</option>
+          <select id="arch-usecase" style="padding:0 16px;border-radius:10px;border:2px solid var(--color-border-primary);background:var(--color-bg-subdued);color:var(--color-text-primary);font-size:0.9rem;cursor:pointer;font-weight:600;min-width:280px;appearance:auto;height:44px">
+            <option value="" disabled selected>&lt;Use Case hier w&auml;hlen&gt;</option>
+            <optgroup label="&#128187; Lokal (Entwickler-PC)">
+              <option value="coding">Coding Assistant</option>
+              <option value="docs">Doku-Agent</option>
+            </optgroup>
+            <optgroup label="&#128172; Remote (Server / Cloud)">
+              <option value="review">Code Review (CI/CD)</option>
+              <option value="chatbot">Kunden-Chatbot (Web)</option>
+              <option value="voice">Call Center Voice Agent</option>
+              <option value="tickets">Ticket-Automatisierung</option>
+              <option value="knowledge">Wissens-Agent (Wiki)</option>
+              <option value="data">Data Pipeline Agent</option>
+            </optgroup>
+            <optgroup label="&#9881; Headless (ohne User)">
+              <option value="cve">CVE Auto-Patching</option>
+              <option value="anomaly">Anomalie-Erkennung</option>
+              <option value="healthcheck">T&auml;gliche System-Pr&uuml;fung</option>
+            </optgroup>
           </select>
           <button id="arch-generate-btn" style="padding:0 24px;border-radius:10px;border:none;background:var(--color-primary);color:#fff;font-size:0.9rem;font-weight:700;cursor:pointer;white-space:nowrap;transition:transform 0.15s ease;height:44px">
             Architektur erzeugen &rarr;

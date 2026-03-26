@@ -1078,21 +1078,23 @@ function setupArchBuilder() {
       chart: () => `flowchart LR
   DEV(("👤 ${isDE ? 'Entwickler' : 'Developer'}"))
   subgraph LOCAL["${isDE ? '💻 Lokal (Entwickler-PC)' : '💻 Local (Developer PC)'}"]
-    A["🖥️ <b>IDE Plugin</b><br/><small>Interface</small>"]
-    B["⚙️ <b>OpenCode</b><br/><small>Framework</small>"]
-    E["📋 <b>agents.md + Codebase</b><br/><small>${isDE ? 'Kontext / Memory' : 'Context / Memory'}</small>"]
+    A["🖥️ <b>IDE Plugin</b><br/><small>${isDE ? 'VS Code / JetBrains' : 'VS Code / JetBrains'}</small>"]
+    B["⚙️ <b>OpenCode</b><br/><small>${isDE ? 'Plant Schritte, ruft Tools' : 'Plans steps, calls tools'}</small>"]
+    E["📋 <b>agents.md + Codebase</b><br/><small>${isDE ? 'Projekt-Kontext + Regeln' : 'Project context + rules'}</small>"]
     F1["Shell"] & F2["Filesystem"] & F3["Git"]
   end
   subgraph AWS["☁️ AWS"]
-    C["🧠 <b>Claude Bedrock</b><br/><small>LLM</small>"]
+    C["🧠 <b>Claude Bedrock</b><br/><small>${isDE ? 'Reasoning + Code-Generierung' : 'Reasoning + code generation'}</small>"]
   end
-  DEV -->|Prompt| A
+  DEV -->|"${isDE ? 'Aufgabe beschreiben' : 'Describe task'}"| A
   A --> B
-  B <-->|API| C
-  B <-->|${isDE ? 'Kontext' : 'Context'}| E
-  B -->|Tool Calls| F1 & F2 & F3
-  F1 & F2 & F3 -->|${isDE ? 'Ergebnis' : 'Output'}| G["✅ <b>Code / PR + Tests</b>"]
-  G -.->|${isDE ? 'Antwort' : 'Response'}| DEV
+  B <-->|"${isDE ? 'Reasoning-Loop' : 'Reasoning loop'}"| C
+  B <-->|"${isDE ? 'Kontext laden' : 'Load context'}"| E
+  B -->|"${isDE ? 'Befehle ausführen' : 'Execute commands'}"| F1
+  B -->|"${isDE ? 'Dateien lesen/schreiben' : 'Read/write files'}"| F2
+  B -->|"${isDE ? 'Commit + Push' : 'Commit + push'}"| F3
+  F1 & F2 & F3 --> G["✅ <b>Code / PR + Tests</b>"]
+  G -.->|"${isDE ? 'Ergebnis im Editor' : 'Result in editor'}"| DEV
   style LOCAL fill:#f0fdf4,stroke:#86efac,stroke-width:2px,color:#14532d
   style AWS fill:#fff7ed,stroke:#fdba74,stroke-width:2px,color:#9a3412
   style A fill:#dbeafe,stroke:#60a5fa,stroke-width:2px
@@ -1118,9 +1120,10 @@ function setupArchBuilder() {
   end
   DEV -->|"MR ${isDE ? 'erstellt' : 'created'}"| A
   A -->|Trigger| B
-  B <-->|API| C
-  B <--> E
-  B -->|Tool Calls| F1 -->|API| H
+  B <-->|"${isDE ? 'Reasoning' : 'Reasoning'}"| C
+  B <-->|"${isDE ? 'Diff laden' : 'Load diff'}"| E
+  B <-->|"${isDE ? 'MR lesen + kommentieren' : 'Read MR + comment'}"| F1
+  F1 <-->|"API"| H
   H --> G["✅ <b>MR Comments + Approval</b>"]
   G -.->|${isDE ? 'Review-Ergebnis' : 'Review Result'}| DEV
   style SERVER fill:#f0f9ff,stroke:#93c5fd,stroke-width:2px
@@ -1147,10 +1150,12 @@ function setupArchBuilder() {
   end
   DEV -->|"${isDE ? 'Auftrag' : 'Task'}"| A
   A --> B
-  B <-->|API| C
-  B <--> E
-  B --> F1 & F2 & F3
-  F3 -->|API| H
+  B <-->|"${isDE ? 'Reasoning' : 'Reasoning'}"| C
+  B <-->|"${isDE ? 'Code lesen' : 'Read code'}"| E
+  B <-->|"${isDE ? 'Dateien lesen' : 'Read files'}"| F1
+  B <-->|"${isDE ? 'History lesen' : 'Read history'}"| F2
+  B -->|"${isDE ? 'Seiten schreiben' : 'Write pages'}"| F3
+  F3 -->|"API"| H
   H --> G["✅ <b>${isDE ? 'Confluence-Seiten + Markdown' : 'Confluence Pages + Markdown'}</b>"]
   G -.->|${isDE ? 'Bestätigung' : 'Confirmation'}| DEV
   style LOCAL fill:#f0fdf4,stroke:#86efac,stroke-width:2px
@@ -1178,9 +1183,11 @@ function setupArchBuilder() {
   end
   KUNDE -->|"💬 ${isDE ? 'Frage' : 'Question'}"| A
   A --> B
-  B <-->|API| C
-  B <--> E
-  B --> F1 --> H1 & H2
+  B <-->|"${isDE ? 'Reasoning' : 'Reasoning'}"| C
+  B <-->|"${isDE ? 'Embeddings suchen' : 'Search embeddings'}"| E
+  B -->|"${isDE ? 'Suche starten' : 'Start search'}"| F1
+  F1 <-->|"${isDE ? 'Daten abrufen' : 'Fetch data'}"| H1
+  F1 <-->|"${isDE ? 'Produkte laden' : 'Load products'}"| H2
   B --> G["✅ <b>${isDE ? 'Chat-Antwort' : 'Chat Response'}</b>"]
   G -.->|"💬 ${isDE ? 'Antwort' : 'Answer'}"| KUNDE
   style CLOUD fill:#faf5ff,stroke:#c4b5fd,stroke-width:2px
@@ -1196,27 +1203,29 @@ function setupArchBuilder() {
   KUNDE(("👤 ${isDE ? 'Kunde ruft an' : 'Customer calls'}"))
   subgraph CLOUD["☁️ Cloud"]
     A["📞 <b>${isDE ? 'Voice / Telefon' : 'Voice / Phone'}</b><br/><small>Interface</small>"]
-    B["⚙️ <b>LangChain</b><br/><small>Framework</small>"]
-    E["📋 <b>${isDE ? 'Kundenprofil' : 'Customer Profile'}</b>"]
+    B["⚙️ <b>LangChain</b><br/><small>${isDE ? 'Orchestriert den Dialog' : 'Orchestrates dialog'}</small>"]
+    E["📋 <b>${isDE ? 'Kundenprofil + Session' : 'Customer Profile + Session'}</b><br/><small>${isDE ? 'Kontext aus CRM' : 'Context from CRM'}</small>"]
     F1["CRM MCP"]
   end
   subgraph AWS["☁️ AWS"]
-    C["🧠 <b>Claude Bedrock</b><br/><small>LLM</small>"]
+    C["🧠 <b>Claude Bedrock</b><br/><small>${isDE ? 'Versteht Anfrage, formuliert Antwort' : 'Understands request, formulates answer'}</small>"]
   end
   subgraph AZURE["☁️ Azure"]
-    STT["🎤 <b>Whisper STT</b>"]
-    TTS["🔊 <b>Azure TTS</b>"]
+    STT["🎤 <b>Whisper STT</b><br/><small>${isDE ? 'Wandelt Audio → Text' : 'Converts Audio → Text'}</small>"]
+    TTS["🔊 <b>Azure TTS</b><br/><small>${isDE ? 'Wandelt Text → Audio' : 'Converts Text → Audio'}</small>"]
   end
   subgraph SAAS["🌐 SaaS"]
-    H["🔧 <b>CRM API</b>"]
+    H["🔧 <b>CRM API</b><br/><small>${isDE ? 'Kundendaten lesen/schreiben' : 'Read/write customer data'}</small>"]
   end
-  KUNDE -->|"📞 ${isDE ? 'Anruf' : 'Call'}"| A
-  A -->|Audio| STT -->|Text| B
-  B <-->|API| C
-  B <--> E
-  B --> F1 --> H
-  B -->|Text| TTS -->|Audio| G["✅ <b>${isDE ? 'Sprach-Antwort' : 'Voice Response'}</b>"]
-  G -.->|"🔊 ${isDE ? 'Antwort' : 'Answer'}"| KUNDE
+  KUNDE -->|"📞 ${isDE ? 'Spricht' : 'Speaks'}"| A
+  A -->|"${isDE ? 'Audio-Stream' : 'Audio stream'}"| STT
+  STT -->|"${isDE ? 'Transkript' : 'Transcript'}"| B
+  B <-->|"${isDE ? 'Reasoning + Planung' : 'Reasoning + planning'}"| C
+  B <-->|"${isDE ? 'Kontext laden' : 'Load context'}"| E
+  B -->|"${isDE ? 'Kundendaten abrufen' : 'Fetch customer data'}"| F1 --> H
+  B -->|"${isDE ? 'Antwort-Text' : 'Response text'}"| TTS
+  TTS -->|"${isDE ? 'Sprach-Audio' : 'Speech audio'}"| G["✅ <b>${isDE ? 'Sprach-Antwort' : 'Voice Response'}</b>"]
+  G -.->|"🔊 ${isDE ? 'Hört Antwort' : 'Hears answer'}"| KUNDE
   style CLOUD fill:#faf5ff,stroke:#c4b5fd,stroke-width:2px
   style AWS fill:#fff7ed,stroke:#fdba74,stroke-width:2px
   style AZURE fill:#eff6ff,stroke:#93c5fd,stroke-width:2px
@@ -1426,38 +1435,56 @@ function setupArchBuilder() {
     const useCaseLabel = preset.label;
     try {
       const { svg } = await mermaid.render(id, preset.chart());
+      const shareUrl = window.location.origin + window.location.pathname + '?uc=' + select.value + '#arch-builder';
       diagram.innerHTML = `
-        <div id="arch-diagram-inner">
+        <div id="arch-diagram-inner" style="position:relative">
           ${svg}
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px;padding:6px 12px;border-radius:0 0 12px 12px;background:#f8fafc;border-top:1px solid #e2e8f0">
-            <span style="font-size:0.6rem;color:#94a3b8;font-style:italic">generated by agentic-ai.weisser.dev &bull; ${useCaseLabel}</span>
-            <div style="display:flex;gap:6px">
-              <button id="arch-share-btn" style="padding:4px 12px;border-radius:6px;border:1px solid #e2e8f0;background:#fff;color:#475569;font-size:0.7rem;cursor:pointer;display:flex;align-items:center;gap:4px" title="${isDE ? 'Link kopieren' : 'Copy link'}">&#128279; ${isDE ? 'Teilen' : 'Share'}</button>
-              <button id="arch-download-btn" style="padding:4px 12px;border-radius:6px;border:1px solid #e2e8f0;background:#fff;color:#475569;font-size:0.7rem;cursor:pointer;display:flex;align-items:center;gap:4px" title="${isDE ? 'Als PNG speichern' : 'Save as PNG'}">&#128190; PNG</button>
-            </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px;padding:4px 12px;background:#f8fafc;border-top:1px solid #e2e8f0;border-radius:0 0 12px 12px">
+            <span style="font-size:0.58rem;color:#94a3b8;font-style:italic">generated by agentic-ai.weisser.dev &bull; ${useCaseLabel}</span>
+          </div>
+          <div class="arch-share">
+            <div class="arch-share__parent" title="${isDE ? 'Teilen' : 'Share'}">&#8599;</div>
+            <button class="arch-share__btn arch-share__btn--linkedin" id="arch-btn-linkedin" title="LinkedIn">in</button>
+            <button class="arch-share__btn arch-share__btn--x" id="arch-btn-x" title="X / Twitter">&#120143;</button>
+            <button class="arch-share__btn arch-share__btn--clip" id="arch-btn-clip" title="${isDE ? 'Link kopieren' : 'Copy link'}">&#128279;</button>
+            <button class="arch-share__btn arch-share__btn--download" id="arch-btn-png" title="${isDE ? 'Als PNG speichern' : 'Save as PNG'}">&#8681;</button>
+            <div class="arch-share__toast" id="arch-share-toast"></div>
           </div>
         </div>`;
       const svgEl = diagram.querySelector('svg');
       if (svgEl) { svgEl.style.maxWidth = '100%'; svgEl.style.height = 'auto'; svgEl.removeAttribute('height'); }
 
-      // Share button -- copy URL with preset
-      document.getElementById('arch-share-btn')?.addEventListener('click', () => {
-        const url = window.location.origin + window.location.pathname + '#arch-builder';
-        navigator.clipboard.writeText(url).then(() => {
-          const btn = document.getElementById('arch-share-btn');
-          if (btn) { btn.innerHTML = '&#10003; ' + (isDE ? 'Kopiert!' : 'Copied!'); setTimeout(() => { btn.innerHTML = '&#128279; ' + (isDE ? 'Teilen' : 'Share'); }, 2000); }
-        });
+      function showToast(msg) {
+        const t = document.getElementById('arch-share-toast');
+        if (t) { t.textContent = msg; t.classList.add('arch-share__toast--visible'); setTimeout(() => t.classList.remove('arch-share__toast--visible'), 2000); }
+      }
+
+      // LinkedIn
+      document.getElementById('arch-btn-linkedin')?.addEventListener('click', () => {
+        const text = (isDE ? 'Schaut euch diese Agenten-Architektur an: ' : 'Check out this agent architecture: ') + useCaseLabel;
+        window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(shareUrl) + '&summary=' + encodeURIComponent(text), '_blank', 'width=600,height=500');
       });
 
-      // Download PNG with watermark
-      document.getElementById('arch-download-btn')?.addEventListener('click', () => {
+      // X / Twitter
+      document.getElementById('arch-btn-x')?.addEventListener('click', () => {
+        const text = (isDE ? 'Agenten-Architektur: ' : 'Agent Architecture: ') + useCaseLabel + ' ' + shareUrl;
+        window.open('https://x.com/intent/tweet?text=' + encodeURIComponent(text), '_blank', 'width=600,height=400');
+      });
+
+      // Clipboard
+      document.getElementById('arch-btn-clip')?.addEventListener('click', () => {
+        navigator.clipboard.writeText(shareUrl).then(() => showToast(isDE ? 'Link kopiert!' : 'Link copied!'));
+      });
+
+      // Download PNG
+      document.getElementById('arch-btn-png')?.addEventListener('click', () => {
         const svgSource = diagram.querySelector('svg');
         if (!svgSource) return;
-        // Clone SVG and add watermark text
         const clone = svgSource.cloneNode(true);
         const watermark = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        const vb = clone.getAttribute('viewBox')?.split(' ');
         watermark.setAttribute('x', '10');
-        watermark.setAttribute('y', (parseInt(clone.getAttribute('viewBox')?.split(' ')[3] || clone.getBoundingClientRect().height) - 5).toString());
+        watermark.setAttribute('y', ((vb ? parseInt(vb[3]) : svgSource.getBoundingClientRect().height) - 5).toString());
         watermark.setAttribute('fill', '#94a3b8');
         watermark.setAttribute('font-size', '11');
         watermark.setAttribute('font-family', 'system-ui, sans-serif');
@@ -1467,13 +1494,13 @@ function setupArchBuilder() {
         const canvas = document.createElement('canvas');
         const img = new Image();
         img.onload = () => {
-          const scale = 2;
-          canvas.width = img.width * scale;
-          canvas.height = img.height * scale;
+          const s = 2;
+          canvas.width = img.width * s;
+          canvas.height = img.height * s;
           const ctx = canvas.getContext('2d');
           ctx.fillStyle = '#ffffff';
           ctx.fillRect(0, 0, canvas.width, canvas.height);
-          ctx.scale(scale, scale);
+          ctx.scale(s, s);
           ctx.drawImage(img, 0, 0);
           const a = document.createElement('a');
           a.download = 'agent-architecture-' + select.value + '.png';
@@ -1481,6 +1508,7 @@ function setupArchBuilder() {
           a.click();
         };
         img.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svgData)));
+        showToast(isDE ? 'PNG wird erstellt...' : 'Creating PNG...');
       });
 
     } catch (e) {
@@ -1501,14 +1529,24 @@ function setupArchBuilder() {
   const generateBtn = document.getElementById('arch-generate-btn');
   if (generateBtn) {
     generateBtn.addEventListener('click', () => {
+      const preset = presets[select.value];
+      if (!preset) { select.focus(); return; }
       generateBtn.style.transform = 'scale(0.95)';
       setTimeout(() => { generateBtn.style.transform = ''; }, 150);
-      showDiagram(presets[select.value] || presets.coding);
+      showDiagram(preset);
     });
   }
   select.addEventListener('change', () => {
-    if (diagram.innerHTML) showDiagram(presets[select.value] || presets.coding);
+    const preset = presets[select.value];
+    if (preset && diagram.innerHTML) showDiagram(preset);
   });
+
+  // Auto-load from URL parameter ?uc=coding
+  const urlUc = new URLSearchParams(window.location.search).get('uc');
+  if (urlUc && presets[urlUc]) {
+    select.value = urlUc;
+    setTimeout(() => showDiagram(presets[urlUc]), 500);
+  }
 }
 
 function setupQuiz() {

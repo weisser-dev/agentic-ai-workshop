@@ -219,19 +219,25 @@ export const agenticSlides = [
           <button id="arch-export-btn" style="display:none"></button>
         </div>
         <div style="display:flex;align-items:center;gap:12px;justify-content:center;margin-bottom:16px">
-          <select id="arch-usecase" style="padding:0 16px;border-radius:10px;border:2px solid var(--color-border-primary);background:var(--color-bg-subdued);color:var(--color-text-primary);font-size:0.9rem;cursor:pointer;font-weight:600;min-width:260px;appearance:auto;height:44px">
-            <option value="coding">&#128187; Coding Assistant</option>
-            <option value="review">&#128269; Code Review (CI/CD)</option>
-            <option value="docs">&#128196; Docs Agent</option>
-            <option value="chatbot">&#128172; Customer Chatbot (Web)</option>
-            <option value="voice">&#128222; Call Center Voice Agent</option>
-            <option value="tickets">&#127915; Ticket Automation</option>
-            <option value="knowledge">&#128218; Knowledge Agent (Wiki)</option>
-            <option value="data">&#128202; Data Pipeline Agent</option>
-            <option disabled>──── ${String.fromCharCode(128268)} Headless / no user ────</option>
-            <option value="cve">&#128737; CVE Auto-Patching</option>
-            <option value="anomaly">&#128200; Anomaly Detection</option>
-            <option value="healthcheck">&#128269; Daily System Health Check</option>
+          <select id="arch-usecase" style="padding:0 16px;border-radius:10px;border:2px solid var(--color-border-primary);background:var(--color-bg-subdued);color:var(--color-text-primary);font-size:0.9rem;cursor:pointer;font-weight:600;min-width:280px;appearance:auto;height:44px">
+            <option value="" disabled selected>&lt;Select use case&gt;</option>
+            <optgroup label="&#128187; Local (Developer PC)">
+              <option value="coding">Coding Assistant</option>
+              <option value="docs">Docs Agent</option>
+            </optgroup>
+            <optgroup label="&#128172; Remote (Server / Cloud)">
+              <option value="review">Code Review (CI/CD)</option>
+              <option value="chatbot">Customer Chatbot (Web)</option>
+              <option value="voice">Call Center Voice Agent</option>
+              <option value="tickets">Ticket Automation</option>
+              <option value="knowledge">Knowledge Agent (Wiki)</option>
+              <option value="data">Data Pipeline Agent</option>
+            </optgroup>
+            <optgroup label="&#9881; Headless (no user)">
+              <option value="cve">CVE Auto-Patching</option>
+              <option value="anomaly">Anomaly Detection</option>
+              <option value="healthcheck">Daily System Health Check</option>
+            </optgroup>
           </select>
           <button id="arch-generate-btn" style="padding:0 24px;border-radius:10px;border:none;background:var(--color-primary);color:#fff;font-size:0.9rem;font-weight:700;cursor:pointer;white-space:nowrap;transition:transform 0.15s ease;height:44px">
             Generate Architecture &rarr;

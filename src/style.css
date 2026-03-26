@@ -2173,16 +2173,21 @@ body.slide-werbung #matrix-canvas {
 /* Arch Builder: viewport-only responsive (not affected by self-paced-mode) */
 .arch-viewport-desktop {
   display: block;
-  max-width: none !important;
+  max-width: calc(100vw - 200px) !important;
 }
 
-/* Arch Builder diagram needs full width on desktop */
+/* Arch Builder slide needs wider content on desktop */
+.slide:has(.arch-viewport-desktop) .slide-content {
+  max-width: calc(100vw - 200px) !important;
+}
+
 #arch-diagram {
-  max-width: none !important;
+  max-width: 100% !important;
+  width: 100%;
+  overflow-x: auto;
 }
 
 #arch-diagram svg {
-  max-width: none !important;
   height: auto !important;
 }
 
@@ -2217,7 +2222,97 @@ body.slide-werbung #matrix-canvas {
     display: block;
   }
 
-  .desktop-content {
+/* ===== Arch Share Button ===== */
+.arch-share {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 1.2rem;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: #e2e8f0;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.arch-share:hover {
+  width: 14.5rem;
+}
+
+.arch-share__parent {
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  position: absolute;
+  background: #2f6c7a;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 0 0 2px #2f6c7a;
+  font-size: 0.9rem;
+  color: #fff;
+}
+
+.arch-share__btn {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  position: absolute;
+  top: 0.2rem;
+  transition: margin-left 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s, opacity 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  font-size: 0.85rem;
+  color: #fff;
+  opacity: 0;
+  transform: rotate(-180deg);
+  margin-left: 0;
+}
+
+.arch-share:hover .arch-share__btn {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+.arch-share__btn--linkedin { background: #0077B5; }
+.arch-share__btn--x { background: #000; }
+.arch-share__btn--clip { background: #475569; }
+.arch-share__btn--download { background: #16a34a; }
+
+.arch-share:hover .arch-share__btn--linkedin { margin-left: 2.8rem; }
+.arch-share:hover .arch-share__btn--x { margin-left: 5.2rem; }
+.arch-share:hover .arch-share__btn--clip { margin-left: 7.6rem; }
+.arch-share:hover .arch-share__btn--download { margin-left: 10rem; }
+
+.arch-share__btn:hover { filter: brightness(1.15); transform: scale(1.1); }
+.arch-share__btn:active { transform: scale(0.95); }
+
+.arch-share__toast {
+  position: absolute;
+  top: -2rem;
+  right: 0;
+  background: #1e293b;
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.65rem;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.arch-share__toast--visible {
+  opacity: 1;
+}
+
+.desktop-content {
     display: none;
   }
 }
