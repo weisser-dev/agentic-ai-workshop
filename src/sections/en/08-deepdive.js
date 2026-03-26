@@ -11,6 +11,60 @@ export const deepDiveSlides = [
     `,
   },
 
+  // ===== Recommendation: Sandbox & Security =====
+  {
+    id: 'deepdive-recommendation',
+    theme: '',
+    label: 'Recommendation',
+    content: `
+      <span class="slide-label" style="color:var(--color-warning)">Important</span>
+      <h2 class="slide-title">Recommendation: Sandbox, Tokens &amp; Security</h2>
+      <p class="slide-subtitle">Before you start &ndash; 3 rules that protect you from nasty surprises</p>
+      <div class="two-cols" style="margin-top:14px">
+        <div>
+          <h3 style="color:var(--color-primary);font-size:0.95rem;margin-bottom:8px">&#128274; Always work in a Sandbox</h3>
+          <div style="padding:10px;border-radius:8px;background:var(--color-bg-subdued);border:2px solid var(--color-border-primary);margin-bottom:8px;font-size:0.82rem;line-height:1.5">
+            AI is <strong>not 100% predictable</strong>. An agent can delete files, change configs or run unexpected commands. Therefore: <strong>Only mount the project repo</strong>, not your home directory.
+          </div>
+          <h3 style="color:var(--color-primary);font-size:0.95rem;margin-bottom:6px">&#128272; Tokens &ndash; always project-specific</h3>
+          <ul class="feature-list" style="margin-top:0;font-size:0.8rem">
+            <li><span class="check">!</span><span><strong>No global tokens</strong> &ndash; Don&rsquo;t mount <code style="background:var(--color-code-bg);padding:1px 3px;border-radius:2px;font-size:0.72rem">~/.aws/credentials</code></span></li>
+            <li><span class="check">!</span><span><strong>Project-specific tokens</strong> via env variables</span></li>
+            <li><span class="check">!</span><span><strong>Read-only where possible</strong> &ndash; agents rarely need infra write access</span></li>
+            <li><span class="check">!</span><span><strong>Token rotation</strong> &ndash; use short-lived bearer tokens</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3 style="color:var(--color-primary);font-size:0.95rem;margin-bottom:6px">&#128051; Run OpenCode in Docker</h3>
+          <div class="code-block" style="margin:0;margin-bottom:8px">
+            <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div>Docker &ndash; isolated sandbox</div>
+            <div class="code-body" style="padding:8px 12px;font-size:0.68rem"><pre style="margin:0"><span class="code-comment"># Mount only the project folder</span>
+<span class="code-function">docker run</span> -it --rm \\
+  -v <span class="code-string">"\$(pwd)"</span>:/workspace \\
+  -w /workspace \\
+  -e <span class="code-property">AWS_BEARER_TOKEN_BEDROCK</span>=<span class="code-string">"&lt;TOKEN&gt;"</span> \\
+  -e <span class="code-property">AWS_REGION</span>=<span class="code-string">"eu-central-1"</span> \\
+  node:20 \\
+  bash -c <span class="code-string">"npm i -g opencode-ai && opencode"</span>
+
+<span class="code-comment"># What happens:</span>
+<span class="code-comment"># - Only /workspace is visible (your project)</span>
+<span class="code-comment"># - No access to host filesystem</span>
+<span class="code-comment"># - Token only for this session</span>
+<span class="code-comment"># - Container deleted after exit (--rm)</span></pre></div>
+          </div>
+          <div style="padding:8px 10px;border-radius:8px;background:rgba(47,108,122,0.08);border:1px solid rgba(47,108,122,0.2);font-size:0.75rem;color:var(--color-text-subdued);line-height:1.4">
+            <strong style="color:var(--color-primary)">Summary:</strong><br>
+            &#10003; Only mount project repo, not <code style="background:var(--color-code-bg);padding:1px 3px;border-radius:2px;font-size:0.68rem">~</code> or <code style="background:var(--color-code-bg);padding:1px 3px;border-radius:2px;font-size:0.68rem">/</code><br>
+            &#10003; Tokens via <code style="background:var(--color-code-bg);padding:1px 3px;border-radius:2px;font-size:0.68rem">-e</code> env var, not via volume<br>
+            &#10003; <code style="background:var(--color-code-bg);padding:1px 3px;border-radius:2px;font-size:0.68rem">--rm</code> so nothing persists<br>
+            &#10003; Commit results via Git, don&rsquo;t copy out via volume
+          </div>
+        </div>
+      </div>
+    `,
+  },
+
   // ===== Deep Dive: MCP - Playwright =====
   {
     id: 'deepdive-mcp',

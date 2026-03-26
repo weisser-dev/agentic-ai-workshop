@@ -11,6 +11,60 @@ export const deepDiveSlides = [
     `,
   },
 
+  // ===== Recommendation: Sandbox & Sicherheit =====
+  {
+    id: 'deepdive-recommendation',
+    theme: '',
+    label: 'Empfehlung',
+    content: `
+      <span class="slide-label" style="color:var(--color-warning)">Wichtig</span>
+      <h2 class="slide-title">Empfehlung: Sandbox, Tokens &amp; Sicherheit</h2>
+      <p class="slide-subtitle">Bevor ihr loslegt &ndash; 3 Regeln die euch vor b&ouml;sen &Uuml;berraschungen sch&uuml;tzen</p>
+      <div class="two-cols" style="margin-top:14px">
+        <div>
+          <h3 style="color:var(--color-primary);font-size:0.95rem;margin-bottom:8px">&#128274; Immer in einer Sandbox arbeiten</h3>
+          <div style="padding:10px;border-radius:8px;background:var(--color-bg-subdued);border:2px solid var(--color-border-primary);margin-bottom:8px;font-size:0.82rem;line-height:1.5">
+            KI ist <strong>nicht 100% nachvollziehbar</strong>. Ein Agent kann Dateien l&ouml;schen, Configs &auml;ndern oder unerwartete Befehle ausf&uuml;hren. Deshalb: <strong>Nur das Projekt-Repo mounten</strong>, nicht euer Home-Verzeichnis.
+          </div>
+          <h3 style="color:var(--color-primary);font-size:0.95rem;margin-bottom:6px">&#128272; Tokens &ndash; immer projektspezifisch</h3>
+          <ul class="feature-list" style="margin-top:0;font-size:0.8rem">
+            <li><span class="check">!</span><span><strong>Keine globalen Tokens</strong> &ndash; Nicht <code style="background:var(--color-code-bg);padding:1px 3px;border-radius:2px;font-size:0.72rem">~/.aws/credentials</code> mounten</span></li>
+            <li><span class="check">!</span><span><strong>Projektspezifische Tokens</strong> per Env-Variable &uuml;bergeben</span></li>
+            <li><span class="check">!</span><span><strong>Read-Only wo m&ouml;glich</strong> &ndash; Agent braucht selten Schreibrechte auf Infra</span></li>
+            <li><span class="check">!</span><span><strong>Token-Rotation</strong> &ndash; Bearer Tokens mit kurzer Laufzeit nutzen</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3 style="color:var(--color-primary);font-size:0.95rem;margin-bottom:6px">&#128051; OpenCode in Docker starten</h3>
+          <div class="code-block" style="margin:0;margin-bottom:8px">
+            <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div>Docker &ndash; isolierte Sandbox</div>
+            <div class="code-body" style="padding:8px 12px;font-size:0.68rem"><pre style="margin:0"><span class="code-comment"># Projekt-Ordner als einziges Volume mounten</span>
+<span class="code-function">docker run</span> -it --rm \\
+  -v <span class="code-string">"\$(pwd)"</span>:/workspace \\
+  -w /workspace \\
+  -e <span class="code-property">AWS_BEARER_TOKEN_BEDROCK</span>=<span class="code-string">"&lt;TOKEN&gt;"</span> \\
+  -e <span class="code-property">AWS_REGION</span>=<span class="code-string">"eu-central-1"</span> \\
+  node:20 \\
+  bash -c <span class="code-string">"npm i -g opencode-ai && opencode"</span>
+
+<span class="code-comment"># Was passiert:</span>
+<span class="code-comment"># - Nur /workspace ist sichtbar (euer Projekt)</span>
+<span class="code-comment"># - Kein Zugriff auf Host-Dateisystem</span>
+<span class="code-comment"># - Token nur f&uuml;r diese Session</span>
+<span class="code-comment"># - Container wird nach Exit gel&ouml;scht (--rm)</span></pre></div>
+          </div>
+          <div style="padding:8px 10px;border-radius:8px;background:rgba(47,108,122,0.08);border:1px solid rgba(47,108,122,0.2);font-size:0.75rem;color:var(--color-text-subdued);line-height:1.4">
+            <strong style="color:var(--color-primary)">Zusammengefasst:</strong><br>
+            &#10003; Nur Projekt-Repo mounten, nicht <code style="background:var(--color-code-bg);padding:1px 3px;border-radius:2px;font-size:0.68rem">~</code> oder <code style="background:var(--color-code-bg);padding:1px 3px;border-radius:2px;font-size:0.68rem">/</code><br>
+            &#10003; Tokens per <code style="background:var(--color-code-bg);padding:1px 3px;border-radius:2px;font-size:0.68rem">-e</code> Env-Var, nicht per Volume<br>
+            &#10003; <code style="background:var(--color-code-bg);padding:1px 3px;border-radius:2px;font-size:0.68rem">--rm</code> damit nichts &uuml;brigbleibt<br>
+            &#10003; Ergebnis per Git committen, nicht per Volume rauskopieren
+          </div>
+        </div>
+      </div>
+    `,
+  },
+
   // ===== Deep Dive: MCP - Playwright =====
   {
     id: 'deepdive-mcp',
