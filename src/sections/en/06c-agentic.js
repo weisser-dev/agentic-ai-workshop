@@ -451,7 +451,7 @@ server.<span class="code-function">registerTool</span>(<span class="code-string"
             <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.62rem;color:var(--color-text-on-dark)">Custom monitoring</span>
           </div>
           <div style="margin-top:6px;padding:6px 10px;border-radius:6px;background:rgba(47,108,122,0.1);border:1px solid rgba(47,108,122,0.2);font-size:0.62rem;color:rgba(255,255,255,0.5);line-height:1.3">
-            <strong style="color:var(--color-accent)">Docs:</strong> <a href="https://modelcontextprotocol.io/docs/develop/build-server" target="_blank" rel="noopener" style="color:var(--color-accent);text-decoration:underline">Build MCP Server</a> &bull; <a href="https://modelcontextprotocol.io/docs/develop/build-client" target="_blank" rel="noopener" style="color:var(--color-accent);text-decoration:underline">Build MCP Client</a> &bull; Also available in Python, Java, Kotlin.
+            <strong style="color:var(--color-accent)">Docs:</strong> <a href="https://modelcontextprotocol.io/docs/develop/build-server" target="_blank" rel="noopener" style="color:var(--color-accent);text-decoration:underline">Build MCP Server</a> &bull; <a href="https://modelcontextprotocol.io/docs/develop/build-client" target="_blank" rel="noopener" style="color:var(--color-accent);text-decoration:underline">Build MCP Client</a> &bull; <a href="https://mcp.so" target="_blank" rel="noopener" style="color:var(--color-accent);text-decoration:underline">18,000+ ready MCPs on mcp.so</a> &bull; Also available in Python, Java, Kotlin.
           </div>
         </div>
       </div>

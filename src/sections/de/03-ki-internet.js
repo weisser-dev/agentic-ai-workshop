@@ -343,7 +343,7 @@ export const kiInternetSlides = [
             </div>
           </div>
           <p style="margin-top:12px;font-size:0.8rem;color:var(--color-text-subdued)">
-            <strong>18.000+ MCP Server</strong> auf mcp.so &ndash; wenn Software eine API hat, gibt es einen MCP daf&uuml;r.
+            <strong>18.000+ MCP Server</strong> auf <a href="https://mcp.so" target="_blank" rel="noopener" style="color:var(--color-primary);text-decoration:underline;font-weight:600">mcp.so</a> &ndash; wenn Software eine API hat, gibt es einen MCP daf&uuml;r.
           </p>
         </div>
       </div>
