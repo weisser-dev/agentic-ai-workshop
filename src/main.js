@@ -1541,14 +1541,17 @@ function setupArchBuilder() {
     });
   }
 
-  select.addEventListener('change', () => {
-    const preset = presets[select.value];
-    if (!preset) return;
-    // Switch to left-aligned compact layout
+  function switchToCompactLayout() {
     const controls = document.getElementById('arch-controls');
     const ctaText = document.getElementById('arch-cta-text');
     if (controls) { controls.style.flexDirection = 'row'; controls.style.alignItems = 'center'; controls.style.justifyContent = 'flex-start'; }
     if (ctaText) ctaText.style.display = 'none';
+  }
+
+  select.addEventListener('change', () => {
+    const preset = presets[select.value];
+    if (!preset) return;
+    switchToCompactLayout();
     showDiagram(preset);
   });
 
@@ -1556,6 +1559,7 @@ function setupArchBuilder() {
   const urlUc = new URLSearchParams(window.location.search).get('uc');
   if (urlUc && presets[urlUc]) {
     select.value = urlUc;
+    switchToCompactLayout();
     setTimeout(() => showDiagram(presets[urlUc]), 500);
   }
 }
