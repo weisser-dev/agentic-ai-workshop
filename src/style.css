@@ -1636,6 +1636,48 @@ body.slide-werbung #matrix-canvas {
     gap: 20px !important;
   }
 
+  /* Force ALL inline grids to single column on mobile */
+  .slide [style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  /* Also catch inline two-col flexbox patterns */
+  .slide .two-cols,
+  .slide [class*="two-col"] {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  /* Force inline display:grid/flex with multiple cols to stack */
+  .slide [style*="display:grid"],
+  .slide [style*="display: grid"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Ensure slide content can scroll vertically */
+  .slide.mobile-active {
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Inline font-sizes below 0.7rem should be bumped up */
+  .slide [style*="font-size:0.6"] {
+    font-size: 0.72rem !important;
+  }
+
+  .slide [style*="font-size: 0.6"] {
+    font-size: 0.72rem !important;
+  }
+
+  /* Make tables scrollable, not overflowing the slide */
+  .slide table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    max-width: 100%;
+  }
+
   /* Cards */
   .cards {
     grid-template-columns: 1fr !important;

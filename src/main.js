@@ -939,14 +939,29 @@ function setupMobileMode() {
   // Swipe support
   let touchStartX = 0;
   let touchStartY = 0;
+  let touchStartEl = null;
   document.addEventListener('touchstart', (e) => {
     touchStartX = e.touches[0].clientX;
     touchStartY = e.touches[0].clientY;
+    touchStartEl = e.target;
   }, { passive: true });
 
   document.addEventListener('touchend', (e) => {
     const dx = e.changedTouches[0].clientX - touchStartX;
     const dy = e.changedTouches[0].clientY - touchStartY;
+
+    // Don't navigate if swipe started inside a scrollable element
+    if (touchStartEl) {
+      let el = touchStartEl;
+      while (el && el !== document.body) {
+        if (el.scrollWidth > el.clientWidth + 2) {
+          // Element has horizontal scroll - don't intercept
+          return;
+        }
+        el = el.parentElement;
+      }
+    }
+
     if (Math.abs(dx) > 80 && Math.abs(dx) > Math.abs(dy) * 1.5) {
       if (dx < 0 && currentSlide < slides.length - 1) mobileGoTo(currentSlide + 1);
       if (dx > 0 && currentSlide > 0) mobileGoTo(currentSlide - 1);
@@ -976,6 +991,8 @@ function mobileGoTo(index) {
   updateActiveSlide(index);
   updateMobileNav(index);
 }
+// Expose for testing
+window.mobileGoTo = mobileGoTo;
 
 function updateMobileNav(index) {
   if (!isMobile()) return;
