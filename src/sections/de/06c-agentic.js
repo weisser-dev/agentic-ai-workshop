@@ -132,73 +132,98 @@ export const agenticSlides = [
     label: 'Architektur',
     content: `
       <span class="slide-label" style="color:var(--color-accent)">Deep Dive</span>
-      <h2 class="slide-title">Agentic Architecture &ndash; die Schichten</h2>
-      <p class="slide-subtitle">Jede Agentic-L&ouml;sung besteht aus denselben 5 Schichten &ndash; nur die Bausteine variieren</p>
-      <div style="display:flex;flex-direction:column;gap:6px;margin-top:12px" id="arch-layers">
-        <div style="display:flex;align-items:stretch;gap:8px">
-          <div style="min-width:90px;padding:8px;border-radius:8px;background:rgba(255,237,0,0.1);border:1px solid rgba(255,237,0,0.25);font-size:0.7rem;color:var(--color-accent);font-weight:700;display:flex;align-items:center;justify-content:center;text-align:center">1. INTERFACE</div>
-          <div style="flex:1;padding:8px 12px;border-radius:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);display:flex;flex-wrap:wrap;gap:4px;align-items:center">
-            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,237,0,0.12);border:1px solid rgba(255,237,0,0.3);font-size:0.7rem;color:var(--color-accent);font-weight:600">IDE Plugin</span>
-            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">Chat UI</span>
-            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">CLI / TUI</span>
-            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">Chatbot Widget</span>
-            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">Voice / Call Center</span>
-            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">API / Webhook</span>
+      <h2 class="slide-title" style="font-size:1.3rem">Agentic Architecture &ndash; die Schichten</h2>
+      <p class="slide-subtitle" style="font-size:0.8rem;margin-bottom:10px">Dieselben Layer &ndash; aber je nach Use Case mit oder ohne menschlichen Input</p>
+      <div class="two-cols" style="gap:12px">
+        <div style="padding:10px;border-radius:10px;background:rgba(47,108,122,0.08);border:2px solid rgba(47,108,122,0.25)">
+          <h3 style="color:var(--color-accent);font-size:0.85rem;margin-bottom:8px;text-align:center">&#128100; Mit User Input</h3>
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <div style="display:flex;align-items:center;gap:6px">
+              <div style="min-width:60px;padding:4px;border-radius:6px;background:rgba(255,237,0,0.1);border:1px solid rgba(255,237,0,0.25);font-size:0.58rem;color:var(--color-accent);font-weight:700;text-align:center">INTERFACE</div>
+              <div style="flex:1;display:flex;flex-wrap:wrap;gap:3px">
+                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">IDE Plugin</span>
+                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">Chat UI</span>
+                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">CLI</span>
+                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">Chatbot</span>
+                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">Voice</span>
+              </div>
+            </div>
+            <div style="text-align:center;font-size:0.55rem;color:rgba(255,255,255,0.25)">&darr; &uarr;</div>
+            <div style="display:flex;align-items:center;gap:6px">
+              <div style="min-width:60px;padding:4px;border-radius:6px;background:rgba(47,108,122,0.12);border:1px solid rgba(47,108,122,0.25);font-size:0.58rem;color:var(--color-accent);font-weight:700;text-align:center">TOOLS</div>
+              <div style="flex:1;display:flex;flex-wrap:wrap;gap:3px">
+                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">Shell</span>
+                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">Filesystem</span>
+                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">Git</span>
+                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">Confluence</span>
+                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">Jira</span>
+                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">DB</span>
+              </div>
+            </div>
+            <div style="text-align:center;font-size:0.55rem;color:rgba(255,255,255,0.25)">&darr;</div>
+            <div style="display:flex;align-items:center;gap:6px">
+              <div style="min-width:60px;padding:4px;border-radius:6px;background:rgba(37,204,120,0.1);border:1px solid rgba(37,204,120,0.25);font-size:0.58rem;color:var(--color-positive);font-weight:700;text-align:center">OUTPUT</div>
+              <div style="flex:1;display:flex;flex-wrap:wrap;gap:3px">
+                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">Code / PR</span>
+                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">Chat-Antwort</span>
+                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">Doku</span>
+                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">Tickets</span>
+              </div>
+            </div>
           </div>
+          <div style="margin-top:6px;font-size:0.6rem;color:rgba(255,255,255,0.4);line-height:1.3;text-align:center">Coding, Chatbot, Voice Agent, Doku-Agent, Wissens-Agent</div>
         </div>
-        <div style="text-align:center;font-size:0.7rem;color:rgba(255,255,255,0.3)">&#8595;</div>
-        <div style="display:flex;align-items:stretch;gap:8px">
-          <div style="min-width:90px;padding:8px;border-radius:8px;background:rgba(47,108,122,0.15);border:1px solid rgba(47,108,122,0.3);font-size:0.7rem;color:var(--color-accent);font-weight:700;display:flex;align-items:center;justify-content:center;text-align:center">2. AGENT<br>FRAMEWORK</div>
-          <div style="flex:1;padding:8px 12px;border-radius:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);display:flex;flex-wrap:wrap;gap:4px;align-items:center">
-            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,237,0,0.12);border:1px solid rgba(255,237,0,0.3);font-size:0.7rem;color:var(--color-accent);font-weight:600">OpenCode</span>
-            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">Claude Code</span>
-            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">OpenClaw</span>
-            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">LangChain</span>
-            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">CrewAI</span>
-            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">Custom</span>
+        <div style="padding:10px;border-radius:10px;background:rgba(255,168,0,0.06);border:2px solid rgba(255,168,0,0.25)">
+          <h3 style="color:var(--color-warning);font-size:0.85rem;margin-bottom:8px;text-align:center">&#9881; 100% Workflow-Automatisierung</h3>
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <div style="display:flex;align-items:center;gap:6px">
+              <div style="min-width:60px;padding:4px;border-radius:6px;background:rgba(255,168,0,0.1);border:1px solid rgba(255,168,0,0.25);font-size:0.58rem;color:var(--color-warning);font-weight:700;text-align:center">TRIGGER</div>
+              <div style="flex:1;display:flex;flex-wrap:wrap;gap:3px">
+                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">Cron / Scheduler</span>
+                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">Webhook</span>
+                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">Event-Stream</span>
+                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">Log-Stream</span>
+              </div>
+            </div>
+            <div style="text-align:center;font-size:0.55rem;color:rgba(255,255,255,0.25)">&darr; &uarr;</div>
+            <div style="display:flex;align-items:center;gap:6px">
+              <div style="min-width:60px;padding:4px;border-radius:6px;background:rgba(47,108,122,0.12);border:1px solid rgba(47,108,122,0.25);font-size:0.58rem;color:var(--color-accent);font-weight:700;text-align:center">TOOLS</div>
+              <div style="flex:1;display:flex;flex-wrap:wrap;gap:3px">
+                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">Git MCP</span>
+                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">CVE DB</span>
+                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">Monitoring</span>
+                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">Shell</span>
+                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">DB</span>
+                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">K8s API</span>
+              </div>
+            </div>
+            <div style="text-align:center;font-size:0.55rem;color:rgba(255,255,255,0.25)">&darr;</div>
+            <div style="display:flex;align-items:center;gap:6px">
+              <div style="min-width:60px;padding:4px;border-radius:6px;background:rgba(37,204,120,0.1);border:1px solid rgba(37,204,120,0.25);font-size:0.58rem;color:var(--color-positive);font-weight:700;text-align:center">OUTPUT</div>
+              <div style="flex:1;display:flex;flex-wrap:wrap;gap:3px">
+                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">PRs mit Patches</span>
+                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">Alerts / Slack</span>
+                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">Reports</span>
+                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">Auto-Scaling</span>
+                <span style="padding:2px 6px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.6rem;color:var(--color-text-on-dark)">Mails</span>
+              </div>
+            </div>
           </div>
-        </div>
-        <div style="text-align:center;font-size:0.7rem;color:rgba(255,255,255,0.3)">&#8595; &#8593; Loop</div>
-        <div style="display:flex;align-items:stretch;gap:8px">
-          <div style="min-width:90px;padding:8px;border-radius:8px;background:rgba(47,108,122,0.15);border:1px solid rgba(47,108,122,0.3);font-size:0.7rem;color:var(--color-accent);font-weight:700;display:flex;align-items:center;justify-content:center;text-align:center">3. LLM<br>PROVIDER</div>
-          <div style="flex:1;padding:8px 12px;border-radius:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);display:flex;flex-wrap:wrap;gap:4px;align-items:center">
-            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,237,0,0.12);border:1px solid rgba(255,237,0,0.3);font-size:0.7rem;color:var(--color-accent);font-weight:600">Claude (Bedrock)</span>
-            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">GPT (OpenAI)</span>
-            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">Gemini</span>
-            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">Ollama (lokal)</span>
-            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">Mistral</span>
-          </div>
-        </div>
-        <div style="text-align:center;font-size:0.7rem;color:rgba(255,255,255,0.3)">&#8595; &#8593; Tool Calls</div>
-        <div style="display:flex;align-items:stretch;gap:8px">
-          <div style="min-width:90px;padding:8px;border-radius:8px;background:rgba(47,108,122,0.15);border:1px solid rgba(47,108,122,0.3);font-size:0.7rem;color:var(--color-accent);font-weight:700;display:flex;align-items:center;justify-content:center;text-align:center">4. MCP /<br>TOOLS</div>
-          <div style="flex:1;padding:8px 12px;border-radius:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);display:flex;flex-wrap:wrap;gap:4px;align-items:center">
-            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,237,0,0.12);border:1px solid rgba(255,237,0,0.3);font-size:0.7rem;color:var(--color-accent);font-weight:600">Shell</span>
-            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">Filesystem</span>
-            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">Database</span>
-            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">Jira</span>
-            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">Confluence</span>
-            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">SharePoint</span>
-            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">Git</span>
-            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">Custom Script</span>
-            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">Custom Backend</span>
-          </div>
-        </div>
-        <div style="text-align:center;font-size:0.7rem;color:rgba(255,255,255,0.3)">&#8595;</div>
-        <div style="display:flex;align-items:stretch;gap:8px">
-          <div style="min-width:90px;padding:8px;border-radius:8px;background:rgba(37,204,120,0.12);border:1px solid rgba(37,204,120,0.3);font-size:0.7rem;color:var(--color-positive);font-weight:700;display:flex;align-items:center;justify-content:center;text-align:center">5. OUTPUT</div>
-          <div style="flex:1;padding:8px 12px;border-radius:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);display:flex;flex-wrap:wrap;gap:4px;align-items:center">
-            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">Code / PR</span>
-            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">Doku</span>
-            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">Tickets</span>
-            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">Reports</span>
-            <span style="padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:0.7rem;color:var(--color-text-on-dark)">Deployments</span>
-          </div>
+          <div style="margin-top:6px;font-size:0.6rem;color:rgba(255,255,255,0.4);line-height:1.3;text-align:center">CVE-Patching, Anomalie-Erkennung, System-Pr&uuml;fung, Data Pipeline</div>
         </div>
       </div>
-      <div style="margin-top:8px;padding:8px 12px;border-radius:8px;background:rgba(255,237,0,0.06);border:1px solid rgba(255,237,0,0.15)">
-        <p style="font-size:0.72rem;color:rgba(255,255,255,0.7);line-height:1.4">
-          <strong style="color:var(--color-accent)">Gelb markiert</strong> = unsere Workshop-Konfiguration. Jede Schicht ist austauschbar &ndash; auf der n&auml;chsten Seite k&ouml;nnt ihr eure eigene Architektur zusammenbauen. <a href="https://www.dataiku.com/stories/detail/ai-agents/" target="_blank" rel="noopener" style="color:var(--color-accent);text-decoration:underline;font-size:0.65rem">Quelle: Dataiku &ndash; Understanding AI Agents</a>
+      <div style="margin-top:6px;padding:6px;border-radius:8px;background:rgba(47,108,122,0.06);border:1px solid rgba(47,108,122,0.15);text-align:center">
+        <div style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap;font-size:0.62rem;color:rgba(255,255,255,0.5)">
+          <span><strong style="color:var(--color-accent)">Gemeinsam:</strong> Agent Framework (OpenCode, LangChain, CrewAI...)</span>
+          <span>+</span>
+          <span>LLM Provider (Claude, GPT, Ollama...)</span>
+          <span>+</span>
+          <span>Context / Memory</span>
+        </div>
+      </div>
+      <div style="margin-top:4px;padding:5px 10px;border-radius:6px;background:rgba(255,237,0,0.04);border:1px solid rgba(255,237,0,0.1)">
+        <p style="font-size:0.6rem;color:rgba(255,255,255,0.45);line-height:1.3;text-align:center">
+          <strong style="color:var(--color-accent)">Gelb</strong> = Workshop-Config. Jede Schicht austauschbar. <a href="https://www.dataiku.com/stories/detail/ai-agents/" target="_blank" rel="noopener" style="color:var(--color-accent);text-decoration:underline">Quelle: Dataiku</a> &bull; <a href="https://vectorize.io/blog/designing-agentic-ai-systems-part-1-agent-architectures" target="_blank" rel="noopener" style="color:var(--color-accent);text-decoration:underline">Vectorize</a>
         </p>
       </div>
     `,
@@ -216,7 +241,7 @@ export const agenticSlides = [
             <span class="slide-label" style="color:var(--color-primary)">Interaktiv</span>
             <h2 class="slide-title" style="font-size:1.4rem;margin:4px 0 0">Agenten-Architektur Designer</h2>
           </div>
-          <button id="arch-export-btn" style="padding:6px 14px;border-radius:8px;border:1px solid var(--color-border);background:var(--color-bg-subdued);color:var(--color-text-subdued);font-size:0.75rem;cursor:pointer;display:none;transition:opacity 0.3s" title="Diagramm als Bild exportieren">&#128247; Exportieren</button>
+          <button id="arch-export-btn" style="display:none"></button>
         </div>
         <div style="display:flex;align-items:center;gap:12px;justify-content:center;margin-bottom:16px">
           <select id="arch-usecase" style="padding:0 16px;border-radius:10px;border:2px solid var(--color-border-primary);background:var(--color-bg-subdued);color:var(--color-text-primary);font-size:0.9rem;cursor:pointer;font-weight:600;min-width:260px;appearance:auto;height:44px">
@@ -228,12 +253,16 @@ export const agenticSlides = [
             <option value="tickets">&#127915; Ticket-Automatisierung</option>
             <option value="knowledge">&#128218; Wissens-Agent (Wiki)</option>
             <option value="data">&#128202; Data Pipeline Agent</option>
+            <option disabled>──── ${String.fromCharCode(128268)} Headless / ohne User ────</option>
+            <option value="cve">&#128737; CVE Auto-Patching</option>
+            <option value="anomaly">&#128200; Anomalie-Erkennung</option>
+            <option value="healthcheck">&#128269; T&auml;gliche System-Pr&uuml;fung</option>
           </select>
           <button id="arch-generate-btn" style="padding:0 24px;border-radius:10px;border:none;background:var(--color-primary);color:#fff;font-size:0.9rem;font-weight:700;cursor:pointer;white-space:nowrap;transition:transform 0.15s ease;height:44px">
             Architektur erzeugen &rarr;
           </button>
         </div>
-        <div id="arch-diagram" style="padding:24px;border-radius:14px;background:#fff;border:1px solid #e2e8f0;box-shadow:0 2px 12px rgba(0,0,0,0.06);min-height:120px;opacity:0;transition:opacity 0.5s ease,transform 0.5s ease;transform:translateY(8px)"></div>
+        <div id="arch-diagram" style="padding:16px;border-radius:14px;background:#fff;border:1px solid #e2e8f0;box-shadow:0 2px 12px rgba(0,0,0,0.06);min-height:80px;opacity:0;transition:opacity 0.5s ease,transform 0.5s ease;transform:translateY(8px);overflow-x:auto;max-width:calc(100vw - 80px)"></div>
         <div id="arch-builder-detail" style="margin-top:10px;padding:10px 16px;border-radius:10px;background:var(--color-bg-subdued);border:1px solid var(--color-border);font-size:0.8rem;color:var(--color-text-subdued);line-height:1.5;min-height:20px;opacity:0;transition:opacity 0.5s ease"></div>
       </div>
       <div class="arch-viewport-mobile">

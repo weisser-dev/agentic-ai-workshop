@@ -216,7 +216,7 @@ export const agenticSlides = [
             <span class="slide-label" style="color:var(--color-primary)">Interactive</span>
             <h2 class="slide-title" style="font-size:1.4rem;margin:4px 0 0">Agent Architecture Designer</h2>
           </div>
-          <button id="arch-export-btn" style="padding:6px 14px;border-radius:8px;border:1px solid var(--color-border);background:var(--color-bg-subdued);color:var(--color-text-subdued);font-size:0.75rem;cursor:pointer;display:none;transition:opacity 0.3s" title="Export diagram as image">&#128247; Export</button>
+          <button id="arch-export-btn" style="display:none"></button>
         </div>
         <div style="display:flex;align-items:center;gap:12px;justify-content:center;margin-bottom:16px">
           <select id="arch-usecase" style="padding:0 16px;border-radius:10px;border:2px solid var(--color-border-primary);background:var(--color-bg-subdued);color:var(--color-text-primary);font-size:0.9rem;cursor:pointer;font-weight:600;min-width:260px;appearance:auto;height:44px">
@@ -228,12 +228,16 @@ export const agenticSlides = [
             <option value="tickets">&#127915; Ticket Automation</option>
             <option value="knowledge">&#128218; Knowledge Agent (Wiki)</option>
             <option value="data">&#128202; Data Pipeline Agent</option>
+            <option disabled>──── ${String.fromCharCode(128268)} Headless / no user ────</option>
+            <option value="cve">&#128737; CVE Auto-Patching</option>
+            <option value="anomaly">&#128200; Anomaly Detection</option>
+            <option value="healthcheck">&#128269; Daily System Health Check</option>
           </select>
           <button id="arch-generate-btn" style="padding:0 24px;border-radius:10px;border:none;background:var(--color-primary);color:#fff;font-size:0.9rem;font-weight:700;cursor:pointer;white-space:nowrap;transition:transform 0.15s ease;height:44px">
             Generate Architecture &rarr;
           </button>
         </div>
-        <div id="arch-diagram" style="padding:24px;border-radius:14px;background:#fff;border:1px solid #e2e8f0;box-shadow:0 2px 12px rgba(0,0,0,0.06);min-height:120px;opacity:0;transition:opacity 0.5s ease,transform 0.5s ease;transform:translateY(8px)"></div>
+        <div id="arch-diagram" style="padding:16px;border-radius:14px;background:#fff;border:1px solid #e2e8f0;box-shadow:0 2px 12px rgba(0,0,0,0.06);min-height:80px;opacity:0;transition:opacity 0.5s ease,transform 0.5s ease;transform:translateY(8px);overflow-x:auto;max-width:calc(100vw - 80px)"></div>
         <div id="arch-builder-detail" style="margin-top:10px;padding:10px 16px;border-radius:10px;background:var(--color-bg-subdued);border:1px solid var(--color-border);font-size:0.8rem;color:var(--color-text-subdued);line-height:1.5;min-height:20px;opacity:0;transition:opacity 0.5s ease"></div>
       </div>
       <div class="arch-viewport-mobile">

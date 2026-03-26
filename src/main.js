@@ -1068,14 +1068,15 @@ function setupArchBuilder() {
       fontSize: '13px',
       fontFamily: 'system-ui, -apple-system, sans-serif',
     },
-    flowchart: { htmlLabels: true, curve: 'basis', rankSpacing: 45, nodeSpacing: 35, padding: 14 },
+    flowchart: { htmlLabels: true, curve: 'basis', rankSpacing: 30, nodeSpacing: 20, padding: 10 },
   });
 
   const presets = {
     coding: {
       label: 'Coding Assistant',
       desc: isDE ? 'Entwickler arbeitet lokal mit KI-Agent an Code. Agent liest/schreibt Dateien, führt Tests aus.' : 'Developer works locally with AI agent on code. Agent reads/writes files, runs tests.',
-      chart: () => `flowchart TD
+      chart: () => `flowchart LR
+  DEV(("👤 ${isDE ? 'Entwickler' : 'Developer'}"))
   subgraph LOCAL["${isDE ? '💻 Lokal (Entwickler-PC)' : '💻 Local (Developer PC)'}"]
     A["🖥️ <b>IDE Plugin</b><br/><small>Interface</small>"]
     B["⚙️ <b>OpenCode</b><br/><small>Framework</small>"]
@@ -1085,12 +1086,13 @@ function setupArchBuilder() {
   subgraph AWS["☁️ AWS"]
     C["🧠 <b>Claude Bedrock</b><br/><small>LLM</small>"]
   end
-  A -->|Prompt| B
+  DEV -->|Prompt| A
+  A --> B
   B <-->|API| C
   B <-->|${isDE ? 'Kontext' : 'Context'}| E
   B -->|Tool Calls| F1 & F2 & F3
   F1 & F2 & F3 -->|${isDE ? 'Ergebnis' : 'Output'}| G["✅ <b>Code / PR + Tests</b>"]
-  G -.->|${isDE ? 'Antwort an User' : 'Response to User'}| A
+  G -.->|${isDE ? 'Antwort' : 'Response'}| DEV
   style LOCAL fill:#f0fdf4,stroke:#86efac,stroke-width:2px,color:#14532d
   style AWS fill:#fff7ed,stroke:#fdba74,stroke-width:2px,color:#9a3412
   style A fill:#dbeafe,stroke:#60a5fa,stroke-width:2px
@@ -1100,7 +1102,8 @@ function setupArchBuilder() {
     review: {
       label: isDE ? 'Code Review (CI/CD)' : 'Code Review (CI/CD)',
       desc: isDE ? 'Agent wird in Pipeline getriggert, reviewt MR automatisch.' : 'Agent is triggered in pipeline, reviews MR automatically.',
-      chart: () => `flowchart TD
+      chart: () => `flowchart LR
+  DEV(("👤 ${isDE ? 'Entwickler' : 'Developer'}"))
   subgraph SERVER["${isDE ? '🏢 On-Prem Server' : '🏢 On-Prem Server'}"]
     A["🔗 <b>API / Webhook</b><br/><small>Interface</small>"]
     B["⚙️ <b>LangChain</b><br/><small>Framework</small>"]
@@ -1113,11 +1116,13 @@ function setupArchBuilder() {
   subgraph SAAS["🌐 SaaS"]
     H["🔧 <b>GitLab / GitHub</b>"]
   end
+  DEV -->|"MR ${isDE ? 'erstellt' : 'created'}"| A
   A -->|Trigger| B
   B <-->|API| C
   B <--> E
   B -->|Tool Calls| F1 -->|API| H
   H --> G["✅ <b>MR Comments + Approval</b>"]
+  G -.->|${isDE ? 'Review-Ergebnis' : 'Review Result'}| DEV
   style SERVER fill:#f0f9ff,stroke:#93c5fd,stroke-width:2px
   style AWS fill:#fff7ed,stroke:#fdba74,stroke-width:2px
   style SAAS fill:#fef2f2,stroke:#fca5a5,stroke-width:2px
@@ -1126,7 +1131,8 @@ function setupArchBuilder() {
     docs: {
       label: isDE ? 'Doku-Agent' : 'Docs Agent',
       desc: isDE ? 'Agent generiert Dokumentation aus Code und schreibt sie in Confluence.' : 'Agent generates docs from code and writes to Confluence.',
-      chart: () => `flowchart TD
+      chart: () => `flowchart LR
+  DEV(("👤 ${isDE ? 'Entwickler' : 'Developer'}"))
   subgraph LOCAL["${isDE ? '💻 Lokal' : '💻 Local'}"]
     A["💻 <b>CLI / TUI</b><br/><small>Interface</small>"]
     B["⚙️ <b>OpenCode</b><br/><small>Framework</small>"]
@@ -1139,12 +1145,14 @@ function setupArchBuilder() {
   subgraph SAAS["🌐 SaaS"]
     H["🔧 <b>Confluence API</b>"]
   end
+  DEV -->|"${isDE ? 'Auftrag' : 'Task'}"| A
   A --> B
   B <-->|API| C
   B <--> E
   B --> F1 & F2 & F3
   F3 -->|API| H
   H --> G["✅ <b>${isDE ? 'Confluence-Seiten + Markdown' : 'Confluence Pages + Markdown'}</b>"]
+  G -.->|${isDE ? 'Bestätigung' : 'Confirmation'}| DEV
   style LOCAL fill:#f0fdf4,stroke:#86efac,stroke-width:2px
   style AWS fill:#fff7ed,stroke:#fdba74,stroke-width:2px
   style SAAS fill:#fef2f2,stroke:#fca5a5,stroke-width:2px
@@ -1153,7 +1161,8 @@ function setupArchBuilder() {
     chatbot: {
       label: isDE ? 'Kunden-Chatbot' : 'Customer Chatbot',
       desc: isDE ? 'Chatbot beantwortet Kundenfragen basierend auf Wissensbasis (RAG).' : 'Chatbot answers customer questions based on knowledge base (RAG).',
-      chart: () => `flowchart TD
+      chart: () => `flowchart LR
+  KUNDE(("👤 ${isDE ? 'Kunde' : 'Customer'}"))
   subgraph CLOUD["☁️ Cloud"]
     A["💬 <b>Chatbot Widget</b><br/><small>Interface</small>"]
     B["⚙️ <b>LangChain</b><br/><small>Framework</small>"]
@@ -1167,12 +1176,13 @@ function setupArchBuilder() {
     H1["🗄️ <b>Pinecone</b>"]
     H2["🔧 <b>${isDE ? 'Produkt-API' : 'Product API'}</b>"]
   end
+  KUNDE -->|"💬 ${isDE ? 'Frage' : 'Question'}"| A
   A --> B
   B <-->|API| C
   B <--> E
   B --> F1 --> H1 & H2
   B --> G["✅ <b>${isDE ? 'Chat-Antwort' : 'Chat Response'}</b>"]
-  G -.-> A
+  G -.->|"💬 ${isDE ? 'Antwort' : 'Answer'}"| KUNDE
   style CLOUD fill:#faf5ff,stroke:#c4b5fd,stroke-width:2px
   style OPENAI fill:#f0fdf4,stroke:#86efac,stroke-width:2px
   style BACK fill:#fef2f2,stroke:#fca5a5,stroke-width:2px
@@ -1182,7 +1192,8 @@ function setupArchBuilder() {
     voice: {
       label: 'Call Center Voice Agent',
       desc: isDE ? 'Telefon → STT → Agent → TTS → Antwort. Braucht Azure Whisper/TTS.' : 'Phone → STT → Agent → TTS → Answer. Requires Azure Whisper/TTS.',
-      chart: () => `flowchart TD
+      chart: () => `flowchart LR
+  KUNDE(("👤 ${isDE ? 'Kunde ruft an' : 'Customer calls'}"))
   subgraph CLOUD["☁️ Cloud"]
     A["📞 <b>${isDE ? 'Voice / Telefon' : 'Voice / Phone'}</b><br/><small>Interface</small>"]
     B["⚙️ <b>LangChain</b><br/><small>Framework</small>"]
@@ -1199,12 +1210,13 @@ function setupArchBuilder() {
   subgraph SAAS["🌐 SaaS"]
     H["🔧 <b>CRM API</b>"]
   end
+  KUNDE -->|"📞 ${isDE ? 'Anruf' : 'Call'}"| A
   A -->|Audio| STT -->|Text| B
   B <-->|API| C
   B <--> E
   B --> F1 --> H
   B -->|Text| TTS -->|Audio| G["✅ <b>${isDE ? 'Sprach-Antwort' : 'Voice Response'}</b>"]
-  G -.-> A
+  G -.->|"🔊 ${isDE ? 'Antwort' : 'Answer'}"| KUNDE
   style CLOUD fill:#faf5ff,stroke:#c4b5fd,stroke-width:2px
   style AWS fill:#fff7ed,stroke:#fdba74,stroke-width:2px
   style AZURE fill:#eff6ff,stroke:#93c5fd,stroke-width:2px
@@ -1214,7 +1226,8 @@ function setupArchBuilder() {
     tickets: {
       label: isDE ? 'Ticket-Automatisierung' : 'Ticket Automation',
       desc: isDE ? 'Agent klassifiziert Jira-Tickets, erstellt Subtasks, weist zu.' : 'Agent classifies Jira tickets, creates subtasks, assigns.',
-      chart: () => `flowchart TD
+      chart: () => `flowchart LR
+  USER(("👤 ${isDE ? 'Kunde / System' : 'Customer / System'}"))
   subgraph SERVER["${isDE ? '🏢 On-Prem' : '🏢 On-Prem'}"]
     A["🔗 <b>API / Webhook</b><br/><small>Interface</small>"]
     B["⚙️ <b>CrewAI</b><br/><small>Framework</small>"]
@@ -1227,11 +1240,13 @@ function setupArchBuilder() {
   subgraph SAAS["🌐 SaaS"]
     H["🔧 <b>Jira API</b>"]
   end
+  USER -->|"${isDE ? 'Ticket erstellt' : 'Ticket created'}"| A
   A -->|Trigger| B
   B <-->|API| C
   B <--> E
   B --> F1 -->|API| H
   H --> G["✅ <b>${isDE ? 'Tickets + Subtasks' : 'Tickets + Subtasks'}</b>"]
+  G -.->|${isDE ? 'Benachrichtigung' : 'Notification'}| USER
   style SERVER fill:#f0f9ff,stroke:#93c5fd,stroke-width:2px
   style OPENAI fill:#f0fdf4,stroke:#86efac,stroke-width:2px
   style SAAS fill:#fef2f2,stroke:#fca5a5,stroke-width:2px
@@ -1240,7 +1255,8 @@ function setupArchBuilder() {
     knowledge: {
       label: isDE ? 'Wissens-Agent' : 'Knowledge Agent',
       desc: isDE ? 'Durchsucht Confluence/SharePoint, antwortet mit Quellenangabe.' : 'Searches Confluence/SharePoint, answers with source references.',
-      chart: () => `flowchart TD
+      chart: () => `flowchart LR
+  USER(("👤 ${isDE ? 'Mitarbeiter' : 'Employee'}"))
   subgraph SERVER["${isDE ? '🏢 On-Prem' : '🏢 On-Prem'}"]
     A["💬 <b>Chat UI</b><br/><small>Interface</small>"]
     B["⚙️ <b>LangChain</b><br/><small>Framework</small>"]
@@ -1255,13 +1271,14 @@ function setupArchBuilder() {
     H1["🔧 <b>Confluence API</b>"]
     H2["🔧 <b>SharePoint API</b>"]
   end
+  USER -->|"💬 ${isDE ? 'Frage' : 'Question'}"| A
   A --> B
   B <-->|API| C
   B <--> E & VDB
   B --> F1 --> H1
   B --> F2 --> H2
   B --> G["✅ <b>${isDE ? 'Antwort + Quellen' : 'Answer + Sources'}</b>"]
-  G -.-> A
+  G -.->|"${isDE ? 'Antwort' : 'Answer'}"| USER
   style SERVER fill:#f0f9ff,stroke:#93c5fd,stroke-width:2px
   style AWS fill:#fff7ed,stroke:#fdba74,stroke-width:2px
   style SAAS fill:#fef2f2,stroke:#fca5a5,stroke-width:2px
@@ -1271,7 +1288,8 @@ function setupArchBuilder() {
     data: {
       label: 'Data Pipeline Agent',
       desc: isDE ? 'Analysiert DB, schreibt Queries, erstellt Reports. Läuft als Cronjob.' : 'Analyzes DB, writes queries, creates reports. Runs as cron job.',
-      chart: () => `flowchart TD
+      chart: () => `flowchart LR
+  ADMIN(("👤 ${isDE ? 'Admin / Cron' : 'Admin / Cron'}"))
   subgraph SERVER["${isDE ? '🏢 On-Prem' : '🏢 On-Prem'}"]
     A["🔗 <b>API / Cron</b><br/><small>Interface</small>"]
     B["⚙️ <b>LangChain</b><br/><small>Framework</small>"]
@@ -1285,15 +1303,112 @@ function setupArchBuilder() {
   subgraph AWS_S["☁️ AWS"]
     S3["🗄️ <b>S3 ${isDE ? 'Speicher' : 'Storage'}</b>"]
   end
-  A -->|Trigger| B
+  ADMIN -->|Trigger| A
+  A --> B
   B <-->|API| C
   B <--> E
   B --> F1 --> DB
   B --> F2 --> S3
   DB & S3 --> G["✅ <b>Reports + CSV + Dashboards</b>"]
+  G -.->|${isDE ? 'Report fertig' : 'Report ready'}| ADMIN
   style SERVER fill:#f0f9ff,stroke:#93c5fd,stroke-width:2px
   style OPENAI fill:#f0fdf4,stroke:#86efac,stroke-width:2px
   style AWS_S fill:#fff7ed,stroke:#fdba74,stroke-width:2px
+  style G fill:#dcfce7,stroke:#4ade80,stroke-width:2px`
+    },
+    cve: {
+      label: isDE ? 'CVE Auto-Patching (ohne User)' : 'CVE Auto-Patching (no user)',
+      desc: isDE ? 'Agent prüft täglich CVE-Datenbanken, findet betroffene Dependencies und stellt automatisch PRs mit Fixes.' : 'Agent checks CVE databases daily, finds affected dependencies and automatically creates PRs with fixes.',
+      chart: () => `flowchart LR
+  CRON(("⏰ ${isDE ? 'Cron / Scheduler' : 'Cron / Scheduler'}"))
+  subgraph SERVER["${isDE ? '🏢 On-Prem / CI' : '🏢 On-Prem / CI'}"]
+    A["🔗 <b>Cron Trigger</b><br/><small>Headless</small>"]
+    B["⚙️ <b>LangChain</b><br/><small>Framework</small>"]
+    E["📋 <b>${isDE ? 'Dependency-Liste + Lock Files' : 'Dependency List + Lock Files'}</b>"]
+    F1["Git MCP"] & F2["Shell"]
+  end
+  subgraph AWS["☁️ AWS"]
+    C["🧠 <b>Claude Bedrock</b><br/><small>LLM</small>"]
+  end
+  subgraph SAAS["🌐 SaaS / APIs"]
+    CVE["🛡️ <b>CVE Database</b><br/><small>NVD / OSV / Snyk</small>"]
+    GH["🔧 <b>GitHub / GitLab</b>"]
+    SLACK["💬 <b>Slack</b>"]
+  end
+  CRON -->|${isDE ? 'Täglich' : 'Daily'}| A --> B
+  B <-->|API| C
+  B <--> E
+  B --> F2 -->|${isDE ? 'Scan' : 'Scan'}| CVE
+  B --> F1 -->|"PR ${isDE ? 'erstellen' : 'create'}"| GH
+  GH --> G["✅ <b>${isDE ? 'PRs mit Fixes' : 'PRs with Fixes'}</b>"]
+  G -.->|${isDE ? 'Benachrichtigung' : 'Notification'}| SLACK
+  style SERVER fill:#f0f9ff,stroke:#93c5fd,stroke-width:2px
+  style AWS fill:#fff7ed,stroke:#fdba74,stroke-width:2px
+  style SAAS fill:#fef2f2,stroke:#fca5a5,stroke-width:2px
+  style CVE fill:#fef3c7,stroke:#f59e0b,stroke-width:2px
+  style G fill:#dcfce7,stroke:#4ade80,stroke-width:2px`
+    },
+    anomaly: {
+      label: isDE ? 'Anomalie-Erkennung (ohne User)' : 'Anomaly Detection (no user)',
+      desc: isDE ? 'Agent überwacht Logs, Metriken und Error-Rates – erkennt Muster und alarmiert bevor Nutzer es merken.' : 'Agent monitors logs, metrics and error rates – detects patterns and alerts before users notice.',
+      chart: () => `flowchart LR
+  STREAM(("📊 ${isDE ? 'Log-Stream / Metriken' : 'Log Stream / Metrics'}"))
+  subgraph SERVER["${isDE ? '🏢 On-Prem' : '🏢 On-Prem'}"]
+    A["🔗 <b>${isDE ? 'Event-Listener' : 'Event Listener'}</b><br/><small>Headless</small>"]
+    B["⚙️ <b>LangChain</b><br/><small>Framework</small>"]
+    E["📋 <b>${isDE ? 'Baseline-Metriken + Regeln' : 'Baseline Metrics + Rules'}</b>"]
+    F1["${isDE ? 'Monitoring MCP' : 'Monitoring MCP'}"]
+  end
+  subgraph AWS["☁️ AWS"]
+    C["🧠 <b>Claude Bedrock</b><br/><small>LLM</small>"]
+  end
+  subgraph SAAS["🌐 Services"]
+    DD["📈 <b>Datadog / Grafana</b>"]
+    PD["🚨 <b>PagerDuty / Slack</b>"]
+    JIRA["🔧 <b>Jira</b>"]
+  end
+  STREAM -->|${isDE ? 'Echtzeit' : 'Real-time'}| A --> B
+  B <-->|API| C
+  B <--> E
+  B --> F1 --> DD
+  B -->|"${isDE ? 'Anomalie erkannt' : 'Anomaly detected'}"| G["🚨 <b>${isDE ? 'Alert + Analyse' : 'Alert + Analysis'}</b>"]
+  G --> PD
+  G -->|"${isDE ? 'Ticket erstellen' : 'Create ticket'}"| JIRA
+  style SERVER fill:#f0f9ff,stroke:#93c5fd,stroke-width:2px
+  style AWS fill:#fff7ed,stroke:#fdba74,stroke-width:2px
+  style SAAS fill:#fef2f2,stroke:#fca5a5,stroke-width:2px
+  style G fill:#fef3c7,stroke:#f59e0b,stroke-width:2px`
+    },
+    healthcheck: {
+      label: isDE ? 'System-Prüfung (ohne User)' : 'System Health Check (no user)',
+      desc: isDE ? '1x täglich: Health Checks, Dependency Updates, Zertifikate prüfen, Security Scans – Report per Slack.' : 'Once daily: health checks, dependency updates, certificate checks, security scans – report via Slack.',
+      chart: () => `flowchart LR
+  CRON(("⏰ ${isDE ? 'Täglich 6:00' : 'Daily 6:00 AM'}"))
+  subgraph SERVER["${isDE ? '🏢 On-Prem' : '🏢 On-Prem'}"]
+    A["🔗 <b>Cron Trigger</b><br/><small>Headless</small>"]
+    B["⚙️ <b>CrewAI</b><br/><small>Multi-Agent</small>"]
+    E["📋 <b>${isDE ? 'Infra-Config + Baselines' : 'Infra Config + Baselines'}</b>"]
+    F1["Shell"] & F2["Database MCP"] & F3["Git MCP"]
+  end
+  subgraph AWS["☁️ AWS"]
+    C["🧠 <b>Claude Bedrock</b><br/><small>LLM</small>"]
+  end
+  subgraph SAAS["🌐 Services"]
+    SLACK["💬 <b>Slack / Teams</b>"]
+    GH["🔧 <b>GitHub</b>"]
+  end
+  CRON -->|${isDE ? 'Täglich' : 'Daily'}| A --> B
+  B <-->|API| C
+  B <--> E
+  B --> F1 & F2 & F3
+  F1 -->|"${isDE ? 'Health + Certs + Scans' : 'Health + Certs + Scans'}"| CHECK["🔍 <b>${isDE ? 'Prüfungen' : 'Checks'}</b>"]
+  F3 -->|"${isDE ? 'Dep. Updates' : 'Dep. Updates'}"| GH
+  CHECK & GH --> G["✅ <b>${isDE ? 'Tagesbericht' : 'Daily Report'}</b>"]
+  G -->|${isDE ? 'Report' : 'Report'}| SLACK
+  style SERVER fill:#f0f9ff,stroke:#93c5fd,stroke-width:2px
+  style AWS fill:#fff7ed,stroke:#fdba74,stroke-width:2px
+  style SAAS fill:#fef2f2,stroke:#fca5a5,stroke-width:2px
+  style CHECK fill:#faf5ff,stroke:#c4b5fd,stroke-width:2px
   style G fill:#dcfce7,stroke:#4ade80,stroke-width:2px`
     },
   };
@@ -1308,11 +1423,66 @@ function setupArchBuilder() {
 
     renderCounter++;
     const id = 'arch-mermaid-' + renderCounter;
+    const useCaseLabel = preset.label;
     try {
       const { svg } = await mermaid.render(id, preset.chart());
-      diagram.innerHTML = svg;
+      diagram.innerHTML = `
+        <div id="arch-diagram-inner">
+          ${svg}
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px;padding:6px 12px;border-radius:0 0 12px 12px;background:#f8fafc;border-top:1px solid #e2e8f0">
+            <span style="font-size:0.6rem;color:#94a3b8;font-style:italic">generated by agentic-ai.weisser.dev &bull; ${useCaseLabel}</span>
+            <div style="display:flex;gap:6px">
+              <button id="arch-share-btn" style="padding:4px 12px;border-radius:6px;border:1px solid #e2e8f0;background:#fff;color:#475569;font-size:0.7rem;cursor:pointer;display:flex;align-items:center;gap:4px" title="${isDE ? 'Link kopieren' : 'Copy link'}">&#128279; ${isDE ? 'Teilen' : 'Share'}</button>
+              <button id="arch-download-btn" style="padding:4px 12px;border-radius:6px;border:1px solid #e2e8f0;background:#fff;color:#475569;font-size:0.7rem;cursor:pointer;display:flex;align-items:center;gap:4px" title="${isDE ? 'Als PNG speichern' : 'Save as PNG'}">&#128190; PNG</button>
+            </div>
+          </div>
+        </div>`;
       const svgEl = diagram.querySelector('svg');
       if (svgEl) { svgEl.style.maxWidth = '100%'; svgEl.style.height = 'auto'; svgEl.removeAttribute('height'); }
+
+      // Share button -- copy URL with preset
+      document.getElementById('arch-share-btn')?.addEventListener('click', () => {
+        const url = window.location.origin + window.location.pathname + '#arch-builder';
+        navigator.clipboard.writeText(url).then(() => {
+          const btn = document.getElementById('arch-share-btn');
+          if (btn) { btn.innerHTML = '&#10003; ' + (isDE ? 'Kopiert!' : 'Copied!'); setTimeout(() => { btn.innerHTML = '&#128279; ' + (isDE ? 'Teilen' : 'Share'); }, 2000); }
+        });
+      });
+
+      // Download PNG with watermark
+      document.getElementById('arch-download-btn')?.addEventListener('click', () => {
+        const svgSource = diagram.querySelector('svg');
+        if (!svgSource) return;
+        // Clone SVG and add watermark text
+        const clone = svgSource.cloneNode(true);
+        const watermark = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        watermark.setAttribute('x', '10');
+        watermark.setAttribute('y', (parseInt(clone.getAttribute('viewBox')?.split(' ')[3] || clone.getBoundingClientRect().height) - 5).toString());
+        watermark.setAttribute('fill', '#94a3b8');
+        watermark.setAttribute('font-size', '11');
+        watermark.setAttribute('font-family', 'system-ui, sans-serif');
+        watermark.textContent = 'generated by agentic-ai.weisser.dev | ' + useCaseLabel;
+        clone.appendChild(watermark);
+        const svgData = new XMLSerializer().serializeToString(clone);
+        const canvas = document.createElement('canvas');
+        const img = new Image();
+        img.onload = () => {
+          const scale = 2;
+          canvas.width = img.width * scale;
+          canvas.height = img.height * scale;
+          const ctx = canvas.getContext('2d');
+          ctx.fillStyle = '#ffffff';
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+          ctx.scale(scale, scale);
+          ctx.drawImage(img, 0, 0);
+          const a = document.createElement('a');
+          a.download = 'agent-architecture-' + select.value + '.png';
+          a.href = canvas.toDataURL('image/png');
+          a.click();
+        };
+        img.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svgData)));
+      });
+
     } catch (e) {
       diagram.innerHTML = '<div style="color:red;font-size:0.8rem;padding:12px">Diagram error: ' + e.message + '</div>';
       console.error('Mermaid render error:', e);
@@ -1325,8 +1495,6 @@ function setupArchBuilder() {
         detailBox.innerHTML = '<strong style="color:var(--color-primary)">' + preset.label + ':</strong> ' + preset.desc;
         detailBox.style.opacity = '1';
       }
-      const exportBtn = document.getElementById('arch-export-btn');
-      if (exportBtn) exportBtn.style.display = 'inline-block';
     });
   }
 
@@ -1341,32 +1509,6 @@ function setupArchBuilder() {
   select.addEventListener('change', () => {
     if (diagram.innerHTML) showDiagram(presets[select.value] || presets.coding);
   });
-
-  // Export as PNG
-  const exportBtn = document.getElementById('arch-export-btn');
-  if (exportBtn) {
-    exportBtn.addEventListener('click', () => {
-      const svgEl = diagram.querySelector('svg');
-      if (!svgEl) return;
-      const svgData = new XMLSerializer().serializeToString(svgEl);
-      const canvas = document.createElement('canvas');
-      const img = new Image();
-      img.onload = () => {
-        canvas.width = img.width * 2;
-        canvas.height = img.height * 2;
-        const ctx = canvas.getContext('2d');
-        ctx.fillStyle = '#ffffff';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.scale(2, 2);
-        ctx.drawImage(img, 0, 0);
-        const a = document.createElement('a');
-        a.download = 'agent-architecture-' + select.value + '.png';
-        a.href = canvas.toDataURL('image/png');
-        a.click();
-      };
-      img.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svgData)));
-    });
-  }
 }
 
 function setupQuiz() {
