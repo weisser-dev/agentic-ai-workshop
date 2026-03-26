@@ -219,7 +219,7 @@ export const agenticSlides = [
           <button id="arch-export-btn" style="padding:6px 14px;border-radius:8px;border:1px solid var(--color-border);background:var(--color-bg-subdued);color:var(--color-text-subdued);font-size:0.75rem;cursor:pointer;display:none;transition:opacity 0.3s" title="Diagramm als Bild exportieren">&#128247; Exportieren</button>
         </div>
         <div style="display:flex;align-items:center;gap:12px;justify-content:center;margin-bottom:16px">
-          <select id="arch-usecase" style="padding:10px 16px;border-radius:10px;border:2px solid var(--color-border-primary);background:var(--color-bg-subdued);color:var(--color-text-primary);font-size:0.9rem;cursor:pointer;font-weight:600;min-width:260px;appearance:auto">
+          <select id="arch-usecase" style="padding:0 16px;border-radius:10px;border:2px solid var(--color-border-primary);background:var(--color-bg-subdued);color:var(--color-text-primary);font-size:0.9rem;cursor:pointer;font-weight:600;min-width:260px;appearance:auto;height:44px">
             <option value="coding">&#128187; Coding Assistant</option>
             <option value="review">&#128269; Code Review (CI/CD)</option>
             <option value="docs">&#128196; Doku-Agent</option>
@@ -229,7 +229,7 @@ export const agenticSlides = [
             <option value="knowledge">&#128218; Wissens-Agent (Wiki)</option>
             <option value="data">&#128202; Data Pipeline Agent</option>
           </select>
-          <button id="arch-generate-btn" style="padding:10px 24px;border-radius:10px;border:none;background:var(--color-primary);color:#fff;font-size:0.9rem;font-weight:700;cursor:pointer;white-space:nowrap;transition:transform 0.15s ease">
+          <button id="arch-generate-btn" style="padding:0 24px;border-radius:10px;border:none;background:var(--color-primary);color:#fff;font-size:0.9rem;font-weight:700;cursor:pointer;white-space:nowrap;transition:transform 0.15s ease;height:44px">
             Architektur erzeugen &rarr;
           </button>
         </div>

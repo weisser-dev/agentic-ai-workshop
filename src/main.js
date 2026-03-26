@@ -1,4 +1,5 @@
 import './style.css'
+import mermaid from 'mermaid'
 
 // ===== i18n: Language detection & switching =====
 import { introSlides as introDE } from './sections/de/01-intro.js'
@@ -1047,7 +1048,7 @@ function setupHandsonQR() {
   urlEl.textContent = handsonUrl;
 }
 
-// ===== Architecture Builder =====
+// ===== Architecture Builder (Mermaid) =====
 function setupArchBuilder() {
   const diagram = document.getElementById('arch-diagram');
   const select = document.getElementById('arch-usecase');
@@ -1056,236 +1057,279 @@ function setupArchBuilder() {
 
   const isDE = currentLang === 'de';
 
-  // Use-case presets with full architecture config
+  mermaid.initialize({
+    startOnLoad: false,
+    theme: 'base',
+    themeVariables: {
+      primaryColor: '#e0f2fe',
+      primaryBorderColor: '#7dd3fc',
+      primaryTextColor: '#0c4a6e',
+      lineColor: '#94a3b8',
+      fontSize: '13px',
+      fontFamily: 'system-ui, -apple-system, sans-serif',
+    },
+    flowchart: { htmlLabels: true, curve: 'basis', rankSpacing: 45, nodeSpacing: 35, padding: 14 },
+  });
+
   const presets = {
     coding: {
-      label: isDE ? 'Coding Assistant' : 'Coding Assistant',
+      label: 'Coding Assistant',
       desc: isDE ? 'Entwickler arbeitet lokal mit KI-Agent an Code. Agent liest/schreibt Dateien, führt Tests aus.' : 'Developer works locally with AI agent on code. Agent reads/writes files, runs tests.',
-      iface: { name: 'IDE Plugin', zone: 'local', icon: '🖥️' },
-      framework: { name: 'OpenCode', zone: 'local', icon: '⚙️' },
-      llm: { name: 'Claude (Bedrock)', zone: 'cloud-aws', icon: '🧠' },
-      context: { name: isDE ? 'agents.md + Codebase' : 'agents.md + Codebase', zone: 'local', icon: '📋' },
-      tools: [
-        { name: 'Shell', zone: 'local' }, { name: 'Filesystem', zone: 'local' }, { name: 'Git', zone: 'local' }
-      ],
-      backends: [],
-      output: [isDE ? 'Code / PR' : 'Code / PR', isDE ? 'Tests' : 'Tests'],
-      outputTarget: 'user',
+      chart: () => `flowchart TD
+  subgraph LOCAL["${isDE ? '💻 Lokal (Entwickler-PC)' : '💻 Local (Developer PC)'}"]
+    A["🖥️ <b>IDE Plugin</b><br/><small>Interface</small>"]
+    B["⚙️ <b>OpenCode</b><br/><small>Framework</small>"]
+    E["📋 <b>agents.md + Codebase</b><br/><small>${isDE ? 'Kontext / Memory' : 'Context / Memory'}</small>"]
+    F1["Shell"] & F2["Filesystem"] & F3["Git"]
+  end
+  subgraph AWS["☁️ AWS"]
+    C["🧠 <b>Claude Bedrock</b><br/><small>LLM</small>"]
+  end
+  A -->|Prompt| B
+  B <-->|API| C
+  B <-->|${isDE ? 'Kontext' : 'Context'}| E
+  B -->|Tool Calls| F1 & F2 & F3
+  F1 & F2 & F3 -->|${isDE ? 'Ergebnis' : 'Output'}| G["✅ <b>Code / PR + Tests</b>"]
+  G -.->|${isDE ? 'Antwort an User' : 'Response to User'}| A
+  style LOCAL fill:#f0fdf4,stroke:#86efac,stroke-width:2px,color:#14532d
+  style AWS fill:#fff7ed,stroke:#fdba74,stroke-width:2px,color:#9a3412
+  style A fill:#dbeafe,stroke:#60a5fa,stroke-width:2px
+  style C fill:#fef3c7,stroke:#f59e0b,stroke-width:2px
+  style G fill:#dcfce7,stroke:#4ade80,stroke-width:2px`
     },
     review: {
       label: isDE ? 'Code Review (CI/CD)' : 'Code Review (CI/CD)',
-      desc: isDE ? 'Agent wird in Pipeline getriggert, reviewt MR automatisch, kommentiert in GitLab/GitHub.' : 'Agent is triggered in pipeline, reviews MR automatically, comments in GitLab/GitHub.',
-      iface: { name: 'API / Webhook', zone: 'server', icon: '🔗' },
-      framework: { name: 'LangChain', zone: 'server', icon: '⚙️' },
-      llm: { name: 'Claude (Bedrock)', zone: 'cloud-aws', icon: '🧠' },
-      context: { name: 'Diff + MR Context', zone: 'server', icon: '📋' },
-      tools: [
-        { name: 'Git MCP', zone: 'server' }, { name: 'GitLab API', zone: 'saas' }
-      ],
-      backends: [{ name: 'GitLab / GitHub', zone: 'saas', icon: '🔧' }],
-      output: ['MR Comments', 'Approval / Reject'],
-      outputTarget: 'system',
+      desc: isDE ? 'Agent wird in Pipeline getriggert, reviewt MR automatisch.' : 'Agent is triggered in pipeline, reviews MR automatically.',
+      chart: () => `flowchart TD
+  subgraph SERVER["${isDE ? '🏢 On-Prem Server' : '🏢 On-Prem Server'}"]
+    A["🔗 <b>API / Webhook</b><br/><small>Interface</small>"]
+    B["⚙️ <b>LangChain</b><br/><small>Framework</small>"]
+    E["📋 <b>Diff + MR Context</b>"]
+    F1["Git MCP"]
+  end
+  subgraph AWS["☁️ AWS"]
+    C["🧠 <b>Claude Bedrock</b><br/><small>LLM</small>"]
+  end
+  subgraph SAAS["🌐 SaaS"]
+    H["🔧 <b>GitLab / GitHub</b>"]
+  end
+  A -->|Trigger| B
+  B <-->|API| C
+  B <--> E
+  B -->|Tool Calls| F1 -->|API| H
+  H --> G["✅ <b>MR Comments + Approval</b>"]
+  style SERVER fill:#f0f9ff,stroke:#93c5fd,stroke-width:2px
+  style AWS fill:#fff7ed,stroke:#fdba74,stroke-width:2px
+  style SAAS fill:#fef2f2,stroke:#fca5a5,stroke-width:2px
+  style G fill:#dcfce7,stroke:#4ade80,stroke-width:2px`
     },
     docs: {
       label: isDE ? 'Doku-Agent' : 'Docs Agent',
-      desc: isDE ? 'Agent generiert Dokumentation aus Code-Änderungen und schreibt sie in Confluence.' : 'Agent generates documentation from code changes and writes it to Confluence.',
-      iface: { name: 'CLI / TUI', zone: 'local', icon: '💻' },
-      framework: { name: 'OpenCode', zone: 'local', icon: '⚙️' },
-      llm: { name: 'Claude (Bedrock)', zone: 'cloud-aws', icon: '🧠' },
-      context: { name: 'Codebase + History', zone: 'local', icon: '📋' },
-      tools: [
-        { name: 'Filesystem', zone: 'local' }, { name: 'Git', zone: 'local' }, { name: 'Confluence MCP', zone: 'local' }
-      ],
-      backends: [{ name: 'Confluence API', zone: 'saas', icon: '🔧' }],
-      output: [isDE ? 'Confluence-Seiten' : 'Confluence Pages', 'Markdown'],
-      outputTarget: 'system',
+      desc: isDE ? 'Agent generiert Dokumentation aus Code und schreibt sie in Confluence.' : 'Agent generates docs from code and writes to Confluence.',
+      chart: () => `flowchart TD
+  subgraph LOCAL["${isDE ? '💻 Lokal' : '💻 Local'}"]
+    A["💻 <b>CLI / TUI</b><br/><small>Interface</small>"]
+    B["⚙️ <b>OpenCode</b><br/><small>Framework</small>"]
+    E["📋 <b>Codebase + History</b>"]
+    F1["Filesystem"] & F2["Git"] & F3["Confluence MCP"]
+  end
+  subgraph AWS["☁️ AWS"]
+    C["🧠 <b>Claude Bedrock</b><br/><small>LLM</small>"]
+  end
+  subgraph SAAS["🌐 SaaS"]
+    H["🔧 <b>Confluence API</b>"]
+  end
+  A --> B
+  B <-->|API| C
+  B <--> E
+  B --> F1 & F2 & F3
+  F3 -->|API| H
+  H --> G["✅ <b>${isDE ? 'Confluence-Seiten + Markdown' : 'Confluence Pages + Markdown'}</b>"]
+  style LOCAL fill:#f0fdf4,stroke:#86efac,stroke-width:2px
+  style AWS fill:#fff7ed,stroke:#fdba74,stroke-width:2px
+  style SAAS fill:#fef2f2,stroke:#fca5a5,stroke-width:2px
+  style G fill:#dcfce7,stroke:#4ade80,stroke-width:2px`
     },
     chatbot: {
-      label: isDE ? 'Kunden-Chatbot (Web)' : 'Customer Chatbot (Web)',
-      desc: isDE ? 'Chatbot auf der Webseite beantwortet Kundenfragen basierend auf Wissensbasis.' : 'Chatbot on website answers customer questions based on knowledge base.',
-      iface: { name: 'Chatbot Widget', zone: 'cloud', icon: '💬' },
-      framework: { name: 'LangChain', zone: 'cloud', icon: '⚙️' },
-      llm: { name: 'GPT-4 (OpenAI)', zone: 'cloud', icon: '🧠' },
-      context: { name: isDE ? 'Vektor-DB (RAG)' : 'Vector DB (RAG)', zone: 'cloud', icon: '📋' },
-      tools: [{ name: 'Search MCP', zone: 'cloud' }],
-      backends: [
-        { name: isDE ? 'Vektor-DB (Pinecone)' : 'Vector DB (Pinecone)', zone: 'cloud', icon: '🗄️' },
-        { name: isDE ? 'Produkt-API' : 'Product API', zone: 'server', icon: '🔧' }
-      ],
-      output: [isDE ? 'Chat-Antwort' : 'Chat Response'],
-      outputTarget: 'user',
+      label: isDE ? 'Kunden-Chatbot' : 'Customer Chatbot',
+      desc: isDE ? 'Chatbot beantwortet Kundenfragen basierend auf Wissensbasis (RAG).' : 'Chatbot answers customer questions based on knowledge base (RAG).',
+      chart: () => `flowchart TD
+  subgraph CLOUD["☁️ Cloud"]
+    A["💬 <b>Chatbot Widget</b><br/><small>Interface</small>"]
+    B["⚙️ <b>LangChain</b><br/><small>Framework</small>"]
+    E["📋 <b>${isDE ? 'Vektor-DB RAG' : 'Vector DB RAG'}</b>"]
+    F1["Search MCP"]
+  end
+  subgraph OPENAI["☁️ OpenAI"]
+    C["🧠 <b>GPT-4</b><br/><small>LLM</small>"]
+  end
+  subgraph BACK["🔧 Backends"]
+    H1["🗄️ <b>Pinecone</b>"]
+    H2["🔧 <b>${isDE ? 'Produkt-API' : 'Product API'}</b>"]
+  end
+  A --> B
+  B <-->|API| C
+  B <--> E
+  B --> F1 --> H1 & H2
+  B --> G["✅ <b>${isDE ? 'Chat-Antwort' : 'Chat Response'}</b>"]
+  G -.-> A
+  style CLOUD fill:#faf5ff,stroke:#c4b5fd,stroke-width:2px
+  style OPENAI fill:#f0fdf4,stroke:#86efac,stroke-width:2px
+  style BACK fill:#fef2f2,stroke:#fca5a5,stroke-width:2px
+  style A fill:#dbeafe,stroke:#60a5fa,stroke-width:2px
+  style G fill:#dcfce7,stroke:#4ade80,stroke-width:2px`
     },
     voice: {
-      label: isDE ? 'Call Center Voice Agent' : 'Call Center Voice Agent',
-      desc: isDE ? 'Telefonanruf → Speech-to-Text → Agent verarbeitet → Text-to-Speech → Antwort an Anrufer. Braucht STT/TTS Services.' : 'Phone call → Speech-to-Text → Agent processes → Text-to-Speech → Answer to caller. Requires STT/TTS services.',
-      iface: { name: isDE ? 'Voice / Telefon' : 'Voice / Phone', zone: 'cloud', icon: '📞' },
-      framework: { name: 'LangChain', zone: 'cloud', icon: '⚙️' },
-      llm: { name: 'Claude (Bedrock)', zone: 'cloud-aws', icon: '🧠' },
-      context: { name: isDE ? 'Kundenprofil + Session' : 'Customer Profile + Session', zone: 'cloud', icon: '📋' },
-      tools: [{ name: 'CRM MCP', zone: 'cloud' }],
-      backends: [
-        { name: 'Azure Whisper (STT)', zone: 'cloud-azure', icon: '🎙️' },
-        { name: 'Azure TTS', zone: 'cloud-azure', icon: '🔊' },
-        { name: 'CRM API', zone: 'saas', icon: '🔧' }
-      ],
-      output: [isDE ? 'Sprach-Antwort' : 'Voice Response', isDE ? 'Ticket erstellt' : 'Ticket Created'],
-      outputTarget: 'user',
+      label: 'Call Center Voice Agent',
+      desc: isDE ? 'Telefon → STT → Agent → TTS → Antwort. Braucht Azure Whisper/TTS.' : 'Phone → STT → Agent → TTS → Answer. Requires Azure Whisper/TTS.',
+      chart: () => `flowchart TD
+  subgraph CLOUD["☁️ Cloud"]
+    A["📞 <b>${isDE ? 'Voice / Telefon' : 'Voice / Phone'}</b><br/><small>Interface</small>"]
+    B["⚙️ <b>LangChain</b><br/><small>Framework</small>"]
+    E["📋 <b>${isDE ? 'Kundenprofil' : 'Customer Profile'}</b>"]
+    F1["CRM MCP"]
+  end
+  subgraph AWS["☁️ AWS"]
+    C["🧠 <b>Claude Bedrock</b><br/><small>LLM</small>"]
+  end
+  subgraph AZURE["☁️ Azure"]
+    STT["🎤 <b>Whisper STT</b>"]
+    TTS["🔊 <b>Azure TTS</b>"]
+  end
+  subgraph SAAS["🌐 SaaS"]
+    H["🔧 <b>CRM API</b>"]
+  end
+  A -->|Audio| STT -->|Text| B
+  B <-->|API| C
+  B <--> E
+  B --> F1 --> H
+  B -->|Text| TTS -->|Audio| G["✅ <b>${isDE ? 'Sprach-Antwort' : 'Voice Response'}</b>"]
+  G -.-> A
+  style CLOUD fill:#faf5ff,stroke:#c4b5fd,stroke-width:2px
+  style AWS fill:#fff7ed,stroke:#fdba74,stroke-width:2px
+  style AZURE fill:#eff6ff,stroke:#93c5fd,stroke-width:2px
+  style SAAS fill:#fef2f2,stroke:#fca5a5,stroke-width:2px
+  style G fill:#dcfce7,stroke:#4ade80,stroke-width:2px`
     },
     tickets: {
       label: isDE ? 'Ticket-Automatisierung' : 'Ticket Automation',
-      desc: isDE ? 'Agent liest Jira-Tickets, klassifiziert sie, erstellt Subtasks und weist sie zu.' : 'Agent reads Jira tickets, classifies them, creates subtasks and assigns them.',
-      iface: { name: 'API / Webhook', zone: 'server', icon: '🔗' },
-      framework: { name: 'CrewAI', zone: 'server', icon: '⚙️' },
-      llm: { name: 'GPT-4 (OpenAI)', zone: 'cloud', icon: '🧠' },
-      context: { name: isDE ? 'Ticket-Historie' : 'Ticket History', zone: 'server', icon: '📋' },
-      tools: [{ name: 'Jira MCP', zone: 'server' }],
-      backends: [{ name: 'Jira API', zone: 'saas', icon: '🔧' }],
-      output: [isDE ? 'Klassifizierte Tickets' : 'Classified Tickets', 'Subtasks', isDE ? 'Zuweisungen' : 'Assignments'],
-      outputTarget: 'system',
+      desc: isDE ? 'Agent klassifiziert Jira-Tickets, erstellt Subtasks, weist zu.' : 'Agent classifies Jira tickets, creates subtasks, assigns.',
+      chart: () => `flowchart TD
+  subgraph SERVER["${isDE ? '🏢 On-Prem' : '🏢 On-Prem'}"]
+    A["🔗 <b>API / Webhook</b><br/><small>Interface</small>"]
+    B["⚙️ <b>CrewAI</b><br/><small>Framework</small>"]
+    E["📋 <b>${isDE ? 'Ticket-Historie' : 'Ticket History'}</b>"]
+    F1["Jira MCP"]
+  end
+  subgraph OPENAI["☁️ OpenAI"]
+    C["🧠 <b>GPT-4</b><br/><small>LLM</small>"]
+  end
+  subgraph SAAS["🌐 SaaS"]
+    H["🔧 <b>Jira API</b>"]
+  end
+  A -->|Trigger| B
+  B <-->|API| C
+  B <--> E
+  B --> F1 -->|API| H
+  H --> G["✅ <b>${isDE ? 'Tickets + Subtasks' : 'Tickets + Subtasks'}</b>"]
+  style SERVER fill:#f0f9ff,stroke:#93c5fd,stroke-width:2px
+  style OPENAI fill:#f0fdf4,stroke:#86efac,stroke-width:2px
+  style SAAS fill:#fef2f2,stroke:#fca5a5,stroke-width:2px
+  style G fill:#dcfce7,stroke:#4ade80,stroke-width:2px`
     },
     knowledge: {
-      label: isDE ? 'Wissens-Agent (Wiki)' : 'Knowledge Agent (Wiki)',
-      desc: isDE ? 'Mitarbeiter stellen Fragen, Agent durchsucht Confluence/SharePoint und antwortet mit Quellenangabe.' : 'Employees ask questions, agent searches Confluence/SharePoint and answers with source references.',
-      iface: { name: 'Chat UI', zone: 'server', icon: '💬' },
-      framework: { name: 'LangChain', zone: 'server', icon: '⚙️' },
-      llm: { name: 'Claude (Bedrock)', zone: 'cloud-aws', icon: '🧠' },
-      context: { name: isDE ? 'Vektor-DB (RAG)' : 'Vector DB (RAG)', zone: 'server', icon: '📋' },
-      tools: [{ name: 'Confluence MCP', zone: 'server' }, { name: 'SharePoint MCP', zone: 'server' }],
-      backends: [
-        { name: 'Confluence API', zone: 'saas', icon: '🔧' },
-        { name: 'SharePoint API', zone: 'saas', icon: '🔧' },
-        { name: isDE ? 'Vektor-DB' : 'Vector DB', zone: 'server', icon: '🗄️' }
-      ],
-      output: [isDE ? 'Antwort + Quellen' : 'Answer + Sources'],
-      outputTarget: 'user',
+      label: isDE ? 'Wissens-Agent' : 'Knowledge Agent',
+      desc: isDE ? 'Durchsucht Confluence/SharePoint, antwortet mit Quellenangabe.' : 'Searches Confluence/SharePoint, answers with source references.',
+      chart: () => `flowchart TD
+  subgraph SERVER["${isDE ? '🏢 On-Prem' : '🏢 On-Prem'}"]
+    A["💬 <b>Chat UI</b><br/><small>Interface</small>"]
+    B["⚙️ <b>LangChain</b><br/><small>Framework</small>"]
+    E["📋 <b>${isDE ? 'Vektor-DB RAG' : 'Vector DB RAG'}</b>"]
+    F1["Confluence MCP"] & F2["SharePoint MCP"]
+    VDB["🗄️ <b>${isDE ? 'Vektor-DB' : 'Vector DB'}</b>"]
+  end
+  subgraph AWS["☁️ AWS"]
+    C["🧠 <b>Claude Bedrock</b><br/><small>LLM</small>"]
+  end
+  subgraph SAAS["🌐 SaaS"]
+    H1["🔧 <b>Confluence API</b>"]
+    H2["🔧 <b>SharePoint API</b>"]
+  end
+  A --> B
+  B <-->|API| C
+  B <--> E & VDB
+  B --> F1 --> H1
+  B --> F2 --> H2
+  B --> G["✅ <b>${isDE ? 'Antwort + Quellen' : 'Answer + Sources'}</b>"]
+  G -.-> A
+  style SERVER fill:#f0f9ff,stroke:#93c5fd,stroke-width:2px
+  style AWS fill:#fff7ed,stroke:#fdba74,stroke-width:2px
+  style SAAS fill:#fef2f2,stroke:#fca5a5,stroke-width:2px
+  style A fill:#dbeafe,stroke:#60a5fa,stroke-width:2px
+  style G fill:#dcfce7,stroke:#4ade80,stroke-width:2px`
     },
     data: {
-      label: isDE ? 'Data Pipeline Agent' : 'Data Pipeline Agent',
-      desc: isDE ? 'Agent analysiert Datenbank, schreibt Queries, erstellt Reports. Läuft als Cronjob.' : 'Agent analyzes database, writes queries, creates reports. Runs as a cron job.',
-      iface: { name: 'API / Cron', zone: 'server', icon: '🔗' },
-      framework: { name: 'LangChain', zone: 'server', icon: '⚙️' },
-      llm: { name: 'GPT-4 (OpenAI)', zone: 'cloud', icon: '🧠' },
-      context: { name: isDE ? 'DB-Schema + History' : 'DB Schema + History', zone: 'server', icon: '📋' },
-      tools: [{ name: 'Database MCP', zone: 'server' }, { name: 'Shell', zone: 'server' }],
-      backends: [{ name: 'PostgreSQL', zone: 'server', icon: '🗄️' }, { name: isDE ? 'S3 / Speicher' : 'S3 / Storage', zone: 'cloud-aws', icon: '🗄️' }],
-      output: ['Reports', 'CSV / JSON', 'Dashboards'],
-      outputTarget: 'system',
+      label: 'Data Pipeline Agent',
+      desc: isDE ? 'Analysiert DB, schreibt Queries, erstellt Reports. Läuft als Cronjob.' : 'Analyzes DB, writes queries, creates reports. Runs as cron job.',
+      chart: () => `flowchart TD
+  subgraph SERVER["${isDE ? '🏢 On-Prem' : '🏢 On-Prem'}"]
+    A["🔗 <b>API / Cron</b><br/><small>Interface</small>"]
+    B["⚙️ <b>LangChain</b><br/><small>Framework</small>"]
+    E["📋 <b>DB Schema + History</b>"]
+    F1["Database MCP"] & F2["Shell"]
+    DB["🗄️ <b>PostgreSQL</b>"]
+  end
+  subgraph OPENAI["☁️ OpenAI"]
+    C["🧠 <b>GPT-4</b><br/><small>LLM</small>"]
+  end
+  subgraph AWS_S["☁️ AWS"]
+    S3["🗄️ <b>S3 ${isDE ? 'Speicher' : 'Storage'}</b>"]
+  end
+  A -->|Trigger| B
+  B <-->|API| C
+  B <--> E
+  B --> F1 --> DB
+  B --> F2 --> S3
+  DB & S3 --> G["✅ <b>Reports + CSV + Dashboards</b>"]
+  style SERVER fill:#f0f9ff,stroke:#93c5fd,stroke-width:2px
+  style OPENAI fill:#f0fdf4,stroke:#86efac,stroke-width:2px
+  style AWS_S fill:#fff7ed,stroke:#fdba74,stroke-width:2px
+  style G fill:#dcfce7,stroke:#4ade80,stroke-width:2px`
     },
   };
 
-  const zoneColors = {
-    'local': { bg: '#f0fdf4', border: '#86efac', label: '#16a34a', dot: '#22c55e' },
-    'server': { bg: '#f0f9ff', border: '#93c5fd', label: '#2563eb', dot: '#3b82f6' },
-    'cloud': { bg: '#faf5ff', border: '#c4b5fd', label: '#7c3aed', dot: '#8b5cf6' },
-    'cloud-aws': { bg: '#fff7ed', border: '#fdba74', label: '#c2410c', dot: '#f97316' },
-    'cloud-azure': { bg: '#eff6ff', border: '#93c5fd', label: '#1d4ed8', dot: '#3b82f6' },
-    'saas': { bg: '#fef2f2', border: '#fca5a5', label: '#dc2626', dot: '#ef4444' },
-  };
+  let renderCounter = 0;
 
-  function boxHTML(icon, name, role, zone) {
-    const z = zoneColors[zone] || zoneColors['cloud'];
-    return `<div style="padding:12px 16px;border-radius:10px;background:${z.bg};border:2px solid ${z.border};text-align:center;min-width:100px;box-shadow:0 1px 4px rgba(0,0,0,0.06);position:relative">
-      <div style="position:absolute;top:4px;left:8px;font-size:0.5rem;color:${z.label};display:flex;align-items:center;gap:2px"><span style="width:5px;height:5px;border-radius:50%;background:${z.dot};display:inline-block"></span> ${zoneLabels[zone]?.label?.replace(/^.+\s/, '') || zone}</div>
-      <div style="font-size:1.4rem;margin-top:4px">${icon}</div>
-      <div style="font-size:0.78rem;font-weight:700;color:#1e293b;line-height:1.2;margin-top:4px">${name}</div>
-      <div style="font-size:0.62rem;color:#64748b;margin-top:2px">${role}</div>
-    </div>`;
-  }
-
-  function arrow(label) {
-    return `<div style="display:flex;flex-direction:column;align-items:center;gap:0;min-width:28px;padding:0 2px">
-      <div style="font-size:0.9rem;color:#cbd5e1">&rarr;</div>
-      ${label ? `<div style="font-size:0.55rem;color:#94a3b8">${label}</div>` : ''}
-    </div>`;
-  }
-
-  function arrowDown(label) {
-    return `<div style="text-align:center;padding:4px 0">
-      <div style="font-size:0.65rem;color:#94a3b8">&darr; ${label || ''}</div>
-    </div>`;
-  }
-
-  function render(preset) {
-    const p = preset;
-
-    // Row 1: Interface → Framework → LLM
-    const row1 = `<div style="display:flex;align-items:center;gap:6px;justify-content:center;flex-wrap:wrap">
-      ${boxHTML(p.iface.icon, p.iface.name, 'Interface', p.iface.zone)}
-      ${arrow('')}
-      ${boxHTML(p.framework.icon, p.framework.name, 'Framework', p.framework.zone)}
-      ${arrow('API')}
-      ${boxHTML(p.llm.icon, p.llm.name, 'LLM', p.llm.zone)}
-    </div>`;
-
-    // Row 2: Context/Memory
-    const row2 = `<div style="display:flex;justify-content:center;margin:4px 0">
-      <div style="display:flex;align-items:center;gap:6px">
-        <span style="font-size:0.6rem;color:#94a3b8">&harr;</span>
-        ${boxHTML(p.context.icon, p.context.name, isDE ? 'Kontext / Memory' : 'Context / Memory', p.context.zone)}
-      </div>
-    </div>`;
-
-    // Row 3: MCP Tools
-    const toolsHTML = p.tools.map(t =>
-      `<span style="padding:4px 10px;border-radius:6px;background:#eef2ff;border:1px solid #a5b4fc;font-size:0.7rem;color:#4338ca;font-weight:600">${t.name}</span>`
-    ).join('');
-    const row3 = p.tools.length ? `<div style="margin:2px 0">
-      ${arrowDown('Tool Calls')}
-      <div style="display:flex;flex-wrap:wrap;gap:5px;justify-content:center">${toolsHTML}</div>
-    </div>` : '';
-
-    // Row 4: Backends/Services
-    const backendsHTML = p.backends.map(b => {
-      const z = zoneColors[b.zone] || zoneColors['saas'];
-      return `<div style="padding:8px 12px;border-radius:8px;background:${z.bg};border:1px solid ${z.border};text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04);position:relative">
-        <div style="position:absolute;top:3px;left:6px;font-size:0.42rem;color:${z.label};display:flex;align-items:center;gap:2px"><span style="width:4px;height:4px;border-radius:50%;background:${z.dot};display:inline-block"></span> ${zoneLabels[b.zone]?.label?.replace(/^.+\s/, '') || b.zone}</div>
-        <div style="font-size:0.95rem;margin-top:2px">${b.icon}</div>
-        <div style="font-size:0.65rem;color:#1e293b;font-weight:600;margin-top:2px">${b.name}</div>
-      </div>`;
-    }).join('');
-    const row4 = p.backends.length ? `<div style="margin:2px 0">
-      ${arrowDown('API')}
-      <div style="display:flex;flex-wrap:wrap;gap:6px;justify-content:center">${backendsHTML}</div>
-    </div>` : '';
-
-    // Row 5: Output
-    const outputHTML = p.output.map(o =>
-      `<span style="padding:4px 10px;border-radius:6px;background:#f0fdf4;border:1px solid #86efac;font-size:0.7rem;color:#15803d;font-weight:600">${o}</span>`
-    ).join('');
-    const outputLabel = p.outputTarget === 'user'
-      ? (isDE ? '&larr; Antwort an User' : '&larr; Response to User')
-      : (isDE ? '&rarr; In System schreiben' : '&rarr; Write to System');
-    const row5 = `<div style="margin-top:2px;text-align:center">
-      ${arrowDown(isDE ? 'Ergebnis' : 'Output')}
-      <div style="display:flex;flex-wrap:wrap;gap:5px;justify-content:center;align-items:center">
-        ${outputHTML}
-        <span style="font-size:0.6rem;color:#94a3b8;margin-left:6px;font-style:italic">${outputLabel}</span>
-      </div>
-    </div>`;
-
-    diagram.innerHTML = row1 + row2 + row3 + row4 + row5;
-    if (detailBox) detailBox.innerHTML = `<strong style="color:var(--color-primary)">${p.label}:</strong> ${p.desc}`;
-  }
-
-  function showDiagram(preset) {
+  async function showDiagram(preset) {
     diagram.style.opacity = '0';
     diagram.style.transform = 'translateY(8px)';
-    if (detailBox) { detailBox.style.opacity = '0'; }
+    if (detailBox) detailBox.style.opacity = '0';
+    await new Promise(r => setTimeout(r, diagram.innerHTML ? 300 : 50));
 
-    setTimeout(() => {
-      render(preset);
-      requestAnimationFrame(() => {
-        diagram.style.opacity = '1';
-        diagram.style.transform = 'translateY(0)';
-        if (detailBox) { detailBox.style.opacity = '1'; }
-        // Show export button
-        const exportBtn = document.getElementById('arch-export-btn');
-        if (exportBtn) exportBtn.style.display = 'inline-block';
-      });
-    }, diagram.innerHTML ? 300 : 50);
+    renderCounter++;
+    const id = 'arch-mermaid-' + renderCounter;
+    try {
+      const { svg } = await mermaid.render(id, preset.chart());
+      diagram.innerHTML = svg;
+      const svgEl = diagram.querySelector('svg');
+      if (svgEl) { svgEl.style.maxWidth = '100%'; svgEl.style.height = 'auto'; svgEl.removeAttribute('height'); }
+    } catch (e) {
+      diagram.innerHTML = '<div style="color:red;font-size:0.8rem;padding:12px">Diagram error: ' + e.message + '</div>';
+      console.error('Mermaid render error:', e);
+    }
+
+    requestAnimationFrame(() => {
+      diagram.style.opacity = '1';
+      diagram.style.transform = 'translateY(0)';
+      if (detailBox) {
+        detailBox.innerHTML = '<strong style="color:var(--color-primary)">' + preset.label + ':</strong> ' + preset.desc;
+        detailBox.style.opacity = '1';
+      }
+      const exportBtn = document.getElementById('arch-export-btn');
+      if (exportBtn) exportBtn.style.display = 'inline-block';
+    });
   }
 
-  // Button click generates the diagram
   const generateBtn = document.getElementById('arch-generate-btn');
   if (generateBtn) {
     generateBtn.addEventListener('click', () => {
@@ -1294,13 +1338,35 @@ function setupArchBuilder() {
       showDiagram(presets[select.value] || presets.coding);
     });
   }
-
-  // Also regenerate on dropdown change if diagram is already visible
   select.addEventListener('change', () => {
-    if (diagram.innerHTML) {
-      showDiagram(presets[select.value] || presets.coding);
-    }
+    if (diagram.innerHTML) showDiagram(presets[select.value] || presets.coding);
   });
+
+  // Export as PNG
+  const exportBtn = document.getElementById('arch-export-btn');
+  if (exportBtn) {
+    exportBtn.addEventListener('click', () => {
+      const svgEl = diagram.querySelector('svg');
+      if (!svgEl) return;
+      const svgData = new XMLSerializer().serializeToString(svgEl);
+      const canvas = document.createElement('canvas');
+      const img = new Image();
+      img.onload = () => {
+        canvas.width = img.width * 2;
+        canvas.height = img.height * 2;
+        const ctx = canvas.getContext('2d');
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.scale(2, 2);
+        ctx.drawImage(img, 0, 0);
+        const a = document.createElement('a');
+        a.download = 'agent-architecture-' + select.value + '.png';
+        a.href = canvas.toDataURL('image/png');
+        a.click();
+      };
+      img.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svgData)));
+    });
+  }
 }
 
 function setupQuiz() {
