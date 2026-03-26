@@ -848,6 +848,16 @@ const isMobile = () => window.innerWidth <= 768;
 function setupMobileMode(startIdx) {
   if (!isMobile()) return;
 
+  // Wrap all tables in scrollable containers (so swipe handler detects scrollWidth)
+  document.querySelectorAll('.slide table').forEach(table => {
+    if (table.parentElement.classList.contains('table-scroll-wrapper')) return;
+    const wrapper = document.createElement('div');
+    wrapper.className = 'table-scroll-wrapper';
+    wrapper.style.cssText = 'overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%;';
+    table.parentNode.insertBefore(wrapper, table);
+    wrapper.appendChild(table);
+  });
+
   const sectionRanges = getSectionRanges();
 
   // Create mobile progress bar at top with burger

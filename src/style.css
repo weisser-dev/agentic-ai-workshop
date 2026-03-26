@@ -1705,12 +1705,18 @@ body.slide-werbung #matrix-canvas {
     font-size: 0.72rem !important;
   }
 
-  /* Make tables scrollable, not overflowing the slide */
+  /* Make tables horizontally scrollable on mobile */
   .slide table {
-    display: block;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    max-width: 100%;
+    display: table;
+    width: max-content;
+    min-width: 100%;
+  }
+
+  /* Table cells: keep text readable, don't break words */
+  .comparison th,
+  .comparison td {
+    padding: 6px 8px;
+    white-space: nowrap;
   }
 
   /* Cards */
@@ -1774,12 +1780,7 @@ body.slide-werbung #matrix-canvas {
     overflow-x: auto;
   }
 
-  .comparison th,
-  .comparison td {
-    padding: 6px 8px;
-    white-space: normal;
-    word-break: break-word;
-  }
+  /* removed - handled above */
 
   /* Timeline */
   .timeline {
