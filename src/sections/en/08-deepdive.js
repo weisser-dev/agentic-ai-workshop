@@ -567,49 +567,43 @@ When preparing a tagged release.</pre></div>
     theme: '',
     label: 'Best Practices',
     content: `
-      <span class="slide-label" style="color:var(--color-primary)">Coming Soon</span>
-      <h2 class="slide-title" style="font-size:1.3rem">OpenCode Best Practices &ndash; Automatic Project Setup</h2>
-      <p class="slide-subtitle" style="font-size:0.82rem">Agents, skills, model configs and MCP recommendations &ndash; all in one place</p>
+      <span class="slide-label" style="color:var(--color-primary)">Open Source</span>
+      <h2 class="slide-title" style="font-size:1.3rem">Awesome OpenCode &ndash; 108 Agents, 15 Skills, 18 MCPs</h2>
+      <p class="slide-subtitle" style="font-size:0.82rem">The most comprehensive collection for OpenCode &ndash; plus a CLI that sets up your project automatically</p>
       <div class="two-cols" style="margin-top:14px">
         <div>
-          <h3 style="color:var(--color-primary);font-size:0.9rem;margin-bottom:8px">What is this?</h3>
-          <div style="padding:10px;border-radius:8px;background:var(--color-bg-subdued);border:2px solid var(--color-border-primary);margin-bottom:10px;font-size:0.82rem;line-height:1.5">
-            An <strong>open-source repo</strong> with collected best practices for OpenCode projects &ndash; plus a <strong>CLI tool</strong> that automatically configures your existing project.
-          </div>
-          <h3 style="color:var(--color-primary);font-size:0.9rem;margin-bottom:6px">What's planned?</h3>
+          <h3 style="color:var(--color-primary);font-size:0.9rem;margin-bottom:8px">What&rsquo;s inside?</h3>
           <div style="display:flex;flex-direction:column;gap:4px;font-size:0.78rem">
-            <div style="padding:6px 8px;border-radius:4px;background:var(--color-bg-subdued);border:1px solid var(--color-border)">&#128218; Documented best practices (agents, skills, MCP, models)</div>
-            <div style="padding:6px 8px;border-radius:4px;background:var(--color-bg-subdued);border:1px solid var(--color-border)">&#128268; Ready-made agent templates (review, docs, security, debug)</div>
-            <div style="padding:6px 8px;border-radius:4px;background:var(--color-bg-subdued);border:1px solid var(--color-border)">&#127919; Skill library (git-release, migration, test-patterns)</div>
-            <div style="padding:6px 8px;border-radius:4px;background:var(--color-bg-subdued);border:1px solid var(--color-border)">&#128176; Model recommendations per task (token optimization)</div>
-            <div style="padding:6px 8px;border-radius:4px;background:var(--color-bg-subdued);border:1px solid var(--color-border)">&#9881; CLI: <code style="background:var(--color-code-bg);padding:1px 3px;border-radius:2px;font-size:0.7rem">npx opencode-advanced-setup</code></div>
+            <div style="padding:6px 8px;border-radius:4px;background:var(--color-bg-subdued);border:1px solid var(--color-border)">&#129302; <strong>108 Agents</strong> in 10 categories (Core, Languages, Infra, Security, AI...)</div>
+            <div style="padding:6px 8px;border-radius:4px;background:var(--color-bg-subdued);border:1px solid var(--color-border)">&#127919; <strong>15 Skills</strong> (git-release, ci-pipeline, dependency-audit...)</div>
+            <div style="padding:6px 8px;border-radius:4px;background:var(--color-bg-subdued);border:1px solid var(--color-border)">&#128268; <strong>18 curated MCP servers</strong> + live search of official MCP Registry</div>
+            <div style="padding:6px 8px;border-radius:4px;background:var(--color-bg-subdued);border:1px solid var(--color-border)">&#128176; <strong>Smart Model Detection</strong> &ndash; recognizes 26+ models, auto-optimizes costs</div>
+            <div style="padding:6px 8px;border-radius:4px;background:var(--color-bg-subdued);border:1px solid var(--color-border)">&#128218; <strong>Docs</strong> on Agents, Skills, MCP, Models, Rules, Permissions</div>
           </div>
         </div>
         <div>
-          <h3 style="color:var(--color-primary);font-size:0.9rem;margin-bottom:6px">How the CLI should work</h3>
+          <h3 style="color:var(--color-primary);font-size:0.9rem;margin-bottom:6px">One command &ndash; everything set up</h3>
           <div class="code-block" style="margin:0;margin-bottom:8px">
-            <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div>Terminal &ndash; Vision</div>
-            <div class="code-body" style="padding:8px 12px;font-size:0.65rem"><pre style="margin:0"><span class="code-function">npx</span> opencode-advanced-setup
+            <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div>Terminal</div>
+            <div class="code-body" style="padding:8px 12px;font-size:0.65rem"><pre style="margin:0"><span class="code-function">npx</span> @weisser-dev/awesome-opencode
 
-<span class="code-comment"># Analyzes your project:</span>
-<span class="code-comment"># - Language? (Java, Python, Node...)</span>
-<span class="code-comment"># - Framework? (Spring, React, FastAPI...)</span>
-<span class="code-comment"># - Reads opencode.json: which models?</span>
-
+<span class="code-comment"># Analyzes your project (language, framework)</span>
+<span class="code-comment"># Reads opencode.json: detects your models</span>
 <span class="code-comment"># Asks interactively:</span>
-<span class="code-string">"Create agents? (review, docs, security)"</span>
-<span class="code-string">"Install skills? (git-release, test)"</span>
-<span class="code-string">"Optimize models? (Haiku for Plan)"</span>
+<span class="code-string">"Agents?"</span>  <span class="code-comment"># 108 to choose from</span>
+<span class="code-string">"Skills?"</span>  <span class="code-comment"># 15 to choose from</span>
+<span class="code-string">"MCPs?"</span>    <span class="code-comment"># 18 + live registry</span>
+<span class="code-string">"Optimize models?"</span> <span class="code-comment"># Auto-mapping</span>
 
-<span class="code-comment"># Result:</span>
-<span class="code-comment"># .opencode/agents/*.md created</span>
-<span class="code-comment"># .opencode/skills/*/SKILL.md created</span>
-<span class="code-comment"># opencode.json with model recommendations</span></pre></div>
+<span class="code-comment"># Generates:</span>
+<span class="code-comment"># .opencode/agents/*.md</span>
+<span class="code-comment"># .opencode/skills/*/SKILL.md</span>
+<span class="code-comment"># opencode.json (updated)</span>
+<span class="code-comment"># AGENTS.md (generated)</span></pre></div>
           </div>
           <div style="padding:10px;border-radius:8px;background:rgba(47,108,122,0.08);border:2px solid var(--color-border-primary);text-align:center">
-            <p style="font-size:0.85rem;color:var(--color-text-primary);font-weight:600;margin-bottom:6px">Now on GitHub</p>
-            <a href="https://github.com/weisser-dev/opencode-best-practices" target="_blank" rel="noopener" style="display:inline-block;padding:8px 20px;border-radius:8px;background:var(--color-primary);color:#fff;text-decoration:none;font-size:0.85rem;font-weight:600">&#128279; weisser-dev/opencode-best-practices</a>
-            <p style="font-size:0.7rem;color:var(--color-text-subdued);margin-top:6px">Contributions welcome &ndash; PRs, issues, ideas!</p>
+            <a href="https://github.com/weisser-dev/awesome-opencode" target="_blank" rel="noopener" style="display:inline-block;padding:8px 20px;border-radius:8px;background:var(--color-primary);color:#fff;text-decoration:none;font-size:0.85rem;font-weight:600">&#128279; weisser-dev/awesome-opencode</a>
+            <p style="font-size:0.7rem;color:var(--color-text-subdued);margin-top:6px">MIT &bull; Contributions welcome &bull; <code style="background:rgba(47,108,122,0.1);padding:1px 3px;border-radius:2px;font-size:0.65rem">npx @weisser-dev/awesome-opencode</code></p>
           </div>
         </div>
       </div>
