@@ -241,7 +241,7 @@ export const agenticSlides = [
             </optgroup>
           </select>
         </div>
-        <div id="arch-diagram" style="padding:16px;border-radius:14px;background:#fff;border:1px solid #e2e8f0;box-shadow:0 2px 12px rgba(0,0,0,0.06);min-height:80px;opacity:0;transition:opacity 0.5s ease,transform 0.5s ease;transform:translateY(8px);overflow-x:auto;max-width:calc(100vw - 80px)"></div>
+        <div id="arch-diagram" style="padding:16px;border-radius:14px;background:#fff;border:1px solid #e2e8f0;box-shadow:0 2px 12px rgba(0,0,0,0.06);opacity:0;transition:opacity 0.5s ease,transform 0.5s ease;transform:translateY(8px);overflow:auto;max-height:60vh"></div>
         <div id="arch-builder-detail" style="margin-top:10px;padding:10px 16px;border-radius:10px;background:var(--color-bg-subdued);border:1px solid var(--color-border);font-size:0.8rem;color:var(--color-text-subdued);line-height:1.5;min-height:20px;opacity:0;transition:opacity 0.5s ease"></div>
       </div>
       <div class="arch-viewport-mobile">
