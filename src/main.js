@@ -1759,7 +1759,7 @@ if (mobileStartBtn) {
 // Restore position from URL hash or start at 0
 // ===== Progression: Save & Resume =====
 const PROGRESSION_KEY = 'workshop-progression';
-const WORKSHOP_VERSION = '1.9.8';
+const WORKSHOP_VERSION = '1.9.9';
 const VERSION_KEY = 'workshop-version';
 
 function saveProgression(index) {

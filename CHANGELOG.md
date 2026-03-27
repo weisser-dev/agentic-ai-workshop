@@ -2,6 +2,18 @@
 
 All notable changes to the Agentic AI Workshop are documented here.
 
+## [v1.9.9] – 2026-03-26
+
+### Added
+- **Version tracking**: `WORKSHOP_VERSION` constant saved to localStorage with progression data
+- **"New content" badge**: Resume modal shows green badge when version changed (version diff + new slide count)
+- **Version footer**: Modal shows `v1.9.9 • 125 slides` at bottom
+- **Cost Calculator slide** (#cost-calculator): Token pricing for 9 models with 2048 game example, pricepertoken.com link
+- **4 Deep Dive slides**: OpenCode Agents, Skills, Model Recommendations, Best Practices Repo
+
+### Removed
+- Old "Skills + Alle Links" slide (replaced by dedicated deep dives)
+
 ## [v1.9.6] – 2026-03-26
 
 ### Fixed
