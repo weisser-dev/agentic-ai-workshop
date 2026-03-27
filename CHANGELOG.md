@@ -2,6 +2,14 @@
 
 All notable changes to the Agentic AI Workshop are documented here.
 
+## [v1.9.6] – 2026-03-26
+
+### Fixed
+- **Slide internal scroll**: Slides now have fixed `height: 100vh` (was `min-height`) so `overflow-y: auto` creates actual scrollbars for long content. Wheel/trackpad scroll works within slides before navigating to next.
+- **Arch Builder diagram overflow**: Container capped at `max-height: 60vh` with `overflow: auto`. Dropdown and title always visible, diagram scrolls if too tall.
+- **Kiro Spec Stage**: All 3 columns (Requirements, Design, Implementation) visible in self-paced mode. Fix was inside `presenterMode`-only block and never ran in self-paced.
+- **Wheel handler**: Correctly detects scrollable slides and allows trackpad/wheel scroll within content before navigating. Verified: 15 slides with internal scroll on 1280x800.
+
 ## [v1.9.5] – 2026-03-26
 
 ### Fixed
