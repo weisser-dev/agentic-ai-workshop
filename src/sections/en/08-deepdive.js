@@ -315,59 +315,7 @@ Perform a code review:
     `,
   },
 
-  // ===== Deep Dive: Skills =====
-  {
-    id: 'deepdive-skills',
-    theme: 'slide--dark',
-    label: 'Skills',
-    content: `
-      <span class="slide-label">Deep Dive 5</span>
-      <h2 class="slide-title" style="font-size:1.5rem">Agent Skills + All Links</h2>
-      <p class="slide-subtitle" style="font-size:0.9rem">Skills = specialized knowledge on demand. Plus: AGENTS.md &rarr; Agents &rarr; Commands &rarr; Skills &rarr; MCP &ndash; <strong>it improves itself.</strong></p>
-      <div class="two-cols" style="margin-top:12px">
-        <div>
-          <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:10px">
-            <div style="padding:7px 12px;border-radius:8px;background:rgba(47,108,122,0.12);border:1px solid rgba(47,108,122,0.25);font-size:0.8rem;color:var(--color-text-on-dark)">
-              &#128295; <strong>Testing</strong> &ndash; Knows how to write tests
-            </div>
-            <div style="padding:7px 12px;border-radius:8px;background:rgba(47,108,122,0.12);border:1px solid rgba(47,108,122,0.25);font-size:0.8rem;color:var(--color-text-on-dark)">
-              &#128640; <strong>Deploy</strong> &ndash; Set up CI/CD pipelines
-            </div>
-            <div style="padding:7px 12px;border-radius:8px;background:rgba(47,108,122,0.12);border:1px solid rgba(47,108,122,0.25);font-size:0.8rem;color:var(--color-text-on-dark)">
-              &#128196; <strong>Migration</strong> &ndash; Database migrations
-            </div>
-            <div style="padding:7px 12px;border-radius:8px;background:rgba(47,108,122,0.12);border:1px solid rgba(47,108,122,0.25);font-size:0.8rem;color:var(--color-text-on-dark)">
-              &#128209; <strong>Custom</strong> &ndash; Your own workflows
-            </div>
-          </div>
-          <div style="padding:10px;border-radius:10px;background:rgba(255,237,0,0.06);border:1px solid rgba(255,237,0,0.15)">
-            <p style="font-size:0.8rem;color:var(--color-text-on-dark-subdued);line-height:1.4">
-              <strong style="color:var(--color-accent)">&#128260;</strong> AGENTS.md &rarr; better code &rarr; Sub-Agents &rarr; Commands &rarr; Skills &rarr; MCP. <strong>Each layer makes the system better.</strong>
-            </p>
-          </div>
-        </div>
-        <div>
-          <div style="display:flex;flex-direction:column;gap:6px">
-            <a href="https://opencode.ai/docs/de/web/" target="_blank" rel="noopener" style="padding:8px 14px;border-radius:8px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark);text-decoration:none;font-size:0.8rem;display:block">
-              &#128172; <strong>OpenCode Web</strong> <span style="color:var(--color-text-on-dark-subdued)">&ndash; Local ChatGPT</span>
-            </a>
-            <a href="https://opencode.ai/docs/de/commands/" target="_blank" rel="noopener" style="padding:8px 14px;border-radius:8px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark);text-decoration:none;font-size:0.8rem;display:block">
-              &#9889; <strong>Commands</strong> <span style="color:var(--color-text-on-dark-subdued)">&ndash; Automate tasks</span>
-            </a>
-            <a href="https://opencode.ai/docs/de/mcp-servers/" target="_blank" rel="noopener" style="padding:8px 14px;border-radius:8px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark);text-decoration:none;font-size:0.8rem;display:block">
-              &#128268; <strong>MCP Server</strong> <span style="color:var(--color-text-on-dark-subdued)">&ndash; Connect tools</span>
-            </a>
-            <a href="https://opencode.ai/docs/de/skills/" target="_blank" rel="noopener" style="padding:8px 14px;border-radius:8px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark);text-decoration:none;font-size:0.8rem;display:block">
-              &#128218; <strong>Skills</strong> <span style="color:var(--color-text-on-dark-subdued)">&ndash; Load specialized knowledge</span>
-            </a>
-            <a href="https://opencode.ai/docs/agents/" target="_blank" rel="noopener" style="padding:8px 14px;border-radius:8px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-on-dark);text-decoration:none;font-size:0.8rem;display:block">
-              &#129302; <strong>Agents</strong> <span style="color:var(--color-text-on-dark-subdued)">&ndash; Build your own agents</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    `,
-  },
+
   // ===== Deep Dive: Remote OpenCode via Telegram =====
   {
     id: 'deepdive-remote',
