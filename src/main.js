@@ -1759,6 +1759,8 @@ if (mobileStartBtn) {
 // Restore position from URL hash or start at 0
 // ===== Progression: Save & Resume =====
 const PROGRESSION_KEY = 'workshop-progression';
+const WORKSHOP_VERSION = '1.9.8';
+const VERSION_KEY = 'workshop-version';
 
 function saveProgression(index) {
   try {
@@ -1771,8 +1773,10 @@ function saveProgression(index) {
       timestamp: Date.now(),
       totalSlides: slides.length,
       lang: currentLang,
+      version: WORKSHOP_VERSION,
     }));
-  } catch(e) { /* localStorage may be unavailable */ }
+    localStorage.setItem(VERSION_KEY, WORKSHOP_VERSION);
+  } catch(e) {}
 }
 
 function getSavedProgression() {
@@ -1799,15 +1803,29 @@ function showResumeModal(savedData) {
     const slideNum = savedData.index + 1;
     const totalSlides = savedData.totalSlides || slides.length;
     const progress = Math.round((slideNum / totalSlides) * 100);
+    const savedVersion = savedData.version || localStorage.getItem(VERSION_KEY) || '';
+    const hasUpdate = savedVersion && savedVersion !== WORKSHOP_VERSION;
+    const newSlideCount = slides.length - (savedData.totalSlides || slides.length);
     
     const overlay = document.createElement('div');
     overlay.id = 'resume-modal-overlay';
     overlay.style.cssText = 'position:fixed;inset:0;background:rgba(10,10,30,0.92);z-index:10000;display:flex;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(8px);animation:fadeIn 0.3s ease';
     
+    const updateBadge = hasUpdate ? `
+      <div style="background:rgba(37,204,120,0.12);border:1px solid rgba(37,204,120,0.3);border-radius:8px;padding:8px 12px;margin-bottom:12px">
+        <p style="font-size:0.8rem;color:rgba(255,255,255,0.8);line-height:1.4;margin:0">
+          <strong style="color:#4ade80">&#10024; ${isDE ? 'Neue Inhalte!' : 'New content!'}</strong>
+          ${isDE
+            ? ` Version ${WORKSHOP_VERSION} (vorher ${savedVersion})${newSlideCount > 0 ? `. ${newSlideCount} neue Slides.` : '.'}`
+            : ` Version ${WORKSHOP_VERSION} (was ${savedVersion})${newSlideCount > 0 ? `. ${newSlideCount} new slides.` : '.'}`}
+        </p>
+      </div>` : '';
+
     overlay.innerHTML = `
       <div style="background:var(--color-bg-dark,#1a1a2e);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:32px 28px;max-width:400px;width:100%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.5)">
         <div style="font-size:2.5rem;margin-bottom:12px">&#128075;</div>
         <h2 style="color:#fff;font-size:1.3rem;margin-bottom:8px;font-weight:700">${isDE ? 'Willkommen zur\u00fcck!' : 'Welcome back!'}</h2>
+        ${updateBadge}
         <p style="color:rgba(255,255,255,0.7);font-size:0.9rem;line-height:1.5;margin-bottom:16px">
           ${isDE 
             ? `Du warst zuletzt bei <strong style="color:var(--color-accent,#ffed00)">${sectionName}</strong> (Folie ${slideNum}/${totalSlides}).`
@@ -1830,6 +1848,7 @@ function showResumeModal(savedData) {
             ${isDE ? 'Neu beginnen' : 'Start over'}
           </button>
         </div>
+        <p style="font-size:0.6rem;color:rgba(255,255,255,0.3);margin-top:12px">v${WORKSHOP_VERSION} &bull; ${slides.length} slides</p>
       </div>
     `;
     
