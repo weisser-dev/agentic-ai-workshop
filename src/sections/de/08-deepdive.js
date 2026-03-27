@@ -433,5 +433,240 @@ opencode-remote-telegram start</pre></div>
       </div>
     `,
   },
+
+  // ===== Deep Dive: OpenCode Agents =====
+  {
+    id: 'deepdive-agents',
+    theme: 'slide--dark',
+    label: 'Agents',
+    content: `
+      <span class="slide-label" style="color:var(--color-accent)">Deep Dive</span>
+      <h2 class="slide-title" style="font-size:1.3rem">OpenCode Agents &ndash; spezialisierte Assistenten</h2>
+      <p class="slide-subtitle" style="font-size:0.82rem">Primary Agents zum Wechseln (Tab) + Subagents die automatisch aufgerufen werden</p>
+      <div class="two-cols" style="margin-top:12px">
+        <div>
+          <h3 style="color:var(--color-accent);font-size:0.9rem;margin-bottom:6px">Built-in Agents</h3>
+          <div style="display:flex;flex-direction:column;gap:4px;margin-bottom:10px">
+            <div style="padding:7px 10px;border-radius:6px;background:rgba(255,237,0,0.08);border:1px solid rgba(255,237,0,0.2);font-size:0.78rem;color:var(--color-text-on-dark)"><strong style="color:var(--color-accent)">Build</strong> (Primary) &ndash; Alle Tools. Standard f&uuml;r Entwicklung.</div>
+            <div style="padding:7px 10px;border-radius:6px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);font-size:0.78rem;color:var(--color-text-on-dark)"><strong>Plan</strong> (Primary) &ndash; Read-Only. Analyse ohne &Auml;nderungen.</div>
+            <div style="padding:7px 10px;border-radius:6px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);font-size:0.78rem;color:var(--color-text-on-dark)"><strong>General</strong> (Subagent) &ndash; Multi-Step Tasks parallel.</div>
+            <div style="padding:7px 10px;border-radius:6px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);font-size:0.78rem;color:var(--color-text-on-dark)"><strong>Explore</strong> (Subagent) &ndash; Schnelles Codebase-Durchsuchen.</div>
+          </div>
+          <h3 style="color:var(--color-accent);font-size:0.9rem;margin-bottom:6px">Eigene Agents erstellen</h3>
+          <div class="code-block" style="margin:0">
+            <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div>.opencode/agents/review.md</div>
+            <div class="code-body" style="padding:8px 12px;font-size:0.65rem"><pre style="margin:0"><span class="code-comment">---</span>
+<span class="code-property">description</span>: Code Review ohne Schreibrechte
+<span class="code-property">mode</span>: subagent
+<span class="code-property">model</span>: anthropic/claude-sonnet-4-20250514
+<span class="code-property">permission</span>:
+  <span class="code-property">edit</span>: deny
+  <span class="code-property">bash</span>:
+    <span class="code-string">"git diff"</span>: allow
+    <span class="code-string">"grep *"</span>: allow
+<span class="code-comment">---</span>
+Du bist Code-Reviewer. Fokus auf Sicherheit,
+Performance und Wartbarkeit.</pre></div>
+          </div>
+        </div>
+        <div>
+          <h3 style="color:var(--color-accent);font-size:0.9rem;margin-bottom:6px">JSON Config</h3>
+          <div class="code-block" style="margin:0;margin-bottom:8px">
+            <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div>opencode.json</div>
+            <div class="code-body" style="padding:8px 12px;font-size:0.65rem"><pre style="margin:0">{
+  <span class="code-property">"agent"</span>: {
+    <span class="code-property">"docs"</span>: {
+      <span class="code-property">"description"</span>: <span class="code-string">"Schreibt Doku"</span>,
+      <span class="code-property">"mode"</span>: <span class="code-string">"subagent"</span>,
+      <span class="code-property">"model"</span>: <span class="code-string">"anthropic/claude-haiku-4-20250514"</span>,
+      <span class="code-property">"permission"</span>: { <span class="code-property">"bash"</span>: <span class="code-string">"deny"</span> }
+    }
+  }
+}</pre></div>
+          </div>
+          <h3 style="color:var(--color-accent);font-size:0.9rem;margin-bottom:6px">Pro-Tipps</h3>
+          <div style="display:flex;flex-direction:column;gap:4px;font-size:0.75rem;color:rgba(255,255,255,0.7)">
+            <div style="padding:5px 8px;border-radius:4px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1)">&#9889; <strong>Tab</strong> wechselt zwischen Primary Agents</div>
+            <div style="padding:5px 8px;border-radius:4px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1)">&#64; <strong>@agent-name</strong> ruft Subagent manuell auf</div>
+            <div style="padding:5px 8px;border-radius:4px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1)">&#128274; Permissions pro Agent: <code style="background:rgba(255,255,255,0.1);padding:1px 3px;border-radius:2px">allow</code> / <code style="background:rgba(255,255,255,0.1);padding:1px 3px;border-radius:2px">ask</code> / <code style="background:rgba(255,255,255,0.1);padding:1px 3px;border-radius:2px">deny</code></div>
+            <div style="padding:5px 8px;border-radius:4px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1)">&#128176; Haiku f&uuml;r einfache Tasks = <strong>90% Token-Ersparnis</strong></div>
+          </div>
+          <div style="margin-top:6px;padding:5px 8px;border-radius:6px;background:rgba(47,108,122,0.1);border:1px solid rgba(47,108,122,0.2);font-size:0.65rem;color:rgba(255,255,255,0.5)">
+            <a href="https://opencode.ai/docs/agents/" target="_blank" rel="noopener" style="color:var(--color-accent)">Docs: Agents</a> &bull; <a href="https://github.com/darrenhinde/OpenAgentsControl" target="_blank" rel="noopener" style="color:var(--color-accent)">OpenAgentsControl</a> &bull; <a href="https://github.com/VoltAgent/awesome-claude-code-subagents" target="_blank" rel="noopener" style="color:var(--color-accent)">Claude Sub-Agents</a>
+          </div>
+        </div>
+      </div>
+    `,
+  },
+
+  // ===== Deep Dive: OpenCode Skills =====
+  {
+    id: 'deepdive-skills-detail',
+    theme: '',
+    label: 'Skills',
+    content: `
+      <span class="slide-label" style="color:var(--color-primary)">Deep Dive</span>
+      <h2 class="slide-title" style="font-size:1.3rem">OpenCode Skills &ndash; wiederverwendbare Anweisungen</h2>
+      <p class="slide-subtitle" style="font-size:0.82rem">SKILL.md Dateien die der Agent on-demand laden kann &ndash; wie Plugins f&uuml;r dein Projekt</p>
+      <div class="two-cols" style="margin-top:12px">
+        <div>
+          <h3 style="color:var(--color-primary);font-size:0.9rem;margin-bottom:6px">So funktioniert&rsquo;s</h3>
+          <div class="code-block" style="margin:0;margin-bottom:8px">
+            <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div>.opencode/skills/git-release/SKILL.md</div>
+            <div class="code-body" style="padding:8px 12px;font-size:0.65rem"><pre style="margin:0"><span class="code-comment">---</span>
+<span class="code-property">name</span>: git-release
+<span class="code-property">description</span>: Erstellt konsistente Releases
+<span class="code-comment">---</span>
+
+<span class="code-comment">## Was ich tue</span>
+- Release Notes aus PRs generieren
+- Version Bump vorschlagen
+- gh release create Befehl ausgeben
+
+<span class="code-comment">## Wann mich nutzen</span>
+Beim Vorbereiten eines Tagged Release.</pre></div>
+          </div>
+          <h3 style="color:var(--color-primary);font-size:0.9rem;margin-bottom:6px">Speicherorte</h3>
+          <div style="display:flex;flex-direction:column;gap:3px;font-size:0.72rem">
+            <div style="padding:4px 8px;border-radius:4px;background:var(--color-bg-subdued);border:1px solid var(--color-border)"><strong>Projekt:</strong> .opencode/skills/&lt;name&gt;/SKILL.md</div>
+            <div style="padding:4px 8px;border-radius:4px;background:var(--color-bg-subdued);border:1px solid var(--color-border)"><strong>Global:</strong> ~/.config/opencode/skills/&lt;name&gt;/SKILL.md</div>
+            <div style="padding:4px 8px;border-radius:4px;background:var(--color-bg-subdued);border:1px solid var(--color-border)"><strong>Kompatibel:</strong> .claude/skills/ oder .agents/skills/</div>
+          </div>
+        </div>
+        <div>
+          <h3 style="color:var(--color-primary);font-size:0.9rem;margin-bottom:6px">Skill-Ideen f&uuml;r dein Projekt</h3>
+          <div style="display:flex;flex-direction:column;gap:4px;margin-bottom:8px">
+            <div style="padding:6px 8px;border-radius:4px;background:var(--color-bg-subdued);border:1px solid var(--color-border);font-size:0.75rem"><strong>git-release</strong> &ndash; Changelogs + Releases erstellen</div>
+            <div style="padding:6px 8px;border-radius:4px;background:var(--color-bg-subdued);border:1px solid var(--color-border);font-size:0.75rem"><strong>pr-review</strong> &ndash; Code-Review Checkliste</div>
+            <div style="padding:6px 8px;border-radius:4px;background:var(--color-bg-subdued);border:1px solid var(--color-border);font-size:0.75rem"><strong>migration</strong> &ndash; DB-Migrationen nach Team-Standard</div>
+            <div style="padding:6px 8px;border-radius:4px;background:var(--color-bg-subdued);border:1px solid var(--color-border);font-size:0.75rem"><strong>test-patterns</strong> &ndash; Testing-Konventionen des Projekts</div>
+            <div style="padding:6px 8px;border-radius:4px;background:var(--color-bg-subdued);border:1px solid var(--color-border);font-size:0.75rem"><strong>deploy</strong> &ndash; Deployment-Schritte f&uuml;r verschiedene Envs</div>
+          </div>
+          <h3 style="color:var(--color-primary);font-size:0.9rem;margin-bottom:6px">Permissions steuern</h3>
+          <div class="code-block" style="margin:0">
+            <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div>opencode.json</div>
+            <div class="code-body" style="padding:8px 12px;font-size:0.65rem"><pre style="margin:0">{
+  <span class="code-property">"permission"</span>: {
+    <span class="code-property">"skill"</span>: {
+      <span class="code-string">"*"</span>: <span class="code-string">"allow"</span>,
+      <span class="code-string">"internal-*"</span>: <span class="code-string">"deny"</span>,
+      <span class="code-string">"experimental-*"</span>: <span class="code-string">"ask"</span>
+    }
+  }
+}</pre></div>
+          </div>
+          <div style="margin-top:6px;padding:5px 8px;border-radius:6px;background:rgba(47,108,122,0.08);border:1px solid rgba(47,108,122,0.2);font-size:0.65rem;color:var(--color-text-subdued)">
+            <a href="https://opencode.ai/docs/skills/" target="_blank" rel="noopener" style="color:var(--color-primary)">Docs: Agent Skills</a>
+          </div>
+        </div>
+      </div>
+    `,
+  },
+
+  // ===== Deep Dive: Modell-Empfehlungen =====
+  {
+    id: 'deepdive-models',
+    theme: 'slide--dark',
+    label: 'Modelle',
+    content: `
+      <span class="slide-label" style="color:var(--color-accent)">Deep Dive</span>
+      <h2 class="slide-title" style="font-size:1.3rem">Welches Modell f&uuml;r welchen Task?</h2>
+      <p class="slide-subtitle" style="font-size:0.82rem">Token sparen durch Task-spezifische Modell-Zuweisung &ndash; nicht alles braucht Opus</p>
+      <div style="margin-top:12px;overflow-x:auto">
+        <table class="comparison" style="font-size:0.72rem;width:100%">
+          <thead><tr><th>Task</th><th>Empfehlung</th><th>Warum</th><th>Kosten-Faktor</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Komplexes Coding</strong></td><td style="color:var(--color-accent)">Claude Opus 4.6</td><td>Bestes Reasoning, lange Kontexte</td><td>$$$$</td></tr>
+            <tr><td><strong>Standard Coding</strong></td><td style="color:var(--color-accent)">Claude Sonnet 4.6</td><td>Sehr gut, 60% g&uuml;nstiger als Opus</td><td>$$</td></tr>
+            <tr><td><strong>Code Review</strong></td><td>Claude Sonnet 4.6</td><td>Read-Only, braucht kein Max-Reasoning</td><td>$$</td></tr>
+            <tr><td><strong>Doku schreiben</strong></td><td>Claude Haiku 4.5</td><td>Schnell, g&uuml;nstig, Text-Qualit&auml;t reicht</td><td>$</td></tr>
+            <tr><td><strong>Explore / Suche</strong></td><td>Haiku 4.5 / Kimi k2.5</td><td>Read-Only, braucht Speed nicht Qualit&auml;t</td><td>$</td></tr>
+            <tr><td><strong>Titel / Summary</strong></td><td>Haiku / MiniMax</td><td>Triviale Tasks, fast gratis</td><td>&cent;</td></tr>
+            <tr><td><strong>Brainstorming</strong></td><td>GPT-5 / Gemini 3.1</td><td>Kreativ, gro&szlig;es Kontextfenster</td><td>$$</td></tr>
+            <tr><td><strong>Lokale Verprobung</strong></td><td>Ollama + Qwen 3.5</td><td>Gratis, lokal, kein Internet</td><td>Gratis</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="two-cols" style="margin-top:10px">
+        <div>
+          <h3 style="color:var(--color-accent);font-size:0.85rem;margin-bottom:4px">In der Praxis: opencode.json</h3>
+          <div class="code-block" style="margin:0">
+            <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div>Modelle pro Agent</div>
+            <div class="code-body" style="padding:6px 10px;font-size:0.6rem"><pre style="margin:0">{
+  <span class="code-property">"agent"</span>: {
+    <span class="code-property">"build"</span>:   { <span class="code-property">"model"</span>: <span class="code-string">"anthropic/claude-sonnet-4-6"</span> },
+    <span class="code-property">"plan"</span>:    { <span class="code-property">"model"</span>: <span class="code-string">"anthropic/claude-haiku-4-5"</span> },
+    <span class="code-property">"explore"</span>: { <span class="code-property">"model"</span>: <span class="code-string">"anthropic/claude-haiku-4-5"</span> },
+    <span class="code-property">"docs"</span>:    { <span class="code-property">"model"</span>: <span class="code-string">"anthropic/claude-haiku-4-5"</span> }
+  }
+}</pre></div>
+          </div>
+        </div>
+        <div>
+          <div style="padding:8px 10px;border-radius:8px;background:rgba(255,237,0,0.06);border:1px solid rgba(255,237,0,0.15);font-size:0.75rem;color:rgba(255,255,255,0.7);line-height:1.4">
+            <strong style="color:var(--color-accent)">Token-Spar-Tipp:</strong> Haiku f&uuml;r Explore + Plan + Doku = <strong>80-90% weniger Kosten</strong> bei gleichem Ergebnis. Opus/Sonnet nur f&uuml;r Build-Tasks wo Reasoning z&auml;hlt.
+          </div>
+          <div style="margin-top:6px;padding:5px 8px;border-radius:6px;background:rgba(47,108,122,0.1);border:1px solid rgba(47,108,122,0.2);font-size:0.65rem;color:rgba(255,255,255,0.5)">
+            <a href="https://opencode.ai/docs/models/" target="_blank" rel="noopener" style="color:var(--color-accent)">Docs: Models</a> &bull; <code style="background:rgba(255,255,255,0.1);padding:1px 3px;border-radius:2px">opencode models</code> zeigt alle verf&uuml;gbaren Modelle
+          </div>
+        </div>
+      </div>
+    `,
+  },
+
+  // ===== Deep Dive: Best Practices Repo =====
+  {
+    id: 'deepdive-bestpractices',
+    theme: '',
+    label: 'Best Practices',
+    content: `
+      <span class="slide-label" style="color:var(--color-primary)">Coming Soon</span>
+      <h2 class="slide-title" style="font-size:1.3rem">OpenCode Best Practices &ndash; automatisches Projekt-Setup</h2>
+      <p class="slide-subtitle" style="font-size:0.82rem">Agents, Skills, Modell-Configs und MCP-Empfehlungen &ndash; alles an einem Ort</p>
+      <div class="two-cols" style="margin-top:14px">
+        <div>
+          <h3 style="color:var(--color-primary);font-size:0.9rem;margin-bottom:8px">Was ist das?</h3>
+          <div style="padding:10px;border-radius:8px;background:var(--color-bg-subdued);border:2px solid var(--color-border-primary);margin-bottom:10px;font-size:0.82rem;line-height:1.5">
+            Ein <strong>Open-Source Repo</strong> mit gesammelten Best Practices f&uuml;r OpenCode-Projekte &ndash; plus ein <strong>CLI-Tool</strong> das dein bestehendes Projekt automatisch konfiguriert.
+          </div>
+          <h3 style="color:var(--color-primary);font-size:0.9rem;margin-bottom:6px">Was ist geplant?</h3>
+          <div style="display:flex;flex-direction:column;gap:4px;font-size:0.78rem">
+            <div style="padding:6px 8px;border-radius:4px;background:var(--color-bg-subdued);border:1px solid var(--color-border)">&#128218; Dokumentierte Best Practices (Agents, Skills, MCP, Modelle)</div>
+            <div style="padding:6px 8px;border-radius:4px;background:var(--color-bg-subdued);border:1px solid var(--color-border)">&#128268; Fertige Agent-Templates (Review, Docs, Security, Debug)</div>
+            <div style="padding:6px 8px;border-radius:4px;background:var(--color-bg-subdued);border:1px solid var(--color-border)">&#127919; Skill-Bibliothek (git-release, migration, test-patterns)</div>
+            <div style="padding:6px 8px;border-radius:4px;background:var(--color-bg-subdued);border:1px solid var(--color-border)">&#128176; Modell-Empfehlungen pro Task (Token-Optimierung)</div>
+            <div style="padding:6px 8px;border-radius:4px;background:var(--color-bg-subdued);border:1px solid var(--color-border)">&#9881; CLI: <code style="background:var(--color-code-bg);padding:1px 3px;border-radius:2px;font-size:0.7rem">npx opencode-advanced-setup</code></div>
+          </div>
+        </div>
+        <div>
+          <h3 style="color:var(--color-primary);font-size:0.9rem;margin-bottom:6px">So soll das CLI funktionieren</h3>
+          <div class="code-block" style="margin:0;margin-bottom:8px">
+            <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div>Terminal &ndash; Vision</div>
+            <div class="code-body" style="padding:8px 12px;font-size:0.65rem"><pre style="margin:0"><span class="code-function">npx</span> opencode-advanced-setup
+
+<span class="code-comment"># Analysiert dein Projekt:</span>
+<span class="code-comment"># - Sprache? (Java, Python, Node...)</span>
+<span class="code-comment"># - Framework? (Spring, React, FastAPI...)</span>
+<span class="code-comment"># - Liest opencode.json: welche Modelle?</span>
+
+<span class="code-comment"># Fragt interaktiv:</span>
+<span class="code-string">"Agents anlegen? (review, docs, security)"</span>
+<span class="code-string">"Skills installieren? (git-release, test)"</span>
+<span class="code-string">"Modelle optimieren? (Haiku f&uuml;r Plan)"</span>
+
+<span class="code-comment"># Ergebnis:</span>
+<span class="code-comment"># .opencode/agents/*.md angelegt</span>
+<span class="code-comment"># .opencode/skills/*/SKILL.md angelegt</span>
+<span class="code-comment"># opencode.json mit Modell-Empfehlungen</span></pre></div>
+          </div>
+          <div style="padding:10px;border-radius:8px;background:rgba(47,108,122,0.08);border:2px solid var(--color-border-primary);text-align:center">
+            <p style="font-size:0.85rem;color:var(--color-text-primary);font-weight:600;margin-bottom:6px">Jetzt auf GitHub</p>
+            <a href="https://github.com/weisser-dev/opencode-best-practices" target="_blank" rel="noopener" style="display:inline-block;padding:8px 20px;border-radius:8px;background:var(--color-primary);color:#fff;text-decoration:none;font-size:0.85rem;font-weight:600">&#128279; weisser-dev/opencode-best-practices</a>
+            <p style="font-size:0.7rem;color:var(--color-text-subdued);margin-top:6px">Contributions willkommen &ndash; PRs, Issues, Ideen!</p>
+          </div>
+        </div>
+      </div>
+    `,
+  },
 ];
 
