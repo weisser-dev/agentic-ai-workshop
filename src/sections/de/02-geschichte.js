@@ -762,6 +762,42 @@ export const geschichteSlides = [
     `,
   },
 
+  // ===== Kosten-Rechner: Was kostet ein Projekt? =====
+  {
+    id: 'cost-calculator',
+    theme: 'slide--dark',
+    label: 'Kosten',
+    content: `
+      <span class="slide-label" style="color:var(--color-accent)">Praxis</span>
+      <h2 class="slide-title" style="font-size:1.3rem">Was kostet ein Projekt mit AI? &ndash; Beispiel: 2048-Spiel</h2>
+      <p class="slide-subtitle" style="font-size:0.82rem">Ein typisches Coding-Projekt: ~50K Input-Tokens + ~20K Output-Tokens pro Session</p>
+      <div style="margin-top:10px;overflow-x:auto">
+        <table class="comparison" style="font-size:0.72rem;width:100%">
+          <thead><tr><th>Modell</th><th>Input $/M</th><th>Output $/M</th><th>2048-Spiel<br><small>(50K in + 20K out)</small></th><th>10 Projekte</th><th>Qualit&auml;t</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Claude Opus 4.6</strong></td><td>$5.00</td><td>$25.00</td><td style="color:var(--color-accent);font-weight:700">~$0.75</td><td>~$7.50</td><td>&#11088;&#11088;&#11088;&#11088;&#11088;</td></tr>
+            <tr><td><strong>Claude Sonnet 4.6</strong></td><td>$3.00</td><td>$15.00</td><td style="color:var(--color-accent);font-weight:700">~$0.45</td><td>~$4.50</td><td>&#11088;&#11088;&#11088;&#11088;</td></tr>
+            <tr><td><strong>Claude Haiku 4.5</strong></td><td>$1.00</td><td>$5.00</td><td style="color:var(--color-positive);font-weight:700">~$0.15</td><td>~$1.50</td><td>&#11088;&#11088;&#11088;</td></tr>
+            <tr><td><strong>GPT-5.1 Codex</strong></td><td>$2.50</td><td>$10.00</td><td style="font-weight:700">~$0.33</td><td>~$3.30</td><td>&#11088;&#11088;&#11088;&#11088;</td></tr>
+            <tr><td><strong>GPT-4.1 Nano</strong></td><td>$0.05</td><td>$0.20</td><td style="color:var(--color-positive);font-weight:700">~$0.01</td><td>~$0.07</td><td>&#11088;&#11088;</td></tr>
+            <tr><td><strong>Gemini 3.1 Pro</strong></td><td>$1.25</td><td>$5.00</td><td style="font-weight:700">~$0.16</td><td>~$1.63</td><td>&#11088;&#11088;&#11088;&#11088;</td></tr>
+            <tr><td><strong>DeepSeek V3.2</strong></td><td>$0.01</td><td>$0.03</td><td style="color:var(--color-positive);font-weight:700">&lt;$0.01</td><td>~$0.01</td><td>&#11088;&#11088;&#11088;</td></tr>
+            <tr><td><strong>Qwen 3.5 (9B)</strong></td><td>$0.04</td><td>$0.15</td><td style="color:var(--color-positive);font-weight:700">&lt;$0.01</td><td>~$0.05</td><td>&#11088;&#11088;&#11088;</td></tr>
+            <tr><td><strong>Ollama (lokal)</strong></td><td colspan="2" style="text-align:center">Gratis (Strom)</td><td style="color:var(--color-positive);font-weight:700">$0.00</td><td>$0.00</td><td>&#11088;&ndash;&#11088;&#11088;&#11088;</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="two-cols" style="margin-top:8px">
+        <div style="padding:8px 10px;border-radius:8px;background:rgba(255,237,0,0.06);border:1px solid rgba(255,237,0,0.15);font-size:0.72rem;color:rgba(255,255,255,0.7);line-height:1.4">
+          <strong style="color:var(--color-accent)">Rechenbeispiel:</strong> 2048-Spiel mit Claude Sonnet 4.6: <strong>~50K Input + ~20K Output = $0.45</strong>. Mit Haiku f&uuml;r Explore/Plan und Sonnet nur f&uuml;r Build: <strong>~$0.25</strong>. Ein ganzer Arbeitstag Coding: <strong>$2-5</strong>.
+        </div>
+        <div style="padding:8px 10px;border-radius:8px;background:rgba(47,108,122,0.1);border:1px solid rgba(47,108,122,0.2);font-size:0.72rem;color:rgba(255,255,255,0.7);line-height:1.4">
+          <strong style="color:var(--color-accent)">Live-Preise:</strong> <a href="https://pricepertoken.com" target="_blank" rel="noopener" style="color:var(--color-accent);text-decoration:underline">pricepertoken.com</a> &ndash; 300+ Modelle im Vergleich. Preise &auml;ndern sich st&auml;ndig, <strong>Trend: immer g&uuml;nstiger</strong>.
+        </div>
+      </div>
+    `,
+  },
+
   // ===== 7: Preise & Hosting =====
   {
     id: 'pricing',
