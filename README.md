@@ -2,7 +2,7 @@
 
 > **English Readme below**
 
-Eine interaktive Web-Präsentation und Self-Guided Workshop zum Thema **AI Agents, LLMs und AI-Assisted Coding**.
+Eine interaktive Web-Präsentation und Self-Guided Workshop zum Thema **AI Agents, LLMs und AI-Assisted Coding**. Entstanden während meiner Arbeits- & Freizeit für https://github.com/HUK-COBURG als Mehrwert für meine Gruppe & alle, die das Thema KI interessiert.
 
 **[agentic-ai.weisser.dev](https://agentic-ai.weisser.dev)** – direkt im Browser starten.
 
