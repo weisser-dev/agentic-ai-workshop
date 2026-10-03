@@ -8,6 +8,8 @@ Eine interaktive Web-Präsentation und Self-Guided Workshop zum Thema **AI Agent
 
 ![Agentic AI Workshop Mockup](public/mockup.png)
 
+![Screenshot of agentic-ai.weisser.dev](docs/screenshot.jpg)
+
 ---
 
 ## Was ist das?
